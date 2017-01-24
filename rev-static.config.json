@@ -1,0 +1,15 @@
+{
+    "inputFiles": [
+        "demo/vue.js",
+        "demo/vue.vendor.js",
+        "demo/vue/index.ejs.html"
+    ],
+    "outputFiles": [
+        "demo/vue/index.html"
+    ],
+    "json": false,
+    "ejsOptions": {
+        "rmWhitespace": true
+    },
+    "sha": 256
+}

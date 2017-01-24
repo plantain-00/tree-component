@@ -1,0 +1,31 @@
+{
+  "name": "tree-component",
+  "version": "1.0.0",
+  "description": "A reactjs, angular2 and vuejs tree component.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p src && tsc -p demo && webpack --config webpack.config.vue.js && npm run rev",
+    "lint": "tsc \"src/*.ts\"",
+    "rev": "npm run clean-rev && rev-static",
+    "clean-rev": "rm -f demo/react*-*.js demo/vue*-*.js demo/angular*-*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plantain-00/tree-component.git"
+  },
+  "author": "York Yao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/plantain-00/tree-component/issues"
+  },
+  "homepage": "https://github.com/plantain-00/tree-component#readme",
+  "devDependencies": {
+    "rev-static": "1.3.1",
+    "tslib": "1.5.0",
+    "tslint": "4.3.1",
+    "typescript": "2.1.5",
+    "vue": "2.1.10",
+    "vue-class-component": "4.4.0",
+    "webpack": "1.14.0"
+  }
+}
