@@ -1,7 +1,6 @@
 {
     "inputFiles": [
-        "demo/vue.js",
-        "demo/vue.vendor.js",
+        "demo/vue.bundle.js",
         "demo/vue/index.ejs.html"
     ],
     "outputFiles": [

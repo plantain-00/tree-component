@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
     entry: {
@@ -6,6 +7,7 @@ module.exports = {
         "vue.vendor": "./demo/vue/vendor"
     },
     output: {
+        path: path.join(__dirname, "demo"),
         filename: "[name].bundle.js"
     },
     plugins: [
