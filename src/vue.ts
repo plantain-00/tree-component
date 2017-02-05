@@ -80,6 +80,10 @@ class Node extends Vue {
         if (eventData) {
             this.$emit("change", eventData);
         } else {
+            if (this.data.state!.disabled) {
+                return;
+            }
+
             let timer: number | undefined;
             if (this.clicked) { // is a double click
                 this.clicked = false;

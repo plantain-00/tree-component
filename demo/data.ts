@@ -9,22 +9,22 @@ export const data: TreeData[] = [
         },
         children: [
             {
-                text: "Child node 1",
+                text: "Child node 11",
                 value: { id: 11 },
             },
             {
-                text: "Child node 2",
+                text: "Child node 12",
                 value: { id: 12 },
                 state: {
                     opened: true,
                 },
                 children: [
                     {
-                        text: "Child node 3",
+                        text: "Child node 121",
                         value: { id: 121 },
                     },
                     {
-                        text: "Child node 4",
+                        text: "Child node 122",
                         value: { id: 122 },
                         state: {
                             disabled: true,
