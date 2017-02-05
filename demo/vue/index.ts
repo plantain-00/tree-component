@@ -1,9 +1,9 @@
 import * as Vue from "vue";
 import "../../dist/vue";
 import { data } from "../data";
+import * as common from "../../dist/common";
 
 /* tslint:disable:no-unused-new */
-/* tslint:disable:object-literal-shorthand */
 
 new Vue({
     el: "#container",
@@ -11,5 +11,13 @@ new Vue({
         return {
             data,
         };
+    },
+    methods: {
+        toggle(eventData: common.EventData) {
+            eventData.data.state!.opened = !eventData.data.state!.opened;
+        },
+        change(eventData: common.EventData) {
+            eventData.data.state!.selected = !eventData.data.state!.selected;
+        },
     },
 });

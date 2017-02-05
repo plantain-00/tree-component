@@ -5,9 +5,14 @@ import * as common from "./common";
 @Component({
     template: `
     <li role="treeitem" :class="nodeClassName">
-        <i class="jstree-icon jstree-ocl" role="presentation" @click="openOrClose()"></i><a :class="anchorClassName" href="javascript:void(0)" @click="click()" @mouseenter="hover(true)" @mouseleave="hover(false)"><i class="jstree-icon jstree-themeicon" role="presentation"></i>{{data.text}}</a>
+        <i class="jstree-icon jstree-ocl" role="presentation" @click="toggle()"></i><a :class="anchorClassName" href="javascript:void(0)" @click="change()" @mouseenter="hover(true)" @mouseleave="hover(false)"><i class="jstree-icon jstree-themeicon" role="presentation"></i>{{data.text}}</a>
         <ul v-if="data.children" role="group" class="jstree-children">
-            <node v-for="(child, i) in data.children" :data="child" :last="i === data.children.length - 1"></node>
+            <node v-for="(child, i) in data.children"
+                :data="child"
+                :last="i === data.children.length - 1"
+                @toggle="toggle(arguments[0])"
+                @change="change(arguments[0])">
+            </node>
         </ul>
     </li>
     `,
@@ -16,6 +21,7 @@ import * as common from "./common";
 class Node extends Vue {
     data: common.TreeData;
     last: boolean;
+
     hovered = false;
 
     get nodeClassName() {
@@ -37,8 +43,13 @@ class Node extends Vue {
 
     get anchorClassName() {
         const values = ["jstree-anchor"];
-        if (this.data.state && this.data.state.selected) {
-            values.push("jstree-clicked");
+        if (this.data.state) {
+            if (this.data.state.selected) {
+                values.push("jstree-clicked");
+            }
+            if (this.data.state.disabled) {
+                values.push("jstree-disabled");
+            }
         }
         if (this.hovered) {
             values.push("jstree-hovered");
@@ -55,13 +66,21 @@ class Node extends Vue {
     hover(hovered: boolean) {
         this.hovered = hovered;
     }
-    openOrClose() {
-        if (this.last) {
-            this.data.state!.opened = !this.data.state!.opened;
+    toggle(eventData?: common.EventData) {
+        if (eventData) {
+            this.$emit("toggle", eventData);
+        } else {
+            if (this.last) {
+                this.$emit("toggle", { data: this.data });
+            }
         }
     }
-    click() {
-        this.data.state!.selected = !this.data.state!.selected;
+    change(eventData?: common.EventData) {
+        if (eventData) {
+            this.$emit("change", eventData);
+        } else {
+            this.$emit("change", { data: this.data });
+        }
     }
 }
 
@@ -71,14 +90,24 @@ Vue.component("node", Node);
     template: `
     <div class="jstree jstree-default jstree-default-dark" role="tree">
         <ul class="jstree-container-ul jstree-children" role="group">
-            <node :data="data" :last="true"></node>
+            <node :data="data"
+                :last="true"
+                @toggle="toggle(arguments[0])"
+                @change="change(arguments[0])"></node>
         </ul>
     </div>
     `,
     props: ["data"],
 })
-class Tree extends Vue {
+export class Tree extends Vue {
     data: common.TreeData;
+
+    toggle(eventData: common.EventData) {
+        this.$emit("toggle", eventData);
+    }
+    change(eventData: common.EventData) {
+        this.$emit("change", eventData);
+    }
 }
 
 Vue.component("tree", Tree);

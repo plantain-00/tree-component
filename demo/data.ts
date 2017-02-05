@@ -8,9 +8,6 @@ export const data: TreeData = {
     children: [
         {
             text: "Child node 1",
-            state: {
-                selected: true,
-            },
         },
         {
             text: "Child node 2",
@@ -26,6 +23,9 @@ export const data: TreeData = {
                 },
                 {
                     text: "Child node 4",
+                    state: {
+                        disabled: true,
+                    },
                 },
             ],
         },
