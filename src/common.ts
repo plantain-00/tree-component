@@ -12,3 +12,5 @@ export type TreeData = {
 export type EventData = {
     data: TreeData;
 };
+
+import "tslib";

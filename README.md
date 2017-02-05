@@ -11,6 +11,12 @@ A reactjs, angular2 and vuejs tree component.
 
 `npm i tree-component`
 
+#### link css from jstree
+
+```html
+<link rel="stylesheet" href="./node_modules/jstree/dist/themes/default/style.min.css" />
+```
+
 #### vuejs component demo
 
 ```ts
@@ -20,12 +26,54 @@ import "tree-component/dist/vue";
 ```html
 <tree :data="data"
     @toggle="toggle(arguments[0])"
-    @change="change(arguments[0])"></tree>
+    @change="change(arguments[0])">
+</tree>
 ```
 
 the online demo: https://plantain-00.github.io/tree-component/demo/vue/index.html
 
 the source code of the demo: https://github.com/plantain-00/tree-component/tree/master/demo/vue
+
+#### reactjs component demo
+
+```ts
+import { Tree } from "tree-component/dist/react";
+```
+
+```html
+<Tree data={data}
+    toggle={this.toggle}
+    change={this.change}>
+</Tree>
+```
+
+the online demo: https://plantain-00.github.io/tree-component/demo/react/index.html
+
+the source code of the demo: https://github.com/plantain-00/tree-component/tree/master/demo/react
+
+#### angular2 component demo
+
+```ts
+import { TreeComponent, NodeComponent } from "tree-component/dist/angular";
+
+@NgModule({
+    imports: [BrowserModule, FormsModule],
+    declarations: [MainComponent, TreeComponent, NodeComponent],
+    bootstrap: [MainComponent],
+})
+class MainModule { }
+```
+
+```html
+<tree [data]="data"
+    (toggle)="toggle($event)"
+    (change)="change($event)">
+</tree>
+```
+
+the online demo: https://plantain-00.github.io/tree-component/demo/angular/index.html
+
+the source code of the demo: https://github.com/plantain-00/tree-component/tree/master/demo/angular
 
 #### properties and events of the component
 

@@ -24,6 +24,7 @@ class Node extends Vue {
 
     hovered = false;
     clicked = false;
+    timer: number | null = null;
 
     get nodeClassName() {
         const values = ["jstree-node"];
@@ -84,16 +85,16 @@ class Node extends Vue {
                 return;
             }
 
-            let timer: number | undefined;
             if (this.clicked) { // is a double click
                 this.clicked = false;
-                if (timer) {
-                    clearTimeout(timer);
+                if (this.timer) {
+                    clearTimeout(this.timer);
+                    this.timer = null;
                 }
                 this.toggle(eventData);
             } else { // first click
                 this.clicked = true;
-                timer = setTimeout(() => {
+                this.timer = setTimeout(() => {
                     this.clicked = false;
                     this.$emit("change", { data: this.data });
                 }, 333);

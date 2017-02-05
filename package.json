@@ -21,6 +21,10 @@
   },
   "homepage": "https://github.com/plantain-00/tree-component#readme",
   "devDependencies": {
+    "@types/react": "15.0.6",
+    "@types/react-dom": "0.14.22",
+    "react": "15.4.2",
+    "react-dom": "15.4.2",
     "rev-static": "1.3.1",
     "tslint": "4.4.2",
     "typescript": "2.1.5",
