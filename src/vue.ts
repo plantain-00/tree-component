@@ -5,7 +5,7 @@ import * as common from "./common";
 @Component({
     template: `
     <li role="treeitem" :class="nodeClassName">
-        <i class="jstree-icon jstree-ocl" role="presentation"></i><a :class="anchorClassName" href="javascript:void(0)" @mouseenter="hover(true)" @mouseleave="hover(false)"><i class="jstree-icon jstree-themeicon" role="presentation"></i>{{data.text}}</a>
+        <i class="jstree-icon jstree-ocl" role="presentation" @click="openOrClose()"></i><a :class="anchorClassName" href="javascript:void(0)" @click="click()" @mouseenter="hover(true)" @mouseleave="hover(false)"><i class="jstree-icon jstree-themeicon" role="presentation"></i>{{data.text}}</a>
         <ul v-if="data.children" role="group" class="jstree-children">
             <node v-for="(child, i) in data.children" :data="child" :last="i === data.children.length - 1"></node>
         </ul>
@@ -14,7 +14,7 @@ import * as common from "./common";
     props: ["data", "last"],
 })
 class Node extends Vue {
-    data: common.TreeNode;
+    data: common.TreeData;
     last: boolean;
     hovered = false;
 
@@ -23,6 +23,8 @@ class Node extends Vue {
         if (this.data.children && this.data.children.length > 0) {
             if (this.data.state && this.data.state.opened) {
                 values.push("jstree-open");
+            } else {
+                values.push("jstree-closed");
             }
         } else {
             values.push("jstree-leaf");
@@ -44,8 +46,22 @@ class Node extends Vue {
         return values.join(" ");
     }
 
+    beforeMount() {
+        if (!this.data.state) {
+            this.data.state = {};
+        }
+    }
+
     hover(hovered: boolean) {
         this.hovered = hovered;
+    }
+    openOrClose() {
+        if (this.last) {
+            this.data.state!.opened = !this.data.state!.opened;
+        }
+    }
+    click() {
+        this.data.state!.selected = !this.data.state!.selected;
     }
 }
 
@@ -62,7 +78,7 @@ Vue.component("node", Node);
     props: ["data"],
 })
 class Tree extends Vue {
-    data: common.TreeNode;
+    data: common.TreeData;
 }
 
 Vue.component("tree", Tree);

@@ -1,6 +1,6 @@
-import { TreeNode } from "../dist/common";
+import { TreeData } from "../dist/common";
 
-export const data: TreeNode = {
+export const data: TreeData = {
     text: "Root node",
     state: {
         opened: true,
