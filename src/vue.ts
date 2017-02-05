@@ -70,7 +70,7 @@ class Node extends Vue {
         if (eventData) {
             this.$emit("toggle", eventData);
         } else {
-            if (this.last) {
+            if (this.data.children && this.data.children.length > 0) {
                 this.$emit("toggle", { data: this.data });
             }
         }
@@ -90,8 +90,9 @@ Vue.component("node", Node);
     template: `
     <div class="jstree jstree-default jstree-default-dark" role="tree">
         <ul class="jstree-container-ul jstree-children" role="group">
-            <node :data="data"
-                :last="true"
+            <node v-for="(child, i) in data"
+                :data="child"
+                :last="i === data.length - 1"
                 @toggle="toggle(arguments[0])"
                 @change="change(arguments[0])"></node>
         </ul>
@@ -100,7 +101,7 @@ Vue.component("node", Node);
     props: ["data"],
 })
 export class Tree extends Vue {
-    data: common.TreeData;
+    data: common.TreeData[];
 
     toggle(eventData: common.EventData) {
         this.$emit("toggle", eventData);

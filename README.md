@@ -31,9 +31,9 @@ the source code of the demo: https://github.com/plantain-00/tree-component/tree/
 
 name | type | description
 --- | --- | ---
-data | property | the data of the tree, [the structure](#tree-data-structure)
-toggle | event | triggered when opening or closing a node, [the structure of first parameter](#event-data-structure)
-change | event | triggered when selecting or deselecting a node, [the structure first parameter](#event-data-structure)
+data | [TreeData](#tree-data-structure)[] | the data of the tree
+toggle | (eventData: [EventData](#event-data-structure)) => void | triggered when opening or closing a node
+change | (eventData: [EventData](#event-data-structure)) => void | triggered when selecting or deselecting a node
 
 #### tree data structure
 
