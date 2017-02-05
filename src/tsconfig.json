@@ -11,7 +11,7 @@
         "skipLibCheck": true,
         "importHelpers": true,
         "jsx": "react",
-        "outDir": "./dist",
+        "outDir": "../dist",
         "declaration": true,
         "experimentalDecorators": true
     }

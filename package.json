@@ -4,10 +4,11 @@
   "description": "A reactjs, angular2 and vuejs tree component.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p src && tsc -p demo && webpack --config webpack.config.vue.js && npm run rev",
-    "lint": "tsc \"src/*.ts\"",
+    "build": "tsc -p src && tsc -p demo && webpack && npm run rev",
+    "lint": "tslint \"src/*.ts\"",
     "rev": "npm run clean-rev && rev-static",
-    "clean-rev": "rm -f demo/react*-*.js demo/vue*-*.js demo/angular*-*.js"
+    "clean-rev": "rm -f demo/react.bundle-*.js demo/vue.bundle-*.js demo/angular.bundle-*.js",
+    "static": "mkdir ./demo/css && cp -r ./node_modules/jstree/dist/themes/default/ ./demo/css"
   },
   "repository": {
     "type": "git",
@@ -21,11 +22,14 @@
   "homepage": "https://github.com/plantain-00/tree-component#readme",
   "devDependencies": {
     "rev-static": "1.3.1",
-    "tslib": "1.5.0",
-    "tslint": "4.3.1",
+    "tslint": "4.4.2",
     "typescript": "2.1.5",
     "vue": "2.1.10",
     "vue-class-component": "4.4.0",
-    "webpack": "1.14.0"
+    "webpack": "2.2.1"
+  },
+  "dependencies": {
+    "jstree": "3",
+    "tslib": "1"
   }
 }

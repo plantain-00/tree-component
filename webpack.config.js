@@ -3,8 +3,7 @@ const path = require("path");
 
 module.exports = {
     entry: {
-        vue: "./demo/vue/index",
-        "vue.vendor": "./demo/vue/vendor"
+        vue: "./demo/vue/index"
     },
     output: {
         path: path.join(__dirname, "demo"),
@@ -16,8 +15,7 @@ module.exports = {
                 "NODE_ENV": JSON.stringify("production")
             }
         }),
-        new webpack.NoErrorsPlugin(),
-        new webpack.optimize.DedupePlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false,
@@ -25,9 +23,6 @@ module.exports = {
             output: {
                 comments: false,
             },
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: ["index", "vue.vendor"]
         }),
     ],
     resolve: {
