@@ -23,8 +23,7 @@ class Node extends Vue {
     last: boolean;
 
     hovered = false;
-    clicked = false;
-    timer: number | null = null;
+    doubleClick = new common.DoubleClick();
 
     get nodeClassName() {
         const values = ["jstree-node"];
@@ -77,20 +76,11 @@ class Node extends Vue {
                 return;
             }
 
-            if (this.clicked) { // is a double click
-                this.clicked = false;
-                if (this.timer) {
-                    clearTimeout(this.timer);
-                    this.timer = null;
-                }
+            this.doubleClick.onclick(() => {
                 this.ontoggle(eventData);
-            } else { // first click
-                this.clicked = true;
-                this.timer = setTimeout(() => {
-                    this.clicked = false;
-                    this.$emit("change", { data: this.data });
-                }, 333);
-            }
+            }, () => {
+                this.$emit("change", { data: this.data });
+            });
         }
     }
 }

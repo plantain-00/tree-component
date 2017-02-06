@@ -8,8 +8,7 @@ class Node extends React.Component<{
     change: (eventData?: common.EventData) => void;
 }, {}> {
     hovered = false;
-    clicked = false;
-    timer: number | null = null;
+    doubleClick = new common.DoubleClick();
 
     render() {
         let childrenElement: JSX.Element | null;
@@ -89,20 +88,11 @@ class Node extends React.Component<{
                 return;
             }
 
-            if (this.clicked) { // is a double click
-                this.clicked = false;
-                if (this.timer) {
-                    clearTimeout(this.timer);
-                    this.timer = null;
-                }
+            this.doubleClick.onclick(() => {
                 this.ontoggle(eventData);
-            } else { // first click
-                this.clicked = true;
-                this.timer = setTimeout(() => {
-                    this.clicked = false;
-                    this.props.change({ data: this.props.data });
-                }, 333);
-            }
+            }, () => {
+                this.props.change({ data: this.props.data });
+            });
         }
     }
 }

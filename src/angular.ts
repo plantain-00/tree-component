@@ -29,8 +29,7 @@ export class NodeComponent {
     change = new EventEmitter<common.EventData>();
 
     hovered = false;
-    clicked = false;
-    timer: number | null = null;
+    doubleClick = new common.DoubleClick();
 
     get nodeClassName() {
         const values = ["jstree-node"];
@@ -83,20 +82,11 @@ export class NodeComponent {
                 return;
             }
 
-            if (this.clicked) { // is a double click
-                this.clicked = false;
-                if (this.timer) {
-                    clearTimeout(this.timer);
-                    this.timer = null;
-                }
+            this.doubleClick.onclick(() => {
                 this.ontoggle(eventData);
-            } else { // first click
-                this.clicked = true;
-                this.timer = setTimeout(() => {
-                    this.clicked = false;
-                    this.change.emit({ data: this.data });
-                }, 333);
-            }
+            }, () => {
+                this.change.emit({ data: this.data });
+            });
         }
     }
 }
