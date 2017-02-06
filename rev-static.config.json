@@ -3,14 +3,11 @@
         "demo/vue.bundle.js",
         "demo/vue/index.ejs.html",
         "demo/react.bundle.js",
-        "demo/react/index.ejs.html",
-        "demo/angular.bundle.js",
-        "demo/angular/index.ejs.html"
+        "demo/react/index.ejs.html"
     ],
     "outputFiles": [
         "demo/vue/index.html",
-        "demo/react/index.html",
-        "demo/angular/index.html"
+        "demo/react/index.html"
     ],
     "json": false,
     "ejsOptions": {

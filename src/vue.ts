@@ -29,7 +29,7 @@ class Node extends Vue {
     get nodeClassName() {
         const values = ["jstree-node"];
         if (this.data.children && this.data.children.length > 0) {
-            if (this.data.state && this.data.state.opened) {
+            if (this.data.state.opened) {
                 values.push("jstree-open");
             } else {
                 values.push("jstree-closed");
@@ -45,24 +45,16 @@ class Node extends Vue {
 
     get anchorClassName() {
         const values = ["jstree-anchor"];
-        if (this.data.state) {
-            if (this.data.state.selected) {
-                values.push("jstree-clicked");
-            }
-            if (this.data.state.disabled) {
-                values.push("jstree-disabled");
-            }
+        if (this.data.state.selected) {
+            values.push("jstree-clicked");
+        }
+        if (this.data.state.disabled) {
+            values.push("jstree-disabled");
         }
         if (this.hovered) {
             values.push("jstree-hovered");
         }
         return values.join(" ");
-    }
-
-    beforeMount() {
-        if (!this.data.state) {
-            this.data.state = {};
-        }
     }
 
     hover(hovered: boolean) {
@@ -81,7 +73,7 @@ class Node extends Vue {
         if (eventData) {
             this.$emit("change", eventData);
         } else {
-            if (this.data.state!.disabled) {
+            if (this.data.state.disabled) {
                 return;
             }
 

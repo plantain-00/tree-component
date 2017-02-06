@@ -15,17 +15,17 @@ new Vue({
     },
     methods: {
         toggle(eventData: common.EventData) {
-            eventData.data.state!.opened = !eventData.data.state!.opened;
+            eventData.data.state.opened = !eventData.data.state.opened;
         },
         change(this: This, eventData: common.EventData) {
-            this.selectedId = eventData.data.state!.selected ? null : eventData.data.value.id;
-            if (!eventData.data.state!.selected) {
+            this.selectedId = eventData.data.state.selected ? null : eventData.data.value.id;
+            if (!eventData.data.state.selected) {
                 this.clearSelection();
             }
-            eventData.data.state!.selected = !eventData.data.state!.selected;
+            eventData.data.state.selected = !eventData.data.state.selected;
         },
         clearSelectionOfTree(this: This, tree: common.TreeData) {
-            if (tree.state && tree.state.selected) {
+            if (tree.state.selected) {
                 tree.state.selected = false;
             }
             if (tree.children) {

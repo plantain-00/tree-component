@@ -11,13 +11,6 @@ class Node extends React.Component<{
     clicked = false;
     timer: number | null = null;
 
-    constructor(props: any) {
-        super(props);
-        if (!this.props.data.state) {
-            this.props.data.state = {};
-        }
-    }
-
     render() {
         let childrenElement: JSX.Element | null;
         if (this.props.data.children) {
@@ -47,7 +40,7 @@ class Node extends React.Component<{
     get nodeClassName() {
         const values = ["jstree-node"];
         if (this.props.data.children && this.props.data.children.length > 0) {
-            if (this.props.data.state && this.props.data.state.opened) {
+            if (this.props.data.state.opened) {
                 values.push("jstree-open");
             } else {
                 values.push("jstree-closed");
@@ -63,13 +56,11 @@ class Node extends React.Component<{
 
     get anchorClassName() {
         const values = ["jstree-anchor"];
-        if (this.props.data.state) {
-            if (this.props.data.state.selected) {
-                values.push("jstree-clicked");
-            }
-            if (this.props.data.state.disabled) {
-                values.push("jstree-disabled");
-            }
+        if (this.props.data.state.selected) {
+            values.push("jstree-clicked");
+        }
+        if (this.props.data.state.disabled) {
+            values.push("jstree-disabled");
         }
         if (this.hovered) {
             values.push("jstree-hovered");
@@ -94,7 +85,7 @@ class Node extends React.Component<{
         if (eventData) {
             this.props.change(eventData);
         } else {
-            if (this.props.data.state!.disabled) {
+            if (this.props.data.state.disabled) {
                 return;
             }
 
