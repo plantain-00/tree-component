@@ -37,34 +37,11 @@ class Node extends React.Component<{
     }
 
     get nodeClassName() {
-        const values = ["jstree-node"];
-        if (this.props.data.children && this.props.data.children.length > 0) {
-            if (this.props.data.state.opened) {
-                values.push("jstree-open");
-            } else {
-                values.push("jstree-closed");
-            }
-        } else {
-            values.push("jstree-leaf");
-        }
-        if (this.props.last) {
-            values.push("jstree-last");
-        }
-        return values.join(" ");
+        return common.getNodeClassName(this.props.data, this.props.last);
     }
 
     get anchorClassName() {
-        const values = ["jstree-anchor"];
-        if (this.props.data.state.selected) {
-            values.push("jstree-clicked");
-        }
-        if (this.props.data.state.disabled) {
-            values.push("jstree-disabled");
-        }
-        if (this.hovered) {
-            values.push("jstree-hovered");
-        }
-        return values.join(" ");
+        return common.getAnchorClassName(this.props.data, this.hovered);
     }
 
     hover(hovered: boolean) {

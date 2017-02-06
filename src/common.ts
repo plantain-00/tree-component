@@ -38,3 +38,34 @@ export class DoubleClick {
         }
     }
 }
+
+export function getNodeClassName(data: TreeData, last: boolean) {
+    const values = ["jstree-node"];
+    if (data.children && data.children.length > 0) {
+        if (data.state.opened) {
+            values.push("jstree-open");
+        } else {
+            values.push("jstree-closed");
+        }
+    } else {
+        values.push("jstree-leaf");
+    }
+    if (last) {
+        values.push("jstree-last");
+    }
+    return values.join(" ");
+}
+
+export function getAnchorClassName(data: TreeData, hovered: boolean) {
+    const values = ["jstree-anchor"];
+    if (data.state.selected) {
+        values.push("jstree-clicked");
+    }
+    if (data.state.disabled) {
+        values.push("jstree-disabled");
+    }
+    if (hovered) {
+        values.push("jstree-hovered");
+    }
+    return values.join(" ");
+}

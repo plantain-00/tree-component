@@ -26,34 +26,11 @@ class Node extends Vue {
     doubleClick = new common.DoubleClick();
 
     get nodeClassName() {
-        const values = ["jstree-node"];
-        if (this.data.children && this.data.children.length > 0) {
-            if (this.data.state.opened) {
-                values.push("jstree-open");
-            } else {
-                values.push("jstree-closed");
-            }
-        } else {
-            values.push("jstree-leaf");
-        }
-        if (this.last) {
-            values.push("jstree-last");
-        }
-        return values.join(" ");
+        return common.getNodeClassName(this.data, this.last);
     }
 
     get anchorClassName() {
-        const values = ["jstree-anchor"];
-        if (this.data.state.selected) {
-            values.push("jstree-clicked");
-        }
-        if (this.data.state.disabled) {
-            values.push("jstree-disabled");
-        }
-        if (this.hovered) {
-            values.push("jstree-hovered");
-        }
-        return values.join(" ");
+        return common.getAnchorClassName(this.data, this.hovered);
     }
 
     hover(hovered: boolean) {
