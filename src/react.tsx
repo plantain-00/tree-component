@@ -17,8 +17,8 @@ class Node extends React.Component<{
             const nodesElement: JSX.Element[] = this.props.data.children.map((child, i) => (
                 <Node data={child}
                     last={i === this.props.data.children!.length - 1}
-                    toggle={eventData => this.toggle(eventData)}
-                    change={eventData => this.change(eventData)}>
+                    toggle={eventData => this.ontoggle(eventData)}
+                    change={eventData => this.onchange(eventData)}>
                 </Node>
             ));
             childrenElement = (
@@ -31,7 +31,7 @@ class Node extends React.Component<{
         }
         return (
             <li role="treeitem" className={this.nodeClassName}>
-                <i className="jstree-icon jstree-ocl" role="presentation" onClick={() => this.toggle()}></i><a className={this.anchorClassName} href="javascript:void(0)" onClick={() => this.change()} onMouseEnter={() => this.hover(true)} onMouseLeave={() => this.hover(false)}><i className="jstree-icon jstree-themeicon" role="presentation"></i>{this.props.data.text}</a>
+                <i className="jstree-icon jstree-ocl" role="presentation" onClick={() => this.ontoggle()}></i><a className={this.anchorClassName} href="javascript:void(0)" onClick={() => this.onchange()} onMouseEnter={() => this.hover(true)} onMouseLeave={() => this.hover(false)}><i className="jstree-icon jstree-themeicon" role="presentation"></i>{this.props.data.text}</a>
                 {childrenElement}
             </li>
         );
@@ -72,7 +72,7 @@ class Node extends React.Component<{
         this.hovered = hovered;
         this.setState({ hovered: this.hovered });
     }
-    toggle(eventData?: common.EventData) {
+    ontoggle(eventData?: common.EventData) {
         if (eventData) {
             this.props.toggle(eventData);
         } else {
@@ -81,7 +81,7 @@ class Node extends React.Component<{
             }
         }
     }
-    change(eventData?: common.EventData) {
+    onchange(eventData?: common.EventData) {
         if (eventData) {
             this.props.change(eventData);
         } else {
@@ -95,7 +95,7 @@ class Node extends React.Component<{
                     clearTimeout(this.timer);
                     this.timer = null;
                 }
-                this.toggle(eventData);
+                this.ontoggle(eventData);
             } else { // first click
                 this.clicked = true;
                 this.timer = setTimeout(() => {
@@ -116,8 +116,8 @@ export class Tree extends React.Component<{
         const childrenElement = this.props.data.map((child, i) => (
             <Node data={child}
                 last={i === this.props.data.length - 1}
-                toggle={(data: common.EventData) => this.toggle(data)}
-                change={(data: common.EventData) => this.change(data)}></Node>
+                toggle={(data: common.EventData) => this.ontoggle(data)}
+                change={(data: common.EventData) => this.onchange(data)}></Node>
         ));
         return (
             <div className="jstree jstree-default jstree-default-dark" role="tree">
@@ -128,12 +128,12 @@ export class Tree extends React.Component<{
         );
     }
 
-    toggle(eventData: common.EventData) {
+    ontoggle(eventData: common.EventData) {
         if (this.props.toggle) {
             this.props.toggle(eventData);
         }
     }
-    change(eventData: common.EventData) {
+    onchange(eventData: common.EventData) {
         if (this.props.change) {
             this.props.change(eventData);
         }
