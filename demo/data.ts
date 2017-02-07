@@ -25,7 +25,7 @@ export const data: TreeData[] = [
                 state: {
                     opened: true,
                     selected: false,
-                    disabled: false,
+                    disabled: true,
                 },
                 children: [
                     {

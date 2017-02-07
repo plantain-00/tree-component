@@ -30,7 +30,7 @@ class Node extends React.Component<{
         }
         return (
             <li role="treeitem" className={this.nodeClassName}>
-                <i className="jstree-icon jstree-ocl" role="presentation" onClick={() => this.ontoggle()}></i><a className={this.anchorClassName} href="javascript:void(0)" onClick={() => this.onchange()} onMouseEnter={() => this.hover(true)} onMouseLeave={() => this.hover(false)}><i className="jstree-icon jstree-themeicon" role="presentation"></i>{this.props.data.text}</a>
+                <i className="jstree-icon jstree-ocl" role="presentation" onClick={() => this.ontoggle()}></i><a className={this.anchorClassName} href="javascript:void(0)" onClick={() => this.onchange()} onDoubleClick={() => this.ontoggle()} onMouseEnter={() => this.hover(true)} onMouseLeave={() => this.hover(false)}><i className="jstree-icon jstree-themeicon" role="presentation"></i>{this.props.data.text}</a>
                 {childrenElement}
             </li>
         );
@@ -66,8 +66,6 @@ class Node extends React.Component<{
             }
 
             this.doubleClick.onclick(() => {
-                this.ontoggle(eventData);
-            }, () => {
                 this.props.change({ data: this.props.data });
             });
         }

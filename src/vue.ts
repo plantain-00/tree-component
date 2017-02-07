@@ -5,7 +5,7 @@ import * as common from "./common";
 @Component({
     template: `
     <li role="treeitem" :class="nodeClassName">
-        <i class="jstree-icon jstree-ocl" role="presentation" @click="ontoggle()"></i><a :class="anchorClassName" href="javascript:void(0)" @click="onchange()" @mouseenter="hover(true)" @mouseleave="hover(false)"><i class="jstree-icon jstree-themeicon" role="presentation"></i>{{data.text}}</a>
+        <i class="jstree-icon jstree-ocl" role="presentation" @click="ontoggle()"></i><a :class="anchorClassName" href="javascript:void(0)" @click="onchange()" @dblclick="ontoggle()" @mouseenter="hover(true)" @mouseleave="hover(false)"><i class="jstree-icon jstree-themeicon" role="presentation"></i>{{data.text}}</a>
         <ul v-if="data.children" role="group" class="jstree-children">
             <node v-for="(child, i) in data.children"
                 :data="child"
@@ -54,8 +54,6 @@ class Node extends Vue {
             }
 
             this.doubleClick.onclick(() => {
-                this.ontoggle(eventData);
-            }, () => {
                 this.$emit("change", { data: this.data });
             });
         }

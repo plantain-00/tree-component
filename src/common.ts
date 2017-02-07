@@ -17,22 +17,14 @@ import "tslib";
 
 export class DoubleClick {
     clicked = false;
-    timer: number | null = null;
 
     constructor(private timeout = 300) { }
 
-    onclick(doubleClick: () => void, singleClick: () => void) {
-        if (this.clicked) { // is a double click
-            this.clicked = false;
-            if (this.timer) {
-                clearTimeout(this.timer);
-                this.timer = null;
-            }
-            doubleClick();
-        } else { // first click
+    onclick(singleClick: () => void) {
+        if (!this.clicked) {
             this.clicked = true;
             singleClick();
-            this.timer = setTimeout(() => {
+            setTimeout(() => {
                 this.clicked = false;
             }, this.timeout);
         }
