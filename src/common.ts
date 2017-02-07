@@ -1,13 +1,16 @@
 export type TreeData = {
     text: string;
     value?: any;
-    state: {
-        opened: boolean;
-        selected: boolean;
-        disabled: boolean;
-        loading: boolean;
-    };
+    state: TreeNodeState;
     children?: TreeData[];
+};
+
+export type TreeNodeState = {
+    opened: boolean;
+    selected: boolean;
+    disabled: boolean;
+    loading: boolean;
+    highlighted: boolean;
 };
 
 export type EventData = {
@@ -66,6 +69,9 @@ export function getAnchorClassName(data: TreeData, hovered: boolean) {
     }
     if (data.state.disabled) {
         values.push("jstree-disabled");
+    }
+    if (data.state.highlighted) {
+        values.push("jstree-search");
     }
     if (hovered) {
         values.push("jstree-hovered");

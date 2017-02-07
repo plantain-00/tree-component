@@ -89,13 +89,16 @@ change | (eventData: [EventData](#event-data-structure)) => void | triggered whe
 type TreeData = {
     text: string;
     value?: any;
-    state: {
-        opened: boolean;
-        selected: boolean;
-        disabled: boolean;
-        loading: boolean;
-    };
+    state: TreeNodeState;
     children?: TreeData[];
+};
+
+type TreeNodeState = {
+    opened: boolean;
+    selected: boolean;
+    disabled: boolean;
+    loading: boolean;
+    highlighted: boolean;
 };
 ```
 
@@ -116,3 +119,4 @@ type EventData = {
 + select and deselect
 + disabled
 + loading
++ highlighted

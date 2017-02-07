@@ -21,8 +21,9 @@ class Main extends React.Component<{}, {}> {
     }
 
     toggle(eventData: common.EventData) {
-        toggle(eventData);
-        this.setState({ data: this.data });
+        toggle(eventData, () => {
+            this.setState({ data: this.data });
+        });
     }
     change(eventData: common.EventData) {
         this.selectedId = eventData.data.state!.selected ? null : eventData.data.value.id;

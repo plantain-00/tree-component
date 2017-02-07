@@ -1,4 +1,4 @@
-import { TreeData, EventData } from "../dist/common";
+import { TreeData, TreeNodeState, EventData } from "../dist/common";
 
 const rawData: Data[] = [
     {
@@ -29,6 +29,13 @@ const rawData: Data[] = [
                         value: { id: 122 },
                         state: {
                             disabled: true,
+                        },
+                    },
+                    {
+                        text: "Highlighted Child node 123",
+                        value: { id: 123 },
+                        state: {
+                            highlighted: true,
                         },
                     },
                 ],
@@ -63,6 +70,9 @@ function standardize(treeData: Data) {
     if (treeData.state.loading === undefined) {
         treeData.state.loading = false;
     }
+    if (treeData.state.highlighted === undefined) {
+        treeData.state.highlighted = false;
+    }
     if (treeData.children) {
         for (const child of treeData.children) {
             standardize(child);
@@ -89,26 +99,27 @@ export function clearSelectionOfTree(tree: TreeData) {
     }
 }
 
-export function toggle(eventData: EventData) {
+export function toggle(eventData: EventData, next?: () => void) {
     if (eventData.data.value.id === 2 && !eventData.data.state.opened) {
         eventData.data.state.loading = true;
         setTimeout(() => {
             eventData.data.state.loading = false;
             eventData.data.state.opened = !eventData.data.state.opened;
+            if (next) {
+                next();
+            }
         }, 2000);
     } else {
         eventData.data.state.opened = !eventData.data.state.opened;
+    }
+    if (next) {
+        next();
     }
 }
 
 type Data = {
     text: string;
     value?: any;
-    state?: {
-        opened?: boolean;
-        selected?: boolean;
-        disabled?: boolean;
-        loading?: boolean;
-    };
+    state?: Partial<TreeNodeState>;
     children?: Data[];
 };
