@@ -19,7 +19,7 @@ export class DoubleClick {
     clicked = false;
     timer: number | null = null;
 
-    constructor(private timeout = 333) { }
+    constructor(private timeout = 300) { }
 
     onclick(doubleClick: () => void, singleClick: () => void) {
         if (this.clicked) { // is a double click
@@ -31,9 +31,9 @@ export class DoubleClick {
             doubleClick();
         } else { // first click
             this.clicked = true;
+            singleClick();
             this.timer = setTimeout(() => {
                 this.clicked = false;
-                singleClick();
             }, this.timeout);
         }
     }
