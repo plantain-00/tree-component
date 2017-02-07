@@ -17,6 +17,7 @@ import "tslib";
 
 export class DoubleClick {
     clicked = false;
+    timer: null | number = null;
 
     constructor(private timeout = 300) { }
 
@@ -24,9 +25,15 @@ export class DoubleClick {
         if (!this.clicked) {
             this.clicked = true;
             singleClick();
-            setTimeout(() => {
+            this.timer = setTimeout(() => {
                 this.clicked = false;
             }, this.timeout);
+        } else {
+            this.clicked = false;
+            if (this.timer) {
+                clearTimeout(this.timer);
+                this.timer = null;
+            }
         }
     }
 }
