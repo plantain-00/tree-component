@@ -93,6 +93,7 @@ type TreeData = {
         opened: boolean;
         selected: boolean;
         disabled: boolean;
+        loading: boolean;
     };
     children?: TreeData[];
 };
@@ -111,3 +112,7 @@ type EventData = {
 + vuejs component
 + reactjs component
 + angular2 component
++ open and close
++ select and deselect
++ disabled
++ loading

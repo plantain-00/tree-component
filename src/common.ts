@@ -5,6 +5,7 @@ export type TreeData = {
         opened: boolean;
         selected: boolean;
         disabled: boolean;
+        loading: boolean;
     };
     children?: TreeData[];
 };
@@ -45,6 +46,9 @@ export function getNodeClassName(data: TreeData, last: boolean) {
             values.push("jstree-open");
         } else {
             values.push("jstree-closed");
+        }
+        if (data.state.loading) {
+            values.push("jstree-loading");
         }
     } else {
         values.push("jstree-leaf");
