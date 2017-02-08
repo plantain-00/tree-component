@@ -1,6 +1,6 @@
 import * as Vue from "vue";
 import "../../dist/vue";
-import { data, clearSelectionOfTree, toggle } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection } from "../common";
 import * as common from "../../dist/common";
 
 /* tslint:disable:no-unused-new */
@@ -11,6 +11,8 @@ new Vue({
         return {
             data,
             selectedId: null,
+            data2: JSON.parse(JSON.stringify(data)),
+            selectedId2: null,
         };
     },
     methods: {
@@ -26,11 +28,20 @@ new Vue({
             }
             eventData.data.state.selected = !eventData.data.state.selected;
         },
-
+        toggle2(eventData: common.EventData) {
+            toggle(eventData);
+        },
+        change2(this: This, eventData: common.EventData) {
+            this.selectedId2 = eventData.data.state.selected ? null : eventData.data.value.id;
+            setSelectionOfTree(eventData.data, !eventData.data.state.selected);
+            setParentsSelection(this.data2, eventData.path);
+        },
     },
 });
 
 type This = {
     data: common.TreeData[];
     selectedId: null | number;
+    data2: common.TreeData[];
+    selectedId2: null | number;
 } & Vue;

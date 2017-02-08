@@ -1,21 +1,30 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Tree } from "../../dist/react";
-import { data, clearSelectionOfTree, toggle } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection } from "../common";
 import * as common from "../../dist/common";
 
 class Main extends React.Component<{}, {}> {
     data = data;
     selectedId: number | null = null;
+    data2 = JSON.parse(JSON.stringify(data));
+    selectedId2: number | null = null;
 
     render() {
         return (
             <div>
-                <Tree data={data}
+                <Tree data={this.data}
                     toggle={(eventData: common.EventData) => this.toggle(eventData)}
                     change={(eventData: common.EventData) => this.change(eventData)}>
                 </Tree>
                 selected id: {this.selectedId}
+                <hr />
+                <Tree data={this.data2}
+                    checkbox={true}
+                    toggle={(eventData: common.EventData) => this.toggle2(eventData)}
+                    change={(eventData: common.EventData) => this.change2(eventData)}>
+                </Tree>
+                selected id: {this.selectedId2}
             </div>
         );
     }
@@ -34,6 +43,17 @@ class Main extends React.Component<{}, {}> {
             }
         }
         eventData.data.state.selected = !eventData.data.state.selected;
+        this.setState({ data: this.data });
+    }
+    toggle2(eventData: common.EventData) {
+        toggle(eventData, () => {
+            this.setState({ data: this.data });
+        });
+    }
+    change2(eventData: common.EventData) {
+        this.selectedId2 = eventData.data.state.selected ? null : eventData.data.value.id;
+        setSelectionOfTree(eventData.data, !eventData.data.state.selected);
+        setParentsSelection(this.data2, eventData.path);
         this.setState({ data: this.data });
     }
 }

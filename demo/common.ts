@@ -50,6 +50,10 @@ const rawData: Data[] = [
                 text: "Child node 21",
                 value: { id: 21 },
             },
+            {
+                text: "Child node 22",
+                value: { id: 22 },
+            },
         ],
     },
 ];
@@ -84,8 +88,6 @@ for (const child of rawData) {
     standardize(child);
 }
 
-console.log(rawData);
-
 export const data: TreeData[] = rawData as any;
 
 export function clearSelectionOfTree(tree: TreeData) {
@@ -108,12 +110,38 @@ export function toggle(eventData: EventData, next?: () => void) {
             if (next) {
                 next();
             }
-        }, 2000);
+        }, 1000);
     } else {
         eventData.data.state.opened = !eventData.data.state.opened;
     }
     if (next) {
         next();
+    }
+}
+
+export function setSelectionOfTree(tree: TreeData, selected: boolean) {
+    if (tree.state.selected !== selected) {
+        tree.state.selected = selected;
+    }
+    if (tree.children) {
+        for (const child of tree.children) {
+            setSelectionOfTree(child, selected);
+        }
+    }
+}
+
+export function setParentsSelection(tree: TreeData[], path: number[]) {
+    const parents: TreeData[] = [];
+    const parentPath = path.slice(0, path.length - 1);
+    for (const index of parentPath) {
+        if (parents.length === 0) {
+            parents.unshift(tree[index]);
+        } else {
+            parents.unshift(parents[0].children![index]);
+        }
+    }
+    for (const parent of parents) {
+        parent.state.selected = parent.children!.every(child => child.state.selected);
     }
 }
 

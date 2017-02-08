@@ -80,6 +80,7 @@ the source code of the demo: https://github.com/plantain-00/tree-component/tree/
 name | type | description
 --- | --- | ---
 data | [TreeData](#tree-data-structure)[] | the data of the tree
+checkbox | boolean? | show checkbox for node
 toggle | (eventData: [EventData](#event-data-structure)) => void | triggered when opening or closing a node
 change | (eventData: [EventData](#event-data-structure)) => void | triggered when selecting or deselecting a node
 
@@ -107,6 +108,7 @@ type TreeNodeState = {
 ```ts
 type EventData = {
     data: TreeData;
+    path: number[];
 };
 ```
 
@@ -120,3 +122,4 @@ type EventData = {
 + disabled
 + loading
 + highlighted
++ checkbox

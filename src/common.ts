@@ -15,6 +15,7 @@ export type TreeNodeState = {
 
 export type EventData = {
     data: TreeData;
+    path: number[];
 };
 
 import "tslib";
@@ -77,4 +78,18 @@ export function getAnchorClassName(data: TreeData, hovered: boolean) {
         values.push("jstree-hovered");
     }
     return values.join(" ");
+}
+
+export function getCheckboxClassName(data: TreeData) {
+    const values = ["jstree-icon", "jstree-checkbox"];
+    if (data.children
+        && data.children.some(child => child.state.selected)
+        && data.children.some(child => !child.state.selected)) {
+        values.push("jstree-undetermined");
+    }
+    return values.join(" ");
+}
+
+export function getRootClassName(checkbox: boolean | undefined) {
+    return `jstree jstree-default jstree-default-dark ${checkbox ? "jstree-checkbox-selection jstree-checkbox-no-clicked" : ""}`;
 }

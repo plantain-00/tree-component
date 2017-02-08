@@ -17,6 +17,12 @@
             @toggle="toggle(arguments[0])"
             @change="change(arguments[0])"></tree>
         selected id: {{selectedId}}
+        <hr/>
+        <tree :data="data2"
+            :checkbox="true"
+            @toggle="toggle2(arguments[0])"
+            @change="change2(arguments[0])"></tree>
+        selected id: {{selectedId2}}
     </div>
     <script src="../<%=demoVueBundleJs %>" crossOrigin="anonymous" integrity="<%=sri.demoVueBundleJs %>"></script>
 </body>
