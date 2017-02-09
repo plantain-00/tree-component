@@ -5,7 +5,7 @@ import * as common from "./common";
     selector: "node",
     template: `
     <li role="treeitem" [class]="nodeClassName">
-        <i class="jstree-icon jstree-ocl" role="presentation" (click)="ontoggle()"></i><a [class]="anchorClassName" href="javascript:void(0)" (click)="onchange()" (dblclick)="ontoggle()" (mouseenter)="hover(true)" (mouseleave)="hover(false)"><i *ngIf="checkbox" [class]="checkboxClassName" role="presentation"></i><i class="jstree-icon jstree-themeicon" role="presentation"></i>{{data.text}}</a>
+        <i class="jstree-icon jstree-ocl" role="presentation" (click)="ontoggle()"></i><a [class]="anchorClassName" href="javascript:void(0)" (click)="onchange()" (dblclick)="ontoggle()" (mouseenter)="hover(true)" (mouseleave)="hover(false)"><i *ngIf="checkbox" [class]="checkboxClassName" role="presentation"></i><i *ngIf="data.icon !== false" [class]="iconClassName" role="presentation"></i>{{data.text}}</a>
         <ul *ngIf="data.children" role="group" class="jstree-children">
             <node *ngFor="let child of data.children; let i = index"
                 [data]="child"
@@ -47,6 +47,10 @@ export class NodeComponent {
 
     get checkboxClassName() {
         return common.getCheckboxClassName(this.data);
+    }
+
+    get iconClassName() {
+        return common.getIconClassName(this.data.icon);
     }
 
     geChildPath(index: number) {

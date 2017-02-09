@@ -1,6 +1,7 @@
 export type TreeData = {
     text: string;
     value?: any;
+    icon?: string | false;
     state: TreeNodeState;
     children?: TreeData[];
 };
@@ -92,4 +93,8 @@ export function getCheckboxClassName(data: TreeData) {
 
 export function getRootClassName(checkbox: boolean | undefined) {
     return `jstree jstree-default jstree-default-dark ${checkbox ? "jstree-checkbox-selection jstree-checkbox-no-clicked" : ""}`;
+}
+
+export function getIconClassName(icon: string | false | undefined) {
+    return `jstree-icon jstree-themeicon ${icon ? `${icon} jstree-themeicon-custom` : ""}`;
 }

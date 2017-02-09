@@ -5,7 +5,7 @@ import * as common from "./common";
 @Component({
     template: `
     <li role="treeitem" :class="nodeClassName">
-        <i class="jstree-icon jstree-ocl" role="presentation" @click="ontoggle()"></i><a :class="anchorClassName" href="javascript:void(0)" @click="onchange()" @dblclick="ontoggle()" @mouseenter="hover(true)" @mouseleave="hover(false)"><i v-if="checkbox" :class="checkboxClassName" role="presentation"></i><i class="jstree-icon jstree-themeicon" role="presentation"></i>{{data.text}}</a>
+        <i class="jstree-icon jstree-ocl" role="presentation" @click="ontoggle()"></i><a :class="anchorClassName" href="javascript:void(0)" @click="onchange()" @dblclick="ontoggle()" @mouseenter="hover(true)" @mouseleave="hover(false)"><i v-if="checkbox" :class="checkboxClassName" role="presentation"></i><i v-if="data.icon !== false" :class="iconClassName" role="presentation"></i>{{data.text}}</a>
         <ul v-if="data.children" role="group" class="jstree-children">
             <node v-for="(child, i) in data.children"
                 :data="child"
@@ -39,6 +39,10 @@ class Node extends Vue {
 
     get checkboxClassName() {
         return common.getCheckboxClassName(this.data);
+    }
+
+    get iconClassName() {
+        return common.getIconClassName(this.data.icon);
     }
 
     geChildPath(index: number) {

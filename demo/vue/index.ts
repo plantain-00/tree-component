@@ -32,7 +32,6 @@ new Vue({
             toggle(eventData);
         },
         change2(this: This, eventData: common.EventData) {
-            this.selectedId2 = eventData.data.state.selected ? null : eventData.data.value.id;
             setSelectionOfTree(eventData.data, !eventData.data.state.selected);
             setParentsSelection(this.data2, eventData.path);
         },
@@ -43,5 +42,4 @@ type This = {
     data: common.TreeData[];
     selectedId: null | number;
     data2: common.TreeData[];
-    selectedId2: null | number;
 } & Vue;

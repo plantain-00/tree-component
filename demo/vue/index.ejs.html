@@ -8,6 +8,11 @@
         .jstree-anchor {
             user-select: none;
         }
+        .my-custom-icon {
+            background-image: url("../tree-icon.png") !important;
+            background-position: center center !important;
+            background-size: auto;
+        }
     </style>
 </head>
 
@@ -22,7 +27,6 @@
             :checkbox="true"
             @toggle="toggle2(arguments[0])"
             @change="change2(arguments[0])"></tree>
-        selected id: {{selectedId2}}
     </div>
     <script src="../<%=demoVueBundleJs %>" crossOrigin="anonymous" integrity="<%=sri.demoVueBundleJs %>"></script>
 </body>

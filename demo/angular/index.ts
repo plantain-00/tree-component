@@ -24,14 +24,12 @@ import * as common from "../../dist/common";
         [checkbox]="true"
         (toggle)="ontoggle2($event)"
         (change)="onchange2($event)"></tree>
-    selected id: {{selectedId2}}
     `,
 })
 export class MainComponent {
     data = data;
     selectedId: number | null = null;
     data2 = JSON.parse(JSON.stringify(data));
-    selectedId2: number | null = null;
     ontoggle(eventData: common.EventData) {
         toggle(eventData);
     }
@@ -48,7 +46,6 @@ export class MainComponent {
         toggle(eventData);
     }
     onchange2(eventData: common.EventData) {
-        this.selectedId2 = eventData.data.state.selected ? null : eventData.data.value.id;
         setSelectionOfTree(eventData.data, !eventData.data.state.selected);
         setParentsSelection(this.data2, eventData.path);
     }

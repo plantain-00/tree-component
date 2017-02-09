@@ -2,18 +2,18 @@ import { TreeData, TreeNodeState, EventData } from "../dist/common";
 
 const rawData: Data[] = [
     {
-        text: "Root node 1",
+        text: "node 1",
         value: { id: 1 },
         state: {
             opened: true,
         },
         children: [
             {
-                text: "Child node 11",
+                text: "node 11",
                 value: { id: 11 },
             },
             {
-                text: "Disabled Child node 12",
+                text: "disabled node 12",
                 value: { id: 12 },
                 state: {
                     opened: true,
@@ -21,18 +21,18 @@ const rawData: Data[] = [
                 },
                 children: [
                     {
-                        text: "Child node 121",
+                        text: "node 121",
                         value: { id: 121 },
                     },
                     {
-                        text: "Disabled Child node 122",
+                        text: "disabled node 122",
                         value: { id: 122 },
                         state: {
                             disabled: true,
                         },
                     },
                     {
-                        text: "Highlighted Child node 123",
+                        text: "highlighted node 123",
                         value: { id: 123 },
                         state: {
                             highlighted: true,
@@ -43,16 +43,26 @@ const rawData: Data[] = [
         ],
     },
     {
-        text: "Loading Root node 2",
+        text: "loading node 2",
         value: { id: 2 },
         children: [
             {
-                text: "Child node 21",
+                text: "node 21",
                 value: { id: 21 },
             },
             {
-                text: "Child node 22",
+                text: "node 22",
                 value: { id: 22 },
+            },
+            {
+                text: "no icon node 23",
+                value: { id: 23 },
+                icon: false,
+            },
+            {
+                text: "custom icon node 23",
+                value: { id: 24 },
+                icon: "my-custom-icon",
             },
         ],
     },
@@ -148,6 +158,7 @@ export function setParentsSelection(tree: TreeData[], path: number[]) {
 type Data = {
     text: string;
     value?: any;
+    icon?: string | false;
     state?: Partial<TreeNodeState>;
     children?: Data[];
 };

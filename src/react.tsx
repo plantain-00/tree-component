@@ -33,9 +33,10 @@ class Node extends React.Component<{
             childrenElement = null;
         }
         const checkboxElement = this.props.checkbox ? <i className={this.checkboxClassName} role="presentation"></i> : null;
+        const iconElement = this.props.data.icon !== false ? <i className={this.iconClassName} role="presentation"></i> : null;
         return (
             <li role="treeitem" className={this.nodeClassName}>
-                <i className="jstree-icon jstree-ocl" role="presentation" onClick={() => this.ontoggle()}></i><a className={this.anchorClassName} href="javascript:void(0)" onClick={() => this.onchange()} onDoubleClick={() => this.ontoggle()} onMouseEnter={() => this.hover(true)} onMouseLeave={() => this.hover(false)}>{checkboxElement}<i className="jstree-icon jstree-themeicon" role="presentation"></i>{this.props.data.text}</a>
+                <i className="jstree-icon jstree-ocl" role="presentation" onClick={() => this.ontoggle()}></i><a className={this.anchorClassName} href="javascript:void(0)" onClick={() => this.onchange()} onDoubleClick={() => this.ontoggle()} onMouseEnter={() => this.hover(true)} onMouseLeave={() => this.hover(false)}>{checkboxElement}{iconElement}{this.props.data.text}</a>
                 {childrenElement}
             </li>
         );
@@ -51,6 +52,10 @@ class Node extends React.Component<{
 
     get checkboxClassName() {
         return common.getCheckboxClassName(this.props.data);
+    }
+
+    get iconClassName() {
+        return common.getIconClassName(this.props.data.icon);
     }
 
     geChildPath(index: number) {

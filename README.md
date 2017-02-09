@@ -89,16 +89,17 @@ change | (eventData: [EventData](#event-data-structure)) => void | triggered whe
 ```ts
 type TreeData = {
     text: string;
-    value?: any;
+    value?: any; // anything attached to the node
+    icon?: string | false; // the icon class string, or no icon if is false
     state: TreeNodeState;
     children?: TreeData[];
 };
 
 type TreeNodeState = {
-    opened: boolean;
+    opened: boolean; // whether the node show its children
     selected: boolean;
-    disabled: boolean;
-    loading: boolean;
+    disabled: boolean; // disabled node can not be selected and deselected
+    loading: boolean; // show the loading icon, usually used when loading child nodes
     highlighted: boolean;
 };
 ```
@@ -107,8 +108,8 @@ type TreeNodeState = {
 
 ```ts
 type EventData = {
-    data: TreeData;
-    path: number[];
+    data: TreeData; // the data of the node that triggered the event
+    path: number[]; // the index array of path from root to the node that triggered the event
 };
 ```
 
@@ -123,3 +124,4 @@ type EventData = {
 + loading
 + highlighted
 + checkbox
++ custom icon or no icon
