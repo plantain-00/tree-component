@@ -1,4 +1,4 @@
-import { TreeData, TreeNodeState, EventData, DropPosition } from "../dist/common";
+import { TreeData, TreeNodeState, EventData, DropPosition, DropData, getNodeFromPath } from "../dist/common";
 
 const rawData: Data[] = [
     {
@@ -156,6 +156,24 @@ export function setParentsSelection(tree: TreeData[], path: number[]) {
     }
     for (const parent of parents) {
         parent.state.selected = parent.children!.every(child => child.state.selected);
+    }
+}
+
+export function copy(dropData: DropData, treeData: TreeData[]) {
+    if (dropData.targetData.state.dropPosition === DropPosition.inside) {
+        if (dropData.targetData.children) {
+            dropData.targetData.children.push(JSON.parse(JSON.stringify(dropData.sourceData)));
+        } else {
+            dropData.targetData.children = [JSON.parse(JSON.stringify(dropData.sourceData))];
+        }
+    } else {
+        const startIndex = dropData.targetPath[dropData.targetPath.length - 1] + (dropData.targetData.state.dropPosition === DropPosition.up ? 0 : 1);
+        const parent = getNodeFromPath(treeData, dropData.targetPath.slice(0, dropData.targetPath.length - 1));
+        if (parent && parent.children) {
+            parent.children!.splice(startIndex, 0, JSON.parse(JSON.stringify(dropData.sourceData)));
+        } else {
+            treeData.splice(startIndex, 0, JSON.parse(JSON.stringify(dropData.sourceData)));
+        }
     }
 }
 

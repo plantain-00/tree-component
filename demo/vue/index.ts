@@ -1,6 +1,6 @@
 import * as Vue from "vue";
 import "../../dist/vue";
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, copy } from "../common";
 import * as common from "../../dist/common";
 
 /* tslint:disable:no-unused-new */
@@ -47,21 +47,7 @@ new Vue({
             eventData.data.state.selected = !eventData.data.state.selected;
         },
         drop3(this: This, dropData: common.DropData) {
-            if (dropData.targetData.state.dropPosition === common.DropPosition.inside) {
-                if (dropData.targetData.children) {
-                    dropData.targetData.children.push(JSON.parse(JSON.stringify(dropData.sourceData)));
-                } else {
-                    dropData.targetData.children = [JSON.parse(JSON.stringify(dropData.sourceData))];
-                }
-            } else {
-                const startIndex = dropData.targetPath[dropData.targetPath.length - 1] + (dropData.targetData.state.dropPosition === common.DropPosition.up ? 0 : 1);
-                const parent = common.getNodeFromPath(this.data3, dropData.targetPath.slice(0, dropData.targetPath.length - 1));
-                if (parent && parent.children) {
-                    parent.children!.splice(startIndex, 0, JSON.parse(JSON.stringify(dropData.sourceData)));
-                } else {
-                    this.data3.splice(startIndex, 0, JSON.parse(JSON.stringify(dropData.sourceData)));
-                }
-            }
+            copy(dropData, this.data3);
         },
     },
 });

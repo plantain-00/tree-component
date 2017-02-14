@@ -133,7 +133,7 @@ export class Tree extends Vue {
             if (pathString) {
                 const path = pathString.split(",").map(s => +s);
                 const node = common.getNodeFromPath(this.data, path);
-                node.state.dropPosition = common.getDropPosition(event.pageY, this.dropTarget.offsetTop);
+                node!.state.dropPosition = common.getDropPosition(event.pageY, this.dropTarget.offsetTop);
             }
         }
     }
@@ -156,7 +156,7 @@ export class Tree extends Vue {
         if (pathString) {
             const path = pathString.split(",").map(s => +s);
             const node = common.getNodeFromPath(this.data, path);
-            node.state.dropPosition = common.DropPosition.empty;
+            node!.state.dropPosition = common.DropPosition.empty;
         }
     }
     ondrop(event: DragEvent) {
@@ -167,8 +167,8 @@ export class Tree extends Vue {
             const dropData: common.DropData = {
                 sourcePath,
                 targetPath,
-                sourceData: common.getNodeFromPath(this.data, sourcePath),
-                targetData: common.getNodeFromPath(this.data, targetPath),
+                sourceData: common.getNodeFromPath(this.data, sourcePath)!,
+                targetData: common.getNodeFromPath(this.data, targetPath)!,
             };
             if (dropData.targetData.state.dropPosition !== common.DropPosition.empty) {
                 this.$emit("drop", dropData);

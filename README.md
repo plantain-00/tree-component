@@ -115,7 +115,7 @@ type EventData = {
 };
 ```
 
-#### drop structure
+#### drop data structure
 
 ```ts
 type DropData = {

@@ -127,7 +127,7 @@ export function getNodeFromPath(rootData: TreeData[], path: number[]) {
             node = rootData[index];
         }
     }
-    return node!;
+    return node;
 }
 
 export function getDropPosition(pageY: number, offsetTop: number) {
