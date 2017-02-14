@@ -4,16 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.min.css" />
-    <style>
-        .jstree-anchor {
-            user-select: none;
-        }
-        .my-custom-icon {
-            background-image: url("../tree-icon.png") !important;
-            background-position: center center !important;
-            background-size: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="../index.css" />
 </head>
 
 <body>
@@ -27,6 +18,12 @@
             :checkbox="true"
             @toggle="toggle2(arguments[0])"
             @change="change2(arguments[0])"></tree>
+        <hr/>
+        <tree :data="data3"
+            :draggable="true"
+            @toggle="toggle3(arguments[0])"
+            @change="change3(arguments[0])"
+            @drop="drop3(arguments[0])"></tree>
     </div>
     <script src="../<%=demoVueBundleJs %>" crossOrigin="anonymous" integrity="<%=sri.demoVueBundleJs %>"></script>
 </body>

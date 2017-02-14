@@ -1,4 +1,4 @@
-import { TreeData, TreeNodeState, EventData } from "../dist/common";
+import { TreeData, TreeNodeState, EventData, DropPosition } from "../dist/common";
 
 const rawData: Data[] = [
     {
@@ -87,10 +87,14 @@ function standardize(treeData: Data) {
     if (treeData.state.highlighted === undefined) {
         treeData.state.highlighted = false;
     }
-    if (treeData.children) {
-        for (const child of treeData.children) {
-            standardize(child);
-        }
+    if (treeData.state.dropPosition === undefined) {
+        treeData.state.dropPosition = DropPosition.empty;
+    }
+    if (treeData.children === undefined) {
+        treeData.children = [];
+    }
+    for (const child of treeData.children) {
+        standardize(child);
     }
 }
 

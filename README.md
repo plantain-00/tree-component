@@ -81,8 +81,10 @@ name | type | description
 --- | --- | ---
 data | [TreeData](#tree-data-structure)[] | the data of the tree
 checkbox | boolean? | show checkbox for node
+draggable | boolean? | whether the node is draggable
 toggle | (eventData: [EventData](#event-data-structure)) => void | triggered when opening or closing a node
 change | (eventData: [EventData](#event-data-structure)) => void | triggered when selecting or deselecting a node
+drop | (dropData: [DropData](#drop-data-structure)) => void | triggered when drag a node, then drop it
 
 #### tree data structure
 
@@ -113,6 +115,17 @@ type EventData = {
 };
 ```
 
+#### drop structure
+
+```ts
+type DropData = {
+    sourceData: TreeData;
+    sourcePath: number[];
+    targetData: TreeData;
+    targetPath: number[];
+};
+```
+
 #### features
 
 + vuejs component
@@ -125,3 +138,4 @@ type EventData = {
 + highlighted
 + checkbox
 + custom icon or no icon
++ drag and drop

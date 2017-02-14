@@ -1,0 +1,61 @@
+.jstree-anchor {
+    user-select: none;
+}
+
+.my-custom-icon {
+    background-image: url("../tree-icon.png") !important;
+    background-position: center center !important;
+    background-size: auto;
+}
+
+.tree-relative {
+    position: relative;
+}
+
+.tree-marker-1 {
+    top: 0;
+    left: 0;
+    position: absolute;
+    margin: -5px 0 0 0;
+    padding: 0;
+    border-right: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+.tree-marker-2 {
+    top: 12px;
+    left: 0;
+    position: absolute;
+    margin: -5px 0 0 0;
+    padding: 0;
+    border-right: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+.tree-marker-3 {
+    top: 24px;
+    left: 0;
+    position: absolute;
+    margin: -5px 0 0 0;
+    padding: 0;
+    border-right: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+}
