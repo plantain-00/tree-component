@@ -9,15 +9,17 @@ enableProdMode();
 
 import { Component } from "@angular/core";
 
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, copy } from "../common";
 import * as common from "../../dist/common";
 
 @Component({
     selector: "app",
     template: `
     <tree [data]="data"
+        [draggable]="true"
         (toggle)="ontoggle($event)"
-        (change)="onchange($event)"></tree>
+        (change)="onchange($event)"
+        (drop)="drop($event)"></tree>
     selected id: {{selectedId}}
     <hr/>
     <tree [data]="data2"
@@ -41,6 +43,9 @@ export class MainComponent {
             }
         }
         eventData.data.state.selected = !eventData.data.state.selected;
+    }
+    drop(dropData: common.DropData) {
+        copy(dropData, this.data);
     }
     ontoggle2(eventData: common.EventData) {
         toggle(eventData);

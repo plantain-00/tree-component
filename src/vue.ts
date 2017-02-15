@@ -121,6 +121,9 @@ export class Tree extends Vue {
         return common.getRootClassName(this.checkbox);
     }
 
+    canDrop(event: DragEvent) {
+        return this.draggable && (event.target as HTMLElement).dataset["path"];
+    }
     ontoggle(eventData: common.EventData) {
         this.$emit("toggle", eventData);
     }
@@ -128,55 +131,55 @@ export class Tree extends Vue {
         this.$emit("change", eventData);
     }
     ondrag(event: DragEvent) {
-        if (this.dropTarget) {
-            const pathString = this.dropTarget.dataset["path"];
-            if (pathString) {
-                const path = pathString.split(",").map(s => +s);
-                const node = common.getNodeFromPath(this.data, path);
-                node!.state.dropPosition = common.getDropPosition(event.pageY, this.dropTarget.offsetTop);
-            }
+        if (!this.draggable) {
+            return;
         }
+        common.ondrag(event.pageY, this.dropTarget, this.data);
     }
     ondragstart(event: DragEvent) {
+        if (!this.draggable) {
+            return;
+        }
         this.dragTarget = event.target as HTMLElement;
+        this.dropTarget = event.target as HTMLElement;
     }
     ondragend(event: DragEvent) {
+        if (!this.draggable) {
+            return;
+        }
         this.dragTarget = null;
-    }
-    ondragover(event: DragEvent) {
-        if (this.draggable) {
-            event.preventDefault();
+        for (const tree of this.data) {
+            common.clearMarkerOfTree(tree);
         }
     }
+    ondragover(event: DragEvent) {
+        if (!this.canDrop(event)) {
+            return;
+        }
+        event.preventDefault();
+    }
     ondragenter(event: DragEvent) {
+        if (!this.canDrop(event)) {
+            return;
+        }
         this.dropTarget = event.target as HTMLElement;
     }
     ondragleave(event: DragEvent) {
-        const pathString = (event.target as HTMLElement).dataset["path"];
-        if (pathString) {
-            const path = pathString.split(",").map(s => +s);
-            const node = common.getNodeFromPath(this.data, path);
-            node!.state.dropPosition = common.DropPosition.empty;
+        if (!this.canDrop(event)) {
+            return;
         }
+        if (event.target === this.dropTarget) {
+            this.dropTarget = null;
+        }
+        common.ondragleave(event.target as HTMLElement, this.data);
     }
     ondrop(event: DragEvent) {
-        const sourcePath = this.dragTarget!.dataset["path"].split(",").map(s => +s);
-        const targetPathString = (event.target as HTMLElement).dataset["path"];
-        if (targetPathString) {
-            const targetPath = targetPathString.split(",").map(s => +s);
-            const dropData: common.DropData = {
-                sourcePath,
-                targetPath,
-                sourceData: common.getNodeFromPath(this.data, sourcePath)!,
-                targetData: common.getNodeFromPath(this.data, targetPath)!,
-            };
-            if (dropData.targetData.state.dropPosition !== common.DropPosition.empty) {
-                this.$emit("drop", dropData);
-            }
+        if (!this.canDrop(event)) {
+            return;
         }
-        for (const node of this.data) {
-            common.clearDropPositionOfTree(node);
-        }
+        common.ondrop(event.target as HTMLElement, this.dragTarget, this.data, dropData => {
+            this.$emit("drop", dropData);
+        });
     }
 }
 

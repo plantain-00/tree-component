@@ -1,10 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Tree } from "../../dist/react";
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, copy } from "../common";
 import * as common from "../../dist/common";
 
-class Main extends React.Component<{}, {}> {
+class Main extends React.Component<{}, { data: common.TreeData[], selectedId: number | null, data2: common.TreeData[] }> {
     data = data;
     selectedId: number | null = null;
     data2 = JSON.parse(JSON.stringify(data));
@@ -13,8 +13,10 @@ class Main extends React.Component<{}, {}> {
         return (
             <div>
                 <Tree data={this.data}
+                    draggable={true}
                     toggle={(eventData: common.EventData) => this.toggle(eventData)}
-                    change={(eventData: common.EventData) => this.change(eventData)}>
+                    change={(eventData: common.EventData) => this.change(eventData)}
+                    drop={(dropData: common.DropData) => this.drop(dropData)}>
                 </Tree>
                 selected id: {this.selectedId}
                 <hr />
@@ -42,6 +44,9 @@ class Main extends React.Component<{}, {}> {
         }
         eventData.data.state.selected = !eventData.data.state.selected;
         this.setState({ data: this.data });
+    }
+    drop(dropData: common.DropData) {
+        copy(dropData, this.data);
     }
     toggle2(eventData: common.EventData) {
         toggle(eventData, () => {

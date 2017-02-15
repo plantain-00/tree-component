@@ -3,7 +3,7 @@
 }
 
 .my-custom-icon {
-    background-image: url("../tree-icon.png") !important;
+    background-image: url("./tree-icon.png") !important;
     background-position: center center !important;
     background-size: auto;
 }

@@ -166,6 +166,7 @@ export function copy(dropData: DropData, treeData: TreeData[]) {
         } else {
             dropData.targetData.children = [JSON.parse(JSON.stringify(dropData.sourceData))];
         }
+        dropData.targetData.state.opened = true;
     } else {
         const startIndex = dropData.targetPath[dropData.targetPath.length - 1] + (dropData.targetData.state.dropPosition === DropPosition.up ? 0 : 1);
         const parent = getNodeFromPath(treeData, dropData.targetPath.slice(0, dropData.targetPath.length - 1));
