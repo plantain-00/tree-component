@@ -130,11 +130,11 @@ export function getNodeFromPath(rootData: TreeData[], path: number[]) {
     return node;
 }
 
-export function getDropPosition(pageY: number, offsetTop: number) {
+export function getDropPosition(pageY: number, offsetTop: number, offsetHeight: number) {
     const top = pageY - offsetTop;
-    if (top < 8) {
+    if (top < offsetHeight / 3) {
         return DropPosition.up;
-    } else if (top > 16) {
+    } else if (top > offsetHeight * 2 / 3) {
         return DropPosition.down;
     } else {
         return DropPosition.inside;
@@ -158,7 +158,7 @@ export function ondrag(pageY: number, dropTarget: HTMLElement | null, data: Tree
         if (pathString) {
             const path = pathString.split(",").map(s => +s);
             const node = getNodeFromPath(data, path);
-            const position = getDropPosition(pageY, dropTarget.offsetTop);
+            const position = getDropPosition(pageY, dropTarget.offsetTop, dropTarget.offsetHeight);
             if (node!.state.dropPosition !== position) {
                 node!.state.dropPosition = position;
                 if (next) {
