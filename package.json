@@ -4,11 +4,10 @@
   "description": "A reactjs, angular2 and vuejs tree component.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p src && tsc -p demo && webpack && npm run rev",
-    "lint": "tslint \"src/*.ts\"",
+    "build": "tsc -p src && tsc -p demo && sass src/common.scss > dist/common.css && webpack && npm run rev",
+    "lint": "tslint \"src/*.ts\" && stylelint \"src/*.scss\" --syntax scss",
     "rev": "npm run clean-rev && rev-static",
-    "clean-rev": "rm -f demo/react.bundle-*.js demo/vue.bundle-*.js demo/angular.bundle-*.js",
-    "static": "mkdir ./demo/css && cp -r ./node_modules/jstree/dist/themes/default/ ./demo/css"
+    "clean-rev": "rm -f demo/react.bundle-*.js demo/vue.bundle-*.js demo/angular.bundle-*.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +33,8 @@
     "react-dom": "15.4.2",
     "rev-static": "1.3.1",
     "rxjs": "5.1.0",
+    "stylelint": "7.8.0",
+    "stylelint-config-standard": "16.0.0",
     "tslint": "4.4.2",
     "typescript": "2.1.5",
     "vue": "2.1.10",
@@ -42,7 +43,6 @@
     "zone.js": "0.7.6"
   },
   "dependencies": {
-    "jstree": "3",
     "tslib": "1"
   }
 }

@@ -40,3 +40,4 @@ demo/css
 dist
 demo/**/*.js
 demo/**/index.html
+*.scssc

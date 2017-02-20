@@ -46,58 +46,58 @@ export class DoubleClick {
 }
 
 export function getNodeClassName(data: TreeData, last: boolean) {
-    const values = ["jstree-node"];
+    const values = ["tree-node"];
     if (data.children && data.children.length > 0) {
         if (data.state.opened) {
-            values.push("jstree-open");
+            values.push("tree-open");
         } else {
-            values.push("jstree-closed");
+            values.push("tree-closed");
         }
         if (data.state.loading) {
-            values.push("jstree-loading");
+            values.push("tree-loading");
         }
     } else {
-        values.push("jstree-leaf");
+        values.push("tree-leaf");
     }
     if (last) {
-        values.push("jstree-last");
+        values.push("tree-last");
     }
     return values.join(" ");
 }
 
 export function getAnchorClassName(data: TreeData, hovered: boolean) {
-    const values = ["jstree-anchor", "tree-relative"];
+    const values = ["tree-anchor", "tree-relative"];
     if (data.state.selected) {
-        values.push("jstree-clicked");
+        values.push("tree-clicked");
     }
     if (data.state.disabled) {
-        values.push("jstree-disabled");
+        values.push("tree-disabled");
     }
     if (data.state.highlighted) {
-        values.push("jstree-search");
+        values.push("tree-search");
     }
     if (hovered) {
-        values.push("jstree-hovered");
+        values.push("tree-hovered");
     }
     return values.join(" ");
 }
 
 export function getCheckboxClassName(data: TreeData) {
-    const values = ["jstree-icon", "jstree-checkbox"];
+    const values = ["tree-icon", "tree-checkbox"];
     if (data.children
         && data.children.some(child => child.state.selected)
         && data.children.some(child => !child.state.selected)) {
-        values.push("jstree-undetermined");
+        values.push("tree-undetermined");
     }
     return values.join(" ");
 }
 
 export function getRootClassName(checkbox: boolean | undefined) {
-    return `jstree jstree-default jstree-default-dark ${checkbox ? "jstree-checkbox-selection jstree-checkbox-no-clicked" : ""}`;
+    return `tree tree-default tree-default-responsive ${checkbox ? "tree-checkbox-selection tree-checkbox-no-clicked" : ""}`;
 }
 
 export function getIconClassName(icon: string | false | undefined) {
-    return `jstree-icon jstree-themeicon ${icon ? `${icon} jstree-themeicon-custom` : ""}`;
+    return `tree-icon tree-themeicon ${icon ? `${icon} tree-themeicon-custom` : ""}`;
 }
 
 export function getMarkerClassName(data: TreeData) {

@@ -5,8 +5,8 @@ import * as common from "./common";
 @Component({
     template: `
     <li role="treeitem" :class="nodeClassName">
-        <i class="jstree-icon jstree-ocl" role="presentation" @click="ontoggle()"></i><a :class="anchorClassName" href="javascript:void(0)" :draggable="draggable" @click="onchange()" @dblclick="ontoggle()" @mouseenter="hover(true)" @mouseleave="hover(false)" :data-path="pathString"><i v-if="checkbox" :class="checkboxClassName" role="presentation"></i><i v-if="data.icon !== false" :class="iconClassName" role="presentation"></i>{{data.text}}<div v-if="hasMarker" :class="markerClassName">&#160;</div></a>
-        <ul v-if="data.children" role="group" class="jstree-children">
+        <i class="tree-icon tree-ocl" role="presentation" @click="ontoggle()"></i><a :class="anchorClassName" href="javascript:void(0)" :draggable="draggable" @click="onchange()" @dblclick="ontoggle()" @mouseenter="hover(true)" @mouseleave="hover(false)" :data-path="pathString"><i v-if="checkbox" :class="checkboxClassName" role="presentation"></i><i v-if="data.icon !== false" :class="iconClassName" role="presentation"></i>{{data.text}}<div v-if="hasMarker" :class="markerClassName">&#160;</div></a>
+        <ul v-if="data.children" role="group" class="tree-children">
             <node v-for="(child, i) in data.children"
                 :data="child"
                 :last="i === data.children.length - 1"
@@ -95,7 +95,7 @@ Vue.component("node", Node);
 @Component({
     template: `
     <div :class="rootClassName" role="tree">
-        <ul class="jstree-container-ul jstree-children" role="group" @drag="ondrag($event)" @dragstart="ondragstart($event)" @dragend="ondragend($event)" @dragover="ondragover($event)" @dragenter="ondragenter($event)" @dragleave="ondragleave($event)" @drop="ondrop($event)">
+        <ul class="tree-container-ul tree-children" role="group" @drag="ondrag($event)" @dragstart="ondragstart($event)" @dragend="ondragend($event)" @dragover="ondragover($event)" @dragenter="ondragenter($event)" @dragleave="ondragleave($event)" @drop="ondrop($event)">
             <node v-for="(child, i) in data"
                 :data="child"
                 :last="i === data.length - 1"
