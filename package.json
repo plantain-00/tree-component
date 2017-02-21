@@ -4,7 +4,7 @@
   "description": "A reactjs, angular2 and vuejs tree component.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p src && tsc -p demo && sass src/common.scss > dist/common.css && webpack && npm run rev",
+    "build": "tsc -p src && tsc -p demo && sass src/tree.scss > dist/tree.css && webpack && npm run rev",
     "lint": "tslint \"src/*.ts\" && stylelint \"src/*.scss\" --syntax scss",
     "rev": "npm run clean-rev && rev-static",
     "clean-rev": "rm -f demo/react.bundle-*.js demo/vue.bundle-*.js demo/angular.bundle-*.js"
