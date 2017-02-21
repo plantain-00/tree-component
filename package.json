@@ -31,7 +31,7 @@
     "@types/react-dom": "0.14.22",
     "clean-css-cli": "4.0.7",
     "core-js": "2.4.1",
-    "image2base64-cli": "1.0.2",
+    "image2base64-cli": "1.0.3",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "rev-static": "1.3.1",
