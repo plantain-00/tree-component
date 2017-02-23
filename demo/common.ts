@@ -60,7 +60,7 @@ const rawData: Data[] = [
                 icon: false,
             },
             {
-                text: "custom icon node 23",
+                text: "custom icon node 24",
                 value: { id: 24 },
                 icon: "my-custom-icon",
             },

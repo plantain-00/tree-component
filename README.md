@@ -14,7 +14,7 @@ A reactjs, angular2 and vuejs tree component.
 #### link css from jstree
 
 ```html
-<link rel="stylesheet" href="./node_modules/tree-component/dist/tree.css" />
+<link rel="stylesheet" href="./node_modules/tree-component/dist/tree.min.css" />
 ```
 
 #### vuejs component demo
@@ -139,3 +139,15 @@ type DropData = {
 + checkbox
 + custom icon or no icon
 + drag and drop
+
+#### changelogs
+
+##### v2
+
+```
+// v1:
+<link rel="stylesheet" href="./node_modules/jstree/dist/themes/default/style.min.css" />
+
+// v2:
+<link rel="stylesheet" href="./node_modules/tree-component/dist/tree.min.css" />
+```
