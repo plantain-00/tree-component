@@ -12,6 +12,7 @@ new Vue({
             data,
             selectedId: null,
             data2: JSON.parse(JSON.stringify(data)),
+            data3: JSON.parse(JSON.stringify(data)),
         };
     },
     methods: {
@@ -27,15 +28,21 @@ new Vue({
             }
             eventData.data.state.selected = !eventData.data.state.selected;
         },
-        drop(this: This, dropData: common.DropData) {
-            copy(dropData, this.data);
-        },
         toggle2(eventData: common.EventData) {
             toggle(eventData);
         },
         change2(this: This, eventData: common.EventData) {
             setSelectionOfTree(eventData.data, !eventData.data.state.selected);
             setParentsSelection(this.data2, eventData.path);
+        },
+        toggle3(eventData: common.EventData) {
+            toggle(eventData);
+        },
+        change3(this: This, eventData: common.EventData) {
+            // do nothing
+        },
+        drop3(this: This, dropData: common.DropData) {
+            copy(dropData, this.data3);
         },
     },
 });
@@ -44,4 +51,5 @@ type This = {
     data: common.TreeData[];
     selectedId: null | number;
     data2: common.TreeData[];
+    data3: common.TreeData[];
 } & Vue;

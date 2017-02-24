@@ -13,11 +13,10 @@ const rawData: Data[] = [
                 value: { id: 11 },
             },
             {
-                text: "disabled node 12",
+                text: "node 12",
                 value: { id: 12 },
                 state: {
                     opened: true,
-                    disabled: true,
                 },
                 children: [
                     {
@@ -25,18 +24,12 @@ const rawData: Data[] = [
                         value: { id: 121 },
                     },
                     {
-                        text: "disabled node 122",
+                        text: "node 122",
                         value: { id: 122 },
-                        state: {
-                            disabled: true,
-                        },
                     },
                     {
-                        text: "highlighted node 123",
+                        text: "node 123",
                         value: { id: 123 },
-                        state: {
-                            highlighted: true,
-                        },
                     },
                 ],
             },
@@ -51,8 +44,11 @@ const rawData: Data[] = [
                 value: { id: 21 },
             },
             {
-                text: "node 22",
+                text: "disabled node 22",
                 value: { id: 22 },
+                state: {
+                    disabled: true,
+                },
             },
             {
                 text: "no icon node 23",
@@ -63,6 +59,18 @@ const rawData: Data[] = [
                 text: "custom icon node 24",
                 value: { id: 24 },
                 icon: "my-custom-icon",
+            },
+            {
+                text: "file icon node 25",
+                value: { id: 25 },
+                icon: "tree-file",
+            },
+            {
+                text: "highlighted node 25",
+                value: { id: 26 },
+                state: {
+                    highlighted: true,
+                },
             },
         ],
     },
@@ -124,7 +132,7 @@ export function toggle(eventData: EventData, next?: () => void) {
             if (next) {
                 next();
             }
-        }, 1000);
+        }, 500);
     } else {
         eventData.data.state.opened = !eventData.data.state.opened;
     }

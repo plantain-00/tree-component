@@ -8,15 +8,14 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
     data = data;
     selectedId: number | null = null;
     data2 = JSON.parse(JSON.stringify(data));
+    data3 = JSON.parse(JSON.stringify(data));
 
     render() {
         return (
             <div>
                 <Tree data={this.data}
-                    draggable={true}
                     toggle={(eventData: common.EventData) => this.toggle(eventData)}
-                    change={(eventData: common.EventData) => this.change(eventData)}
-                    drop={(dropData: common.DropData) => this.drop(dropData)}>
+                    change={(eventData: common.EventData) => this.change(eventData)}>
                 </Tree>
                 selected id: {this.selectedId}
                 <hr />
@@ -24,6 +23,13 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
                     checkbox={true}
                     toggle={(eventData: common.EventData) => this.toggle2(eventData)}
                     change={(eventData: common.EventData) => this.change2(eventData)}>
+                </Tree>
+                <hr />
+                <Tree data={this.data3}
+                    draggable={true}
+                    toggle={(eventData: common.EventData) => this.toggle3(eventData)}
+                    change={(eventData: common.EventData) => this.change3(eventData)}
+                    drop={(dropData: common.DropData) => this.drop3(dropData)}>
                 </Tree>
             </div>
         );
@@ -45,18 +51,26 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
         eventData.data.state.selected = !eventData.data.state.selected;
         this.setState({ data: this.data });
     }
-    drop(dropData: common.DropData) {
-        copy(dropData, this.data);
-    }
     toggle2(eventData: common.EventData) {
         toggle(eventData, () => {
-            this.setState({ data: this.data });
+            this.setState({ data: this.data2 });
         });
     }
     change2(eventData: common.EventData) {
         setSelectionOfTree(eventData.data, !eventData.data.state.selected);
         setParentsSelection(this.data2, eventData.path);
-        this.setState({ data: this.data });
+        this.setState({ data: this.data2 });
+    }
+    toggle3(eventData: common.EventData) {
+        toggle(eventData, () => {
+            this.setState({ data: this.data3 });
+        });
+    }
+    change3(eventData: common.EventData) {
+        // do nothing
+    }
+    drop3(dropData: common.DropData) {
+        copy(dropData, this.data3);
     }
 }
 

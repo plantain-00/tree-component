@@ -15,17 +15,24 @@
 
 <body>
     <div id="container">
+        default:
         <tree :data="data"
-            :draggable="true"
             @toggle="toggle(arguments[0])"
-            @change="change(arguments[0])"
-            @drop="drop(arguments[0])"></tree>
+            @change="change(arguments[0])"></tree>
         selected id: {{selectedId}}
         <hr/>
+        checkbox:
         <tree :data="data2"
             :checkbox="true"
             @toggle="toggle2(arguments[0])"
             @change="change2(arguments[0])"></tree>
+        <hr/>
+        draggable:
+        <tree :data="data3"
+            :draggable="true"
+            @toggle="toggle3(arguments[0])"
+            @change="change3(arguments[0])"
+            @drop="drop3(arguments[0])"></tree>
     </div>
     <script src="../<%=demoVueBundleJs %>" crossOrigin="anonymous" integrity="<%=sri.demoVueBundleJs %>"></script>
 </body>

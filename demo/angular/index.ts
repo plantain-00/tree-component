@@ -16,22 +16,27 @@ import * as common from "../../dist/common";
     selector: "app",
     template: `
     <tree [data]="data"
-        [draggable]="true"
         (toggle)="ontoggle($event)"
-        (change)="onchange($event)"
-        (drop)="drop($event)"></tree>
+        (change)="onchange($event)"></tree>
     selected id: {{selectedId}}
     <hr/>
     <tree [data]="data2"
         [checkbox]="true"
         (toggle)="ontoggle2($event)"
         (change)="onchange2($event)"></tree>
+    <hr/>
+    <tree [data]="data3"
+        [draggable]="true"
+        (toggle)="ontoggle3($event)"
+        (change)="onchange3($event)"
+        (drop)="drop3($event)"></tree>
     `,
 })
 export class MainComponent {
     data = data;
     selectedId: number | null = null;
     data2 = JSON.parse(JSON.stringify(data));
+    data3 = JSON.parse(JSON.stringify(data));
     ontoggle(eventData: common.EventData) {
         toggle(eventData);
     }
@@ -44,15 +49,21 @@ export class MainComponent {
         }
         eventData.data.state.selected = !eventData.data.state.selected;
     }
-    drop(dropData: common.DropData) {
-        copy(dropData, this.data);
-    }
     ontoggle2(eventData: common.EventData) {
         toggle(eventData);
     }
     onchange2(eventData: common.EventData) {
         setSelectionOfTree(eventData.data, !eventData.data.state.selected);
         setParentsSelection(this.data2, eventData.path);
+    }
+    ontoggle3(eventData: common.EventData) {
+        toggle(eventData);
+    }
+    onchange3(eventData: common.EventData) {
+        // do nothing
+    }
+    drop3(dropData: common.DropData) {
+        copy(dropData, this.data3);
     }
 }
 
