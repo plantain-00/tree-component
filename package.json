@@ -33,6 +33,7 @@
     "@types/react-dom": "0.14.22",
     "clean-css-cli": "4.0.7",
     "core-js": "2.4.1",
+    "html-minifier": "3.3.3",
     "image2base64-cli": "1.0.3",
     "raw-loader": "0.5.1",
     "react": "15.4.2",
