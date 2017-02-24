@@ -3,22 +3,7 @@ import * as common from "./common";
 
 @Component({
     selector: "node",
-    template: `
-    <li role="treeitem" [class]="nodeClassName">
-        <i class="tree-icon tree-ocl" role="presentation" (click)="ontoggle()"></i><a [class]="anchorClassName" href="javascript:void(0)" [draggable]="draggable" (click)="onchange()" (dblclick)="ontoggle()" (mouseenter)="hover(true)" (mouseleave)="hover(false)" [attr.data-path]="pathString"><i *ngIf="checkbox" [class]="checkboxClassName" role="presentation"></i><i *ngIf="data.icon !== false" [class]="iconClassName" role="presentation"></i>{{data.text}}<div *ngIf="hasMarker" [class]="markerClassName">&#160;</div></a>
-        <ul *ngIf="data.children" role="group" class="tree-children">
-            <node *ngFor="let child of data.children; let i = index"
-                [data]="child"
-                [last]="i === data.children.length - 1"
-                [checkbox]="checkbox"
-                [path]="geChildPath(i)"
-                [draggable]="draggable"
-                (toggle)="ontoggle($event)"
-                (change)="onchange($event)">
-            </node>
-        </ul>
-    </li>
-    `,
+    template: require("raw-loader!./angular-node.html"),
 })
 export class NodeComponent {
     @Input()
@@ -101,20 +86,7 @@ export class NodeComponent {
 
 @Component({
     selector: "tree",
-    template: `
-    <div [class]="rootClassName" role="tree">
-        <ul class="tree-container-ul tree-children" role="group" (drag)="ondrag($event)" (dragstart)="ondragstart($event)" (dragend)="ondragend($event)" (dragover)="ondragover($event)" (dragenter)="ondragenter($event)" (dragleave)="ondragleave($event)" (drop)="ondrop($event)">
-            <node *ngFor="let child of data; let i = index"
-                [data]="child"
-                [last]="i === data.length - 1"
-                [checkbox]="checkbox"
-                [path]="[i]"
-                [draggable]="draggable"
-                (toggle)="ontoggle($event)"
-                (change)="onchange($event)"></node>
-        </ul>
-    </div>
-    `,
+    template: require("raw-loader!./angular-tree.html"),
 })
 export class TreeComponent {
     @Input()

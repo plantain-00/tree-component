@@ -4,11 +4,12 @@
   "description": "A reactjs, angular2 and vuejs tree component.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p src && tsc -p demo && sass src/tree.scss > dist/tree.css && cleancss -o dist/tree.min.css dist/tree.css && webpack && npm run rev",
+    "build": "tsc -p src && tsc -p demo && sass src/tree.scss > dist/tree.css && cleancss -o dist/tree.min.css dist/tree.css && npm run minifier-template && webpack && npm run rev",
     "lint": "tslint \"src/*.ts\" && stylelint \"src/*.scss\" --syntax scss",
     "rev": "npm run clean-rev && rev-static",
     "clean-rev": "rm -f demo/react.bundle-*.js demo/vue.bundle-*.js demo/angular.bundle-*.js",
-    "image": "image2base64-cli images/*.png images/*.gif --scss src/variables.scss"
+    "image": "image2base64-cli images/*.png images/*.gif --scss src/variables.scss",
+    "minifier-template": "html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/vue-node.template.html -o dist/vue-node.html && html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/vue-tree.template.html -o dist/vue-tree.html && html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/angular-node.template.html -o dist/angular-node.html && html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/angular-tree.template.html -o dist/angular-tree.html"
   },
   "repository": {
     "type": "git",
@@ -27,11 +28,13 @@
     "@angular/forms": "2.4.6",
     "@angular/platform-browser": "2.4.6",
     "@angular/platform-browser-dynamic": "2.4.6",
+    "@types/node": "7.0.5",
     "@types/react": "15.0.6",
     "@types/react-dom": "0.14.22",
     "clean-css-cli": "4.0.7",
     "core-js": "2.4.1",
     "image2base64-cli": "1.0.3",
+    "raw-loader": "0.5.1",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "rev-static": "1.3.1",

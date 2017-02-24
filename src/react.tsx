@@ -39,7 +39,20 @@ class Node extends React.PureComponent<{
         const markerElement = this.hasMarker ? <div className={this.markerClassName}>&#160;</div> : null;
         return (
             <li role="treeitem" className={this.nodeClassName}>
-                <i className="tree-icon tree-ocl" role="presentation" onClick={() => this.ontoggle()}></i><a className={this.anchorClassName} href="javascript:void(0)" draggable={this.props.draggable} onClick={() => this.onchange()} onDoubleClick={() => this.ontoggle()} onMouseEnter={() => this.hover(true)} onMouseLeave={() => this.hover(false)} data-path={this.pathString}>{checkboxElement}{iconElement}{this.props.data.text}{markerElement}</a>
+                <i className="tree-icon tree-ocl" role="presentation" onClick={() => this.ontoggle()}></i>
+                <a className={this.anchorClassName}
+                    href="javascript:void(0)"
+                    draggable={this.props.draggable}
+                    onClick={() => this.onchange()}
+                    onDoubleClick={() => this.ontoggle()}
+                    onMouseEnter={() => this.hover(true)}
+                    onMouseLeave={() => this.hover(false)}
+                    data-path={this.pathString}>
+                    {checkboxElement}
+                    {iconElement}
+                    {this.props.data.text}
+                    {markerElement}
+                </a>
                 {childrenElement}
             </li>
         );
@@ -128,7 +141,15 @@ export class Tree extends React.PureComponent<{
         ));
         return (
             <div className={this.rootClassName} role="tree">
-                <ul className="tree-container-ul tree-children" role="group" onDrag={eventData => this.ondrag(eventData)} onDragStart={eventData => this.ondragstart(eventData)} onDragEnd={eventData => this.ondragend(eventData)} onDragOver={eventData => this.ondragover(eventData)} onDragEnter={(eventData) => this.ondragenter(eventData)} onDragLeave={eventData => this.ondragleave(eventData)} onDrop={eventData => this.ondrop(eventData)}>
+                <ul className="tree-container-ul tree-children"
+                    role="group"
+                    onDrag={eventData => this.ondrag(eventData)}
+                    onDragStart={eventData => this.ondragstart(eventData)}
+                    onDragEnd={eventData => this.ondragend(eventData)}
+                    onDragOver={eventData => this.ondragover(eventData)}
+                    onDragEnter={(eventData) => this.ondragenter(eventData)}
+                    onDragLeave={eventData => this.ondragleave(eventData)}
+                    onDrop={eventData => this.ondrop(eventData)}>
                     {childrenElement}
                 </ul>
             </div >
