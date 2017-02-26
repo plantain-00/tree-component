@@ -40,7 +40,6 @@ $image-height: 32px;
 
   .tree-node,
   .tree-icon {
-    background-image: url("#{$node-png}");
     background-position: #{-$correction} #{-$correction};
     background-repeat: repeat-y;
   }
@@ -50,23 +49,19 @@ $image-height: 32px;
   }
 
   .tree-open > .tree-ocl {
-    background-image: url("#{$open-png}");
     background-position: #{-$correction} #{-$correction};
   }
 
   .tree-closed > .tree-ocl {
-    background-image: url("#{$closed-png}");
     background-position: #{-$correction} #{-$correction};
   }
 
   .tree-leaf > .tree-ocl {
-    background-image: url("#{$leaf-png}");
     background-position: #{-$correction} #{-$correction};
   }
 
   .tree-themeicon,
   .tree-folder {
-    background-image: url("#{$folder-png}");
     background-position: #{-$correction} #{-$correction};
   }
 
@@ -77,12 +72,10 @@ $image-height: 32px;
     }
 
     .tree-open > .tree-ocl {
-      background-image: url("#{$open-no-dot-png}");
       background-position: #{-$correction} #{-$correction};
     }
 
     .tree-closed > .tree-ocl {
-      background-image: url("#{$closed-no-dot-png}");
       background-position: #{-$correction} #{-$correction};
     }
   }
@@ -100,11 +93,9 @@ $image-height: 32px;
   }
 
   .tree-checkbox {
-    background-image: url("#{$unchecked-png}");
     background-position: #{-$correction} #{-$correction};
 
     &:hover {
-      background-image: url("#{$unchecked-hover-png}");
       background-position: #{-$correction} #{-$correction};
     }
   }
@@ -112,11 +103,9 @@ $image-height: 32px;
   &.tree-checkbox-selection .tree-clicked,
   .tree-checked {
     > .tree-checkbox {
-      background-image: url("#{$checked-png}");
       background-position: #{-$correction} #{-$correction};
 
       &:hover {
-        background-image: url("#{$checked-hover-png}");
         background-position: #{-$correction} #{-$correction};
       }
     }
@@ -124,11 +113,9 @@ $image-height: 32px;
 
   .tree-anchor {
     > .tree-undetermined {
-      background-image: url("#{$undetermined-png}");
       background-position: #{-$correction} #{-$correction};
 
       &:hover {
-        background-image: url("#{$undetermined-hover-png}");
         background-position: #{-$correction} #{-$correction};
       }
     }
@@ -141,13 +128,81 @@ $image-height: 32px;
   }
 
   .tree-file {
-    background-image: url("#{$file-png}");
     background-position: #{-$correction} #{-$correction};
   }
 
   > .tree-container-ul > .tree-node {
     margin-left: 0;
     margin-right: 0;
+  }
+}
+
+.tree-default,
+.tree-default-large,
+.tree-default-small {
+  .tree-node,
+  .tree-icon {
+    background-image: url("#{$node-png}");
+  }
+
+  .tree-open > .tree-ocl {
+    background-image: url("#{$open-png}");
+  }
+
+  .tree-closed > .tree-ocl {
+    background-image: url("#{$closed-png}");
+  }
+
+  .tree-leaf > .tree-ocl {
+    background-image: url("#{$leaf-png}");
+  }
+
+  .tree-themeicon,
+  .tree-folder {
+    background-image: url("#{$folder-png}");
+  }
+
+  > .tree-no-dots {
+    .tree-open > .tree-ocl {
+      background-image: url("#{$open-no-dot-png}");
+    }
+
+    .tree-closed > .tree-ocl {
+      background-image: url("#{$closed-no-dot-png}");
+    }
+  }
+
+  .tree-checkbox {
+    background-image: url("#{$unchecked-png}");
+
+    &:hover {
+      background-image: url("#{$unchecked-hover-png}");
+    }
+  }
+
+  &.tree-checkbox-selection .tree-clicked,
+  .tree-checked {
+    > .tree-checkbox {
+      background-image: url("#{$checked-png}");
+
+      &:hover {
+        background-image: url("#{$checked-hover-png}");
+      }
+    }
+  }
+
+  .tree-anchor {
+    > .tree-undetermined {
+      background-image: url("#{$undetermined-png}");
+
+      &:hover {
+        background-image: url("#{$undetermined-hover-png}");
+      }
+    }
+  }
+
+  .tree-file {
+    background-image: url("#{$file-png}");
   }
 }
 
@@ -235,8 +290,9 @@ $image-height: 32px;
   position: relative;
 }
 
-.tree-marker-1 {
-  top: 0;
+.tree-marker-1,
+.tree-marker-2,
+.tree-marker-3 {
   left: 0;
   position: absolute;
   margin: -5px 0 0 0;
@@ -249,38 +305,18 @@ $image-height: 32px;
   height: 0;
   font-size: 0;
   line-height: 0;
+}
+
+.tree-marker-1 {
+  top: 0;
 }
 
 .tree-marker-2 {
   top: 12px;
-  left: 0;
-  position: absolute;
-  margin: -5px 0 0 0;
-  padding: 0;
-  border-right: 0;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 5px solid;
-  width: 0;
-  height: 0;
-  font-size: 0;
-  line-height: 0;
 }
 
 .tree-marker-3 {
   top: 24px;
-  left: 0;
-  position: absolute;
-  margin: -5px 0 0 0;
-  padding: 0;
-  border-right: 0;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 5px solid;
-  width: 0;
-  height: 0;
-  font-size: 0;
-  line-height: 0;
 }
 
 .tree-#{$theme-name} {
@@ -346,13 +382,13 @@ $image-height: 32px;
   @include tree-theme(24px);
 }
 
-// .tree-#{$theme-name}-small {
-//   @include tree-theme(18px);
-// }
+.tree-#{$theme-name}-small {
+  @include tree-theme(18px);
+}
 
-// .tree-#{$theme-name}-large {
-//   @include tree-theme(32px);
-// }
+.tree-#{$theme-name}-large {
+  @include tree-theme(32px);
+}
 
 .tree-#{$theme-name},
 .tree-#{$theme-name}-small,

@@ -10,6 +10,8 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
     data2 = JSON.parse(JSON.stringify(data));
     data3 = JSON.parse(JSON.stringify(data));
     data4 = JSON.parse(JSON.stringify(data));
+    data5 = JSON.parse(JSON.stringify(data));
+    data6 = JSON.parse(JSON.stringify(data));
 
     render() {
         return (
@@ -32,15 +34,25 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
                 <Tree data={this.data3}
                     draggable={true}
                     toggle={(eventData: common.EventData) => this.toggle3(eventData)}
-                    change={(eventData: common.EventData) => this.change3(eventData)}
                     drop={(dropData: common.DropData) => this.drop3(dropData)}>
                 </Tree>
                 <hr />
                 no dots:
                 <Tree data={this.data4}
                     nodots={true}
-                    toggle={(eventData: common.EventData) => this.toggle4(eventData)}
-                    change={(eventData: common.EventData) => this.change4(eventData)}>
+                    toggle={(eventData: common.EventData) => this.toggle4(eventData)}>
+                </Tree>
+                <hr />
+                large:
+                <Tree data={this.data5}
+                    size="large"
+                    toggle={(eventData: common.EventData) => this.toggle5(eventData)}>
+                </Tree>
+                <hr />
+                small:
+                <Tree data={this.data6}
+                    size="small"
+                    toggle={(eventData: common.EventData) => this.toggle6(eventData)}>
                 </Tree>
             </div>
         );
@@ -77,9 +89,6 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
             this.setState({ data: this.data3 });
         });
     }
-    change3(eventData: common.EventData) {
-        // do nothing
-    }
     drop3(dropData: common.DropData) {
         copy(dropData, this.data3);
     }
@@ -88,8 +97,15 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
             this.setState({ data: this.data4 });
         });
     }
-    change4(eventData: common.EventData) {
-        // do nothing
+    toggle5(eventData: common.EventData) {
+        toggle(eventData, () => {
+            this.setState({ data: this.data4 });
+        });
+    }
+    toggle6(eventData: common.EventData) {
+        toggle(eventData, () => {
+            this.setState({ data: this.data4 });
+        });
     }
 }
 

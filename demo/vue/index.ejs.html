@@ -31,14 +31,22 @@
         <tree :data="data3"
             :draggable="true"
             @toggle="toggle3(arguments[0])"
-            @change="change3(arguments[0])"
             @drop="drop3(arguments[0])"></tree>
         <hr/>
         no dots:
         <tree :data="data4"
             :nodots="true"
-            @toggle="toggle4(arguments[0])"
-            @change="change4(arguments[0])"></tree>
+            @toggle="toggle4(arguments[0])"></tree>
+        <hr/>
+        large:
+        <tree :data="data5"
+            size="large"
+            @toggle="toggle5(arguments[0])"></tree>
+        <hr/>
+        small:
+        <tree :data="data6"
+            size="small"
+            @toggle="toggle6(arguments[0])"></tree>
     </div>
     <script src="../<%=demoVueBundleJs %>" crossOrigin="anonymous" integrity="<%=sri.demoVueBundleJs %>"></script>
 </body>

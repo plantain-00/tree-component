@@ -83,6 +83,7 @@ data | [TreeData](#tree-data-structure)[] | the data of the tree
 checkbox | boolean? | show checkbox for node
 draggable | boolean? | whether the node is draggable
 nodots | boolean ? | the tree will have no dots
+size | string? | can also be "large", "small"
 toggle | (eventData: [EventData](#event-data-structure)) => void | triggered when opening or closing a node
 change | (eventData: [EventData](#event-data-structure)) => void | triggered when selecting or deselecting a node
 drop | (dropData: [DropData](#drop-data-structure)) => void | triggered when drag a node, then drop it
@@ -140,6 +141,8 @@ type DropData = {
 + checkbox
 + custom icon or no icon
 + drag and drop
++ no dots
++ large and small
 
 #### changelogs
 

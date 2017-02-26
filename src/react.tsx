@@ -123,6 +123,7 @@ export class Tree extends React.PureComponent<{
     checkbox?: boolean;
     draggable?: boolean;
     nodots?: boolean;
+    size?: string;
     toggle?: (eventData?: common.EventData) => void;
     change?: (eventData?: common.EventData) => void;
     drop?: (dropData: common.DropData) => void;
@@ -158,7 +159,7 @@ export class Tree extends React.PureComponent<{
     }
 
     get rootClassName() {
-        return common.getRootClassName(this.props.checkbox);
+        return common.getRootClassName(this.props.checkbox, this.props.size);
     }
     get containerClassName() {
         return common.getContainerClassName(this.props.nodots);

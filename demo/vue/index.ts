@@ -14,6 +14,8 @@ new Vue({
             data2: JSON.parse(JSON.stringify(data)),
             data3: JSON.parse(JSON.stringify(data)),
             data4: JSON.parse(JSON.stringify(data)),
+            data5: JSON.parse(JSON.stringify(data)),
+            data6: JSON.parse(JSON.stringify(data)),
         };
     },
     methods: {
@@ -39,17 +41,17 @@ new Vue({
         toggle3(eventData: common.EventData) {
             toggle(eventData);
         },
-        change3(this: This, eventData: common.EventData) {
-            // do nothing
-        },
         drop3(this: This, dropData: common.DropData) {
             copy(dropData, this.data3);
         },
         toggle4(eventData: common.EventData) {
             toggle(eventData);
         },
-        change4(this: This, eventData: common.EventData) {
-            // do nothing
+        toggle5(eventData: common.EventData) {
+            toggle(eventData);
+        },
+        toggle6(eventData: common.EventData) {
+            toggle(eventData);
         },
     },
 });
@@ -59,5 +61,4 @@ type This = {
     selectedId: null | number;
     data2: common.TreeData[];
     data3: common.TreeData[];
-    data4: common.TreeData[];
 } & Vue;

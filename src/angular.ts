@@ -97,6 +97,8 @@ export class TreeComponent {
     draggable?: boolean;
     @Input()
     nodots?: boolean;
+    @Input()
+    size?: string;
 
     @Output()
     toggle = new EventEmitter<common.EventData>();
@@ -109,7 +111,7 @@ export class TreeComponent {
     dropTarget: HTMLElement | null = null;
 
     get rootClassName() {
-        return common.getRootClassName(this.checkbox);
+        return common.getRootClassName(this.checkbox, this.size);
     }
     get containerClassName() {
         return common.getContainerClassName(this.nodots);

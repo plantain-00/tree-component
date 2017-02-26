@@ -31,14 +31,22 @@ import * as common from "../../dist/common";
     <tree [data]="data3"
         [draggable]="true"
         (toggle)="ontoggle3($event)"
-        (change)="onchange3($event)"
         (drop)="drop3($event)"></tree>
     <hr/>
     no dots:
     <tree [data]="data4"
         [nodots]="true"
-        (toggle)="ontoggle4($event)"
-        (change)="onchange4($event)"></tree>
+        (toggle)="ontoggle4($event)"></tree>
+    <hr/>
+    large:
+    <tree [data]="data4"
+        size="large"
+        (toggle)="ontoggle5($event)"></tree>
+    <hr/>
+    small:
+    <tree [data]="data5"
+        size="small"
+        (toggle)="ontoggle6($event)"></tree>
     `,
 })
 export class MainComponent {
@@ -47,6 +55,8 @@ export class MainComponent {
     data2 = JSON.parse(JSON.stringify(data));
     data3 = JSON.parse(JSON.stringify(data));
     data4 = JSON.parse(JSON.stringify(data));
+    data5 = JSON.parse(JSON.stringify(data));
+    data6 = JSON.parse(JSON.stringify(data));
     ontoggle(eventData: common.EventData) {
         toggle(eventData);
     }
@@ -69,17 +79,17 @@ export class MainComponent {
     ontoggle3(eventData: common.EventData) {
         toggle(eventData);
     }
-    onchange3(eventData: common.EventData) {
-        // do nothing
-    }
     drop3(dropData: common.DropData) {
         copy(dropData, this.data3);
     }
     ontoggle4(eventData: common.EventData) {
         toggle(eventData);
     }
-    onchange4(eventData: common.EventData) {
-        // do nothing
+    ontoggle5(eventData: common.EventData) {
+        toggle(eventData);
+    }
+    ontoggle6(eventData: common.EventData) {
+        toggle(eventData);
     }
 }
 

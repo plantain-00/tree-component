@@ -103,12 +103,25 @@ export function getCheckboxClassName(data: TreeData) {
     return values.join(" ");
 }
 
-export function getRootClassName(checkbox: boolean | undefined) {
-    return `tree tree-default ${checkbox ? "tree-checkbox-selection tree-checkbox-no-clicked" : ""}`;
+export function getRootClassName(checkbox: boolean | undefined, size?: string) {
+    const values = ["tree"];
+    if (size) {
+        values.push(`tree-default-${size}`);
+    } else {
+        values.push("tree-default");
+    }
+    if (checkbox) {
+        values.push("tree-checkbox-selection", "tree-checkbox-no-clicked");
+    }
+    return values.join(" ");
 }
 
 export function getIconClassName(icon: string | false | undefined) {
-    return `tree-icon tree-themeicon ${icon ? `${icon} tree-themeicon-custom` : ""}`;
+    const values = ["tree-icon", "tree-themeicon"];
+    if (icon) {
+        values.push(icon, "tree-themeicon-custom");
+    }
+    return values.join(" ");
 }
 
 export function getMarkerClassName(data: TreeData) {
