@@ -95,6 +95,8 @@ export class TreeComponent {
     checkbox?: boolean;
     @Input()
     draggable?: boolean;
+    @Input()
+    nodots?: boolean;
 
     @Output()
     toggle = new EventEmitter<common.EventData>();
@@ -108,6 +110,9 @@ export class TreeComponent {
 
     get rootClassName() {
         return common.getRootClassName(this.checkbox);
+    }
+    get containerClassName() {
+        return common.getContainerClassName(this.nodots);
     }
 
     canDrop(event: DragEvent) {

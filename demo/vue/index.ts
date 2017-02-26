@@ -13,6 +13,7 @@ new Vue({
             selectedId: null,
             data2: JSON.parse(JSON.stringify(data)),
             data3: JSON.parse(JSON.stringify(data)),
+            data4: JSON.parse(JSON.stringify(data)),
         };
     },
     methods: {
@@ -44,6 +45,12 @@ new Vue({
         drop3(this: This, dropData: common.DropData) {
             copy(dropData, this.data3);
         },
+        toggle4(eventData: common.EventData) {
+            toggle(eventData);
+        },
+        change4(this: This, eventData: common.EventData) {
+            // do nothing
+        },
     },
 });
 
@@ -52,4 +59,5 @@ type This = {
     selectedId: null | number;
     data2: common.TreeData[];
     data3: common.TreeData[];
+    data4: common.TreeData[];
 } & Vue;

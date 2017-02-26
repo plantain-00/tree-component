@@ -9,27 +9,38 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
     selectedId: number | null = null;
     data2 = JSON.parse(JSON.stringify(data));
     data3 = JSON.parse(JSON.stringify(data));
+    data4 = JSON.parse(JSON.stringify(data));
 
     render() {
         return (
             <div>
+                default:
                 <Tree data={this.data}
                     toggle={(eventData: common.EventData) => this.toggle(eventData)}
                     change={(eventData: common.EventData) => this.change(eventData)}>
                 </Tree>
                 selected id: {this.selectedId}
                 <hr />
+                checkbox:
                 <Tree data={this.data2}
                     checkbox={true}
                     toggle={(eventData: common.EventData) => this.toggle2(eventData)}
                     change={(eventData: common.EventData) => this.change2(eventData)}>
                 </Tree>
                 <hr />
+                draggable:
                 <Tree data={this.data3}
                     draggable={true}
                     toggle={(eventData: common.EventData) => this.toggle3(eventData)}
                     change={(eventData: common.EventData) => this.change3(eventData)}
                     drop={(dropData: common.DropData) => this.drop3(dropData)}>
+                </Tree>
+                <hr />
+                no dots:
+                <Tree data={this.data4}
+                    nodots={true}
+                    toggle={(eventData: common.EventData) => this.toggle4(eventData)}
+                    change={(eventData: common.EventData) => this.change4(eventData)}>
                 </Tree>
             </div>
         );
@@ -71,6 +82,14 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
     }
     drop3(dropData: common.DropData) {
         copy(dropData, this.data3);
+    }
+    toggle4(eventData: common.EventData) {
+        toggle(eventData, () => {
+            this.setState({ data: this.data4 });
+        });
+    }
+    change4(eventData: common.EventData) {
+        // do nothing
     }
 }
 

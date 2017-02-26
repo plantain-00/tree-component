@@ -10,7 +10,7 @@
         <i *ngIf="checkbox" [class]="checkboxClassName" role="presentation"></i>
         <i *ngIf="data.icon !== false" [class]="iconClassName" role="presentation"></i>
         {{data.text}}
-        <div *ngIf="hasMarker" [class]="markerClassName">&#160;</div>
+        <span *ngIf="hasMarker" [class]="markerClassName">&#160;</span>
     </a>
     <ul *ngIf="data.children" role="group" class="tree-children">
         <node *ngFor="let child of data.children; let i = index"

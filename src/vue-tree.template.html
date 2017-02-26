@@ -1,5 +1,5 @@
 <div :class="rootClassName" role="tree">
-    <ul class="tree-container-ul tree-children" role="group"
+    <ul :class="containerClassName" role="group"
         @drag="ondrag($event)"
         @dragstart="ondragstart($event)"
         @dragend="ondragend($event)"

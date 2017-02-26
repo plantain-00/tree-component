@@ -15,21 +15,30 @@ import * as common from "../../dist/common";
 @Component({
     selector: "app",
     template: `
+    default:
     <tree [data]="data"
         (toggle)="ontoggle($event)"
         (change)="onchange($event)"></tree>
     selected id: {{selectedId}}
     <hr/>
+    checkbox:
     <tree [data]="data2"
         [checkbox]="true"
         (toggle)="ontoggle2($event)"
         (change)="onchange2($event)"></tree>
     <hr/>
+    draggable:
     <tree [data]="data3"
         [draggable]="true"
         (toggle)="ontoggle3($event)"
         (change)="onchange3($event)"
         (drop)="drop3($event)"></tree>
+    <hr/>
+    no dots:
+    <tree [data]="data4"
+        [nodots]="true"
+        (toggle)="ontoggle4($event)"
+        (change)="onchange4($event)"></tree>
     `,
 })
 export class MainComponent {
@@ -37,6 +46,7 @@ export class MainComponent {
     selectedId: number | null = null;
     data2 = JSON.parse(JSON.stringify(data));
     data3 = JSON.parse(JSON.stringify(data));
+    data4 = JSON.parse(JSON.stringify(data));
     ontoggle(eventData: common.EventData) {
         toggle(eventData);
     }
@@ -64,6 +74,12 @@ export class MainComponent {
     }
     drop3(dropData: common.DropData) {
         copy(dropData, this.data3);
+    }
+    ontoggle4(eventData: common.EventData) {
+        toggle(eventData);
+    }
+    onchange4(eventData: common.EventData) {
+        // do nothing
     }
 }
 

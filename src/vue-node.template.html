@@ -10,7 +10,7 @@
         <i v-if="checkbox" :class="checkboxClassName" role="presentation"></i>
         <i v-if="data.icon !== false" :class="iconClassName" role="presentation"></i>
         {{data.text}}
-        <div v-if="hasMarker" :class="markerClassName">&#160;</div>
+        <span v-if="hasMarker" :class="markerClassName">&#160;</span>
     </a>
     <ul v-if="data.children" role="group" class="tree-children">
         <node v-for="(child, i) in data.children"

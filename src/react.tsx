@@ -36,7 +36,7 @@ class Node extends React.PureComponent<{
         }
         const checkboxElement = this.props.checkbox ? <i className={this.checkboxClassName} role="presentation"></i> : null;
         const iconElement = this.props.data.icon !== false ? <i className={this.iconClassName} role="presentation"></i> : null;
-        const markerElement = this.hasMarker ? <div className={this.markerClassName}>&#160;</div> : null;
+        const markerElement = this.hasMarker ? <span className={this.markerClassName}>&#160;</span> : null;
         return (
             <li role="treeitem" className={this.nodeClassName}>
                 <i className="tree-icon tree-ocl" role="presentation" onClick={() => this.ontoggle()}></i>
@@ -122,6 +122,7 @@ export class Tree extends React.PureComponent<{
     data: common.TreeData[];
     checkbox?: boolean;
     draggable?: boolean;
+    nodots?: boolean;
     toggle?: (eventData?: common.EventData) => void;
     change?: (eventData?: common.EventData) => void;
     drop?: (dropData: common.DropData) => void;
@@ -141,7 +142,7 @@ export class Tree extends React.PureComponent<{
         ));
         return (
             <div className={this.rootClassName} role="tree">
-                <ul className="tree-container-ul tree-children"
+                <ul className={this.containerClassName}
                     role="group"
                     onDrag={eventData => this.ondrag(eventData)}
                     onDragStart={eventData => this.ondragstart(eventData)}
@@ -158,6 +159,9 @@ export class Tree extends React.PureComponent<{
 
     get rootClassName() {
         return common.getRootClassName(this.props.checkbox);
+    }
+    get containerClassName() {
+        return common.getContainerClassName(this.props.nodots);
     }
 
     canDrop(event: React.DragEvent<HTMLElement>) {

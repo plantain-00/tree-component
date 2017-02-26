@@ -82,6 +82,7 @@ name | type | description
 data | [TreeData](#tree-data-structure)[] | the data of the tree
 checkbox | boolean? | show checkbox for node
 draggable | boolean? | whether the node is draggable
+nodots | boolean ? | the tree will have no dots
 toggle | (eventData: [EventData](#event-data-structure)) => void | triggered when opening or closing a node
 change | (eventData: [EventData](#event-data-structure)) => void | triggered when selecting or deselecting a node
 drop | (dropData: [DropData](#drop-data-structure)) => void | triggered when drag a node, then drop it

@@ -48,6 +48,14 @@ export class DoubleClick {
     }
 }
 
+export function getContainerClassName(noDots: boolean | undefined) {
+    const values = ["tree-container-ul", "tree-children"];
+    if (noDots) {
+        values.push("tree-no-dots");
+    }
+    return values.join(" ");
+}
+
 export function getNodeClassName(data: TreeData, last: boolean) {
     const values = ["tree-node"];
     if (data.children && data.children.length > 0) {
@@ -96,7 +104,7 @@ export function getCheckboxClassName(data: TreeData) {
 }
 
 export function getRootClassName(checkbox: boolean | undefined) {
-    return `tree tree-default tree-default-responsive ${checkbox ? "tree-checkbox-selection tree-checkbox-no-clicked" : ""}`;
+    return `tree tree-default ${checkbox ? "tree-checkbox-selection tree-checkbox-no-clicked" : ""}`;
 }
 
 export function getIconClassName(icon: string | false | undefined) {
