@@ -99,12 +99,12 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
     }
     toggle5(eventData: common.EventData) {
         toggle(eventData, () => {
-            this.setState({ data: this.data4 });
+            this.setState({ data: this.data5 });
         });
     }
     toggle6(eventData: common.EventData) {
         toggle(eventData, () => {
-            this.setState({ data: this.data4 });
+            this.setState({ data: this.data6 });
         });
     }
 }

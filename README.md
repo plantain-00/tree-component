@@ -105,6 +105,7 @@ type TreeNodeState = {
     disabled: boolean; // disabled node can not be selected and deselected
     loading: boolean; // show the loading icon, usually used when loading child nodes
     highlighted: boolean;
+    openable: boolean; // can open or close even no children
 };
 ```
 

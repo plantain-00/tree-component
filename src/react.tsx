@@ -18,7 +18,7 @@ class Node extends React.PureComponent<{
         if (this.props.data.children) {
             const nodesElement: JSX.Element[] = this.props.data.children.map((child, i) => (
                 <Node data={child}
-                    last={i === this.props.data.children!.length - 1}
+                    last={i === this.props.data.children.length - 1}
                     checkbox={this.props.checkbox}
                     path={this.geChildPath(i)}
                     draggable={this.props.draggable}
@@ -98,7 +98,7 @@ class Node extends React.PureComponent<{
         if (eventData) {
             this.props.toggle(eventData);
         } else {
-            if (this.props.data.children && this.props.data.children.length > 0) {
+            if (this.props.data.state.openable || this.props.data.children.length > 0) {
                 this.props.toggle({ data: this.props.data, path: this.props.path });
             }
         }

@@ -64,7 +64,7 @@ export class NodeComponent {
         if (eventData) {
             this.toggle.emit(eventData);
         } else {
-            if (this.data.children && this.data.children.length > 0) {
+            if (this.data.state.openable || this.data.children.length > 0) {
                 this.toggle.emit({ data: this.data, path: this.path });
             }
         }

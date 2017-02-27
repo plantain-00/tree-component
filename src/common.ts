@@ -3,7 +3,7 @@ export type TreeData = {
     value?: any;
     icon?: string | false;
     state: TreeNodeState;
-    children?: TreeData[];
+    children: TreeData[];
 };
 
 export type TreeNodeState = {
@@ -12,6 +12,7 @@ export type TreeNodeState = {
     disabled: boolean;
     loading: boolean;
     highlighted: boolean;
+    openable: boolean;
     dropPosition: DropPosition;
 };
 
@@ -58,7 +59,7 @@ export function getContainerClassName(noDots: boolean | undefined) {
 
 export function getNodeClassName(data: TreeData, last: boolean) {
     const values = ["tree-node"];
-    if (data.children && data.children.length > 0) {
+    if (data.state.openable || data.children.length > 0) {
         if (data.state.opened) {
             values.push("tree-open");
         } else {
@@ -146,7 +147,7 @@ export function getNodeFromPath(rootData: TreeData[], path: number[]) {
     let node: TreeData | null = null;
     for (const index of path) {
         if (node) {
-            node = node.children![index];
+            node = node.children[index];
         } else {
             node = rootData[index];
         }

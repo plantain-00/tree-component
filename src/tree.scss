@@ -1,41 +1,30 @@
 @import "./variables.scss";
 
-$theme-name: default;
-$hovered-bg-color: #e7f4f9;
-$hovered-shadow-color: #ccc;
-$disabled-color: #666;
-$disabled-bg-color: #efefef;
-$clicked-bg-color: #beebff;
-$clicked-shadow-color: #999;
-$search-result-color: #8b0000;
-$base-height: 40px;
-$image-height: 32px;
-
-@mixin tree-theme ($base-height) {
-  $correction: ($image-height - $base-height) / 2;
+@mixin size ($height) {
+  $correction: (32px - $height) / 2;
 
   .tree-node {
-    min-height: $base-height;
-    line-height: $base-height;
-    margin-left: $base-height;
-    min-width: $base-height;
+    min-height: $height;
+    line-height: $height;
+    margin-left: $height;
+    min-width: $height;
   }
 
   .tree-anchor {
-    line-height: $base-height;
-    height: $base-height;
+    line-height: $height;
+    height: $height;
   }
 
   .tree-icon {
-    width: $base-height;
-    height: $base-height;
-    line-height: $base-height;
+    width: $height;
+    height: $height;
+    line-height: $height;
   }
 
   .tree-icon:empty {
-    width: $base-height;
-    height: $base-height;
-    line-height: $base-height;
+    width: $height;
+    height: $height;
+    line-height: $height;
   }
 
   .tree-node,
@@ -123,7 +112,6 @@ $image-height: 32px;
 
   .tree-themeicon-custom {
     background-color: transparent;
-    background-image: none;
     background-repeat: no-repeat;
   }
 
@@ -135,6 +123,18 @@ $image-height: 32px;
     margin-left: 0;
     margin-right: 0;
   }
+
+  .tree-marker-1 {
+    top: 0;
+  }
+
+  .tree-marker-2 {
+    top: $height / 2;
+  }
+
+  .tree-marker-3 {
+    top: $height;
+  }
 }
 
 .tree-default,
@@ -142,69 +142,160 @@ $image-height: 32px;
 .tree-default-small {
   .tree-node,
   .tree-icon {
-    background-image: url("#{$node-png}");
+    background-image: url("#{$default-node-png}");
   }
 
   .tree-open > .tree-ocl {
-    background-image: url("#{$open-png}");
+    background-image: url("#{$default-open-png}");
   }
 
   .tree-closed > .tree-ocl {
-    background-image: url("#{$closed-png}");
+    background-image: url("#{$default-closed-png}");
   }
 
   .tree-leaf > .tree-ocl {
-    background-image: url("#{$leaf-png}");
+    background-image: url("#{$default-leaf-png}");
   }
 
   .tree-themeicon,
   .tree-folder {
-    background-image: url("#{$folder-png}");
+    background-image: url("#{$default-folder-png}");
   }
 
   > .tree-no-dots {
     .tree-open > .tree-ocl {
-      background-image: url("#{$open-no-dot-png}");
+      background-image: url("#{$default-open-no-dot-png}");
     }
 
     .tree-closed > .tree-ocl {
-      background-image: url("#{$closed-no-dot-png}");
+      background-image: url("#{$default-closed-no-dot-png}");
     }
   }
 
   .tree-checkbox {
-    background-image: url("#{$unchecked-png}");
+    background-image: url("#{$default-unchecked-png}");
 
     &:hover {
-      background-image: url("#{$unchecked-hover-png}");
+      background-image: url("#{$default-unchecked-hover-png}");
     }
   }
 
   &.tree-checkbox-selection .tree-clicked,
   .tree-checked {
     > .tree-checkbox {
-      background-image: url("#{$checked-png}");
+      background-image: url("#{$default-checked-png}");
 
       &:hover {
-        background-image: url("#{$checked-hover-png}");
+        background-image: url("#{$default-checked-hover-png}");
       }
     }
   }
 
   .tree-anchor {
     > .tree-undetermined {
-      background-image: url("#{$undetermined-png}");
+      background-image: url("#{$default-undetermined-png}");
 
       &:hover {
-        background-image: url("#{$undetermined-hover-png}");
+        background-image: url("#{$default-undetermined-hover-png}");
       }
     }
   }
 
   .tree-file {
-    background-image: url("#{$file-png}");
+    background-image: url("#{$default-file-png}");
+  }
+
+  > .tree-container-ul .tree-loading > .tree-ocl {
+    background: url("#{$default-loading-gif}") center center no-repeat;
   }
 }
+
+@mixin theme ($name, $hovered-bg-color, $hovered-shadow-color, $disabled-bg-color, $clicked-bg-color, $clicked-shadow-color, $search-result-color) {
+  .tree-#{$name} {
+    .tree-node,
+    .tree-icon {
+      background-repeat: no-repeat;
+      background-color: transparent;
+    }
+
+    .tree-hovered {
+      background: $hovered-bg-color;
+      border-radius: 2px;
+      box-shadow: inset 0 0 1px $hovered-shadow-color;
+    }
+
+    .tree-clicked {
+      background: $clicked-bg-color;
+      border-radius: 2px;
+      box-shadow: inset 0 0 1px $clicked-shadow-color;
+    }
+
+    .tree-no-icons .tree-anchor > .tree-themeicon {
+      display: none;
+    }
+
+    .tree-disabled {
+      background: transparent;
+      color: #666;
+
+      &.tree-hovered {
+        background: transparent;
+        box-shadow: none;
+      }
+
+      &.tree-clicked {
+        background: $disabled-bg-color;
+      }
+    }
+
+    .tree-search {
+      font-style: italic;
+      color: $search-result-color;
+      font-weight: bold;
+    }
+
+    .tree-no-checkboxes .tree-checkbox {
+      display: none !important;
+    }
+
+    &.tree-checkbox-no-clicked {
+      .tree-clicked {
+        background: transparent;
+        box-shadow: none;
+
+        &.tree-hovered {
+          background: $hovered-bg-color;
+        }
+      }
+    }
+  }
+
+  .tree-#{$name} {
+    @include size(24px);
+  }
+
+  .tree-#{$name}-small {
+    @include size(18px);
+  }
+
+  .tree-#{$name}-large {
+    @include size(32px);
+  }
+
+  .tree-#{$name},
+  .tree-#{$name}-small,
+  .tree-#{$name}-large {
+    .tree-disabled > .tree-icon,
+    .tree-checkbox-disabled {
+      opacity: 0.8;
+      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'tree-grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#tree-grayscale");
+      filter: gray;
+      -webkit-filter: grayscale(100%);
+    }
+  }
+}
+
+@include theme(default, #e7f4f9, #ccc, #efefef, #beebff, #999, #8b0000);
 
 .tree-node,
 .tree-children,
@@ -305,103 +396,4 @@ $image-height: 32px;
   height: 0;
   font-size: 0;
   line-height: 0;
-}
-
-.tree-marker-1 {
-  top: 0;
-}
-
-.tree-marker-2 {
-  top: 12px;
-}
-
-.tree-marker-3 {
-  top: 24px;
-}
-
-.tree-#{$theme-name} {
-  .tree-node,
-  .tree-icon {
-    background-repeat: no-repeat;
-    background-color: transparent;
-  }
-
-  .tree-hovered {
-    background: $hovered-bg-color;
-    border-radius: 2px;
-    box-shadow: inset 0 0 1px $hovered-shadow-color;
-  }
-
-  .tree-clicked {
-    background: $clicked-bg-color;
-    border-radius: 2px;
-    box-shadow: inset 0 0 1px $clicked-shadow-color;
-  }
-
-  .tree-no-icons .tree-anchor > .tree-themeicon {
-    display: none;
-  }
-
-  .tree-disabled {
-    background: transparent;
-    color: $disabled-color;
-
-    &.tree-hovered {
-      background: transparent;
-      box-shadow: none;
-    }
-
-    &.tree-clicked {
-      background: $disabled-bg-color;
-    }
-  }
-
-  .tree-search {
-    font-style: italic;
-    color: $search-result-color;
-    font-weight: bold;
-  }
-
-  .tree-no-checkboxes .tree-checkbox {
-    display: none !important;
-  }
-
-  &.tree-checkbox-no-clicked {
-    .tree-clicked {
-      background: transparent;
-      box-shadow: none;
-
-      &.tree-hovered {
-        background: $hovered-bg-color;
-      }
-    }
-  }
-}
-
-.tree-#{$theme-name} {
-  @include tree-theme(24px);
-}
-
-.tree-#{$theme-name}-small {
-  @include tree-theme(18px);
-}
-
-.tree-#{$theme-name}-large {
-  @include tree-theme(32px);
-}
-
-.tree-#{$theme-name},
-.tree-#{$theme-name}-small,
-.tree-#{$theme-name}-large {
-  > .tree-container-ul .tree-loading > .tree-ocl {
-    background: url("#{$throbber-gif}") center center no-repeat;
-  }
-
-  .tree-disabled > .tree-icon,
-  .tree-checkbox-disabled {
-    opacity: 0.8;
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'tree-grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#tree-grayscale");
-    filter: gray;
-    -webkit-filter: grayscale(100%);
-  }
 }

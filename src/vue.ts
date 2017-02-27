@@ -55,7 +55,7 @@ class Node extends Vue {
         if (eventData) {
             this.$emit("toggle", eventData);
         } else {
-            if (this.data.children && this.data.children.length > 0) {
+            if (this.data.state.openable || this.data.children.length > 0) {
                 this.$emit("toggle", { data: this.data, path: this.path });
             }
         }

@@ -38,41 +38,46 @@ const rawData: Data[] = [
     {
         text: "loading node 2",
         value: { id: 2 },
-        children: [
-            {
-                text: "node 21",
-                value: { id: 21 },
-            },
-            {
-                text: "disabled node 22",
-                value: { id: 22 },
-                state: {
-                    disabled: true,
-                },
-            },
-            {
-                text: "no icon node 23",
-                value: { id: 23 },
-                icon: false,
-            },
-            {
-                text: "custom icon node 24",
-                value: { id: 24 },
-                icon: "my-custom-icon",
-            },
-            {
-                text: "file icon node 25",
-                value: { id: 25 },
-                icon: "tree-file",
-            },
-            {
-                text: "highlighted node 25",
-                value: { id: 26 },
-                state: {
-                    highlighted: true,
-                },
-            },
-        ],
+        state: {
+            openable: true,
+        },
+    },
+];
+
+const rawExtraData: Data[] = [
+    {
+        text: "node 21",
+        value: { id: 21 },
+    },
+    {
+        text: "disabled node 22",
+        value: { id: 22 },
+        state: {
+            disabled: true,
+        },
+    },
+    {
+        text: "no icon node 23",
+        value: { id: 23 },
+        icon: false,
+    },
+    {
+        text: "custom icon node 24",
+        value: { id: 24 },
+        icon: "my-custom-icon",
+    },
+    {
+        text: "file icon node 25",
+        value: { id: 25 },
+        icon: "tree-file",
+    },
+    {
+        text: "highlighted node 25",
+        value: { id: 26 },
+        state: {
+            highlighted: true,
+            openable: true,
+        },
     },
 ];
 
@@ -95,6 +100,9 @@ function standardize(treeData: Data) {
     if (treeData.state.highlighted === undefined) {
         treeData.state.highlighted = false;
     }
+    if (treeData.state.openable === undefined) {
+        treeData.state.openable = false;
+    }
     if (treeData.state.dropPosition === undefined) {
         treeData.state.dropPosition = DropPosition.empty;
     }
@@ -109,8 +117,11 @@ function standardize(treeData: Data) {
 for (const child of rawData) {
     standardize(child);
 }
+for (const child of rawExtraData) {
+    standardize(child);
+}
 
-export const data: TreeData[] = rawData as any;
+export const data = rawData as TreeData[];
 
 export function clearSelectionOfTree(tree: TreeData) {
     if (tree.state.selected) {
@@ -124,9 +135,10 @@ export function clearSelectionOfTree(tree: TreeData) {
 }
 
 export function toggle(eventData: EventData, next?: () => void) {
-    if (eventData.data.value.id === 2 && !eventData.data.state.opened) {
+    if (!eventData.data.state.opened && eventData.data.children.length === 0) {
         eventData.data.state.loading = true;
         setTimeout(() => {
+            eventData.data.children = JSON.parse(JSON.stringify(rawExtraData));
             eventData.data.state.loading = false;
             eventData.data.state.opened = !eventData.data.state.opened;
             if (next) {
@@ -159,11 +171,11 @@ export function setParentsSelection(tree: TreeData[], path: number[]) {
         if (parents.length === 0) {
             parents.unshift(tree[index]);
         } else {
-            parents.unshift(parents[0].children![index]);
+            parents.unshift(parents[0].children[index]);
         }
     }
     for (const parent of parents) {
-        parent.state.selected = parent.children!.every(child => child.state.selected);
+        parent.state.selected = parent.children.every(child => child.state.selected);
     }
 }
 
@@ -179,7 +191,7 @@ export function copy(dropData: DropData, treeData: TreeData[]) {
         const startIndex = dropData.targetPath[dropData.targetPath.length - 1] + (dropData.targetData.state.dropPosition === DropPosition.up ? 0 : 1);
         const parent = getNodeFromPath(treeData, dropData.targetPath.slice(0, dropData.targetPath.length - 1));
         if (parent && parent.children) {
-            parent.children!.splice(startIndex, 0, JSON.parse(JSON.stringify(dropData.sourceData)));
+            parent.children.splice(startIndex, 0, JSON.parse(JSON.stringify(dropData.sourceData)));
         } else {
             treeData.splice(startIndex, 0, JSON.parse(JSON.stringify(dropData.sourceData)));
         }
