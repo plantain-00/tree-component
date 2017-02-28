@@ -47,6 +47,15 @@
         <tree :data="data6"
             size="small"
             @toggle="toggle6(arguments[0])"></tree>
+        <hr/>
+        dark theme:
+        <tree :data="data7"
+            theme="dark"
+            :checkbox="true"
+            :draggable="true"
+            @toggle="toggle7(arguments[0])"
+            @change="change7(arguments[0])"
+            @drop="drop7(arguments[0])"></tree>
     </div>
     <script src="../<%=demoVueBundleJs %>" crossOrigin="anonymous" integrity="<%=sri.demoVueBundleJs %>"></script>
 </body>

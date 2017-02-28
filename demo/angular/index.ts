@@ -39,14 +39,23 @@ import * as common from "../../dist/common";
         (toggle)="ontoggle4($event)"></tree>
     <hr/>
     large:
-    <tree [data]="data4"
+    <tree [data]="data5"
         size="large"
         (toggle)="ontoggle5($event)"></tree>
     <hr/>
     small:
-    <tree [data]="data5"
+    <tree [data]="data6"
         size="small"
         (toggle)="ontoggle6($event)"></tree>
+    <hr/>
+    dark theme:
+    <tree [data]="data7"
+        theme="dark"
+        [checkbox]="true"
+        [draggable]="true"
+        (toggle)="ontoggle7($event)"
+        (change)="onchange7($event)"
+        (drop)="drop7($event)"></tree>
     `,
 })
 export class MainComponent {
@@ -57,6 +66,7 @@ export class MainComponent {
     data4 = JSON.parse(JSON.stringify(data));
     data5 = JSON.parse(JSON.stringify(data));
     data6 = JSON.parse(JSON.stringify(data));
+    data7 = JSON.parse(JSON.stringify(data));
     ontoggle(eventData: common.EventData) {
         toggle(eventData);
     }
@@ -90,6 +100,16 @@ export class MainComponent {
     }
     ontoggle6(eventData: common.EventData) {
         toggle(eventData);
+    }
+    ontoggle7(eventData: common.EventData) {
+        toggle(eventData);
+    }
+    onchange7(eventData: common.EventData) {
+        setSelectionOfTree(eventData.data, !eventData.data.state.selected);
+        setParentsSelection(this.data7, eventData.path);
+    }
+    drop7(dropData: common.DropData) {
+        copy(dropData, this.data7);
     }
 }
 

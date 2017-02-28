@@ -104,12 +104,12 @@ export function getCheckboxClassName(data: TreeData) {
     return values.join(" ");
 }
 
-export function getRootClassName(checkbox: boolean | undefined, size?: string) {
+export function getRootClassName(checkbox: boolean | undefined, size: string | undefined, theme: string = "default") {
     const values = ["tree"];
     if (size) {
-        values.push(`tree-default-${size}`);
+        values.push(`tree-${theme}-${size}`);
     } else {
-        values.push("tree-default");
+        values.push(`tree-${theme}`);
     }
     if (checkbox) {
         values.push("tree-checkbox-selection", "tree-checkbox-no-clicked");

@@ -12,6 +12,7 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
     data4 = JSON.parse(JSON.stringify(data));
     data5 = JSON.parse(JSON.stringify(data));
     data6 = JSON.parse(JSON.stringify(data));
+    data7 = JSON.parse(JSON.stringify(data));
 
     render() {
         return (
@@ -53,6 +54,16 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
                 <Tree data={this.data6}
                     size="small"
                     toggle={(eventData: common.EventData) => this.toggle6(eventData)}>
+                </Tree>
+                <hr />
+                dark theme:
+                <Tree data={this.data7}
+                    theme="dark"
+                    checkbox={true}
+                    draggable={true}
+                    toggle={(eventData: common.EventData) => this.toggle7(eventData)}
+                    change={(eventData: common.EventData) => this.change7(eventData)}
+                    drop={(dropData: common.DropData) => this.drop7(dropData)}>
                 </Tree>
             </div>
         );
@@ -106,6 +117,19 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
         toggle(eventData, () => {
             this.setState({ data: this.data6 });
         });
+    }
+    toggle7(eventData: common.EventData) {
+        toggle(eventData, () => {
+            this.setState({ data: this.data7 });
+        });
+    }
+    change7(eventData: common.EventData) {
+        setSelectionOfTree(eventData.data, !eventData.data.state.selected);
+        setParentsSelection(this.data7, eventData.path);
+        this.setState({ data: this.data7 });
+    }
+    drop7(dropData: common.DropData) {
+        copy(dropData, this.data7);
     }
 }
 

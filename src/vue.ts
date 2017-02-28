@@ -79,7 +79,7 @@ Vue.component("node", Node);
 
 @Component({
     template: require("raw-loader!./vue-tree.html"),
-    props: ["data", "checkbox", "draggable", "nodots", "size"],
+    props: ["data", "checkbox", "draggable", "nodots", "size", "theme"],
 })
 export class Tree extends Vue {
     data: common.TreeData[];
@@ -87,12 +87,13 @@ export class Tree extends Vue {
     draggable?: boolean;
     nodots?: boolean;
     size?: string;
+    theme?: string;
 
     dragTarget: HTMLElement | null = null;
     dropTarget: HTMLElement | null = null;
 
     get rootClassName() {
-        return common.getRootClassName(this.checkbox, this.size);
+        return common.getRootClassName(this.checkbox, this.size, this.theme);
     }
     get containerClassName() {
         return common.getContainerClassName(this.nodots);

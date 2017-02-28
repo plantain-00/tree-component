@@ -84,6 +84,7 @@ checkbox | boolean? | show checkbox for node
 draggable | boolean? | whether the node is draggable
 nodots | boolean ? | the tree will have no dots
 size | string? | can also be "large", "small"
+theme | string? | can be "default"(the default theme), "dark"
 toggle | (eventData: [EventData](#event-data-structure)) => void | triggered when opening or closing a node
 change | (eventData: [EventData](#event-data-structure)) => void | triggered when selecting or deselecting a node
 drop | (dropData: [DropData](#drop-data-structure)) => void | triggered when drag a node, then drop it
@@ -144,6 +145,7 @@ type DropData = {
 + drag and drop
 + no dots
 + large and small
++ default and dark theme
 
 #### changelogs
 
