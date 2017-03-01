@@ -206,7 +206,7 @@ export function ondragleave(target: HTMLElement, data: TreeData[]) {
 }
 
 export function ondrop(target: HTMLElement, dragTarget: HTMLElement | null, data: TreeData[], next: (dropData: DropData) => void) {
-    const sourcePath = dragTarget!.dataset["path"].split(",").map(s => +s);
+    const sourcePath = dragTarget!.dataset["path"]!.split(",").map(s => +s);
     const targetPathString = target.dataset["path"];
     if (targetPathString) {
         const targetPath = targetPathString.split(",").map(s => +s);
