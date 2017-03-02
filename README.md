@@ -11,7 +11,7 @@ A reactjs, angular2 and vuejs tree component.
 
 `npm i tree-component`
 
-#### link css from jstree
+#### link css
 
 ```html
 <link rel="stylesheet" href="./node_modules/tree-component/dist/tree.min.css" />
