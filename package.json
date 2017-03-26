@@ -1,7 +1,7 @@
 {
   "name": "tree-component",
   "version": "2.4.0",
-  "description": "A reactjs, angular2 and vuejs tree component.",
+  "description": "A reactjs, angular and vuejs tree component.",
   "main": "index.js",
   "scripts": {
     "build": "tsc -p src && tsc -p demo && sass src/tree.scss > dist/tree.css && cleancss -o dist/tree.min.css dist/tree.css && npm run minifier-template && webpack && npm run rev",

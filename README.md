@@ -5,7 +5,7 @@
 [![Downloads](https://img.shields.io/npm/dm/tree-component.svg)](https://www.npmjs.com/package/tree-component)
 
 # tree-component
-A reactjs, angular2 and vuejs tree component.
+A reactjs, angular and vuejs tree component.
 
 #### install
 
@@ -51,7 +51,7 @@ the online demo: https://plantain-00.github.io/tree-component/demo/react/index.h
 
 the source code of the demo: https://github.com/plantain-00/tree-component/tree/master/demo/react
 
-#### angular2 component demo
+#### angular component demo
 
 ```ts
 import { TreeComponent, NodeComponent } from "tree-component/dist/angular";
@@ -134,7 +134,7 @@ type DropData = {
 
 + vuejs component
 + reactjs component
-+ angular2 component
++ angular component
 + open and close
 + select and deselect
 + disabled
