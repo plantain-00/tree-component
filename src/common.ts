@@ -134,7 +134,7 @@ export const enum DropPosition {
     up,
     inside,
     down,
-};
+}
 
 export type DropData = {
     sourceData: TreeData;
