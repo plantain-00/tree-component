@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc -p src && tsc -p demo && sass src/tree.scss > dist/tree.css && cleancss -o dist/tree.min.css dist/tree.css && npm run minifier-template && webpack && npm run rev",
-    "lint": "tslint \"src/*.ts\" && stylelint \"src/*.scss\" --syntax scss",
+    "lint": "tslint \"src/*.ts\" \"src/*.tsx\" \"demo/**/*.ts\" \"demo/**/*.tsx\" && stylelint \"src/*.scss\" --syntax scss",
     "rev": "npm run clean-rev && rev-static",
     "clean-rev": "rm -f demo/react.bundle-*.js demo/vue.bundle-*.js demo/angular.bundle-*.js",
     "image": "image2base64-cli images/*.png images/*.gif --scss src/variables.scss",

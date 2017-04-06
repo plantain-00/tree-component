@@ -3,8 +3,7 @@ import "../../dist/vue";
 import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, copy } from "../common";
 import * as common from "../../dist/common";
 
-/* tslint:disable:no-unused-new */
-
+/* tslint:disable:no-unused-expression */
 new Vue({
     el: "#container",
     data() {
