@@ -4,11 +4,11 @@
   "description": "A reactjs, angular and vuejs tree component.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p src && tsc -p demo && sass src/tree.scss > dist/tree.css && cleancss -o dist/tree.min.css dist/tree.css && npm run minifier-template && webpack && npm run rev",
-    "lint": "tslint \"src/*.ts\" \"src/*.tsx\" \"demo/**/*.ts\" \"demo/**/*.tsx\" && stylelint \"src/*.scss\" --syntax scss",
+    "build": "tsc -p src && tsc -p demo && lessc src/tree.less > dist/tree.css && cleancss -o dist/tree.min.css dist/tree.css && npm run minifier-template && webpack && npm run rev",
+    "lint": "tslint \"src/*.ts\" \"src/*.tsx\" \"demo/**/*.ts\" \"demo/**/*.tsx\" && stylelint \"src/*.less\" --syntax less",
     "rev": "npm run clean-rev && rev-static",
-    "clean-rev": "rm -f demo/react.bundle-*.js demo/vue.bundle-*.js demo/angular.bundle-*.js",
-    "image": "image2base64-cli images/*.png images/*.gif --scss src/variables.scss",
+    "clean-rev": "rimraf demo/react.bundle-*.js demo/vue.bundle-*.js demo/angular.bundle-*.js",
+    "image": "image2base64-cli images/*.png images/*.gif --less src/variables.less",
     "minifier-template": "html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/vue-node.template.html -o dist/vue-node.html && html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/vue-tree.template.html -o dist/vue-tree.html && html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/angular-node.template.html -o dist/angular-node.html && html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/angular-tree.template.html -o dist/angular-tree.html"
   },
   "repository": {
@@ -35,10 +35,12 @@
     "core-js": "2.4.1",
     "html-minifier": "3.4.2",
     "image2base64-cli": "1.0.3",
+    "less": "2.7.2",
     "raw-loader": "0.5.1",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "rev-static": "2.1.2",
+    "rimraf": "2.6.1",
     "rxjs": "5.2.0",
     "stylelint": "7.9.0",
     "stylelint-config-standard": "16.0.0",

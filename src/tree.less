@@ -1,35 +1,35 @@
-@import "./variables.scss";
+@import "./variables.less";
 
-@mixin size ($height) {
-  $correction: (32px - $height) / 2;
+.size (@height) {
+  @correction: (32px - @height) / 2;
 
   .tree-node {
-    min-height: $height;
-    line-height: $height;
-    margin-left: $height;
-    min-width: $height;
+    min-height: @height;
+    line-height: @height;
+    margin-left: @height;
+    min-width: @height;
   }
 
   .tree-anchor {
-    line-height: $height;
-    height: $height;
+    line-height: @height;
+    height: @height;
   }
 
   .tree-icon {
-    width: $height;
-    height: $height;
-    line-height: $height;
+    width: @height;
+    height: @height;
+    line-height: @height;
   }
 
   .tree-icon:empty {
-    width: $height;
-    height: $height;
-    line-height: $height;
+    width: @height;
+    height: @height;
+    line-height: @height;
   }
 
   .tree-node,
   .tree-icon {
-    background-position: #{-$correction} #{-$correction};
+    background-position: -@correction -@correction;
     background-repeat: repeat-y;
   }
 
@@ -38,20 +38,20 @@
   }
 
   .tree-open > .tree-ocl {
-    background-position: #{-$correction} #{-$correction};
+    background-position: -@correction -@correction;
   }
 
   .tree-closed > .tree-ocl {
-    background-position: #{-$correction} #{-$correction};
+    background-position: -@correction -@correction;
   }
 
   .tree-leaf > .tree-ocl {
-    background-position: #{-$correction} #{-$correction};
+    background-position: -@correction -@correction;
   }
 
   .tree-themeicon,
   .tree-folder {
-    background-position: #{-$correction} #{-$correction};
+    background-position: -@correction -@correction;
   }
 
   > .tree-no-dots {
@@ -61,11 +61,11 @@
     }
 
     .tree-open > .tree-ocl {
-      background-position: #{-$correction} #{-$correction};
+      background-position: -@correction -@correction;
     }
 
     .tree-closed > .tree-ocl {
-      background-position: #{-$correction} #{-$correction};
+      background-position: -@correction -@correction;
     }
   }
 
@@ -82,30 +82,30 @@
   }
 
   .tree-checkbox {
-    background-position: #{-$correction} #{-$correction};
+    background-position: -@correction -@correction;
 
     &:hover {
-      background-position: #{-$correction} #{-$correction};
+      background-position: -@correction -@correction;
     }
   }
 
   &.tree-checkbox-selection .tree-clicked,
   .tree-checked {
     > .tree-checkbox {
-      background-position: #{-$correction} #{-$correction};
+      background-position: -@correction -@correction;
 
       &:hover {
-        background-position: #{-$correction} #{-$correction};
+        background-position: -@correction -@correction;
       }
     }
   }
 
   .tree-anchor {
     > .tree-undetermined {
-      background-position: #{-$correction} #{-$correction};
+      background-position: -@correction -@correction;
 
       &:hover {
-        background-position: #{-$correction} #{-$correction};
+        background-position: -@correction -@correction;
       }
     }
   }
@@ -116,7 +116,7 @@
   }
 
   .tree-file {
-    background-position: #{-$correction} #{-$correction};
+    background-position: -@correction -@correction;
   }
 
   > .tree-container-ul > .tree-node {
@@ -129,11 +129,11 @@
   }
 
   .tree-marker-2 {
-    top: $height / 2;
+    top: @height / 2;
   }
 
   .tree-marker-3 {
-    top: $height;
+    top: @height;
   }
 }
 
@@ -142,71 +142,71 @@
 .tree-default-small {
   .tree-node,
   .tree-icon {
-    background-image: url("#{$default-node-png}");
+    background-image: url("@{default-node-png}");
   }
 
   .tree-open > .tree-ocl {
-    background-image: url("#{$default-open-png}");
+    background-image: url("@{default-open-png}");
   }
 
   .tree-closed > .tree-ocl {
-    background-image: url("#{$default-closed-png}");
+    background-image: url("@{default-closed-png}");
   }
 
   .tree-leaf > .tree-ocl {
-    background-image: url("#{$default-leaf-png}");
+    background-image: url("@{default-leaf-png}");
   }
 
   .tree-themeicon,
   .tree-folder {
-    background-image: url("#{$default-folder-png}");
+    background-image: url("@{default-folder-png}");
   }
 
   > .tree-no-dots {
     .tree-open > .tree-ocl {
-      background-image: url("#{$default-open-no-dot-png}");
+      background-image: url("@{default-open-no-dot-png}");
     }
 
     .tree-closed > .tree-ocl {
-      background-image: url("#{$default-closed-no-dot-png}");
+      background-image: url("@{default-closed-no-dot-png}");
     }
   }
 
   .tree-checkbox {
-    background-image: url("#{$default-unchecked-png}");
+    background-image: url("@{default-unchecked-png}");
 
     &:hover {
-      background-image: url("#{$default-unchecked-hover-png}");
+      background-image: url("@{default-unchecked-hover-png}");
     }
   }
 
   &.tree-checkbox-selection .tree-clicked,
   .tree-checked {
     > .tree-checkbox {
-      background-image: url("#{$default-checked-png}");
+      background-image: url("@{default-checked-png}");
 
       &:hover {
-        background-image: url("#{$default-checked-hover-png}");
+        background-image: url("@{default-checked-hover-png}");
       }
     }
   }
 
   .tree-anchor {
     > .tree-undetermined {
-      background-image: url("#{$default-undetermined-png}");
+      background-image: url("@{default-undetermined-png}");
 
       &:hover {
-        background-image: url("#{$default-undetermined-hover-png}");
+        background-image: url("@{default-undetermined-hover-png}");
       }
     }
   }
 
   .tree-file {
-    background-image: url("#{$default-file-png}");
+    background-image: url("@{default-file-png}");
   }
 
   > .tree-container-ul .tree-loading > .tree-ocl {
-    background: url("#{$default-loading-gif}") center center no-repeat;
+    background: url("@{default-loading-gif}") center center no-repeat;
   }
 }
 
@@ -215,64 +215,64 @@
 .tree-dark-small {
   .tree-node,
   .tree-icon {
-    background-image: url("#{$dark-node-png}");
+    background-image: url("@{dark-node-png}");
   }
 
   .tree-open > .tree-ocl {
-    background-image: url("#{$dark-open-png}");
+    background-image: url("@{dark-open-png}");
   }
 
   .tree-closed > .tree-ocl {
-    background-image: url("#{$dark-closed-png}");
+    background-image: url("@{dark-closed-png}");
   }
 
   .tree-leaf > .tree-ocl {
-    background-image: url("#{$dark-leaf-png}");
+    background-image: url("@{dark-leaf-png}");
   }
 
   .tree-themeicon,
   .tree-folder {
-    background-image: url("#{$dark-folder-png}");
+    background-image: url("@{dark-folder-png}");
   }
 
   > .tree-no-dots {
     .tree-open > .tree-ocl {
-      background-image: url("#{$dark-open-no-dot-png}");
+      background-image: url("@{dark-open-no-dot-png}");
     }
 
     .tree-closed > .tree-ocl {
-      background-image: url("#{$dark-closed-no-dot-png}");
+      background-image: url("@{dark-closed-no-dot-png}");
     }
   }
 
   .tree-checkbox {
-    background-image: url("#{$dark-unchecked-png}");
+    background-image: url("@{dark-unchecked-png}");
   }
 
   &.tree-checkbox-selection .tree-clicked,
   .tree-checked {
     > .tree-checkbox {
-      background-image: url("#{$default-checked-png}");
+      background-image: url("@{default-checked-png}");
     }
   }
 
   .tree-anchor {
     > .tree-undetermined {
-      background-image: url("#{$dark-undetermined-png}");
+      background-image: url("@{dark-undetermined-png}");
     }
   }
 
   .tree-file {
-    background-image: url("#{$dark-file-png}");
+    background-image: url("@{dark-file-png}");
   }
 
   > .tree-container-ul .tree-loading > .tree-ocl {
-    background: url("#{$dark-loading-gif}") center center no-repeat;
+    background: url("@{dark-loading-gif}") center center no-repeat;
   }
 }
 
-@mixin theme ($name, $hovered-bg-color, $hovered-shadow-color, $disabled-bg-color, $clicked-bg-color, $clicked-shadow-color, $search-result-color) {
-  .tree-#{$name} {
+.theme (@name, @hovered-bg-color, @hovered-shadow-color, @disabled-bg-color, @clicked-bg-color, @clicked-shadow-color, @search-result-color) {
+  .tree-@{name} {
     .tree-node,
     .tree-icon {
       background-repeat: no-repeat;
@@ -280,15 +280,15 @@
     }
 
     .tree-hovered {
-      background: $hovered-bg-color;
+      background: @hovered-bg-color;
       border-radius: 2px;
-      box-shadow: inset 0 0 1px $hovered-shadow-color;
+      box-shadow: inset 0 0 1px @hovered-shadow-color;
     }
 
     .tree-clicked {
-      background: $clicked-bg-color;
+      background: @clicked-bg-color;
       border-radius: 2px;
-      box-shadow: inset 0 0 1px $clicked-shadow-color;
+      box-shadow: inset 0 0 1px @clicked-shadow-color;
     }
 
     .tree-no-icons .tree-anchor > .tree-themeicon {
@@ -305,13 +305,13 @@
       }
 
       &.tree-clicked {
-        background: $disabled-bg-color;
+        background: @disabled-bg-color;
       }
     }
 
     .tree-search {
       font-style: italic;
-      color: $search-result-color;
+      color: @search-result-color;
       font-weight: bold;
     }
 
@@ -325,27 +325,27 @@
         box-shadow: none;
 
         &.tree-hovered {
-          background: $hovered-bg-color;
+          background: @hovered-bg-color;
         }
       }
     }
   }
 
-  .tree-#{$name} {
-    @include size(24px);
+  .tree-@{name} {
+    .size(24px);
   }
 
-  .tree-#{$name}-small {
-    @include size(18px);
+  .tree-@{name}-small {
+    .size(18px);
   }
 
-  .tree-#{$name}-large {
-    @include size(32px);
+  .tree-@{name}-large {
+    .size(32px);
   }
 
-  .tree-#{$name},
-  .tree-#{$name}-small,
-  .tree-#{$name}-large {
+  .tree-@{name},
+  .tree-@{name}-small,
+  .tree-@{name}-large {
     .tree-disabled > .tree-icon,
     .tree-checkbox-disabled {
       opacity: 0.8;
@@ -356,8 +356,8 @@
   }
 }
 
-@include theme(default, #e7f4f9, #ccc, #efefef, #beebff, #999, #8b0000);
-@include theme(dark, #555, #555, #333, #5fa2db, #666, #fff);
+.theme(default, #e7f4f9, #ccc, #efefef, #beebff, #999, #8b0000);
+.theme(dark, #555, #555, #333, #5fa2db, #666, #fff);
 
 .tree-node,
 .tree-children,

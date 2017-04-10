@@ -4,8 +4,6 @@ node_js:
 before_install:
   - sudo apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
 before_script:
-  - gem install sass
-  - npm i -g stylelint
   - npm i
 script:
   - npm run build
