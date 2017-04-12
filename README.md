@@ -19,6 +19,8 @@ A reactjs, angular and vuejs tree component.
 
 #### vuejs component demo
 
+`npm i vue vue-class-component`
+
 ```ts
 import "tree-component/dist/vue";
 ```
