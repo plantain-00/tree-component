@@ -17,6 +17,10 @@ A reactjs, angular and vuejs tree component.
 <link rel="stylesheet" href="./node_modules/tree-component/dist/tree.min.css" />
 ```
 
+#### module bundler
+
+This component should work with webpack, and it requires npm install raw-loader --save-dev to load templates.
+
 #### vuejs component demo
 
 `npm i vue vue-class-component`
