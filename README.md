@@ -19,7 +19,7 @@ A reactjs, angular and vuejs tree component.
 
 #### module bundler
 
-This component should work with webpack, and it requires npm install raw-loader --save-dev to load templates.
+This component should work with webpack, and it requires `npm install raw-loader --save-dev` to load templates.
 
 #### vuejs component demo
 
