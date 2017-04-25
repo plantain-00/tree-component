@@ -1,9 +1,10 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 import * as common from "./common";
+import { srcAngularNodeHtml, srcAngularTreeHtml } from "./angular-variables";
 
 @Component({
     selector: "node",
-    template: require("raw-loader!./angular-node.html"),
+    template: srcAngularNodeHtml,
 })
 export class NodeComponent {
     @Input()
@@ -86,7 +87,7 @@ export class NodeComponent {
 
 @Component({
     selector: "tree",
-    template: require("raw-loader!./angular-tree.html"),
+    template: srcAngularTreeHtml,
 })
 export class TreeComponent {
     @Input()

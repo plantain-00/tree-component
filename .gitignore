@@ -41,3 +41,7 @@ dist
 demo/**/*.js
 demo/**/index.html
 *.scssc
+src/angular-node.html
+src/angular-tree.html
+src/vue-node.html
+src/vue-tree.html
