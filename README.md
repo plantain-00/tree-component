@@ -137,6 +137,7 @@ type DropData = {
 + vuejs component
 + reactjs component
 + angular component
++ commonjs module
 + open and close
 + select and deselect
 + disabled
