@@ -4,9 +4,9 @@
   "description": "A reactjs, angular and vuejs tree component.",
   "main": "index.js",
   "scripts": {
-    "build": "npm run minifier-template && npm run file2variable && tsc -p src && tsc -p demo && lessc src/tree.less > dist/tree.css && cleancss -o dist/tree.min.css dist/tree.css && webpack && npm run rev",
+    "build": "npm run minifier-template && npm run file2variable && tsc -p src && tsc -p demo && lessc src/tree.less > dist/tree.css && cleancss -o dist/tree.min.css dist/tree.css && webpack --config demo/webpack.config.js && npm run rev",
     "lint": "tslint \"src/*.ts\" \"src/*.tsx\" \"demo/**/*.ts\" \"demo/**/*.tsx\" && stylelint \"src/*.less\" --syntax less",
-    "rev": "npm run clean-rev && rev-static",
+    "rev": "npm run clean-rev && rev-static --config demo/rev-static.config.js",
     "clean-rev": "rimraf demo/react.bundle-*.js demo/vue.bundle-*.js demo/angular.bundle-*.js",
     "image": "image2base64-cli images/*.png images/*.gif --less src/variables.less",
     "minifier-template": "html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/vue-node.template.html -o src/vue-node.html && html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/vue-tree.template.html -o src/vue-tree.html && html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/angular-node.template.html -o src/angular-node.html && html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/angular-tree.template.html -o src/angular-tree.html",
