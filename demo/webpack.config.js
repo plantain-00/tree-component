@@ -8,7 +8,7 @@ module.exports = {
         angular: "./demo/angular/index"
     },
     output: {
-        path: path.join(__dirname, "demo"),
+        path: __dirname,
         filename: "[name].bundle.js"
     },
     plugins: [
