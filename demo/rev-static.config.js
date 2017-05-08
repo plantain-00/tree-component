@@ -5,7 +5,8 @@ module.exports = {
         "demo/react.bundle.js",
         "demo/react/index.ejs.html",
         "demo/angular.bundle.js",
-        "demo/angular/index.ejs.html"
+        "demo/angular/index.ejs.html",
+        "demo/tree-icon.png",
     ],
     outputFiles: file => file.replace(".ejs", ""),
     json: false,
