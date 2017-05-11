@@ -1,6 +1,6 @@
 import * as Vue from "vue";
 import "../../dist/vue";
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, copy } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move } from "../common";
 import * as common from "../../dist/common";
 
 /* tslint:disable:no-unused-expression */
@@ -42,7 +42,7 @@ new Vue({
             toggle(eventData);
         },
         drop3(this: This, dropData: common.DropData) {
-            copy(dropData, this.data3);
+            move(dropData, this.data3);
         },
         toggle4(eventData: common.EventData) {
             toggle(eventData);
@@ -61,7 +61,7 @@ new Vue({
             setParentsSelection(this.data7, eventData.path);
         },
         drop7(this: This, dropData: common.DropData) {
-            copy(dropData, this.data7);
+            move(dropData, this.data7);
         },
     },
 });

@@ -189,13 +189,53 @@ export function copy(dropData: DropData, treeData: TreeData[]) {
         dropData.targetData.state.opened = true;
     } else {
         const startIndex = dropData.targetPath[dropData.targetPath.length - 1] + (dropData.targetData.state.dropPosition === DropPosition.up ? 0 : 1);
-        const parent = getNodeFromPath(treeData, dropData.targetPath.slice(0, dropData.targetPath.length - 1));
-        if (parent && parent.children) {
-            parent.children.splice(startIndex, 0, JSON.parse(JSON.stringify(dropData.sourceData)));
-        } else {
-            treeData.splice(startIndex, 0, JSON.parse(JSON.stringify(dropData.sourceData)));
+        const targetParent = getNodeFromPath(treeData, dropData.targetPath.slice(0, dropData.targetPath.length - 1));
+        const targetChildren = targetParent && targetParent.children ? targetParent.children : treeData;
+        targetChildren.splice(startIndex, 0, JSON.parse(JSON.stringify(dropData.sourceData)));
+    }
+}
+
+function targetIsOrIsChildrenOfSource(dropData: DropData) {
+    if (dropData.targetPath.length < dropData.sourcePath.length) {
+        return false;
+    }
+    for (let i = 0; i < dropData.sourcePath.length; i++) {
+        if (dropData.targetPath[i] !== dropData.sourcePath[i]) {
+            return false;
         }
     }
+    return true;
+}
+
+export function move(dropData: DropData, treeData: TreeData[]) {
+    if (targetIsOrIsChildrenOfSource(dropData)) {
+        alert("can not move to itself or its children");
+        return;
+    }
+
+    const sourceParent = getNodeFromPath(treeData, dropData.sourcePath.slice(0, dropData.sourcePath.length - 1));
+    const sourceChildren = sourceParent && sourceParent.children ? sourceParent.children : treeData;
+    let sourceIndex = dropData.sourcePath[dropData.sourcePath.length - 1];
+
+    if (dropData.targetData.state.dropPosition === DropPosition.inside) {
+        if (dropData.targetData.children) {
+            dropData.targetData.children.push(dropData.sourceData);
+        } else {
+            dropData.targetData.children = [dropData.sourceData];
+        }
+        dropData.targetData.state.opened = true;
+    } else {
+        const startIndex = dropData.targetPath[dropData.targetPath.length - 1] + (dropData.targetData.state.dropPosition === DropPosition.up ? 0 : 1);
+        const targetParent = getNodeFromPath(treeData, dropData.targetPath.slice(0, dropData.targetPath.length - 1));
+        const targetChildren = targetParent && targetParent.children ? targetParent.children : treeData;
+        targetChildren.splice(startIndex, 0, dropData.sourceData);
+
+        if (targetChildren === sourceChildren && startIndex < sourceIndex) {
+            sourceIndex++;
+        }
+    }
+
+    sourceChildren.splice(sourceIndex, 1);
 }
 
 type Data = {

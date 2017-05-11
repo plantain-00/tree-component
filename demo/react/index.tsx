@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Tree } from "../../dist/react";
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, copy } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move } from "../common";
 import * as common from "../../dist/common";
 
 class Main extends React.Component<{}, { data: common.TreeData[], selectedId: number | null, data2: common.TreeData[] }> {
@@ -101,7 +101,7 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
         });
     }
     drop3(dropData: common.DropData) {
-        copy(dropData, this.data3);
+        move(dropData, this.data3);
     }
     toggle4(eventData: common.EventData) {
         toggle(eventData, () => {
@@ -129,7 +129,7 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
         this.setState({ data: this.data7 });
     }
     drop7(dropData: common.DropData) {
-        copy(dropData, this.data7);
+        move(dropData, this.data7);
     }
 }
 

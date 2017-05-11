@@ -9,7 +9,7 @@ enableProdMode();
 
 import { Component } from "@angular/core";
 
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, copy } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move } from "../common";
 import * as common from "../../dist/common";
 
 @Component({
@@ -90,7 +90,7 @@ export class MainComponent {
         toggle(eventData);
     }
     drop3(dropData: common.DropData) {
-        copy(dropData, this.data3);
+        move(dropData, this.data3);
     }
     ontoggle4(eventData: common.EventData) {
         toggle(eventData);
@@ -109,7 +109,7 @@ export class MainComponent {
         setParentsSelection(this.data7, eventData.path);
     }
     drop7(dropData: common.DropData) {
-        copy(dropData, this.data7);
+        move(dropData, this.data7);
     }
 }
 
