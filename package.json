@@ -4,13 +4,12 @@
   "description": "A reactjs, angular and vuejs tree component.",
   "main": "index.js",
   "scripts": {
-    "build": "npm run minifier-template && npm run file2variable && npm run clean && tsc -p src && tsc -p demo && lessc src/tree.less > dist/tree.css && cleancss -o dist/tree.min.css dist/tree.css && webpack --config demo/webpack.config.js && npm run rev",
+    "build": "npm run file2variable && npm run clean && tsc -p src && tsc -p demo && lessc src/tree.less > dist/tree.css && cleancss -o dist/tree.min.css dist/tree.css && webpack --config demo/webpack.config.js && npm run rev",
     "lint": "tslint \"src/*.ts\" \"src/*.tsx\" \"demo/**/*.ts\" \"demo/**/*.tsx\" && stylelint \"src/*.less\" --syntax less",
     "rev": "npm run clean-rev && rev-static --config demo/rev-static.config.js",
     "clean-rev": "rimraf demo/react.bundle-*.js demo/vue.bundle-*.js demo/angular.bundle-*.js",
     "image": "image2base64-cli images/*.png images/*.gif --less src/variables.less",
-    "minifier-template": "html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/vue-node.template.html -o src/vue-node.html && html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/vue-tree.template.html -o src/vue-tree.html && html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/angular-node.template.html -o src/angular-node.html && html-minifier --collapse-whitespace --case-sensitive --collapse-inline-tag-whitespace src/angular-tree.template.html -o src/angular-tree.html",
-    "file2variable": "file2variable-cli src/angular-node.html src/angular-tree.html -o src/angular-variables.ts && file2variable-cli src/vue-node.html src/vue-tree.html -o src/vue-variables.ts",
+    "file2variable": "file2variable-cli src/angular-node.template.html src/angular-tree.template.html -o src/angular-variables.ts --html-minify && file2variable-cli src/vue-node.template.html src/vue-tree.template.html -o src/vue-variables.ts --html-minify",
     "clean": "rimraf dist"
   },
   "repository": {
@@ -35,8 +34,7 @@
     "@types/react-dom": "15.5.0",
     "clean-css-cli": "4.0.12",
     "core-js": "2.4.1",
-    "file2variable-cli": "1.0.0",
-    "html-minifier": "3.4.3",
+    "file2variable-cli": "1.1.0",
     "image2base64-cli": "1.0.3",
     "less": "2.7.2",
     "react": "15.5.4",
