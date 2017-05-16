@@ -38,8 +38,6 @@ the source code of the demo: https://github.com/plantain-00/tree-component/tree/
 
 #### reactjs component demo
 
-For typescript users, install `@types/react` and `@types/react-dom` if they are not installed yet.
-
 ```ts
 import { Tree } from "tree-component/dist/react";
 ```
