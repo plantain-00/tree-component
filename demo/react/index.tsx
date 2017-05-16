@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Tree } from "../../dist/react";
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove } from "../common";
 import * as common from "../../dist/common";
 
 class Main extends React.Component<{}, { data: common.TreeData[], selectedId: number | null, data2: common.TreeData[] }> {
@@ -13,6 +13,7 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
     data5 = JSON.parse(JSON.stringify(data));
     data6 = JSON.parse(JSON.stringify(data));
     data7 = JSON.parse(JSON.stringify(data));
+    dropAllowed = canMove;
 
     render() {
         return (
@@ -34,6 +35,7 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
                 draggable:
                 <Tree data={this.data3}
                     draggable={true}
+                    dropAllowed={this.dropAllowed}
                     toggle={(eventData: common.EventData) => this.toggle3(eventData)}
                     drop={(dropData: common.DropData) => this.drop3(dropData)}>
                 </Tree>

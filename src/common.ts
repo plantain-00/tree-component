@@ -14,6 +14,7 @@ export type TreeNodeState = {
     highlighted: boolean;
     openable: boolean;
     dropPosition: DropPosition;
+    dropAllowed: boolean;
 };
 
 export type EventData = {
@@ -126,7 +127,13 @@ export function getIconClassName(icon: string | false | undefined) {
 }
 
 export function getMarkerClassName(data: TreeData) {
-    return `tree-marker-${data.state.dropPosition}`;
+    const values = [`tree-marker-${data.state.dropPosition}`];
+    if (data.state.dropAllowed) {
+        values.push("allowed");
+    } else {
+        values.push("not-allowed");
+    }
+    return values.join(" ");
 }
 
 export const enum DropPosition {
@@ -177,15 +184,24 @@ export function clearDropPositionOfTree(tree: TreeData) {
     }
 }
 
-export function ondrag(pageY: number, dropTarget: HTMLElement | null, data: TreeData[], next?: () => void) {
+export function ondrag(pageY: number, dragTarget: HTMLElement | null, dropTarget: HTMLElement | null, data: TreeData[], dropAllowed?: (dropData: DropData) => boolean, next?: () => void) {
     if (dropTarget) {
-        const pathString = dropTarget.dataset["path"];
-        if (pathString) {
-            const path = pathString.split(",").map(s => +s);
-            const node = getNodeFromPath(data, path);
+        const sourcePath = dragTarget!.dataset["path"]!.split(",").map(s => +s);
+        const dropTargetPathString = dropTarget.dataset["path"];
+        if (dropTargetPathString) {
+            const targetPath = dropTargetPathString.split(",").map(s => +s);
+            const targetData = getNodeFromPath(data, targetPath)!;
+            const sourceData = getNodeFromPath(data, sourcePath)!;
             const position = getDropPosition(pageY, dropTarget.offsetTop, dropTarget.offsetHeight);
-            if (node!.state.dropPosition !== position) {
-                node!.state.dropPosition = position;
+            if (targetData.state.dropPosition !== position) {
+                targetData.state.dropPosition = position;
+                const dropData: DropData = {
+                    sourcePath,
+                    targetPath,
+                    sourceData,
+                    targetData,
+                };
+                targetData.state.dropAllowed = dropAllowed ? dropAllowed(dropData) : true;
                 if (next) {
                     next();
                 }
@@ -210,12 +226,13 @@ export function ondrop(target: HTMLElement, dragTarget: HTMLElement | null, data
     const targetPathString = target.dataset["path"];
     if (targetPathString) {
         const targetPath = targetPathString.split(",").map(s => +s);
-        const targetData = getNodeFromPath(data, targetPath) !;
+        const targetData = getNodeFromPath(data, targetPath)!;
+        const sourceData = getNodeFromPath(data, sourcePath)!;
         if (targetData.state.dropPosition !== DropPosition.empty) {
             const dropData: DropData = {
                 sourcePath,
                 targetPath,
-                sourceData: getNodeFromPath(data, sourcePath) !,
+                sourceData,
                 targetData,
             };
             next(dropData);

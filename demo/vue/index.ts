@@ -1,6 +1,6 @@
 import * as Vue from "vue";
 import "../../dist/vue";
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove } from "../common";
 import * as common from "../../dist/common";
 
 /* tslint:disable:no-unused-expression */
@@ -16,6 +16,7 @@ new Vue({
             data5: JSON.parse(JSON.stringify(data)),
             data6: JSON.parse(JSON.stringify(data)),
             data7: JSON.parse(JSON.stringify(data)),
+            dropAllowed: canMove,
         };
     },
     methods: {

@@ -125,6 +125,7 @@ export class Tree extends React.PureComponent<{
     nodots?: boolean;
     size?: string;
     theme?: string;
+    dropAllowed?: (dropData: common.DropData) => boolean;
     toggle?: (eventData?: common.EventData) => void;
     change?: (eventData?: common.EventData) => void;
     drop?: (dropData: common.DropData) => void;
@@ -183,7 +184,7 @@ export class Tree extends React.PureComponent<{
         if (!this.props.draggable) {
             return;
         }
-        common.ondrag(event.pageY, this.dropTarget, this.props.data, () => this.forceUpdate());
+        common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.props.data, this.props.dropAllowed, () => this.forceUpdate());
     }
     ondragstart(event: React.DragEvent<HTMLElement>) {
         if (!this.props.draggable) {

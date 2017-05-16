@@ -80,7 +80,7 @@ Vue.component("node", Node);
 
 @Component({
     template: srcVueTreeTemplateHtml,
-    props: ["data", "checkbox", "draggable", "nodots", "size", "theme"],
+    props: ["data", "checkbox", "draggable", "nodots", "size", "theme", "dropAllowed"],
 })
 export class Tree extends Vue {
     data: common.TreeData[];
@@ -89,6 +89,7 @@ export class Tree extends Vue {
     nodots?: boolean;
     size?: string;
     theme?: string;
+    dropAllowed?: (dropData: common.DropData) => boolean;
 
     dragTarget: HTMLElement | null = null;
     dropTarget: HTMLElement | null = null;
@@ -113,7 +114,7 @@ export class Tree extends Vue {
         if (!this.draggable) {
             return;
         }
-        common.ondrag(event.pageY, this.dropTarget, this.data);
+        common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed);
     }
     ondragstart(event: DragEvent) {
         if (!this.draggable) {

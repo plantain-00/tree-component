@@ -87,6 +87,7 @@ draggable | boolean? | whether the node is draggable
 nodots | boolean? | the tree will have no dots
 size | string? | can also be "large", "small"
 theme | string? | can be "default"(the default theme), "dark"
+dropAllowed | (dropData: common.DropData) => boolean | optional, a function to show whether the drop action is allowed
 toggle | (eventData: [EventData](#event-data-structure)) => void | triggered when opening or closing a node
 change | (eventData: [EventData](#event-data-structure)) => void | triggered when selecting or deselecting a node
 drop | (dropData: [DropData](#drop-data-structure)) => void | triggered when drag a node, then drop it
@@ -109,7 +110,16 @@ type TreeNodeState = {
     loading: boolean; // show the loading icon, usually used when loading child nodes
     highlighted: boolean;
     openable: boolean; // can open or close even no children
+    dropPosition: DropPosition;
+    dropAllowed: boolean; // whether the drop action is allowed
 };
+
+enum DropPosition {
+    empty,
+    up,
+    inside,
+    down,
+}
 ```
 
 #### event data structure

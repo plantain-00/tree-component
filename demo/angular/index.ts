@@ -9,7 +9,7 @@ enableProdMode();
 
 import { Component } from "@angular/core";
 
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove } from "../common";
 import * as common from "../../dist/common";
 
 @Component({
@@ -30,6 +30,7 @@ import * as common from "../../dist/common";
     draggable:
     <tree [data]="data3"
         [draggable]="true"
+        [dropAllowed]="dropAllowed"
         (toggle)="ontoggle3($event)"
         (drop)="drop3($event)"></tree>
     <hr/>
@@ -67,6 +68,7 @@ export class MainComponent {
     data5 = JSON.parse(JSON.stringify(data));
     data6 = JSON.parse(JSON.stringify(data));
     data7 = JSON.parse(JSON.stringify(data));
+    dropAllowed = canMove;
     ontoggle(eventData: common.EventData) {
         toggle(eventData);
     }

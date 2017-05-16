@@ -102,6 +102,8 @@ export class TreeComponent {
     size?: string;
     @Input()
     theme?: string;
+    @Input()
+    dropAllowed?: (dropData: common.DropData) => boolean;
 
     @Output()
     toggle = new EventEmitter<common.EventData>();
@@ -133,7 +135,7 @@ export class TreeComponent {
         if (!this.draggable) {
             return;
         }
-        common.ondrag(event.pageY, this.dropTarget, this.data);
+        common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed);
     }
     ondragstart(event: DragEvent) {
         if (!this.draggable) {

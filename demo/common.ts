@@ -106,6 +106,9 @@ function standardize(treeData: Data) {
     if (treeData.state.dropPosition === undefined) {
         treeData.state.dropPosition = DropPosition.empty;
     }
+    if (treeData.state.dropAllowed === undefined) {
+        treeData.state.dropAllowed = true;
+    }
     if (treeData.children === undefined) {
         treeData.children = [];
     }
@@ -195,21 +198,20 @@ export function copy(dropData: DropData, treeData: TreeData[]) {
     }
 }
 
-function targetIsOrIsChildrenOfSource(dropData: DropData) {
+export function canMove(dropData: DropData) {
     if (dropData.targetPath.length < dropData.sourcePath.length) {
-        return false;
+        return true;
     }
     for (let i = 0; i < dropData.sourcePath.length; i++) {
         if (dropData.targetPath[i] !== dropData.sourcePath[i]) {
-            return false;
+            return true;
         }
     }
-    return true;
+    return dropData.targetData.state.dropPosition !== DropPosition.inside && dropData.targetPath.length === dropData.sourcePath.length;
 }
 
 export function move(dropData: DropData, treeData: TreeData[]) {
-    if (targetIsOrIsChildrenOfSource(dropData)) {
-        alert("can not move to itself or its children");
+    if (!canMove(dropData)) {
         return;
     }
 

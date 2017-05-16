@@ -30,6 +30,7 @@
         draggable:
         <tree :data="data3"
             :draggable="true"
+            :drop-allowed="dropAllowed"
             @toggle="toggle3(arguments[0])"
             @drop="drop3(arguments[0])"></tree>
         <hr/>
