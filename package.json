@@ -1,6 +1,6 @@
 {
   "name": "tree-component",
-  "version": "2.6.2",
+  "version": "2.6.3",
   "description": "A reactjs, angular and vuejs tree component.",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,6 @@
     "@angular/forms": "4.1.0",
     "@angular/platform-browser": "4.1.0",
     "@angular/platform-browser-dynamic": "4.1.0",
-    "@types/node": "7.0.14",
     "@types/react": "15.0.23",
     "@types/react-dom": "15.5.0",
     "clean-css-cli": "4.0.12",
@@ -52,6 +51,7 @@
     "zone.js": "0.8.9"
   },
   "dependencies": {
-    "tslib": "1"
+    "tslib": "1",
+    "@types/node": "*"
   }
 }

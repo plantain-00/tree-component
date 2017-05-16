@@ -11,8 +11,6 @@ A reactjs, angular and vuejs tree component.
 
 `npm i tree-component`
 
-For typescript users, install `@types/node` if it is not installed yet.
-
 #### link css
 
 ```html
