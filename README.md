@@ -11,6 +11,8 @@ A reactjs, angular and vuejs tree component.
 
 `npm i tree-component`
 
+For typescript users, install `@types/node` if it is not installed yet.
+
 #### link css
 
 ```html
@@ -37,6 +39,8 @@ the online demo: https://plantain-00.github.io/tree-component/demo/vue/index.htm
 the source code of the demo: https://github.com/plantain-00/tree-component/tree/master/demo/vue
 
 #### reactjs component demo
+
+For typescript users, install `@types/react` and `@types/react-dom` if they not installed yet.
 
 ```ts
 import { Tree } from "tree-component/dist/react";
