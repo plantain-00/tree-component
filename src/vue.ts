@@ -5,7 +5,7 @@ import { srcVueNodeTemplateHtml, srcVueTreeTemplateHtml } from "./vue-variables"
 
 @Component({
     template: srcVueNodeTemplateHtml,
-    props: ["data", "last", "checkbox", "path", "draggable"],
+    props: ["data", "last", "checkbox", "path", "draggable", "root"],
 })
 class Node extends Vue {
     data: common.TreeData;
@@ -13,9 +13,16 @@ class Node extends Vue {
     checkbox?: boolean;
     path: number[];
     draggable?: boolean;
+    root: common.TreeData[];
 
     hovered = false;
     doubleClick = new common.DoubleClick();
+    contextmenuVisible = false;
+    contextmenuStyle = {
+        position: "absolute",
+        left: "0px",
+        top: "0px",
+    };
 
     get nodeClassName() {
         return common.getNodeClassName(this.data, this.last);
@@ -45,19 +52,36 @@ class Node extends Vue {
         return common.getMarkerClassName(this.data);
     }
 
+    get eventData(): common.EventData {
+        return {
+            data: this.data,
+            path: this.path,
+        };
+    }
+    get contextmenuData(): common.ContextMenuData {
+        return {
+            data: this.data,
+            path: this.path,
+            root: this.root,
+        };
+    }
+
     geChildPath(index: number) {
         return this.path.concat(index);
     }
 
     hover(hovered: boolean) {
         this.hovered = hovered;
+        if (!hovered) {
+            this.contextmenuVisible = false;
+        }
     }
     ontoggle(eventData?: common.EventData) {
         if (eventData) {
             this.$emit("toggle", eventData);
         } else {
             if (this.data.state.openable || this.data.children.length > 0) {
-                this.$emit("toggle", { data: this.data, path: this.path });
+                this.$emit("toggle", eventData);
             }
         }
     }
@@ -70,9 +94,16 @@ class Node extends Vue {
             }
 
             this.doubleClick.onclick(() => {
-                this.$emit("change", { data: this.data, path: this.path });
+                this.$emit("change", eventData);
             });
         }
+    }
+    oncontextmenu(e: MouseEvent) {
+        this.contextmenuVisible = true;
+        this.contextmenuStyle.left = e.offsetX + "px";
+        this.contextmenuStyle.top = e.offsetY + "px";
+        e.preventDefault();
+        return false;
     }
 }
 

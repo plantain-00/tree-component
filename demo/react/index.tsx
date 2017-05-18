@@ -1,8 +1,28 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Tree } from "../../dist/react";
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, setContextMenu } from "../common";
 import * as common from "../../dist/common";
+
+class DeleteButton extends React.PureComponent<{ data: common.ContextMenuData }, {}> {
+    click() {
+        const parent = common.getNodeFromPath(this.props.data.root, this.props.data.path.slice(0, this.props.data.path.length - 1));
+        const children = parent && parent.children ? parent.children : this.props.data.root;
+        const index = this.props.data.path[this.props.data.path.length - 1];
+        children.splice(index, 1);
+        (this.props.data.parent as React.PureComponent<any, any>).forceUpdate();
+    }
+    render() {
+        return (
+            <button onClick={e => this.click()}>delete</button>
+        );
+    }
+}
+
+const data8: typeof data = JSON.parse(JSON.stringify(data));
+for (const tree of data8) {
+    setContextMenu(tree, DeleteButton);
+}
 
 class Main extends React.Component<{}, { data: common.TreeData[], selectedId: number | null, data2: common.TreeData[] }> {
     data = data;
@@ -13,6 +33,7 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
     data5 = JSON.parse(JSON.stringify(data));
     data6 = JSON.parse(JSON.stringify(data));
     data7 = JSON.parse(JSON.stringify(data));
+    data8 = data8;
     dropAllowed = canMove;
 
     render() {
@@ -66,6 +87,11 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
                     toggle={(eventData: common.EventData) => this.toggle7(eventData)}
                     change={(eventData: common.EventData) => this.change7(eventData)}
                     drop={(dropData: common.DropData) => this.drop7(dropData)}>
+                </Tree>
+                <hr />
+                contextmenu:
+                <Tree data={this.data8}
+                    toggle={(eventData: common.EventData) => this.toggle8(eventData)}>
                 </Tree>
             </div>
         );
@@ -132,6 +158,9 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
     }
     drop7(dropData: common.DropData) {
         move(dropData, this.data7);
+    }
+    toggle8(eventData: common.EventData) {
+        toggle(eventData);
     }
 }
 

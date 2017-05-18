@@ -7,11 +7,19 @@ class Node extends React.PureComponent<{
     checkbox?: boolean;
     path: number[];
     draggable?: boolean;
+    root: common.TreeData[];
+    parent: any;
     toggle: (eventData?: common.EventData) => void;
     change: (eventData?: common.EventData) => void;
-}, { hovered: boolean }> {
+}, { hovered: boolean; contextmenuVisible: boolean; contextmenuStyle: React.CSSProperties }> {
     hovered = false;
     doubleClick = new common.DoubleClick();
+    contextmenuVisible = false;
+    contextmenuStyle: React.CSSProperties = {
+        position: "absolute",
+        left: "0px",
+        top: "0px",
+    };
 
     render() {
         let childrenElement: JSX.Element | null;
@@ -22,6 +30,8 @@ class Node extends React.PureComponent<{
                     checkbox={this.props.checkbox}
                     path={this.geChildPath(i)}
                     draggable={this.props.draggable}
+                    root={this.props.root}
+                    parent={this}
                     toggle={eventData => this.ontoggle(eventData)}
                     change={eventData => this.onchange(eventData)}>
                 </Node>
@@ -37,6 +47,7 @@ class Node extends React.PureComponent<{
         const checkboxElement = this.props.checkbox ? <i className={this.checkboxClassName} role="presentation"></i> : null;
         const iconElement = this.props.data.icon !== false ? <i className={this.iconClassName} role="presentation"></i> : null;
         const markerElement = this.hasMarker ? <span className={this.markerClassName}>&#160;</span> : null;
+        const contextmenu = this.props.data.contextmenu && this.contextmenuVisible ? React.createElement(this.props.data.contextmenu as React.ComponentClass<{ data: common.ContextMenuData }>, { data: this.contextmenuData }) : null;
         return (
             <li role="treeitem" className={this.nodeClassName}>
                 <i className="tree-icon tree-ocl" role="presentation" onClick={() => this.ontoggle()}></i>
@@ -47,11 +58,13 @@ class Node extends React.PureComponent<{
                     onDoubleClick={() => this.ontoggle()}
                     onMouseEnter={() => this.hover(true)}
                     onMouseLeave={() => this.hover(false)}
+                    onContextMenu={e => this.oncontextmenu(e)}
                     data-path={this.pathString}>
                     {checkboxElement}
                     {iconElement}
                     {this.props.data.text}
                     {markerElement}
+                    <div style={this.contextmenuStyle}>{contextmenu}</div>
                 </a>
                 {childrenElement}
             </li>
@@ -86,6 +99,21 @@ class Node extends React.PureComponent<{
         return common.getMarkerClassName(this.props.data);
     }
 
+    get eventData(): common.EventData {
+        return {
+            data: this.props.data,
+            path: this.props.path,
+        };
+    }
+    get contextmenuData(): common.ContextMenuData {
+        return {
+            data: this.props.data,
+            path: this.props.path,
+            root: this.props.root,
+            parent: this.props.parent,
+        };
+    }
+
     geChildPath(index: number) {
         return this.props.path.concat(index);
     }
@@ -93,13 +121,17 @@ class Node extends React.PureComponent<{
     hover(hovered: boolean) {
         this.hovered = hovered;
         this.setState({ hovered: this.hovered });
+        if (!hovered) {
+            this.contextmenuVisible = false;
+            this.setState({ contextmenuVisible: this.contextmenuVisible });
+        }
     }
     ontoggle(eventData?: common.EventData) {
         if (eventData) {
             this.props.toggle(eventData);
         } else {
             if (this.props.data.state.openable || this.props.data.children.length > 0) {
-                this.props.toggle({ data: this.props.data, path: this.props.path });
+                this.props.toggle(this.eventData);
             }
         }
     }
@@ -112,9 +144,18 @@ class Node extends React.PureComponent<{
             }
 
             this.doubleClick.onclick(() => {
-                this.props.change({ data: this.props.data, path: this.props.path });
+                this.props.change(this.eventData);
             });
         }
+    }
+
+    oncontextmenu(e: React.MouseEvent<HTMLAnchorElement>) {
+        this.contextmenuVisible = true;
+        this.contextmenuStyle.left = e.nativeEvent.offsetX + "px";
+        this.contextmenuStyle.top = e.nativeEvent.offsetY + "px";
+        this.setState({ contextmenuVisible: this.contextmenuVisible, contextmenuStyle: this.contextmenuStyle });
+        e.preventDefault();
+        return false;
     }
 }
 
@@ -140,6 +181,8 @@ export class Tree extends React.PureComponent<{
                 checkbox={this.props.checkbox}
                 path={[i]}
                 draggable={this.props.draggable}
+                root={this.props.data}
+                parent={this}
                 toggle={(data: common.EventData) => this.ontoggle(data)}
                 change={(data: common.EventData) => this.onchange(data)}></Node>
         ));

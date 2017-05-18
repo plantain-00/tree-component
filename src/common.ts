@@ -4,6 +4,9 @@ export type TreeData = {
     icon?: string | false;
     state: TreeNodeState;
     children: TreeData[];
+    /* tslint:disable:ban-types */
+    contextmenu?: string | Function;
+    /* tslint:enable:ban-types */
 };
 
 export type TreeNodeState = {
@@ -20,6 +23,13 @@ export type TreeNodeState = {
 export type EventData = {
     data: TreeData;
     path: number[];
+};
+
+export type ContextMenuData = {
+    data: TreeData;
+    path: number[];
+    root: TreeData[];
+    parent?: any;
 };
 
 import { __extends, __decorate, __assign } from "tslib";

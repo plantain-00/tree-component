@@ -167,6 +167,17 @@ export function setSelectionOfTree(tree: TreeData, selected: boolean) {
     }
 }
 
+/* tslint:disable:ban-types */
+export function setContextMenu(tree: TreeData, component: string | Function) {
+    /* tslint:enable:ban-types */
+    tree.contextmenu = component;
+    if (tree.children) {
+        for (const child of tree.children) {
+            setContextMenu(child, component);
+        }
+    }
+}
+
 export function setParentsSelection(tree: TreeData[], path: number[]) {
     const parents: TreeData[] = [];
     const parentPath = path.slice(0, path.length - 1);

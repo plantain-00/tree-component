@@ -101,6 +101,7 @@ type TreeData = {
     icon?: string | false; // the icon class string, or no icon if is false
     state: TreeNodeState;
     children?: TreeData[];
+    contextmenu?: string | Function; // the contextmenu component
 };
 
 type TreeNodeState = {
@@ -159,6 +160,7 @@ type DropData = {
 + no dots
 + large and small
 + default and dark theme
++ contextmenu(vuejs and reactjs only)
 
 #### changelogs
 

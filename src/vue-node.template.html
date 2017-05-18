@@ -6,11 +6,15 @@
         @dblclick="ontoggle()"
         @mouseenter="hover(true)"
         @mouseleave="hover(false)"
+        @contextmenu="oncontextmenu($event)"
         :data-path="pathString">
         <i v-if="checkbox" :class="checkboxClassName" role="presentation"></i>
         <i v-if="data.icon !== false" :class="iconClassName" role="presentation"></i>
         {{data.text}}
         <span v-if="hasMarker" :class="markerClassName">&#160;</span>
+        <div v-if="data.contextmenu && contextmenuVisible" :style="contextmenuStyle">
+            <component :is="data.contextmenu" :data="contextmenuData"></component>
+        </div>
     </a>
     <ul v-if="data.children" role="group" class="tree-children">
         <node v-for="(child, i) in data.children"
@@ -19,6 +23,7 @@
             :checkbox="checkbox"
             :path="geChildPath(i)"
             :draggable="draggable"
+            :root="root"
             @toggle="ontoggle(arguments[0])"
             @change="onchange(arguments[0])">
         </node>

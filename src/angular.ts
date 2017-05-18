@@ -54,6 +54,13 @@ export class NodeComponent {
         return common.getMarkerClassName(this.data);
     }
 
+    get eventData(): common.EventData {
+        return {
+            data: this.data,
+            path: this.path,
+        };
+    }
+
     geChildPath(index: number) {
         return this.path.concat(index);
     }
@@ -66,7 +73,7 @@ export class NodeComponent {
             this.toggle.emit(eventData);
         } else {
             if (this.data.state.openable || this.data.children.length > 0) {
-                this.toggle.emit({ data: this.data, path: this.path });
+                this.toggle.emit(eventData);
             }
         }
     }
@@ -79,7 +86,7 @@ export class NodeComponent {
             }
 
             this.doubleClick.onclick(() => {
-                this.change.emit({ data: this.data, path: this.path });
+                this.change.emit(eventData);
             });
         }
     }

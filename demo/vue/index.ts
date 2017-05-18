@@ -1,7 +1,28 @@
 import * as Vue from "vue";
+import Component from "vue-class-component";
 import "../../dist/vue";
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove } from "../common";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, setContextMenu } from "../common";
 import * as common from "../../dist/common";
+
+@Component({
+    template: `<button @click="click()">delete</button>`,
+    props: ["data"],
+})
+class DeleteButton extends Vue {
+    data: common.ContextMenuData;
+    click() {
+        const parent = common.getNodeFromPath(this.data.root, this.data.path.slice(0, this.data.path.length - 1));
+        const children = parent && parent.children ? parent.children : this.data.root;
+        const index = this.data.path[this.data.path.length - 1];
+        children.splice(index, 1);
+    }
+}
+Vue.component("delete-button", DeleteButton);
+
+const data8: typeof data = JSON.parse(JSON.stringify(data));
+for (const tree of data8) {
+    setContextMenu(tree, "delete-button");
+}
 
 /* tslint:disable:no-unused-expression */
 new Vue({
@@ -16,6 +37,7 @@ new Vue({
             data5: JSON.parse(JSON.stringify(data)),
             data6: JSON.parse(JSON.stringify(data)),
             data7: JSON.parse(JSON.stringify(data)),
+            data8,
             dropAllowed: canMove,
         };
     },
@@ -63,6 +85,9 @@ new Vue({
         },
         drop7(this: This, dropData: common.DropData) {
             move(dropData, this.data7);
+        },
+        toggle8(eventData: common.EventData) {
+            toggle(eventData);
         },
     },
 });
