@@ -19,9 +19,10 @@ class Node extends Vue {
     doubleClick = new common.DoubleClick();
     contextmenuVisible = false;
     contextmenuStyle = {
-        position: "absolute",
-        left: "0px",
-        top: "0px",
+        "position": "absolute",
+        "left": "0px",
+        "top": "0px",
+        "z-index": 1,
     };
 
     get nodeClassName() {
@@ -81,7 +82,7 @@ class Node extends Vue {
             this.$emit("toggle", eventData);
         } else {
             if (this.data.state.openable || this.data.children.length > 0) {
-                this.$emit("toggle", eventData);
+                this.$emit("toggle", this.eventData);
             }
         }
     }
@@ -94,7 +95,7 @@ class Node extends Vue {
             }
 
             this.doubleClick.onclick(() => {
-                this.$emit("change", eventData);
+                this.$emit("change", this.eventData);
             });
         }
     }

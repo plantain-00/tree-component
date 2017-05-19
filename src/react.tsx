@@ -19,6 +19,7 @@ class Node extends React.PureComponent<{
         position: "absolute",
         left: "0px",
         top: "0px",
+        zIndex: 1,
     };
 
     render() {

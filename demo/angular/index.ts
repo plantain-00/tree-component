@@ -15,48 +15,50 @@ import * as common from "../../dist/common";
 @Component({
     selector: "app",
     template: `
-    default:
-    <tree [data]="data"
-        (toggle)="ontoggle($event)"
-        (change)="onchange($event)"></tree>
-    selected id: {{selectedId}}
-    <hr/>
-    checkbox:
-    <tree [data]="data2"
-        [checkbox]="true"
-        (toggle)="ontoggle2($event)"
-        (change)="onchange2($event)"></tree>
-    <hr/>
-    draggable:
-    <tree [data]="data3"
-        [draggable]="true"
-        [dropAllowed]="dropAllowed"
-        (toggle)="ontoggle3($event)"
-        (drop)="drop3($event)"></tree>
-    <hr/>
-    no dots:
-    <tree [data]="data4"
-        [nodots]="true"
-        (toggle)="ontoggle4($event)"></tree>
-    <hr/>
-    large:
-    <tree [data]="data5"
-        size="large"
-        (toggle)="ontoggle5($event)"></tree>
-    <hr/>
-    small:
-    <tree [data]="data6"
-        size="small"
-        (toggle)="ontoggle6($event)"></tree>
-    <hr/>
-    dark theme:
-    <tree [data]="data7"
-        theme="dark"
-        [checkbox]="true"
-        [draggable]="true"
-        (toggle)="ontoggle7($event)"
-        (change)="onchange7($event)"
-        (drop)="drop7($event)"></tree>
+    <div>
+        default:
+        <tree [data]="data"
+            (toggle)="ontoggle($event)"
+            (change)="onchange($event)"></tree>
+        selected id: {{selectedId}}
+        <hr/>
+        checkbox:
+        <tree [data]="data2"
+            [checkbox]="true"
+            (toggle)="ontoggle2($event)"
+            (change)="onchange2($event)"></tree>
+        <hr/>
+        draggable:
+        <tree [data]="data3"
+            [draggable]="true"
+            [dropAllowed]="dropAllowed"
+            (toggle)="ontoggle3($event)"
+            (drop)="drop3($event)"></tree>
+        <hr/>
+        no dots:
+        <tree [data]="data4"
+            [nodots]="true"
+            (toggle)="ontoggle4($event)"></tree>
+        <hr/>
+        large:
+        <tree [data]="data5"
+            size="large"
+            (toggle)="ontoggle5($event)"></tree>
+        <hr/>
+        small:
+        <tree [data]="data6"
+            size="small"
+            (toggle)="ontoggle6($event)"></tree>
+        <hr/>
+        dark theme:
+        <tree [data]="data7"
+            theme="dark"
+            [checkbox]="true"
+            [draggable]="true"
+            (toggle)="ontoggle7($event)"
+            (change)="onchange7($event)"
+            (drop)="drop7($event)"></tree>
+    </div>
     `,
 })
 export class MainComponent {

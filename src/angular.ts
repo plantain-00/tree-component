@@ -73,7 +73,7 @@ export class NodeComponent {
             this.toggle.emit(eventData);
         } else {
             if (this.data.state.openable || this.data.children.length > 0) {
-                this.toggle.emit(eventData);
+                this.toggle.emit(this.eventData);
             }
         }
     }
@@ -86,7 +86,7 @@ export class NodeComponent {
             }
 
             this.doubleClick.onclick(() => {
-                this.change.emit(eventData);
+                this.change.emit(this.eventData);
             });
         }
     }
