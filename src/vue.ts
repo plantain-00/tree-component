@@ -5,7 +5,7 @@ import { srcVueNodeTemplateHtml, srcVueTreeTemplateHtml } from "./vue-variables"
 
 @Component({
     template: srcVueNodeTemplateHtml,
-    props: ["data", "last", "checkbox", "path", "draggable", "root"],
+    props: ["data", "last", "checkbox", "path", "draggable", "root", "zindex"],
 })
 class Node extends Vue {
     data: common.TreeData;
@@ -14,6 +14,7 @@ class Node extends Vue {
     path: number[];
     draggable?: boolean;
     root: common.TreeData[];
+    zindex?: number;
 
     hovered = false;
     doubleClick = new common.DoubleClick();
@@ -22,7 +23,7 @@ class Node extends Vue {
         "position": "absolute",
         "left": "0px",
         "top": "0px",
-        "z-index": 1,
+        "z-index": typeof this.zindex === "number" ? this.zindex : 1,
     };
 
     get nodeClassName() {
@@ -112,7 +113,7 @@ Vue.component("node", Node);
 
 @Component({
     template: srcVueTreeTemplateHtml,
-    props: ["data", "checkbox", "draggable", "nodots", "size", "theme", "dropAllowed"],
+    props: ["data", "checkbox", "draggable", "nodots", "size", "theme", "dropAllowed", "zindex"],
 })
 export class Tree extends Vue {
     data: common.TreeData[];
@@ -122,6 +123,7 @@ export class Tree extends Vue {
     size?: string;
     theme?: string;
     dropAllowed?: (dropData: common.DropData) => boolean;
+    zindex?: number;
 
     dragTarget: HTMLElement | null = null;
     dropTarget: HTMLElement | null = null;

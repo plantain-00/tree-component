@@ -8,6 +8,7 @@ class Node extends React.PureComponent<{
     path: number[];
     draggable?: boolean;
     root: common.TreeData[];
+    zindex?: number;
     parent: any;
     toggle: (eventData?: common.EventData) => void;
     change: (eventData?: common.EventData) => void;
@@ -19,7 +20,7 @@ class Node extends React.PureComponent<{
         position: "absolute",
         left: "0px",
         top: "0px",
-        zIndex: 1,
+        zIndex: typeof this.props.zindex === "number" ? this.props.zindex : 1,
     };
 
     render() {
@@ -33,6 +34,7 @@ class Node extends React.PureComponent<{
                     draggable={this.props.draggable}
                     root={this.props.root}
                     parent={this}
+                    zindex={this.props.zindex}
                     toggle={eventData => this.ontoggle(eventData)}
                     change={eventData => this.onchange(eventData)}>
                 </Node>
@@ -168,6 +170,7 @@ export class Tree extends React.PureComponent<{
     size?: string;
     theme?: string;
     dropAllowed?: (dropData: common.DropData) => boolean;
+    zindex?: number;
     toggle?: (eventData?: common.EventData) => void;
     change?: (eventData?: common.EventData) => void;
     drop?: (dropData: common.DropData) => void;
@@ -184,6 +187,7 @@ export class Tree extends React.PureComponent<{
                 draggable={this.props.draggable}
                 root={this.props.data}
                 parent={this}
+                zindex={this.props.zindex}
                 toggle={(data: common.EventData) => this.ontoggle(data)}
                 change={(data: common.EventData) => this.onchange(data)}></Node>
         ));
