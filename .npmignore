@@ -1,4 +1,5 @@
 .vscode
+.github
 tslint.json
 .travis.yml
 tsconfig.json
