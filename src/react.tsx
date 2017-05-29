@@ -204,7 +204,7 @@ export class Tree extends React.PureComponent<{
                     onDrop={eventData => this.ondrop(eventData)}>
                     {childrenElement}
                 </ul>
-            </div >
+            </div>
         );
     }
 
