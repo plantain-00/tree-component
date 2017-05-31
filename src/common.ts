@@ -39,7 +39,7 @@ import { __extends, __decorate, __assign } from "tslib";
 
 export class DoubleClick {
     clicked = false;
-    timer: null | number = null;
+    timer: null | NodeJS.Timer = null;
 
     constructor(private timeout = 300) { }
 
@@ -163,11 +163,7 @@ export type DropData = {
 export function getNodeFromPath(rootData: TreeData[], path: number[]) {
     let node: TreeData | null = null;
     for (const index of path) {
-        if (node) {
-            node = node.children[index];
-        } else {
-            node = rootData[index];
-        }
+        node = node ? node.children[index] : rootData[index];
     }
     return node;
 }
