@@ -167,9 +167,8 @@ export function setSelectionOfTree(tree: TreeData, selected: boolean) {
     }
 }
 
-/* tslint:disable:ban-types */
+// tslint:disable-next-line:ban-types
 export function setContextMenu(tree: TreeData, component: string | Function) {
-    /* tslint:enable:ban-types */
     tree.contextmenu = component;
     if (tree.children) {
         for (const child of tree.children) {

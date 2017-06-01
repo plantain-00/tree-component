@@ -136,7 +136,7 @@ export class Tree extends Vue {
     }
 
     canDrop(event: DragEvent) {
-        return this.draggable && (event.target as HTMLElement).dataset["path"];
+        return this.draggable && (event.target as HTMLElement).dataset.path;
     }
     ontoggle(eventData: common.EventData) {
         this.$emit("toggle", eventData);

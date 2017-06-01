@@ -216,7 +216,7 @@ export class Tree extends React.PureComponent<{
     }
 
     canDrop(event: React.DragEvent<HTMLElement>) {
-        return this.props.draggable && (event.target as HTMLElement).dataset["path"];
+        return this.props.draggable && (event.target as HTMLElement).dataset.path;
     }
     ontoggle(eventData: common.EventData) {
         if (this.props.toggle) {

@@ -4,9 +4,8 @@ export type TreeData = {
     icon?: string | false;
     state: TreeNodeState;
     children: TreeData[];
-    /* tslint:disable:ban-types */
+    // tslint:disable-next-line:ban-types
     contextmenu?: string | Function;
-    /* tslint:enable:ban-types */
 };
 
 export type TreeNodeState = {
@@ -192,8 +191,8 @@ export function clearDropPositionOfTree(tree: TreeData) {
 
 export function ondrag(pageY: number, dragTarget: HTMLElement | null, dropTarget: HTMLElement | null, data: TreeData[], dropAllowed?: (dropData: DropData) => boolean, next?: () => void) {
     if (dropTarget) {
-        const sourcePath = dragTarget!.dataset["path"]!.split(",").map(s => +s);
-        const dropTargetPathString = dropTarget.dataset["path"];
+        const sourcePath = dragTarget!.dataset.path!.split(",").map(s => +s);
+        const dropTargetPathString = dropTarget.dataset.path;
         if (dropTargetPathString) {
             const targetPath = dropTargetPathString.split(",").map(s => +s);
             const targetData = getNodeFromPath(data, targetPath)!;
@@ -217,7 +216,7 @@ export function ondrag(pageY: number, dragTarget: HTMLElement | null, dropTarget
 }
 
 export function ondragleave(target: HTMLElement, data: TreeData[]) {
-    const pathString = target.dataset["path"];
+    const pathString = target.dataset.path;
     if (pathString) {
         const path = pathString.split(",").map(s => +s);
         const node = getNodeFromPath(data, path);
@@ -228,8 +227,8 @@ export function ondragleave(target: HTMLElement, data: TreeData[]) {
 }
 
 export function ondrop(target: HTMLElement, dragTarget: HTMLElement | null, data: TreeData[], next: (dropData: DropData) => void) {
-    const sourcePath = dragTarget!.dataset["path"]!.split(",").map(s => +s);
-    const targetPathString = target.dataset["path"];
+    const sourcePath = dragTarget!.dataset.path!.split(",").map(s => +s);
+    const targetPathString = target.dataset.path;
     if (targetPathString) {
         const targetPath = targetPathString.split(",").map(s => +s);
         const targetData = getNodeFromPath(data, targetPath)!;
