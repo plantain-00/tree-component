@@ -17,6 +17,7 @@ import * as common from "../../dist/common";
     template: `
     <div>
         <a href="https://github.com/plantain-00/tree-component/tree/master/demo/angular/index.ts" target="_blank">the source code of the demo</a>
+        <br/>
         default:
         <tree [data]="data"
             (toggle)="ontoggle($event)"
