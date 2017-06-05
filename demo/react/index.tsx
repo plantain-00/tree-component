@@ -39,6 +39,7 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
     render() {
         return (
             <div>
+                <a href="https://github.com/plantain-00/tree-component/tree/master/demo/react/index.tsx" target="_blank">the source code of the demo</a>
                 default:
                 <Tree data={this.data}
                     toggle={(eventData: common.EventData) => this.toggle(eventData)}

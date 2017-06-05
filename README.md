@@ -7,6 +7,25 @@
 # tree-component
 A reactjs, angular and vuejs tree component.
 
+#### features
+
++ vuejs component
++ reactjs component
++ angular component
++ commonjs module
++ open and close
++ select and deselect
++ disabled
++ loading
++ highlighted
++ checkbox
++ custom icon or no icon
++ drag and drop
++ no dots
++ large and small
++ default and dark theme
++ contextmenu(vuejs and reactjs only)
+
 #### install
 
 `npm i tree-component`
@@ -34,8 +53,6 @@ import "tree-component/dist/vue";
 
 the online demo: https://plantain-00.github.io/tree-component/demo/vue/index.html
 
-the source code of the demo: https://github.com/plantain-00/tree-component/tree/master/demo/vue
-
 #### reactjs component demo
 
 ```ts
@@ -50,8 +67,6 @@ import { Tree } from "tree-component/dist/react";
 ```
 
 the online demo: https://plantain-00.github.io/tree-component/demo/react/index.html
-
-the source code of the demo: https://github.com/plantain-00/tree-component/tree/master/demo/react
 
 #### angular component demo
 
@@ -74,8 +89,6 @@ class MainModule { }
 ```
 
 the online demo: https://plantain-00.github.io/tree-component/demo/angular/index.html
-
-the source code of the demo: https://github.com/plantain-00/tree-component/tree/master/demo/angular
 
 #### properties and events of the component
 
@@ -143,25 +156,6 @@ type DropData = {
     targetPath: number[];
 };
 ```
-
-#### features
-
-+ vuejs component
-+ reactjs component
-+ angular component
-+ commonjs module
-+ open and close
-+ select and deselect
-+ disabled
-+ loading
-+ highlighted
-+ checkbox
-+ custom icon or no icon
-+ drag and drop
-+ no dots
-+ large and small
-+ default and dark theme
-+ contextmenu(vuejs and reactjs only)
 
 #### changelogs
 

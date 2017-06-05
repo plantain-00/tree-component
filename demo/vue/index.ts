@@ -27,6 +27,7 @@ for (const tree of data8) {
 @Component({
     template: `
     <div>
+        <a href="https://github.com/plantain-00/tree-component/tree/master/demo/vue/index.ts" target="_blank">the source code of the demo</a>
         default:
         <tree :data="data"
             @toggle="toggle(arguments[0])"
