@@ -47,3 +47,4 @@ src/vue-node.html
 src/vue-tree.html
 !*.config.js
 demo/*-*.png
+demo/**/*.css

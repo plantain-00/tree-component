@@ -4,13 +4,14 @@
   "description": "A reactjs, angular and vuejs tree component.",
   "main": "index.js",
   "scripts": {
-    "build": "npm run file2variable && npm run clean && tsc -p src && tsc -p demo && lessc src/tree.less > dist/tree.css && cleancss -o dist/tree.min.css dist/tree.css && webpack --config demo/webpack.config.js && npm run rev",
+    "build": "npm run file2variable && npm run clean && tsc -p src && tsc -p demo && lessc src/tree.less > dist/tree.css && npm run cleancss && webpack --config demo/webpack.config.js && npm run rev",
     "lint": "tslint \"src/*.ts\" \"src/*.tsx\" \"demo/**/*.ts\" \"demo/**/*.tsx\" && stylelint \"src/*.less\" --syntax less",
     "rev": "npm run clean-rev && rev-static --config demo/rev-static.config.js",
     "clean-rev": "rimraf demo/react.bundle-*.js demo/vue.bundle-*.js demo/angular.bundle-*.js",
     "image": "image2base64-cli images/*.png images/*.gif --less src/variables.less",
     "file2variable": "file2variable-cli src/angular-node.template.html src/angular-tree.template.html -o src/angular-variables.ts --html-minify && file2variable-cli src/vue-node.template.html src/vue-tree.template.html -o src/vue-variables.ts --html-minify",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "cleancss": "cleancss -o dist/tree.min.css dist/tree.css && cleancss -o demo/index.bundle.css dist/tree.min.css ./node_modules/github-fork-ribbon-css/gh-fork-ribbon.css"
   },
   "repository": {
     "type": "git",
@@ -31,9 +32,11 @@
     "@angular/platform-browser-dynamic": "4.1.3",
     "@types/react": "15.0.25",
     "@types/react-dom": "15.5.0",
+    "clean-css": "4.1.3",
     "clean-css-cli": "4.1.3",
     "core-js": "2.4.1",
     "file2variable-cli": "1.3.0",
+    "github-fork-ribbon-css": "0.2.1",
     "image2base64-cli": "1.0.3",
     "less": "2.7.2",
     "react": "15.5.4",
