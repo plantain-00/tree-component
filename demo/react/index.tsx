@@ -4,20 +4,13 @@ import { Tree } from "../../dist/react";
 import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, setContextMenu } from "../common";
 import * as common from "../../dist/common";
 
-class DeleteButton extends React.PureComponent<{ data: common.ContextMenuData }, {}> {
-    click() {
-        const parent = common.getNodeFromPath(this.props.data.root, this.props.data.path.slice(0, this.props.data.path.length - 1));
-        const children = parent && parent.children ? parent.children : this.props.data.root;
-        const index = this.props.data.path[this.props.data.path.length - 1];
-        children.splice(index, 1);
-        (this.props.data.parent as React.PureComponent<any, any>).forceUpdate();
-    }
-    render() {
-        return (
-            <button onClick={e => this.click()}>delete</button>
-        );
-    }
-}
+const DeleteButton: React.StatelessComponent<{ data: common.ContextMenuData }> = props => <button onClick={e => {
+    const parent = common.getNodeFromPath(props.data.root, props.data.path.slice(0, props.data.path.length - 1));
+    const children = parent && parent.children ? parent.children : props.data.root;
+    const index = props.data.path[props.data.path.length - 1];
+    children.splice(index, 1);
+    (props.data.parent as React.PureComponent<any, any>).forceUpdate();
+}}>delete</button>;
 
 const data8: typeof data = JSON.parse(JSON.stringify(data));
 for (const tree of data8) {
@@ -40,7 +33,7 @@ class Main extends React.Component<{}, { data: common.TreeData[], selectedId: nu
         return (
             <div>
                 <a href="https://github.com/plantain-00/tree-component/tree/master/demo/react/index.tsx" target="_blank">the source code of the demo</a>
-                <br/>
+                <br />
                 default:
                 <Tree data={this.data}
                     toggle={(eventData: common.EventData) => this.toggle(eventData)}
