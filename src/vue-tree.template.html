@@ -15,8 +15,8 @@
             :draggable="draggable"
             :root="data"
             :zindex="zindex"
-            @toggle="ontoggle(arguments[0])"
-            @change="onchange(arguments[0])">
+            @toggle="ontoggle($event)"
+            @change="onchange($event)">
         </node>
     </ul>
 </div>
