@@ -31,50 +31,50 @@ for (const tree of data8) {
         <br/>
         default:
         <tree :data="data"
-            @toggle="toggle(arguments[0])"
-            @change="change(arguments[0])"></tree>
+            @toggle="toggle($event)"
+            @change="change($event)"></tree>
         selected id: {{selectedId}}
         <hr/>
         checkbox:
         <tree :data="data2"
             :checkbox="true"
-            @toggle="toggle2(arguments[0])"
-            @change="change2(arguments[0])"></tree>
+            @toggle="toggle2($event)"
+            @change="change2($event)"></tree>
         <hr/>
         draggable:
         <tree :data="data3"
             :draggable="true"
             :drop-allowed="dropAllowed"
-            @toggle="toggle3(arguments[0])"
-            @drop="drop3(arguments[0])"></tree>
+            @toggle="toggle3($event)"
+            @drop="drop3($event)"></tree>
         <hr/>
         no dots:
         <tree :data="data4"
             :nodots="true"
-            @toggle="toggle4(arguments[0])"></tree>
+            @toggle="toggle4($event)"></tree>
         <hr/>
         large:
         <tree :data="data5"
             size="large"
-            @toggle="toggle5(arguments[0])"></tree>
+            @toggle="toggle5($event)"></tree>
         <hr/>
         small:
         <tree :data="data6"
             size="small"
-            @toggle="toggle6(arguments[0])"></tree>
+            @toggle="toggle6($event)"></tree>
         <hr/>
         dark theme:
         <tree :data="data7"
             theme="dark"
             :checkbox="true"
             :draggable="true"
-            @toggle="toggle7(arguments[0])"
-            @change="change7(arguments[0])"
-            @drop="drop7(arguments[0])"></tree>
+            @toggle="toggle7($event)"
+            @change="change7($event)"
+            @drop="drop7($event)"></tree>
         <hr/>
         contextmenu:
         <tree :data="data8"
-            @toggle="toggle8(arguments[0])"></tree>
+            @toggle="toggle8($event)"></tree>
     </div>
     `,
 })

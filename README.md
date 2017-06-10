@@ -46,8 +46,8 @@ import "tree-component/dist/vue";
 
 ```html
 <tree :data="data"
-    @toggle="toggle(arguments[0])"
-    @change="change(arguments[0])">
+    @toggle="toggle($event)"
+    @change="change($event)">
 </tree>
 ```
 
