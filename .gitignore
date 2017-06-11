@@ -35,16 +35,13 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Source
 .vscode
-demo/css
 dist
 demo/**/*.js
-demo/**/index.html
-*.scssc
-src/angular-node.html
-src/angular-tree.html
-src/vue-node.html
-src/vue-tree.html
-!*.config.js
-demo/*-*.png
 demo/**/*.css
+!*.config.js
+!demo/*-*.js
+!demo/*-*.css
+spec/**/*.js
