@@ -46,7 +46,7 @@
     "stylelint": "7.10.1",
     "stylelint-config-standard": "16.0.0",
     "tslint": "5.4.0",
-    "typescript": "2.3.4",
+    "typescript": "2.4.0",
     "vue": "2.3.3",
     "vue-class-component": "5.0.1",
     "webpack": "2.6.1",

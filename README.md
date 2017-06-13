@@ -12,7 +12,6 @@ A reactjs, angular and vuejs tree component.
 + vuejs component
 + reactjs component
 + angular component
-+ commonjs module
 + open and close
 + select and deselect
 + disabled
