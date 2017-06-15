@@ -1,6 +1,6 @@
 module.exports = {
     inputFiles: [
-        "demo/*.bundle.js",
+        "demo/**/index.bundle.js",
         "demo/**/index.ejs.html",
         "demo/*.bundle.css",
         "demo/tree-icon.png",

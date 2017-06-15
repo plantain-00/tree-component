@@ -7,7 +7,7 @@
     "build": "npm run file2variable && npm run clean && tsc -p src && tsc -p demo && lessc src/tree.less > dist/tree.css && npm run cleancss && webpack --config demo/webpack.config.js && npm run rev",
     "lint": "tslint \"src/*.ts\" \"src/*.tsx\" \"demo/**/*.ts\" \"demo/**/*.tsx\" && stylelint \"src/*.less\" --syntax less",
     "rev": "npm run clean-rev && rev-static --config demo/rev-static.config.js",
-    "clean-rev": "rimraf demo/react.bundle-*.js demo/vue.bundle-*.js demo/angular.bundle-*.js demo/tree-icon-*.png demo/index.bundle-*.css",
+    "clean-rev": "rimraf demo/**/index.bundle-*.js demo/tree-icon-*.png demo/index.bundle-*.css",
     "image": "image2base64-cli images/*.png images/*.gif --less src/variables.less",
     "file2variable": "file2variable-cli src/angular-node.template.html src/angular-tree.template.html -o src/angular-variables.ts --html-minify && file2variable-cli src/vue-node.template.html src/vue-tree.template.html -o src/vue-variables.ts --html-minify",
     "clean": "rimraf dist",
