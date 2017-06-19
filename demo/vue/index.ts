@@ -1,4 +1,4 @@
-import * as Vue from "vue";
+import Vue from "vue";
 import Component from "vue-class-component";
 import "../../dist/vue";
 import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, setContextMenu } from "../common";
