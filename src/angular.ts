@@ -130,19 +130,13 @@ export class TreeComponent {
     }
 
     canDrop(event: DragEvent) {
-        return this.draggable && (event.target as HTMLElement).dataset.path;
+        return this.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path;
     }
     ontoggle(eventData: common.EventData) {
         this.toggle.emit(eventData);
     }
     onchange(eventData: common.EventData) {
         this.change.emit(eventData);
-    }
-    ondrag(event: DragEvent) {
-        if (!this.draggable) {
-            return;
-        }
-        common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed);
     }
     ondragstart(event: DragEvent) {
         if (!this.draggable) {
@@ -164,6 +158,7 @@ export class TreeComponent {
         if (!this.canDrop(event)) {
             return;
         }
+        common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed);
         event.preventDefault();
     }
     ondragenter(event: DragEvent) {
@@ -171,6 +166,7 @@ export class TreeComponent {
             return;
         }
         this.dropTarget = event.target as HTMLElement;
+        common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed);
     }
     ondragleave(event: DragEvent) {
         if (!this.canDrop(event)) {

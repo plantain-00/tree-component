@@ -195,7 +195,6 @@ export class Tree extends React.PureComponent<{
             <div className={this.rootClassName} role="tree">
                 <ul className={this.containerClassName}
                     role="group"
-                    onDrag={eventData => this.ondrag(eventData)}
                     onDragStart={eventData => this.ondragstart(eventData)}
                     onDragEnd={eventData => this.ondragend(eventData)}
                     onDragOver={eventData => this.ondragover(eventData)}
@@ -216,7 +215,7 @@ export class Tree extends React.PureComponent<{
     }
 
     canDrop(event: React.DragEvent<HTMLElement>) {
-        return this.props.draggable && (event.target as HTMLElement).dataset.path;
+        return this.props.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path;
     }
     ontoggle(eventData: common.EventData) {
         if (this.props.toggle) {
@@ -227,12 +226,6 @@ export class Tree extends React.PureComponent<{
         if (this.props.change) {
             this.props.change(eventData);
         }
-    }
-    ondrag(event: React.DragEvent<HTMLElement>) {
-        if (!this.props.draggable) {
-            return;
-        }
-        common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.props.data, this.props.dropAllowed, () => this.forceUpdate());
     }
     ondragstart(event: React.DragEvent<HTMLElement>) {
         if (!this.props.draggable) {
@@ -256,6 +249,7 @@ export class Tree extends React.PureComponent<{
         if (!this.canDrop(event)) {
             return;
         }
+        common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.props.data, this.props.dropAllowed, () => this.forceUpdate());
         event.preventDefault();
     }
     ondragenter(event: React.DragEvent<HTMLElement>) {
@@ -264,6 +258,7 @@ export class Tree extends React.PureComponent<{
         }
         this.dropTarget = event.target as HTMLElement;
         this.setState({ dropTarget: this.dropTarget });
+        common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.props.data, this.props.dropAllowed, () => this.forceUpdate());
     }
     ondragleave(event: React.DragEvent<HTMLElement>) {
         if (!this.canDrop(event)) {

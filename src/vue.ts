@@ -136,19 +136,13 @@ export class Tree extends Vue {
     }
 
     canDrop(event: DragEvent) {
-        return this.draggable && (event.target as HTMLElement).dataset.path;
+        return this.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path;
     }
     ontoggle(eventData: common.EventData) {
         this.$emit("toggle", eventData);
     }
     onchange(eventData: common.EventData) {
         this.$emit("change", eventData);
-    }
-    ondrag(event: DragEvent) {
-        if (!this.draggable) {
-            return;
-        }
-        common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed);
     }
     ondragstart(event: DragEvent) {
         if (!this.draggable) {
@@ -170,6 +164,7 @@ export class Tree extends Vue {
         if (!this.canDrop(event)) {
             return;
         }
+        common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed);
         event.preventDefault();
     }
     ondragenter(event: DragEvent) {
@@ -177,6 +172,7 @@ export class Tree extends Vue {
             return;
         }
         this.dropTarget = event.target as HTMLElement;
+        common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed);
     }
     ondragleave(event: DragEvent) {
         if (!this.canDrop(event)) {
