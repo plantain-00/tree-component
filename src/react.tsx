@@ -28,6 +28,7 @@ class Node extends React.PureComponent<{
         if (this.props.data.children) {
             const nodesElement: JSX.Element[] = this.props.data.children.map((child, i) => (
                 <Node data={child}
+                    key={i}
                     last={i === this.props.data.children.length - 1}
                     checkbox={this.props.checkbox}
                     path={this.geChildPath(i)}
@@ -181,6 +182,7 @@ export class Tree extends React.PureComponent<{
     render() {
         const childrenElement = this.props.data.map((child, i) => (
             <Node data={child}
+                key={i}
                 last={i === this.props.data.length - 1}
                 checkbox={this.props.checkbox}
                 path={[i]}
