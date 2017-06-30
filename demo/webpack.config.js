@@ -1,55 +1,55 @@
-const webpack = require("webpack");
-const path = require("path");
+const webpack = require('webpack')
+const path = require('path')
 
 const plugins = [
-    new webpack.DefinePlugin({
-        "process.env": {
-            "NODE_ENV": JSON.stringify("production")
-        }
-    }),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false,
-        },
-        output: {
-            comments: false,
-        },
-    }),
-];
+  new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify('production')
+    }
+  }),
+  new webpack.NoEmitOnErrorsPlugin(),
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
+    },
+    output: {
+      comments: false
+    }
+  })
+]
 
 const resolve = {
-    alias: {
-        "vue$": "vue/dist/vue.min.js"
-    }
-};
+  alias: {
+    'vue$': 'vue/dist/vue.min.js'
+  }
+}
 
 module.exports = [
-    {
-        entry: "./demo/vue/index",
-        output: {
-            path: path.resolve(__dirname, "vue"),
-            filename: "index.bundle.js"
-        },
-        plugins,
-        resolve
+  {
+    entry: './demo/vue/index',
+    output: {
+      path: path.resolve(__dirname, 'vue'),
+      filename: 'index.bundle.js'
     },
-    {
-        entry: "./demo/react/index",
-        output: {
-            path: path.resolve(__dirname, "react"),
-            filename: "index.bundle.js"
-        },
-        plugins,
-        resolve
+    plugins,
+    resolve
+  },
+  {
+    entry: './demo/react/index',
+    output: {
+      path: path.resolve(__dirname, 'react'),
+      filename: 'index.bundle.js'
     },
-    {
-        entry: "./demo/angular/index",
-        output: {
-            path: path.resolve(__dirname, "angular"),
-            filename: "index.bundle.js"
-        },
-        plugins,
-        resolve
-    }
-];
+    plugins,
+    resolve
+  },
+  {
+    entry: './demo/angular/index',
+    output: {
+      path: path.resolve(__dirname, 'angular'),
+      filename: 'index.bundle.js'
+    },
+    plugins,
+    resolve
+  }
+]

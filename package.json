@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run file2variable && npm run clean && tsc -p src && tsc -p demo && lessc src/tree.less > dist/tree.css && npm run cleancss && webpack --config demo/webpack.config.js && npm run rev",
-    "lint": "tslint \"src/*.ts\" \"src/*.tsx\" \"demo/**/*.ts\" \"demo/**/*.tsx\" && stylelint \"src/*.less\" --syntax less",
+    "lint": "tslint \"src/*.ts\" \"src/*.tsx\" \"demo/**/*.ts\" \"demo/**/*.tsx\" && stylelint \"src/*.less\" --syntax less && npm run standard",
     "rev": "npm run clean-rev && rev-static --config demo/rev-static.config.js",
     "clean-rev": "rimraf demo/**/index.bundle-*.js demo/tree-icon-*.png demo/index.bundle-*.css",
     "image": "image2base64-cli images/*.png images/*.gif --less src/variables.less",
     "file2variable": "file2variable-cli src/angular-node.template.html src/angular-tree.template.html -o src/angular-variables.ts --html-minify && file2variable-cli src/vue-node.template.html src/vue-tree.template.html -o src/vue-variables.ts --html-minify",
     "clean": "rimraf dist",
-    "cleancss": "cleancss -o dist/tree.min.css dist/tree.css && cleancss -o demo/index.bundle.css dist/tree.min.css ./node_modules/github-fork-ribbon-css/gh-fork-ribbon.css"
+    "cleancss": "cleancss -o dist/tree.min.css dist/tree.css && cleancss -o demo/index.bundle.css dist/tree.min.css ./node_modules/github-fork-ribbon-css/gh-fork-ribbon.css",
+    "standard": "standard \"**/*.config.js\"",
+    "fix": "standard --fix \"**/*.config.js\""
   },
   "repository": {
     "type": "git",
@@ -43,6 +45,7 @@
     "rev-static": "2.4.2",
     "rimraf": "2.6.1",
     "rxjs": "5.4.0",
+    "standard": "10.0.2",
     "stylelint": "7.10.1",
     "stylelint-config-standard": "16.0.0",
     "tslint": "5.4.0",
