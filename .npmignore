@@ -9,3 +9,5 @@ rev-static.config.json
 spec
 demo
 images
+**/*.ts
+!**/*.d.ts
