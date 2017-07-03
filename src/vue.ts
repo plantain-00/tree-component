@@ -1,10 +1,10 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import * as common from "./common";
-import { srcVueNodeTemplateHtml, srcVueTreeTemplateHtml } from "./vue-variables";
+import { vueNodeTemplateHtml, vueTreeTemplateHtml } from "./vue-variables";
 
 @Component({
-    template: srcVueNodeTemplateHtml,
+    template: vueNodeTemplateHtml,
     props: ["data", "last", "checkbox", "path", "draggable", "root", "zindex"],
 })
 class Node extends Vue {
@@ -112,7 +112,7 @@ class Node extends Vue {
 Vue.component("node", Node);
 
 @Component({
-    template: srcVueTreeTemplateHtml,
+    template: vueTreeTemplateHtml,
     props: ["data", "checkbox", "draggable", "nodots", "size", "theme", "dropAllowed", "zindex"],
 })
 export class Tree extends Vue {

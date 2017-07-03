@@ -12,5 +12,6 @@ module.exports = {
   },
   sha: 256,
   customNewFileName: (filePath, fileString, md5String, baseName, extensionName) => baseName + '-' + md5String + extensionName,
-  noOutputFiles: []
+  noOutputFiles: [],
+  base: 'demo'
 }

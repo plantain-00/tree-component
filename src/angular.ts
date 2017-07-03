@@ -1,10 +1,10 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 import * as common from "./common";
-import { srcAngularNodeTemplateHtml, srcAngularTreeTemplateHtml } from "./angular-variables";
+import { angularNodeTemplateHtml, angularTreeTemplateHtml } from "./angular-variables";
 
 @Component({
     selector: "node",
-    template: srcAngularNodeTemplateHtml,
+    template: angularNodeTemplateHtml,
 })
 export class NodeComponent {
     @Input()
@@ -94,7 +94,7 @@ export class NodeComponent {
 
 @Component({
     selector: "tree",
-    template: srcAngularTreeTemplateHtml,
+    template: angularTreeTemplateHtml,
 })
 export class TreeComponent {
     @Input()
