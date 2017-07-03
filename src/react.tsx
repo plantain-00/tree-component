@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as common from "./common";
+export * from "./common";
 
 class Node extends React.PureComponent<{
     data: common.TreeData;

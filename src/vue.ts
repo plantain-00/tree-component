@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import * as common from "./common";
+export * from "./common";
 import { vueNodeTemplateHtml, vueTreeTemplateHtml } from "./vue-variables";
 
 @Component({

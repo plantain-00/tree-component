@@ -2,16 +2,16 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import "../../dist/vue";
 import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, setContextMenu } from "../common";
-import * as common from "../../dist/common";
+import { ContextMenuData, getNodeFromPath, EventData, DropData } from "../../dist/vue";
 
 @Component({
     template: `<button @click="click()">delete</button>`,
     props: ["data"],
 })
 class DeleteButton extends Vue {
-    data: common.ContextMenuData;
+    data: ContextMenuData;
     click() {
-        const parent = common.getNodeFromPath(this.data.root, this.data.path.slice(0, this.data.path.length - 1));
+        const parent = getNodeFromPath(this.data.root, this.data.path.slice(0, this.data.path.length - 1));
         const children = parent && parent.children ? parent.children : this.data.root;
         const index = this.data.path[this.data.path.length - 1];
         children.splice(index, 1);
@@ -90,10 +90,10 @@ class App extends Vue {
     data8 = data8;
     dropAllowed = canMove;
 
-    toggle(eventData: common.EventData) {
+    toggle(eventData: EventData) {
         toggle(eventData);
     }
-    change(eventData: common.EventData) {
+    change(eventData: EventData) {
         this.selectedId = eventData.data.state.selected ? null : eventData.data.value.id;
         if (!eventData.data.state.selected) {
             for (const child of this.data) {
@@ -102,39 +102,39 @@ class App extends Vue {
         }
         eventData.data.state.selected = !eventData.data.state.selected;
     }
-    toggle2(eventData: common.EventData) {
+    toggle2(eventData: EventData) {
         toggle(eventData);
     }
-    change2(eventData: common.EventData) {
+    change2(eventData: EventData) {
         setSelectionOfTree(eventData.data, !eventData.data.state.selected);
         setParentsSelection(this.data2, eventData.path);
     }
-    toggle3(eventData: common.EventData) {
+    toggle3(eventData: EventData) {
         toggle(eventData);
     }
-    drop3(dropData: common.DropData) {
+    drop3(dropData: DropData) {
         move(dropData, this.data3);
     }
-    toggle4(eventData: common.EventData) {
+    toggle4(eventData: EventData) {
         toggle(eventData);
     }
-    toggle5(eventData: common.EventData) {
+    toggle5(eventData: EventData) {
         toggle(eventData);
     }
-    toggle6(eventData: common.EventData) {
+    toggle6(eventData: EventData) {
         toggle(eventData);
     }
-    toggle7(eventData: common.EventData) {
+    toggle7(eventData: EventData) {
         toggle(eventData);
     }
-    change7(eventData: common.EventData) {
+    change7(eventData: EventData) {
         setSelectionOfTree(eventData.data, !eventData.data.state.selected);
         setParentsSelection(this.data7, eventData.path);
     }
-    drop7(dropData: common.DropData) {
+    drop7(dropData: DropData) {
         move(dropData, this.data7);
     }
-    toggle8(eventData: common.EventData) {
+    toggle8(eventData: EventData) {
         toggle(eventData);
     }
 }

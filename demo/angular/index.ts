@@ -10,7 +10,6 @@ enableProdMode();
 import { Component } from "@angular/core";
 
 import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove } from "../common";
-import * as common from "../../dist/common";
 
 @Component({
     selector: "app",
@@ -73,10 +72,10 @@ export class MainComponent {
     data6 = JSON.parse(JSON.stringify(data));
     data7 = JSON.parse(JSON.stringify(data));
     dropAllowed = canMove;
-    ontoggle(eventData: common.EventData) {
+    ontoggle(eventData: EventData) {
         toggle(eventData);
     }
-    onchange(eventData: common.EventData) {
+    onchange(eventData: EventData) {
         this.selectedId = eventData.data.state.selected ? null : eventData.data.value.id;
         if (!eventData.data.state.selected) {
             for (const child of this.data) {
@@ -85,36 +84,36 @@ export class MainComponent {
         }
         eventData.data.state.selected = !eventData.data.state.selected;
     }
-    ontoggle2(eventData: common.EventData) {
+    ontoggle2(eventData: EventData) {
         toggle(eventData);
     }
-    onchange2(eventData: common.EventData) {
+    onchange2(eventData: EventData) {
         setSelectionOfTree(eventData.data, !eventData.data.state.selected);
         setParentsSelection(this.data2, eventData.path);
     }
-    ontoggle3(eventData: common.EventData) {
+    ontoggle3(eventData: EventData) {
         toggle(eventData);
     }
-    drop3(dropData: common.DropData) {
+    drop3(dropData: DropData) {
         move(dropData, this.data3);
     }
-    ontoggle4(eventData: common.EventData) {
+    ontoggle4(eventData: EventData) {
         toggle(eventData);
     }
-    ontoggle5(eventData: common.EventData) {
+    ontoggle5(eventData: EventData) {
         toggle(eventData);
     }
-    ontoggle6(eventData: common.EventData) {
+    ontoggle6(eventData: EventData) {
         toggle(eventData);
     }
-    ontoggle7(eventData: common.EventData) {
+    ontoggle7(eventData: EventData) {
         toggle(eventData);
     }
-    onchange7(eventData: common.EventData) {
+    onchange7(eventData: EventData) {
         setSelectionOfTree(eventData.data, !eventData.data.state.selected);
         setParentsSelection(this.data7, eventData.path);
     }
-    drop7(dropData: common.DropData) {
+    drop7(dropData: DropData) {
         move(dropData, this.data7);
     }
 }
@@ -122,7 +121,7 @@ export class MainComponent {
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
-import { NodeComponent, TreeComponent } from "../../dist/angular";
+import { NodeComponent, TreeComponent, EventData, DropData } from "../../dist/angular";
 
 @NgModule({
     imports: [BrowserModule, FormsModule],
