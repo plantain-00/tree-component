@@ -1,6 +1,6 @@
 {
   "name": "tree-component",
-  "version": "2.7.3",
+  "version": "2.7.4",
   "description": "A reactjs, angular and vuejs tree component.",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "cleancss": "cleancss -o dist/tree.min.css dist/tree.css && cleancss -o demo/index.bundle.css dist/tree.min.css ./node_modules/github-fork-ribbon-css/gh-fork-ribbon.css",
     "standard": "standard \"**/*.config.js\"",
     "fix": "standard --fix \"**/*.config.js\"",
-    "test": "tsc -p spec && karma start spec/karma.config.js"
+    "test": "tsc -p spec && karma start spec/karma.config.js",
+    "release": "clean-release"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "@types/react": "15.0.34",
     "@types/react-dom": "15.5.1",
     "clean-css-cli": "4.1.6",
+    "clean-release": "1.0.3",
     "core-js": "2.4.1",
     "file2variable-cli": "1.4.0",
     "github-fork-ribbon-css": "0.2.1",
