@@ -32,7 +32,7 @@ A reactjs, angular and vuejs tree component.
 #### link css
 
 ```html
-<link rel="stylesheet" href="./node_modules/tree-component/dist/tree.min.css" />
+<link rel="stylesheet" href="./node_modules/tree-component/tree.min.css" />
 ```
 
 #### vuejs component demo
@@ -40,7 +40,7 @@ A reactjs, angular and vuejs tree component.
 `npm i vue vue-class-component`
 
 ```ts
-import "tree-component/dist/vue";
+import "tree-component/vue";
 ```
 
 ```html
@@ -55,7 +55,7 @@ the online demo: https://plantain-00.github.io/tree-component/demo/vue/index.htm
 #### reactjs component demo
 
 ```ts
-import { Tree } from "tree-component/dist/react";
+import { Tree } from "tree-component/react";
 ```
 
 ```html
@@ -70,7 +70,7 @@ the online demo: https://plantain-00.github.io/tree-component/demo/react/index.h
 #### angular component demo
 
 ```ts
-import { TreeComponent, NodeComponent } from "tree-component/dist/angular";
+import { TreeComponent, NodeComponent } from "tree-component/angular";
 
 @NgModule({
     imports: [BrowserModule, FormsModule],
@@ -160,10 +160,22 @@ type DropData = {
 
 ##### v2
 
+```ts
+// v3
+import "tree-component/vue";
+import { TreeComponent, NodeComponent } from "tree-component/angular";
+import { Tree } from "tree-component/react";
+
+// v2
+import "tree-component/dist/vue";
+import { TreeComponent, NodeComponent } from "tree-component/dist/angular";
+import { Tree } from "tree-component/dist/react";
 ```
+
+```
+// v2:
+<link rel="stylesheet" href="./node_modules/tree-component/tree.min.css" />
+
 // v1:
 <link rel="stylesheet" href="./node_modules/jstree/dist/themes/default/style.min.css" />
-
-// v2:
-<link rel="stylesheet" href="./node_modules/tree-component/dist/tree.min.css" />
 ```
