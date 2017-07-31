@@ -5,7 +5,7 @@ module.exports = {
     `rimraf dist`,
     `tsc -p src`,
     `tsc -p demo`,
-    `image2base64-cli images/*.png images/*.gif --less src/variables.less`,
+    `image2base64-cli images/*.png images/*.gif --less src/variables.less --base images`,
     `lessc src/tree.less > dist/tree.css`,
     `cleancss -o dist/tree.min.css dist/tree.css`,
     `cleancss -o demo/index.bundle.css dist/tree.min.css ./node_modules/github-fork-ribbon-css/gh-fork-ribbon.css`,

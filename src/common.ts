@@ -38,7 +38,7 @@ import { __extends, __decorate, __assign } from "tslib";
 
 export class DoubleClick {
     clicked = false;
-    timer: null | number = null;
+    timer: null | NodeJS.Timer = null;
 
     constructor(private timeout = 300) { }
 
