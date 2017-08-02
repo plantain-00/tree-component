@@ -9,7 +9,7 @@ module.exports = {
     `lessc src/tree.less > dist/tree.css`,
     `cleancss -o dist/tree.min.css dist/tree.css`,
     `cleancss -o demo/index.bundle.css dist/tree.min.css ./node_modules/github-fork-ribbon-css/gh-fork-ribbon.css`,
-    `webpack --config demo/webpack.config.js`,
+    `webpack --display-modules --config demo/webpack.config.js`,
     `rimraf demo/**/index.bundle-*.js demo/tree-icon-*.png demo/index.bundle-*.css`,
     `rev-static --config demo/rev-static.config.js`
   ],
