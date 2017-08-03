@@ -7,9 +7,9 @@ import { angularNodeTemplateHtml, angularTreeTemplateHtml } from "./angular-vari
     selector: "node",
     template: angularNodeTemplateHtml,
 })
-export class NodeComponent {
+export class NodeComponent<T> {
     @Input()
-    data: common.TreeData;
+    data: common.TreeData<T>;
     @Input()
     last: boolean;
     @Input()
@@ -20,9 +20,9 @@ export class NodeComponent {
     draggable?: boolean;
 
     @Output()
-    toggle = new EventEmitter<common.EventData>();
+    toggle = new EventEmitter<common.EventData<T>>();
     @Output()
-    change = new EventEmitter<common.EventData>();
+    change = new EventEmitter<common.EventData<T>>();
 
     hovered = false;
     doubleClick = new common.DoubleClick();
@@ -55,7 +55,7 @@ export class NodeComponent {
         return common.getMarkerClassName(this.data);
     }
 
-    get eventData(): common.EventData {
+    get eventData(): common.EventData<T> {
         return {
             data: this.data,
             path: this.path,
@@ -69,7 +69,7 @@ export class NodeComponent {
     hover(hovered: boolean) {
         this.hovered = hovered;
     }
-    ontoggle(eventData?: common.EventData) {
+    ontoggle(eventData?: common.EventData<T>) {
         if (eventData) {
             this.toggle.emit(eventData);
         } else {
@@ -78,7 +78,7 @@ export class NodeComponent {
             }
         }
     }
-    onchange(eventData?: common.EventData) {
+    onchange(eventData?: common.EventData<T>) {
         if (eventData) {
             this.change.emit(eventData);
         } else {
@@ -97,9 +97,9 @@ export class NodeComponent {
     selector: "tree",
     template: angularTreeTemplateHtml,
 })
-export class TreeComponent {
+export class TreeComponent<T> {
     @Input()
-    data: common.TreeData[];
+    data: common.TreeData<T>[];
     @Input()
     checkbox?: boolean;
     @Input()
@@ -111,14 +111,14 @@ export class TreeComponent {
     @Input()
     theme?: string;
     @Input()
-    dropAllowed?: (dropData: common.DropData) => boolean;
+    dropAllowed?: (dropData: common.DropData<T>) => boolean;
 
     @Output()
-    toggle = new EventEmitter<common.EventData>();
+    toggle = new EventEmitter<common.EventData<T>>();
     @Output()
-    change = new EventEmitter<common.EventData>();
+    change = new EventEmitter<common.EventData<T>>();
     @Output()
-    drop = new EventEmitter<common.DropData>();
+    drop = new EventEmitter<common.DropData<T>>();
 
     dragTarget: HTMLElement | null = null;
     dropTarget: HTMLElement | null = null;
@@ -133,10 +133,10 @@ export class TreeComponent {
     canDrop(event: DragEvent) {
         return this.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path;
     }
-    ontoggle(eventData: common.EventData) {
+    ontoggle(eventData: common.EventData<T>) {
         this.toggle.emit(eventData);
     }
-    onchange(eventData: common.EventData) {
+    onchange(eventData: common.EventData<T>) {
         this.change.emit(eventData);
     }
     ondragstart(event: DragEvent) {

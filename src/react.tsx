@@ -2,17 +2,17 @@ import * as React from "react";
 import * as common from "./common";
 export * from "./common";
 
-class Node extends React.PureComponent<{
-    data: common.TreeData;
+class Node<T> extends React.PureComponent<{
+    data: common.TreeData<T>;
     last: boolean;
     checkbox?: boolean;
     path: number[];
     draggable?: boolean;
-    root: common.TreeData[];
+    root: common.TreeData<T>[];
     zindex?: number;
     parent: any;
-    toggle: (eventData?: common.EventData) => void;
-    change: (eventData?: common.EventData) => void;
+    toggle: (eventData?: common.EventData<T>) => void;
+    change: (eventData?: common.EventData<T>) => void;
 }, { hovered: boolean; contextmenuVisible: boolean; contextmenuStyle: React.CSSProperties }> {
     hovered = false;
     doubleClick = new common.DoubleClick();
@@ -37,8 +37,8 @@ class Node extends React.PureComponent<{
                     root={this.props.root}
                     parent={this}
                     zindex={this.props.zindex}
-                    toggle={eventData => this.ontoggle(eventData)}
-                    change={eventData => this.onchange(eventData)}>
+                    toggle={(eventData: common.EventData<T>) => this.ontoggle(eventData)}
+                    change={(eventData: common.EventData<T>) => this.onchange(eventData)}>
                 </Node>
             ));
             childrenElement = (
@@ -52,7 +52,7 @@ class Node extends React.PureComponent<{
         const checkboxElement = this.props.checkbox ? <i className={this.checkboxClassName} role="presentation"></i> : null;
         const iconElement = this.props.data.icon !== false ? <i className={this.iconClassName} role="presentation"></i> : null;
         const markerElement = this.hasMarker ? <span className={this.markerClassName}>&#160;</span> : null;
-        const contextmenu = this.props.data.contextmenu && this.contextmenuVisible ? React.createElement(this.props.data.contextmenu as React.ComponentClass<{ data: common.ContextMenuData }>, { data: this.contextmenuData }) : null;
+        const contextmenu = this.props.data.contextmenu && this.contextmenuVisible ? React.createElement(this.props.data.contextmenu as React.ComponentClass<{ data: common.ContextMenuData<T> }>, { data: this.contextmenuData }) : null;
         return (
             <li role="treeitem" className={this.nodeClassName}>
                 <i className="tree-icon tree-ocl" role="presentation" onClick={() => this.ontoggle()}></i>
@@ -104,13 +104,13 @@ class Node extends React.PureComponent<{
         return common.getMarkerClassName(this.props.data);
     }
 
-    get eventData(): common.EventData {
+    get eventData(): common.EventData<T> {
         return {
             data: this.props.data,
             path: this.props.path,
         };
     }
-    get contextmenuData(): common.ContextMenuData {
+    get contextmenuData(): common.ContextMenuData<T> {
         return {
             data: this.props.data,
             path: this.props.path,
@@ -131,7 +131,7 @@ class Node extends React.PureComponent<{
             this.setState({ contextmenuVisible: this.contextmenuVisible });
         }
     }
-    ontoggle(eventData?: common.EventData) {
+    ontoggle(eventData?: common.EventData<T>) {
         if (eventData) {
             this.props.toggle(eventData);
         } else {
@@ -140,7 +140,7 @@ class Node extends React.PureComponent<{
             }
         }
     }
-    onchange(eventData?: common.EventData) {
+    onchange(eventData?: common.EventData<T>) {
         if (eventData) {
             this.props.change(eventData);
         } else {
@@ -164,18 +164,18 @@ class Node extends React.PureComponent<{
     }
 }
 
-export class Tree extends React.PureComponent<{
-    data: common.TreeData[];
+export class Tree<T> extends React.PureComponent<{
+    data: common.TreeData<T>[];
     checkbox?: boolean;
     draggable?: boolean;
     nodots?: boolean;
     size?: string;
     theme?: string;
-    dropAllowed?: (dropData: common.DropData) => boolean;
+    dropAllowed?: (dropData: common.DropData<T>) => boolean;
     zindex?: number;
-    toggle?: (eventData?: common.EventData) => void;
-    change?: (eventData?: common.EventData) => void;
-    drop?: (dropData: common.DropData) => void;
+    toggle?: (eventData?: common.EventData<T>) => void;
+    change?: (eventData?: common.EventData<T>) => void;
+    drop?: (dropData: common.DropData<T>) => void;
 }, { dragTarget: HTMLElement | null, dropTarget: HTMLElement | null }> {
     dragTarget: HTMLElement | null = null;
     dropTarget: HTMLElement | null = null;
@@ -191,8 +191,8 @@ export class Tree extends React.PureComponent<{
                 root={this.props.data}
                 parent={this}
                 zindex={this.props.zindex}
-                toggle={(data: common.EventData) => this.ontoggle(data)}
-                change={(data: common.EventData) => this.onchange(data)}></Node>
+                toggle={(data: common.EventData<T>) => this.ontoggle(data)}
+                change={(data: common.EventData<T>) => this.onchange(data)}></Node>
         ));
         return (
             <div className={this.rootClassName} role="tree">
@@ -220,12 +220,12 @@ export class Tree extends React.PureComponent<{
     canDrop(event: React.DragEvent<HTMLElement>) {
         return this.props.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path;
     }
-    ontoggle(eventData: common.EventData) {
+    ontoggle(eventData: common.EventData<T>) {
         if (this.props.toggle) {
             this.props.toggle(eventData);
         }
     }
-    onchange(eventData: common.EventData) {
+    onchange(eventData: common.EventData<T>) {
         if (this.props.change) {
             this.props.change(eventData);
         }

@@ -1,9 +1,9 @@
-export type TreeData = {
+export type TreeData<T = any> = {
     text: string;
-    value?: any;
+    value?: T;
     icon?: string | false;
     state: TreeNodeState;
-    children: TreeData[];
+    children: TreeData<T>[];
     // tslint:disable-next-line:ban-types
     contextmenu?: string | Function;
 };
@@ -19,15 +19,15 @@ export type TreeNodeState = {
     dropAllowed: boolean;
 };
 
-export type EventData = {
-    data: TreeData;
+export type EventData<T = any> = {
+    data: TreeData<T>;
     path: number[];
 };
 
-export type ContextMenuData = {
-    data: TreeData;
+export type ContextMenuData<T = any> = {
+    data: TreeData<T>;
     path: number[];
-    root: TreeData[];
+    root: TreeData<T>[];
     parent?: any;
 };
 
@@ -67,7 +67,7 @@ export function getContainerClassName(noDots: boolean | undefined) {
     return values.join(" ");
 }
 
-export function getNodeClassName(data: TreeData, last: boolean) {
+export function getNodeClassName<T>(data: TreeData<T>, last: boolean) {
     const values = ["tree-node"];
     if (data.state.openable || data.children.length > 0) {
         if (data.state.opened) {
@@ -87,7 +87,7 @@ export function getNodeClassName(data: TreeData, last: boolean) {
     return values.join(" ");
 }
 
-export function getAnchorClassName(data: TreeData, hovered: boolean) {
+export function getAnchorClassName<T>(data: TreeData<T>, hovered: boolean) {
     const values = ["tree-anchor", "tree-relative"];
     if (data.state.selected) {
         values.push("tree-clicked");
@@ -104,7 +104,7 @@ export function getAnchorClassName(data: TreeData, hovered: boolean) {
     return values.join(" ");
 }
 
-export function getCheckboxClassName(data: TreeData) {
+export function getCheckboxClassName<T>(data: TreeData<T>) {
     const values = ["tree-icon", "tree-checkbox"];
     if (data.children
         && data.children.some(child => child.state.selected)
@@ -135,7 +135,7 @@ export function getIconClassName(icon: string | false | undefined) {
     return values.join(" ");
 }
 
-export function getMarkerClassName(data: TreeData) {
+export function getMarkerClassName<T>(data: TreeData<T>) {
     const values = [`tree-marker-${data.state.dropPosition}`];
     if (data.state.dropAllowed) {
         values.push("allowed");
@@ -152,15 +152,15 @@ export const enum DropPosition {
     down,
 }
 
-export type DropData = {
-    sourceData: TreeData;
+export type DropData<T = any> = {
+    sourceData: TreeData<T>;
     sourcePath: number[];
-    targetData: TreeData;
+    targetData: TreeData<T>;
     targetPath: number[];
 };
 
-export function getNodeFromPath(rootData: TreeData[], path: number[]) {
-    let node: TreeData | null = null;
+export function getNodeFromPath<T>(rootData: TreeData<T>[], path: number[]) {
+    let node: TreeData<T> | null = null;
     for (const index of path) {
         node = node ? node.children[index] : rootData[index];
     }
@@ -178,7 +178,7 @@ export function getDropPosition(pageY: number, offsetTop: number, offsetHeight: 
     }
 }
 
-export function clearDropPositionOfTree(tree: TreeData) {
+export function clearDropPositionOfTree<T>(tree: TreeData<T>) {
     if (tree.state.dropPosition) {
         tree.state.dropPosition = DropPosition.empty;
     }
@@ -189,7 +189,7 @@ export function clearDropPositionOfTree(tree: TreeData) {
     }
 }
 
-export function ondrag(pageY: number, dragTarget: HTMLElement | null, dropTarget: HTMLElement | null, data: TreeData[], dropAllowed?: (dropData: DropData) => boolean, next?: () => void) {
+export function ondrag<T>(pageY: number, dragTarget: HTMLElement | null, dropTarget: HTMLElement | null, data: TreeData<T>[], dropAllowed?: (dropData: DropData<T>) => boolean, next?: () => void) {
     if (dropTarget) {
         const sourcePath = dragTarget!.dataset.path!.split(",").map(s => +s);
         const dropTargetPathString = dropTarget.dataset.path;
@@ -200,7 +200,7 @@ export function ondrag(pageY: number, dragTarget: HTMLElement | null, dropTarget
             const position = getDropPosition(pageY, dropTarget.offsetTop, dropTarget.offsetHeight);
             if (targetData.state.dropPosition !== position) {
                 targetData.state.dropPosition = position;
-                const dropData: DropData = {
+                const dropData: DropData<T> = {
                     sourcePath,
                     targetPath,
                     sourceData,
@@ -215,7 +215,7 @@ export function ondrag(pageY: number, dragTarget: HTMLElement | null, dropTarget
     }
 }
 
-export function ondragleave(target: HTMLElement, data: TreeData[]) {
+export function ondragleave<T>(target: HTMLElement, data: TreeData<T>[]) {
     const pathString = target.dataset.path;
     if (pathString) {
         const path = pathString.split(",").map(s => +s);
@@ -226,7 +226,7 @@ export function ondragleave(target: HTMLElement, data: TreeData[]) {
     }
 }
 
-export function ondrop(target: HTMLElement, dragTarget: HTMLElement | null, data: TreeData[], next: (dropData: DropData) => void) {
+export function ondrop<T>(target: HTMLElement, dragTarget: HTMLElement | null, data: TreeData<T>[], next: (dropData: DropData<T>) => void) {
     const sourcePath = dragTarget!.dataset.path!.split(",").map(s => +s);
     const targetPathString = target.dataset.path;
     if (targetPathString) {
@@ -234,7 +234,7 @@ export function ondrop(target: HTMLElement, dragTarget: HTMLElement | null, data
         const targetData = getNodeFromPath(data, targetPath)!;
         const sourceData = getNodeFromPath(data, sourcePath)!;
         if (targetData.state.dropPosition !== DropPosition.empty) {
-            const dropData: DropData = {
+            const dropData: DropData<T> = {
                 sourcePath,
                 targetPath,
                 sourceData,
@@ -248,7 +248,7 @@ export function ondrop(target: HTMLElement, dragTarget: HTMLElement | null, data
     }
 }
 
-export function clearMarkerOfTree(tree: TreeData) {
+export function clearMarkerOfTree<T>(tree: TreeData<T>) {
     if (tree.state.dropPosition !== DropPosition.empty) {
         tree.state.dropPosition = DropPosition.empty;
     }

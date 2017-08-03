@@ -8,13 +8,13 @@ import { vueNodeTemplateHtml, vueTreeTemplateHtml } from "./vue-variables";
     template: vueNodeTemplateHtml,
     props: ["data", "last", "checkbox", "path", "draggable", "root", "zindex"],
 })
-class Node extends Vue {
-    data: common.TreeData;
+class Node<T> extends Vue {
+    data: common.TreeData<T>;
     last: boolean;
     checkbox?: boolean;
     path: number[];
     draggable?: boolean;
-    root: common.TreeData[];
+    root: common.TreeData<T>[];
     zindex?: number;
 
     hovered = false;
@@ -55,13 +55,13 @@ class Node extends Vue {
         return common.getMarkerClassName(this.data);
     }
 
-    get eventData(): common.EventData {
+    get eventData(): common.EventData<T> {
         return {
             data: this.data,
             path: this.path,
         };
     }
-    get contextmenuData(): common.ContextMenuData {
+    get contextmenuData(): common.ContextMenuData<T> {
         return {
             data: this.data,
             path: this.path,
@@ -79,7 +79,7 @@ class Node extends Vue {
             this.contextmenuVisible = false;
         }
     }
-    ontoggle(eventData?: common.EventData) {
+    ontoggle(eventData?: common.EventData<T>) {
         if (eventData) {
             this.$emit("toggle", eventData);
         } else {
@@ -88,7 +88,7 @@ class Node extends Vue {
             }
         }
     }
-    onchange(eventData?: common.EventData) {
+    onchange(eventData?: common.EventData<T>) {
         if (eventData) {
             this.$emit("change", eventData);
         } else {
@@ -116,14 +116,14 @@ Vue.component("node", Node);
     template: vueTreeTemplateHtml,
     props: ["data", "checkbox", "draggable", "nodots", "size", "theme", "dropAllowed", "zindex"],
 })
-export class Tree extends Vue {
-    data: common.TreeData[];
+export class Tree<T> extends Vue {
+    data: common.TreeData<T>[];
     checkbox?: boolean;
     draggable?: boolean;
     nodots?: boolean;
     size?: string;
     theme?: string;
-    dropAllowed?: (dropData: common.DropData) => boolean;
+    dropAllowed?: (dropData: common.DropData<T>) => boolean;
     zindex?: number;
 
     dragTarget: HTMLElement | null = null;
@@ -139,10 +139,10 @@ export class Tree extends Vue {
     canDrop(event: DragEvent) {
         return this.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path;
     }
-    ontoggle(eventData: common.EventData) {
+    ontoggle(eventData: common.EventData<T>) {
         this.$emit("toggle", eventData);
     }
-    onchange(eventData: common.EventData) {
+    onchange(eventData: common.EventData<T>) {
         this.$emit("change", eventData);
     }
     ondragstart(event: DragEvent) {

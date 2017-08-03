@@ -109,12 +109,12 @@ drop | (dropData: [DropData](#drop-data-structure)) => void | triggered when dra
 #### tree data structure
 
 ```ts
-type TreeData = {
+type TreeData<T = any> = {
     text: string;
-    value?: any; // anything attached to the node
+    value?: T; // anything attached to the node
     icon?: string | false; // the icon class string, or no icon if is false
     state: TreeNodeState;
-    children?: TreeData[];
+    children?: TreeData<T>[];
     contextmenu?: string | Function; // the contextmenu component
 };
 
@@ -140,8 +140,8 @@ enum DropPosition {
 #### event data structure
 
 ```ts
-type EventData = {
-    data: TreeData; // the data of the node that triggered the event
+type EventData<T = any> = {
+    data: TreeData<T>; // the data of the node that triggered the event
     path: number[]; // the index array of path from root to the node that triggered the event
 };
 ```
@@ -149,10 +149,10 @@ type EventData = {
 #### drop data structure
 
 ```ts
-type DropData = {
-    sourceData: TreeData;
+type DropData<T = any> = {
+    sourceData: TreeData<T>;
     sourcePath: number[];
-    targetData: TreeData;
+    targetData: TreeData<T>;
     targetPath: number[];
 };
 ```

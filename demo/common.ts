@@ -124,9 +124,9 @@ for (const child of rawExtraData) {
     standardize(child);
 }
 
-export const data = rawData as TreeData[];
+export const data = rawData as TreeData<Value>[];
 
-export function clearSelectionOfTree(tree: TreeData) {
+export function clearSelectionOfTree(tree: TreeData<Value>) {
     if (tree.state.selected) {
         tree.state.selected = false;
     }
@@ -137,7 +137,7 @@ export function clearSelectionOfTree(tree: TreeData) {
     }
 }
 
-export function toggle(eventData: EventData, next?: () => void) {
+export function toggle(eventData: EventData<Value>, next?: () => void) {
     if (!eventData.data.state.opened && eventData.data.children.length === 0) {
         eventData.data.state.loading = true;
         setTimeout(() => {
@@ -156,7 +156,7 @@ export function toggle(eventData: EventData, next?: () => void) {
     }
 }
 
-export function setSelectionOfTree(tree: TreeData, selected: boolean) {
+export function setSelectionOfTree(tree: TreeData<Value>, selected: boolean) {
     if (tree.state.selected !== selected) {
         tree.state.selected = selected;
     }
@@ -168,7 +168,7 @@ export function setSelectionOfTree(tree: TreeData, selected: boolean) {
 }
 
 // tslint:disable-next-line:ban-types
-export function setContextMenu(tree: TreeData, component: string | Function) {
+export function setContextMenu(tree: TreeData<Value>, component: string | Function) {
     tree.contextmenu = component;
     if (tree.children) {
         for (const child of tree.children) {
@@ -177,8 +177,8 @@ export function setContextMenu(tree: TreeData, component: string | Function) {
     }
 }
 
-export function setParentsSelection(tree: TreeData[], path: number[]) {
-    const parents: TreeData[] = [];
+export function setParentsSelection(tree: TreeData<Value>[], path: number[]) {
+    const parents: TreeData<Value>[] = [];
     const parentPath = path.slice(0, path.length - 1);
     for (const index of parentPath) {
         if (parents.length === 0) {
@@ -192,7 +192,7 @@ export function setParentsSelection(tree: TreeData[], path: number[]) {
     }
 }
 
-export function copy(dropData: DropData, treeData: TreeData[]) {
+export function copy(dropData: DropData<Value>, treeData: TreeData<Value>[]) {
     if (dropData.targetData.state.dropPosition === DropPosition.inside) {
         if (dropData.targetData.children) {
             dropData.targetData.children.push(JSON.parse(JSON.stringify(dropData.sourceData)));
@@ -208,7 +208,7 @@ export function copy(dropData: DropData, treeData: TreeData[]) {
     }
 }
 
-export function canMove(dropData: DropData) {
+export function canMove(dropData: DropData<Value>) {
     if (dropData.targetPath.length < dropData.sourcePath.length) {
         return true;
     }
@@ -220,7 +220,7 @@ export function canMove(dropData: DropData) {
     return dropData.targetData.state.dropPosition !== DropPosition.inside && dropData.targetPath.length === dropData.sourcePath.length;
 }
 
-export function move(dropData: DropData, treeData: TreeData[]) {
+export function move(dropData: DropData<Value>, treeData: TreeData<Value>[]) {
     if (!canMove(dropData)) {
         return;
     }
@@ -252,8 +252,12 @@ export function move(dropData: DropData, treeData: TreeData[]) {
 
 type Data = {
     text: string;
-    value?: any;
+    value?: Value;
     icon?: string | false;
     state?: Partial<TreeNodeState>;
     children?: Data[];
+};
+
+export type Value = {
+    id: number;
 };
