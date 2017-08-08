@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter, NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import * as common from "./common";
 export * from "./common";
 import { angularNodeTemplateHtml, angularTreeTemplateHtml } from "./angular-variables";
@@ -188,3 +189,18 @@ export class TreeComponent<T> {
         });
     }
 }
+
+@NgModule({
+    declarations: [
+        TreeComponent,
+        NodeComponent,
+    ],
+    imports: [
+        CommonModule,
+    ],
+    exports: [
+        TreeComponent,
+        NodeComponent,
+    ],
+})
+export class TreeModule { }

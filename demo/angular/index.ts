@@ -121,11 +121,11 @@ export class MainComponent {
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
-import { NodeComponent, TreeComponent, EventData, DropData } from "../../dist/angular";
+import { TreeModule, EventData, DropData } from "../../dist/angular";
 
 @NgModule({
-    imports: [BrowserModule, FormsModule],
-    declarations: [MainComponent, NodeComponent, TreeComponent],
+    imports: [BrowserModule, FormsModule, TreeModule],
+    declarations: [MainComponent],
     bootstrap: [MainComponent],
 })
 class MainModule { }

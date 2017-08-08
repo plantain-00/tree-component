@@ -1,6 +1,6 @@
 {
   "name": "tree-component",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "A reactjs, angular and vuejs tree component.",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@angular/common": "4.3.2",
     "@angular/compiler": "4.3.2",
+    "@angular/compiler-cli": "4.3.3",
     "@angular/core": "4.3.2",
     "@angular/forms": "4.3.2",
     "@angular/platform-browser": "4.3.2",
@@ -32,7 +33,7 @@
     "@types/react-dom": "15.5.1",
     "clean-css-cli": "4.1.6",
     "clean-release": "1.3.2",
-    "clean-scripts": "1.0.1",
+    "clean-scripts": "1.1.1",
     "core-js": "2.4.1",
     "file2variable-cli": "1.4.1",
     "github-fork-ribbon-css": "0.2.1",
@@ -44,6 +45,7 @@
     "karma-jasmine": "1.1.0",
     "karma-webpack": "2.0.4",
     "less": "2.7.2",
+    "mkdirp": "0.5.1",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "rev-static": "3.2.2",

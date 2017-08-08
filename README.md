@@ -71,11 +71,11 @@ the online demo: https://plantain-00.github.io/tree-component/demo/react/index.h
 #### angular component demo
 
 ```ts
-import { TreeComponent, NodeComponent } from "tree-component/angular";
+import { TreeModule } from "tree-component/angular";
 
 @NgModule({
-    imports: [BrowserModule, FormsModule],
-    declarations: [MainComponent, TreeComponent, NodeComponent],
+    imports: [BrowserModule, FormsModule, TreeModule],
+    declarations: [MainComponent],
     bootstrap: [MainComponent],
 })
 class MainModule { }
