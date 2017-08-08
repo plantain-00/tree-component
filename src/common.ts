@@ -258,3 +258,7 @@ export function clearMarkerOfTree<T>(tree: TreeData<T>) {
         }
     }
 }
+
+export function getId(path: number[], preid?: string) {
+    return preid ? preid + path.join("-") : undefined;
+}

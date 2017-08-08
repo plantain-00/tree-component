@@ -10,6 +10,7 @@ class Node<T> extends React.PureComponent<{
     draggable?: boolean;
     root: common.TreeData<T>[];
     zindex?: number;
+    preid?: string;
     parent: any;
     toggle: (eventData?: common.EventData<T>) => void;
     change: (eventData?: common.EventData<T>) => void;
@@ -37,6 +38,7 @@ class Node<T> extends React.PureComponent<{
                     root={this.props.root}
                     parent={this}
                     zindex={this.props.zindex}
+                    preid={this.props.preid}
                     toggle={(eventData: common.EventData<T>) => this.ontoggle(eventData)}
                     change={(eventData: common.EventData<T>) => this.onchange(eventData)}>
                 </Node>
@@ -54,7 +56,7 @@ class Node<T> extends React.PureComponent<{
         const markerElement = this.hasMarker ? <span className={this.markerClassName}>&#160;</span> : null;
         const contextmenu = this.props.data.contextmenu && this.contextmenuVisible ? React.createElement(this.props.data.contextmenu as React.ComponentClass<{ data: common.ContextMenuData<T> }>, { data: this.contextmenuData }) : null;
         return (
-            <li role="treeitem" className={this.nodeClassName}>
+            <li role="treeitem" className={this.nodeClassName} id={this.id}>
                 <i className="tree-icon tree-ocl" role="presentation" onClick={() => this.ontoggle()}></i>
                 <a className={this.anchorClassName}
                     href="javascript:void(0)"
@@ -118,6 +120,9 @@ class Node<T> extends React.PureComponent<{
             parent: this.props.parent,
         };
     }
+    get id() {
+        return common.getId(this.props.path, this.props.preid);
+    }
 
     geChildPath(index: number) {
         return this.props.path.concat(index);
@@ -173,6 +178,7 @@ export class Tree<T> extends React.PureComponent<{
     theme?: string;
     dropAllowed?: (dropData: common.DropData<T>) => boolean;
     zindex?: number;
+    preid?: string;
     toggle?: (eventData?: common.EventData<T>) => void;
     change?: (eventData?: common.EventData<T>) => void;
     drop?: (dropData: common.DropData<T>) => void;
@@ -191,6 +197,7 @@ export class Tree<T> extends React.PureComponent<{
                 root={this.props.data}
                 parent={this}
                 zindex={this.props.zindex}
+                preid={this.props.preid}
                 toggle={(data: common.EventData<T>) => this.ontoggle(data)}
                 change={(data: common.EventData<T>) => this.onchange(data)}></Node>
         ));

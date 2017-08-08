@@ -25,6 +25,7 @@ A reactjs, angular and vuejs tree component.
 + large and small
 + default and dark theme
 + contextmenu(vuejs and reactjs only)
++ node id
 
 #### install
 
@@ -102,6 +103,7 @@ size | string? | can also be "large", "small"
 theme | string? | can be "default"(the default theme), "dark"
 dropAllowed | (dropData: common.DropData) => boolean | optional, a function to show whether the drop action is allowed
 zindex | number? | z-index of contextmenu
+preid | string? | the node id prefix, eg: if `preid = "test_"`, then a node's id can be `test_1-2-3`
 toggle | (eventData: [EventData](#event-data-structure)) => void | triggered when opening or closing a node
 change | (eventData: [EventData](#event-data-structure)) => void | triggered when selecting or deselecting a node
 drop | (dropData: [DropData](#drop-data-structure)) => void | triggered when drag a node, then drop it

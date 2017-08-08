@@ -75,6 +75,11 @@ for (const tree of data8) {
         contextmenu:
         <tree :data="data8"
             @toggle="toggle8($event)"></tree>
+        <br/>
+        node id:
+        <tree :data="data9"
+            preid="test_"
+            @toggle="toggle9($event)"></tree>
     </div>
     `,
 })
@@ -88,6 +93,7 @@ class App extends Vue {
     data6 = JSON.parse(JSON.stringify(data));
     data7 = JSON.parse(JSON.stringify(data));
     data8 = data8;
+    data9 = JSON.parse(JSON.stringify(data));
     dropAllowed = canMove;
 
     toggle(eventData: EventData<Value>) {
@@ -135,6 +141,9 @@ class App extends Vue {
         move(dropData, this.data7);
     }
     toggle8(eventData: EventData<Value>) {
+        toggle(eventData);
+    }
+    toggle9(eventData: EventData<Value>) {
         toggle(eventData);
     }
 }

@@ -19,6 +19,8 @@ export class NodeComponent<T> {
     path: number[];
     @Input()
     draggable?: boolean;
+    @Input()
+    preid?: string;
 
     @Output()
     toggle = new EventEmitter<common.EventData<T>>();
@@ -61,6 +63,9 @@ export class NodeComponent<T> {
             data: this.data,
             path: this.path,
         };
+    }
+    get id() {
+        return common.getId(this.path, this.preid);
     }
 
     geChildPath(index: number) {
@@ -113,6 +118,8 @@ export class TreeComponent<T> {
     theme?: string;
     @Input()
     dropAllowed?: (dropData: common.DropData<T>) => boolean;
+    @Input()
+    preid?: string;
 
     @Output()
     toggle = new EventEmitter<common.EventData<T>>();

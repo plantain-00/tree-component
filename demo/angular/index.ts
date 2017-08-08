@@ -59,6 +59,11 @@ import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelec
             (toggle)="ontoggle7($event)"
             (change)="onchange7($event)"
             (drop)="drop7($event)"></tree>
+        <hr/>
+        node id:
+        <tree [data]="data9"
+            preid="test_"
+            (toggle)="ontoggle9($event)"></tree>
     </div>
     `,
 })
@@ -71,6 +76,7 @@ export class MainComponent {
     data5 = JSON.parse(JSON.stringify(data));
     data6 = JSON.parse(JSON.stringify(data));
     data7 = JSON.parse(JSON.stringify(data));
+    data9 = JSON.parse(JSON.stringify(data));
     dropAllowed = canMove;
     ontoggle(eventData: EventData<Value>) {
         toggle(eventData);
@@ -115,6 +121,9 @@ export class MainComponent {
     }
     drop7(dropData: DropData<Value>) {
         move(dropData, this.data7);
+    }
+    toggle9(eventData: EventData<Value>) {
+        toggle(eventData);
     }
 }
 

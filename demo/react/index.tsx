@@ -26,6 +26,7 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
     data6 = JSON.parse(JSON.stringify(data));
     data7 = JSON.parse(JSON.stringify(data));
     data8 = data8;
+    data9 = JSON.parse(JSON.stringify(data));
     dropAllowed = canMove;
 
     render() {
@@ -86,6 +87,12 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
                 contextmenu:
                 <Tree data={this.data8}
                     toggle={(eventData: EventData<Value>) => this.toggle8(eventData)}>
+                </Tree>
+                <hr />
+                node id:
+                <Tree data={this.data9}
+                    preid="test_"
+                    toggle={(eventData: EventData<Value>) => this.toggle9(eventData)}>
                 </Tree>
             </div>
         );
@@ -154,6 +161,9 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
         move(dropData, this.data7);
     }
     toggle8(eventData: EventData<Value>) {
+        toggle(eventData);
+    }
+    toggle9(eventData: EventData<Value>) {
         toggle(eventData);
     }
 }

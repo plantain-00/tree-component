@@ -32,6 +32,7 @@ module.exports = {
     'karma start spec/karma.config.js'
   ],
   fix: {
+    ts: `tslint --fix "src/*.ts" "src/*.tsx" "demo/**/*.ts" "demo/**/*.tsx"`,
     js: `standard --fix "**/*.config.js"`,
     less: `stylelint --fix "src/**/*.less"`
   },

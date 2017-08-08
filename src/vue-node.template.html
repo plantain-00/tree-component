@@ -1,4 +1,4 @@
-<li role="treeitem" :class="nodeClassName">
+<li role="treeitem" :class="nodeClassName" :id="id">
     <i class="tree-icon tree-ocl" role="presentation" @click="ontoggle()"></i>
     <a :class="anchorClassName" href="javascript:void(0)"
         :draggable="draggable"
@@ -25,6 +25,7 @@
             :draggable="draggable"
             :root="root"
             :zindex="zindex"
+            :preid="preid"
             @toggle="ontoggle($event)"
             @change="onchange($event)">
         </node>
