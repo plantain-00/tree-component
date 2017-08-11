@@ -192,22 +192,6 @@ export function setParentsSelection(tree: TreeData<Value>[], path: number[]) {
     }
 }
 
-export function copy(dropData: DropData<Value>, treeData: TreeData<Value>[]) {
-    if (dropData.targetData.state.dropPosition === DropPosition.inside) {
-        if (dropData.targetData.children) {
-            dropData.targetData.children.push(JSON.parse(JSON.stringify(dropData.sourceData)));
-        } else {
-            dropData.targetData.children = [JSON.parse(JSON.stringify(dropData.sourceData))];
-        }
-        dropData.targetData.state.opened = true;
-    } else {
-        const startIndex = dropData.targetPath[dropData.targetPath.length - 1] + (dropData.targetData.state.dropPosition === DropPosition.up ? 0 : 1);
-        const targetParent = getNodeFromPath(treeData, dropData.targetPath.slice(0, dropData.targetPath.length - 1));
-        const targetChildren = targetParent && targetParent.children ? targetParent.children : treeData;
-        targetChildren.splice(startIndex, 0, JSON.parse(JSON.stringify(dropData.sourceData)));
-    }
-}
-
 export function canMove(dropData: DropData<Value>) {
     if (dropData.targetPath.length < dropData.sourcePath.length) {
         return true;

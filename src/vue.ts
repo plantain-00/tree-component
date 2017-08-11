@@ -120,7 +120,7 @@ Vue.component("node", Node);
     template: vueTreeTemplateHtml,
     props: ["data", "checkbox", "draggable", "nodots", "size", "theme", "dropAllowed", "zindex", "preid"],
 })
-export class Tree<T> extends Vue {
+class Tree<T> extends Vue {
     data: common.TreeData<T>[];
     checkbox?: boolean;
     draggable?: boolean;

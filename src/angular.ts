@@ -4,6 +4,9 @@ import * as common from "./common";
 export * from "./common";
 import { angularNodeTemplateHtml, angularTreeTemplateHtml } from "./angular-variables";
 
+/**
+ * @public
+ */
 @Component({
     selector: "node",
     template: angularNodeTemplateHtml,
@@ -99,6 +102,9 @@ export class NodeComponent<T> {
     }
 }
 
+/**
+ * @public
+ */
 @Component({
     selector: "tree",
     template: angularTreeTemplateHtml,
@@ -197,6 +203,9 @@ export class TreeComponent<T> {
     }
 }
 
+/**
+ * @public
+ */
 @NgModule({
     declarations: [
         TreeComponent,

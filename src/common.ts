@@ -8,6 +8,9 @@ export type TreeData<T = any> = {
     contextmenu?: string | Function;
 };
 
+/**
+ * @public
+ */
 export type TreeNodeState = {
     opened: boolean;
     selected: boolean;
@@ -159,6 +162,9 @@ export type DropData<T = any> = {
     targetPath: number[];
 };
 
+/**
+ * @public
+ */
 export function getNodeFromPath<T>(rootData: TreeData<T>[], path: number[]) {
     let node: TreeData<T> | null = null;
     for (const index of path) {
@@ -167,7 +173,7 @@ export function getNodeFromPath<T>(rootData: TreeData<T>[], path: number[]) {
     return node;
 }
 
-export function getDropPosition(pageY: number, offsetTop: number, offsetHeight: number) {
+function getDropPosition(pageY: number, offsetTop: number, offsetHeight: number) {
     const top = pageY - offsetTop;
     if (top < offsetHeight / 3) {
         return DropPosition.up;
@@ -178,7 +184,7 @@ export function getDropPosition(pageY: number, offsetTop: number, offsetHeight: 
     }
 }
 
-export function clearDropPositionOfTree<T>(tree: TreeData<T>) {
+function clearDropPositionOfTree<T>(tree: TreeData<T>) {
     if (tree.state.dropPosition) {
         tree.state.dropPosition = DropPosition.empty;
     }

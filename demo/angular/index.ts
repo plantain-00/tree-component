@@ -67,7 +67,7 @@ import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelec
     </div>
     `,
 })
-export class MainComponent {
+class MainComponent {
     data = data;
     selectedId: number | null = null;
     data2 = JSON.parse(JSON.stringify(data));

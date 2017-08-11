@@ -2,6 +2,9 @@ import * as React from "react";
 import * as common from "./common";
 export * from "./common";
 
+/**
+ * @public
+ */
 class Node<T> extends React.PureComponent<{
     data: common.TreeData<T>;
     last: boolean;
@@ -169,6 +172,9 @@ class Node<T> extends React.PureComponent<{
     }
 }
 
+/**
+ * @public
+ */
 export class Tree<T> extends React.PureComponent<{
     data: common.TreeData<T>[];
     checkbox?: boolean;
