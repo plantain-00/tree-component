@@ -17,17 +17,17 @@ for (const tree of data8) {
 }
 
 class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: number | null, data2: TreeData<Value>[] }> {
-    data = data;
-    selectedId: number | null = null;
-    data2 = JSON.parse(JSON.stringify(data));
-    data3 = JSON.parse(JSON.stringify(data));
-    data4 = JSON.parse(JSON.stringify(data));
-    data5 = JSON.parse(JSON.stringify(data));
-    data6 = JSON.parse(JSON.stringify(data));
-    data7 = JSON.parse(JSON.stringify(data));
-    data8 = data8;
-    data9 = JSON.parse(JSON.stringify(data));
-    dropAllowed = canMove;
+    private data = data;
+    private selectedId: number | null = null;
+    private data2 = JSON.parse(JSON.stringify(data));
+    private data3 = JSON.parse(JSON.stringify(data));
+    private data4 = JSON.parse(JSON.stringify(data));
+    private data5 = JSON.parse(JSON.stringify(data));
+    private data6 = JSON.parse(JSON.stringify(data));
+    private data7 = JSON.parse(JSON.stringify(data));
+    private data8 = data8;
+    private data9 = JSON.parse(JSON.stringify(data));
+    private dropAllowed = canMove;
 
     render() {
         return (
@@ -98,12 +98,12 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
         );
     }
 
-    toggle(eventData: EventData<Value>) {
+    private toggle(eventData: EventData<Value>) {
         toggle(eventData, () => {
             this.setState({ data: this.data });
         });
     }
-    change(eventData: EventData<Value>) {
+    private change(eventData: EventData<Value>) {
         this.selectedId = eventData.data.state!.selected ? null : eventData.data.value!.id;
         this.setState({ selectedId: this.selectedId });
         if (!eventData.data.state.selected) {
@@ -114,56 +114,56 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
         eventData.data.state.selected = !eventData.data.state.selected;
         this.setState({ data: this.data });
     }
-    toggle2(eventData: EventData<Value>) {
+    private toggle2(eventData: EventData<Value>) {
         toggle(eventData, () => {
             this.setState({ data: this.data2 });
         });
     }
-    change2(eventData: EventData<Value>) {
+    private change2(eventData: EventData<Value>) {
         setSelectionOfTree(eventData.data, !eventData.data.state.selected);
         setParentsSelection(this.data2, eventData.path);
         this.setState({ data: this.data2 });
     }
-    toggle3(eventData: EventData<Value>) {
+    private toggle3(eventData: EventData<Value>) {
         toggle(eventData, () => {
             this.setState({ data: this.data3 });
         });
     }
-    drop3(dropData: DropData<Value>) {
+    private drop3(dropData: DropData<Value>) {
         move(dropData, this.data3);
     }
-    toggle4(eventData: EventData<Value>) {
+    private toggle4(eventData: EventData<Value>) {
         toggle(eventData, () => {
             this.setState({ data: this.data4 });
         });
     }
-    toggle5(eventData: EventData<Value>) {
+    private toggle5(eventData: EventData<Value>) {
         toggle(eventData, () => {
             this.setState({ data: this.data5 });
         });
     }
-    toggle6(eventData: EventData<Value>) {
+    private toggle6(eventData: EventData<Value>) {
         toggle(eventData, () => {
             this.setState({ data: this.data6 });
         });
     }
-    toggle7(eventData: EventData<Value>) {
+    private toggle7(eventData: EventData<Value>) {
         toggle(eventData, () => {
             this.setState({ data: this.data7 });
         });
     }
-    change7(eventData: EventData<Value>) {
+    private change7(eventData: EventData<Value>) {
         setSelectionOfTree(eventData.data, !eventData.data.state.selected);
         setParentsSelection(this.data7, eventData.path);
         this.setState({ data: this.data7 });
     }
-    drop7(dropData: DropData<Value>) {
+    private drop7(dropData: DropData<Value>) {
         move(dropData, this.data7);
     }
-    toggle8(eventData: EventData<Value>) {
+    private toggle8(eventData: EventData<Value>) {
         toggle(eventData);
     }
-    toggle9(eventData: EventData<Value>) {
+    private toggle9(eventData: EventData<Value>) {
         toggle(eventData);
     }
 }

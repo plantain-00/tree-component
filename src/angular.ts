@@ -30,8 +30,8 @@ export class NodeComponent<T> {
     @Output()
     change = new EventEmitter<common.EventData<T>>();
 
-    hovered = false;
-    doubleClick = new common.DoubleClick();
+    private hovered = false;
+    private doubleClick = new common.DoubleClick();
 
     get nodeClassName() {
         return common.getNodeClassName(this.data, this.last);
@@ -61,7 +61,7 @@ export class NodeComponent<T> {
         return common.getMarkerClassName(this.data);
     }
 
-    get eventData(): common.EventData<T> {
+    private get eventData(): common.EventData<T> {
         return {
             data: this.data,
             path: this.path,
@@ -134,8 +134,8 @@ export class TreeComponent<T> {
     @Output()
     drop = new EventEmitter<common.DropData<T>>();
 
-    dragTarget: HTMLElement | null = null;
-    dropTarget: HTMLElement | null = null;
+    private dragTarget: HTMLElement | null = null;
+    private dropTarget: HTMLElement | null = null;
 
     get rootClassName() {
         return common.getRootClassName(this.checkbox, this.size, this.theme);
@@ -144,9 +144,6 @@ export class TreeComponent<T> {
         return common.getContainerClassName(this.nodots);
     }
 
-    canDrop(event: DragEvent) {
-        return this.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path;
-    }
     ontoggle(eventData: common.EventData<T>) {
         this.toggle.emit(eventData);
     }
@@ -200,6 +197,9 @@ export class TreeComponent<T> {
         common.ondrop(event.target as HTMLElement, this.dragTarget, this.data, dropData => {
             this.drop.emit(dropData);
         });
+    }
+    private canDrop(event: DragEvent) {
+        return this.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path;
     }
 }
 

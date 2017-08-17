@@ -18,8 +18,6 @@ class Node<T> extends Vue {
     zindex?: number;
     preid?: string;
 
-    hovered = false;
-    doubleClick = new common.DoubleClick();
     contextmenuVisible = false;
     contextmenuStyle = {
         "position": "absolute",
@@ -27,6 +25,8 @@ class Node<T> extends Vue {
         "top": "0px",
         "z-index": typeof this.zindex === "number" ? this.zindex : 1,
     };
+    private hovered = false;
+    private doubleClick = new common.DoubleClick();
 
     get nodeClassName() {
         return common.getNodeClassName(this.data, this.last);
@@ -56,7 +56,7 @@ class Node<T> extends Vue {
         return common.getMarkerClassName(this.data);
     }
 
-    get eventData(): common.EventData<T> {
+    private get eventData(): common.EventData<T> {
         return {
             data: this.data,
             path: this.path,
@@ -131,8 +131,8 @@ class Tree<T> extends Vue {
     zindex?: number;
     preid?: string;
 
-    dragTarget: HTMLElement | null = null;
-    dropTarget: HTMLElement | null = null;
+    private dragTarget: HTMLElement | null = null;
+    private dropTarget: HTMLElement | null = null;
 
     get rootClassName() {
         return common.getRootClassName(this.checkbox, this.size, this.theme);
@@ -141,9 +141,6 @@ class Tree<T> extends Vue {
         return common.getContainerClassName(this.nodots);
     }
 
-    canDrop(event: DragEvent) {
-        return this.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path;
-    }
     ontoggle(eventData: common.EventData<T>) {
         this.$emit("toggle", eventData);
     }
@@ -196,6 +193,9 @@ class Tree<T> extends Vue {
         common.ondrop(event.target as HTMLElement, this.dragTarget, this.data, dropData => {
             this.$emit("drop", dropData);
         });
+    }
+    private canDrop(event: DragEvent) {
+        return this.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path;
     }
 }
 
