@@ -1,6 +1,6 @@
 {
   "name": "tree-component",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "A reactjs, angular and vuejs tree component.",
   "main": "index.js",
   "scripts": {
@@ -47,7 +47,7 @@
     "karma-webpack": "2.0.4",
     "less": "2.7.2",
     "mkdirp": "0.5.1",
-    "no-unused-export": "1.1.0",
+    "no-unused-export": "1.2.1",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "rev-static": "3.3.1",

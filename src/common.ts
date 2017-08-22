@@ -40,8 +40,8 @@ window.__decorate = __decorate;
 window.__assign = __assign;
 
 export class DoubleClick {
-    clicked = false;
-    timer: null | NodeJS.Timer = null;
+    private clicked = false;
+    private timer: null | NodeJS.Timer = null;
 
     constructor(private timeout = 300) { }
 
