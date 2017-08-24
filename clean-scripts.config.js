@@ -47,6 +47,7 @@ module.exports = {
         await page.screenshot({ path: `spec/${type}.png`, fullPage: true })
       }
       server.close()
+      browser.close()
     },
     () => new Promise((resolve, reject) => {
       childProcess.exec('git status -s', (error, stdout, stderr) => {
