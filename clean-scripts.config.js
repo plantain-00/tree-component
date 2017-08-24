@@ -35,6 +35,19 @@ module.exports = {
   test: [
     'tsc -p spec',
     'karma start spec/karma.config.js',
+    async () => {
+      const { createServer } = require('http-server')
+      const puppeteer = require('puppeteer')
+      const server = createServer()
+      server.listen(8000)
+      const browser = await puppeteer.launch()
+      const page = await browser.newPage()
+      for (const type of ['vue', 'react', 'angular']) {
+        await page.goto(`http://localhost:8000/demo/${type}`)
+        await page.screenshot({ path: `spec/${type}.png`, fullPage: true })
+      }
+      server.close()
+    },
     () => new Promise((resolve, reject) => {
       childProcess.exec('git status -s', (error, stdout, stderr) => {
         if (error) {
