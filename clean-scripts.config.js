@@ -34,7 +34,7 @@ module.exports = {
   },
   test: [
     'tsc -p spec',
-    'karma start spec/karma.config.js',
+    process.env.APPVEYOR ? 'echo "skip karma test"' : 'karma start spec/karma.config.js',
     async () => {
       const { createServer } = require('http-server')
       const puppeteer = require('puppeteer')
@@ -44,7 +44,8 @@ module.exports = {
       const page = await browser.newPage()
       for (const type of ['vue', 'react', 'angular']) {
         await page.goto(`http://localhost:8000/demo/${type}`)
-        await page.screenshot({ path: `spec/${type}.png`, fullPage: true })
+        const buffer = await page.screenshot({ path: `spec/${type}.png`, fullPage: true })
+        console.log(`data:image/png;base64,${buffer.toString('base64')}`)
       }
       server.close()
       browser.close()
