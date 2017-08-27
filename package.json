@@ -49,7 +49,7 @@
     "less": "2.7.2",
     "mkdirp": "0.5.1",
     "no-unused-export": "1.2.1",
-    "puppeteer": "0.9.0",
+    "puppeteer": "0.10.1",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "rev-static": "3.3.1",

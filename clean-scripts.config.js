@@ -28,6 +28,7 @@ module.exports = {
     async () => {
       const { createServer } = require('http-server')
       const puppeteer = require('puppeteer')
+      const fs = require('fs')
       const server = createServer()
       server.listen(8000)
       const browser = await puppeteer.launch()
@@ -35,6 +36,8 @@ module.exports = {
       for (const type of ['vue', 'react', 'angular']) {
         await page.goto(`http://localhost:8000/demo/${type}`)
         await page.screenshot({ path: `demo/${type}/screenshot.png`, fullPage: true })
+        const content = await page.content()
+        fs.writeFileSync(`demo/${type}/screenshot-src.html`, content)
       }
       server.close()
       browser.close()
