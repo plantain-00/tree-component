@@ -41,6 +41,7 @@
     "http-server": "0.10.0",
     "image2base64-cli": "2.1.0",
     "jasmine": "2.7.0",
+    "js-beautify": "1.6.14",
     "karma": "1.7.0",
     "karma-chrome-launcher": "2.2.0",
     "karma-firefox-launcher": "1.0.1",
