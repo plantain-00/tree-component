@@ -68,7 +68,7 @@
     "zone.js": "0.8.17"
   },
   "dependencies": {
-    "@types/node": "8.0.26",
-    "tslib": ""
+    "@types/node": "*",
+    "tslib": "1"
   }
 }
