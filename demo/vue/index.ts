@@ -1,8 +1,9 @@
 import Vue from "vue";
 import Component from "vue-class-component";
+// tslint:disable-next-line:no-duplicate-imports
 import "../../dist/vue";
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, setContextMenu, Value } from "../common";
 import { ContextMenuData, getNodeFromPath, EventData, DropData } from "../../dist/vue";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, setContextMenu, Value } from "../common";
 
 @Component({
     template: `<button @click="click()">delete</button>`,

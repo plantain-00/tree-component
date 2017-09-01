@@ -3,11 +3,9 @@ import "core-js/es7/reflect";
 import "zone.js/dist/zone";
 
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
-import { enableProdMode } from "@angular/core";
+import { enableProdMode, Component, NgModule } from "@angular/core";
 
 enableProdMode();
-
-import { Component } from "@angular/core";
 
 import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, Value } from "../common";
 
@@ -127,7 +125,6 @@ class MainComponent {
     }
 }
 
-import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { TreeModule, EventData, DropData } from "../../dist/angular";
