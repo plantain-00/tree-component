@@ -72,8 +72,12 @@ const rawExtraData: Data[] = [
         icon: "tree-file",
     },
     {
-        text: "highlighted node 25",
+        text: "custom node 26",
         value: { id: 26 },
+    },
+    {
+        text: "highlighted node 27",
+        value: { id: 27 },
         state: {
             highlighted: true,
             openable: true,
@@ -137,11 +141,16 @@ export function clearSelectionOfTree(tree: TreeData<Value>) {
     }
 }
 
-export function toggle(eventData: EventData<Value>, next?: () => void) {
+// tslint:disable-next-line:ban-types
+export function toggle(eventData: EventData<Value>, customComponent?: string | Function, next?: () => void) {
     if (!eventData.data.state.opened && eventData.data.children.length === 0) {
         eventData.data.state.loading = true;
         setTimeout(() => {
-            eventData.data.children = JSON.parse(JSON.stringify(rawExtraData));
+            const newExtraData: TreeData[] = JSON.parse(JSON.stringify(rawExtraData));
+            eventData.data.children = newExtraData;
+            if (customComponent) {
+                newExtraData[5].component = customComponent;
+            }
             eventData.data.state.loading = false;
             eventData.data.state.opened = !eventData.data.state.opened;
             if (next) {
@@ -235,11 +244,13 @@ export function move(dropData: DropData<Value>, treeData: TreeData<Value>[]) {
 }
 
 type Data = {
-    text: string;
+    text?: string;
     value?: Value;
     icon?: string | false;
     state?: Partial<TreeNodeState>;
     children?: Data[];
+    // tslint:disable-next-line:ban-types
+    component?: string | Function;
 };
 
 export type Value = {

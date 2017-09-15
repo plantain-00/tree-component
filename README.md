@@ -26,6 +26,7 @@ A reactjs, angular and vuejs tree component.
 + default and dark theme
 + contextmenu(vuejs and reactjs only)
 + node id
++ custom node(vuejs and reactjs only)
 
 #### install
 
@@ -112,12 +113,13 @@ drop | (dropData: [DropData](#drop-data-structure)) => void | triggered when dra
 
 ```ts
 type TreeData<T = any> = {
-    text: string;
+    text?: string;
     value?: T; // anything attached to the node
     icon?: string | false; // the icon class string, or no icon if is false
     state: TreeNodeState;
     children?: TreeData<T>[];
-    contextmenu?: string | Function; // the contextmenu component
+    contextmenu?: string | Function; // the contextmenu component, props: (data: ContextMenuData<T>)
+    component?: string | Function; // the node component, props: (data: TreeData<T>)
 };
 
 type TreeNodeState = {
@@ -156,6 +158,17 @@ type DropData<T = any> = {
     sourcePath: number[];
     targetData: TreeData<T>;
     targetPath: number[];
+};
+```
+
+#### contextmenu data structure
+
+```ts
+type ContextMenuData<T = any> = {
+    data: TreeData<T>;
+    path: number[];
+    root: TreeData<T>[];
+    parent?: any;
 };
 ```
 

@@ -2,7 +2,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 // tslint:disable-next-line:no-duplicate-imports
 import "../../dist/vue";
-import { ContextMenuData, getNodeFromPath, EventData, DropData } from "../../dist/vue";
+import { ContextMenuData, getNodeFromPath, EventData, DropData, TreeData } from "../../dist/vue";
 import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, setContextMenu, Value } from "../common";
 
 @Component({
@@ -24,6 +24,15 @@ const data8: typeof data = JSON.parse(JSON.stringify(data));
 for (const tree of data8) {
     setContextMenu(tree, "delete-button");
 }
+
+@Component({
+    template: `<span><span style="color: red">{{data.value.id}}</span>{{data.text}}</span>`,
+    props: ["data"],
+})
+class CustomNode extends Vue {
+    data: TreeData<Value>;
+}
+Vue.component("custom-node", CustomNode);
 
 @Component({
     template: `
@@ -98,7 +107,7 @@ class App extends Vue {
     dropAllowed = canMove;
 
     toggle(eventData: EventData<Value>) {
-        toggle(eventData);
+        toggle(eventData, "custom-node");
     }
     change(eventData: EventData<Value>) {
         this.selectedId = eventData.data.state.selected ? null : eventData.data.value!.id;
@@ -110,29 +119,29 @@ class App extends Vue {
         eventData.data.state.selected = !eventData.data.state.selected;
     }
     toggle2(eventData: EventData<Value>) {
-        toggle(eventData);
+        toggle(eventData, "custom-node");
     }
     change2(eventData: EventData<Value>) {
         setSelectionOfTree(eventData.data, !eventData.data.state.selected);
         setParentsSelection(this.data2, eventData.path);
     }
     toggle3(eventData: EventData<Value>) {
-        toggle(eventData);
+        toggle(eventData, "custom-node");
     }
     drop3(dropData: DropData<Value>) {
         move(dropData, this.data3);
     }
     toggle4(eventData: EventData<Value>) {
-        toggle(eventData);
+        toggle(eventData, "custom-node");
     }
     toggle5(eventData: EventData<Value>) {
-        toggle(eventData);
+        toggle(eventData, "custom-node");
     }
     toggle6(eventData: EventData<Value>) {
-        toggle(eventData);
+        toggle(eventData, "custom-node");
     }
     toggle7(eventData: EventData<Value>) {
-        toggle(eventData);
+        toggle(eventData, "custom-node");
     }
     change7(eventData: EventData<Value>) {
         setSelectionOfTree(eventData.data, !eventData.data.state.selected);
@@ -142,10 +151,10 @@ class App extends Vue {
         move(dropData, this.data7);
     }
     toggle8(eventData: EventData<Value>) {
-        toggle(eventData);
+        toggle(eventData, "custom-node");
     }
     toggle9(eventData: EventData<Value>) {
-        toggle(eventData);
+        toggle(eventData, "custom-node");
     }
 }
 

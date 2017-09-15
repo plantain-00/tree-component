@@ -58,6 +58,7 @@ class Node<T> extends React.PureComponent<{
         const iconElement = this.props.data.icon !== false ? <i className={this.iconClassName} role="presentation"></i> : null;
         const markerElement = this.hasMarker ? <span className={this.markerClassName}>&#160;</span> : null;
         const contextmenu = this.props.data.contextmenu && this.contextmenuVisible ? React.createElement(this.props.data.contextmenu as React.ComponentClass<{ data: common.ContextMenuData<T> }>, { data: this.contextmenuData }) : null;
+        const text = this.props.data.component ? React.createElement(this.props.data.component as React.ComponentClass<{ data: common.TreeData<T> }>, { data: this.props.data }) : this.props.data.text;
         return (
             <li role="treeitem" className={this.nodeClassName} id={this.id}>
                 <i className="tree-icon tree-ocl" role="presentation" onClick={() => this.ontoggle()}></i>
@@ -72,7 +73,7 @@ class Node<T> extends React.PureComponent<{
                     data-path={this.pathString}>
                     {checkboxElement}
                     {iconElement}
-                    {this.props.data.text}
+                    {text}
                     {markerElement}
                     <div style={this.contextmenuStyle}>{contextmenu}</div>
                 </a>

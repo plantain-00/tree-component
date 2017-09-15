@@ -10,7 +10,8 @@
         :data-path="pathString">
         <i v-if="checkbox" :class="checkboxClassName" role="presentation"></i>
         <i v-if="data.icon !== false" :class="iconClassName" role="presentation"></i>
-        {{data.text}}
+        <component v-if="data.component" :is="data.component" :data="data"></component>
+        <template v-else>{{data.text}}</template>
         <span v-if="hasMarker" :class="markerClassName">&#160;</span>
         <div v-if="data.contextmenu && contextmenuVisible" :style="contextmenuStyle">
             <component :is="data.contextmenu" :data="contextmenuData"></component>

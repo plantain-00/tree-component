@@ -16,6 +16,8 @@ for (const tree of data8) {
     setContextMenu(tree, DeleteButton);
 }
 
+const CustomNode: React.StatelessComponent<{ data: TreeData<Value> }> = props => <span><span style={{ color: "red" }}>{props.data.value!.id}</span>{props.data.text}</span >;
+
 class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: number | null, data2: TreeData<Value>[] }> {
     private data = data;
     private selectedId: number | null = null;
@@ -99,7 +101,7 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
     }
 
     private toggle(eventData: EventData<Value>) {
-        toggle(eventData, () => {
+        toggle(eventData, CustomNode, () => {
             this.setState({ data: this.data });
         });
     }
@@ -115,7 +117,7 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
         this.setState({ data: this.data });
     }
     private toggle2(eventData: EventData<Value>) {
-        toggle(eventData, () => {
+        toggle(eventData, CustomNode, () => {
             this.setState({ data: this.data2 });
         });
     }
@@ -125,7 +127,7 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
         this.setState({ data: this.data2 });
     }
     private toggle3(eventData: EventData<Value>) {
-        toggle(eventData, () => {
+        toggle(eventData, CustomNode, () => {
             this.setState({ data: this.data3 });
         });
     }
@@ -133,22 +135,22 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
         move(dropData, this.data3);
     }
     private toggle4(eventData: EventData<Value>) {
-        toggle(eventData, () => {
+        toggle(eventData, CustomNode, () => {
             this.setState({ data: this.data4 });
         });
     }
     private toggle5(eventData: EventData<Value>) {
-        toggle(eventData, () => {
+        toggle(eventData, CustomNode, () => {
             this.setState({ data: this.data5 });
         });
     }
     private toggle6(eventData: EventData<Value>) {
-        toggle(eventData, () => {
+        toggle(eventData, CustomNode, () => {
             this.setState({ data: this.data6 });
         });
     }
     private toggle7(eventData: EventData<Value>) {
-        toggle(eventData, () => {
+        toggle(eventData, CustomNode, () => {
             this.setState({ data: this.data7 });
         });
     }
@@ -161,10 +163,14 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
         move(dropData, this.data7);
     }
     private toggle8(eventData: EventData<Value>) {
-        toggle(eventData);
+        toggle(eventData, CustomNode, () => {
+            this.setState({ data: this.data8 });
+        });
     }
     private toggle9(eventData: EventData<Value>) {
-        toggle(eventData);
+        toggle(eventData, CustomNode, () => {
+            this.setState({ data: this.data9 });
+        });
     }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "tree-component",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "description": "A reactjs, angular and vuejs tree component.",
   "main": "index.js",
   "scripts": {
