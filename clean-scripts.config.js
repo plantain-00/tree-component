@@ -20,7 +20,8 @@ module.exports = {
       css: [
         `image2base64-cli images/*.png images/*.gif --less src/variables.less --base images`,
         [
-          `lessc src/tree.less > dist/tree.css`,
+          `lessc src/tree.less > src/tree.css`,
+          `postcss src/tree.css -o dist/tree.css`,
           `cleancss -o dist/tree.min.css dist/tree.css`,
           `cleancss -o demo/index.bundle.css dist/tree.min.css ./node_modules/github-fork-ribbon-css/gh-fork-ribbon.css`
         ]
