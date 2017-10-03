@@ -19,6 +19,7 @@
     </a>
     <ul v-if="data.children" role="group" class="tree-children">
         <node v-for="(child, i) in data.children"
+            :key="i"
             :data="child"
             :last="i === data.children.length - 1"
             :checkbox="checkbox"
