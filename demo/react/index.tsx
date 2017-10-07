@@ -174,4 +174,4 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
     }
 }
 
-ReactDOM.render(<Main /> as any, document.getElementById("container"));
+ReactDOM.render(<Main />, document.getElementById("container"));
