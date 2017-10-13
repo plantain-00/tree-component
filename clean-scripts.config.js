@@ -6,7 +6,7 @@ const execAsync = util.promisify(childProcess.exec)
 
 const tsFiles = `"src/**/*.ts" "src/**/*.tsx" "spec/**/*.ts" "demo/**/*.ts" "demo/**/*.tsx" "screenshots/**/*.ts"`
 const lessFiles = `"src/**/*.less"`
-const jsFiles = `"*.config.js"`
+const jsFiles = `"*.config.js" "demo/*.config.js"`
 
 module.exports = {
   build: [
