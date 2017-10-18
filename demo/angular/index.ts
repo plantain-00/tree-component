@@ -16,52 +16,68 @@ import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelec
         <a href="https://github.com/plantain-00/tree-component/tree/master/demo/angular/index.ts" target="_blank">the source code of the demo</a>
         <br/>
         default:
-        <tree [data]="data"
-            (toggle)="ontoggle($event)"
-            (change)="onchange($event)"></tree>
+        <div class="default">
+            <tree [data]="data"
+                (toggle)="ontoggle($event)"
+                (change)="onchange($event)"></tree>
+        </div>
         selected id: {{selectedId}}
         <hr/>
         checkbox:
-        <tree [data]="data2"
-            [checkbox]="true"
-            (toggle)="ontoggle2($event)"
-            (change)="onchange2($event)"></tree>
+        <div class="checkbox">
+            <tree [data]="data2"
+                [checkbox]="true"
+                (toggle)="ontoggle2($event)"
+                (change)="onchange2($event)"></tree>
+        </div>
         <hr/>
         draggable:
-        <tree [data]="data3"
-            [draggable]="true"
-            [dropAllowed]="dropAllowed"
-            (toggle)="ontoggle3($event)"
-            (drop)="drop3($event)"></tree>
+        <div class="draggable">
+            <tree [data]="data3"
+                [draggable]="true"
+                [dropAllowed]="dropAllowed"
+                (toggle)="ontoggle3($event)"
+                (drop)="drop3($event)"></tree>
+        </div>
         <hr/>
         no dots:
-        <tree [data]="data4"
-            [nodots]="true"
-            (toggle)="ontoggle4($event)"></tree>
+        <div class="no-dots">
+            <tree [data]="data4"
+                [nodots]="true"
+                (toggle)="ontoggle4($event)"></tree>
+        </div>
         <hr/>
         large:
-        <tree [data]="data5"
-            size="large"
-            (toggle)="ontoggle5($event)"></tree>
+        <div class="large">
+            <tree [data]="data5"
+                size="large"
+                (toggle)="ontoggle5($event)"></tree>
+        </div>
         <hr/>
         small:
-        <tree [data]="data6"
-            size="small"
-            (toggle)="ontoggle6($event)"></tree>
+        <div class="small">
+            <tree [data]="data6"
+                size="small"
+                (toggle)="ontoggle6($event)"></tree>
+        </div>
         <hr/>
         dark theme:
-        <tree [data]="data7"
-            theme="dark"
-            [checkbox]="true"
-            [draggable]="true"
-            (toggle)="ontoggle7($event)"
-            (change)="onchange7($event)"
-            (drop)="drop7($event)"></tree>
+        <div class="dark-theme">
+            <tree [data]="data7"
+                theme="dark"
+                [checkbox]="true"
+                [draggable]="true"
+                (toggle)="ontoggle7($event)"
+                (change)="onchange7($event)"
+                (drop)="drop7($event)"></tree>
+        </div>
         <hr/>
         node id:
-        <tree [data]="data9"
-            preid="test_"
-            (toggle)="ontoggle9($event)"></tree>
+        <div class="node-id">
+            <tree [data]="data9"
+                preid="test_"
+                (toggle)="ontoggle9($event)"></tree>
+        </div>
     </div>
     `,
 })

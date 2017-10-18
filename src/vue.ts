@@ -33,15 +33,19 @@ class Node<T> extends Vue {
     }
 
     get anchorClassName() {
-        return common.getAnchorClassName(this.data, this.hovered);
+        return common.getAnchorClassName(this.data, this.hovered, this.path);
     }
 
     get checkboxClassName() {
-        return common.getCheckboxClassName(this.data);
+        return common.getCheckboxClassName(this.data, this.path);
     }
 
     get iconClassName() {
         return common.getIconClassName(this.data.icon);
+    }
+
+    get oclClassName() {
+        return common.getOclClassName(this.path);
     }
 
     get pathString() {

@@ -92,8 +92,8 @@ export function getNodeClassName<T>(data: TreeData<T>, last: boolean) {
     return values.join(" ");
 }
 
-export function getAnchorClassName<T>(data: TreeData<T>, hovered: boolean) {
-    const values = ["tree-anchor", "tree-relative"];
+export function getAnchorClassName<T>(data: TreeData<T>, hovered: boolean, path: number[]) {
+    const values = ["tree-anchor", "tree-relative", `tree-anchor-${path.join("-")}`];
     if (data.state.selected) {
         values.push("tree-clicked");
     }
@@ -109,8 +109,8 @@ export function getAnchorClassName<T>(data: TreeData<T>, hovered: boolean) {
     return values.join(" ");
 }
 
-export function getCheckboxClassName<T>(data: TreeData<T>) {
-    const values = ["tree-icon", "tree-checkbox"];
+export function getCheckboxClassName<T>(data: TreeData<T>, path: number[]) {
+    const values = ["tree-icon", "tree-checkbox", `tree-checkbox-${path.join("-")}`];
     if (data.children
         && data.children.some(child => child.state.selected)
         && data.children.some(child => !child.state.selected)) {
@@ -138,6 +138,10 @@ export function getIconClassName(icon: string | false | undefined) {
         values.push(icon, "tree-themeicon-custom");
     }
     return values.join(" ");
+}
+
+export function getOclClassName(path: number[]) {
+    return ["tree-icon", "tree-ocl", `tree-ocl-${path.join("-")}`].join(" ");
 }
 
 export function getMarkerClassName<T>(data: TreeData<T>) {

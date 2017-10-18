@@ -61,7 +61,7 @@ class Node<T> extends React.PureComponent<{
         const text = this.props.data.component ? React.createElement(this.props.data.component as React.ComponentClass<{ data: common.TreeData<T> }>, { data: this.props.data }) : this.props.data.text;
         return (
             <li role="treeitem" className={this.nodeClassName} id={this.id}>
-                <i className="tree-icon tree-ocl" role="presentation" onClick={() => this.ontoggle()}></i>
+                <i className={this.oclClassName} role="presentation" onClick={() => this.ontoggle()}></i>
                 <a className={this.anchorClassName}
                     href="javascript:void(0)"
                     draggable={this.props.draggable}
@@ -87,15 +87,19 @@ class Node<T> extends React.PureComponent<{
     }
 
     private get anchorClassName() {
-        return common.getAnchorClassName(this.props.data, this.hovered);
+        return common.getAnchorClassName(this.props.data, this.hovered, this.props.path);
     }
 
     private get checkboxClassName() {
-        return common.getCheckboxClassName(this.props.data);
+        return common.getCheckboxClassName(this.props.data, this.props.path);
     }
 
     private get iconClassName() {
         return common.getIconClassName(this.props.data.icon);
+    }
+
+    private get oclClassName() {
+        return common.getOclClassName(this.props.path);
     }
 
     private get pathString() {

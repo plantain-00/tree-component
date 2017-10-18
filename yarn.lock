@@ -115,9 +115,9 @@
   version "7.0.43"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.43.tgz#a187e08495a075f200ca946079c914e1a5fe962c"
 
-"@types/puppeteer@0.10.2":
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/@types/puppeteer/-/puppeteer-0.10.2.tgz#b285c17e7ce5a006f7506e4dc75aabb20d06704d"
+"@types/puppeteer@0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@types/puppeteer/-/puppeteer-0.12.0.tgz#ba48be19d08abf7774192304a5cae5ce8e519481"
   dependencies:
     "@types/node" "*"
 
@@ -3552,9 +3552,9 @@ punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
-puppeteer@0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-0.11.0.tgz#0a2b856f3c2745a5884c6dde9fb44f96663988ed"
+puppeteer@0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-0.12.0.tgz#9c421930851594dfdd479d07646666a74ced7719"
   dependencies:
     debug "^2.6.8"
     extract-zip "^1.6.5"

@@ -37,65 +37,83 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
                 <a href="https://github.com/plantain-00/tree-component/tree/master/demo/react/index.tsx" target="_blank">the source code of the demo</a>
                 <br />
                 default:
-                <Tree data={this.data}
-                    toggle={(eventData: EventData<Value>) => this.toggle(eventData)}
-                    change={(eventData: EventData<Value>) => this.change(eventData)}>
-                </Tree>
+                <div className="default">
+                    <Tree data={this.data}
+                        toggle={(eventData: EventData<Value>) => this.toggle(eventData)}
+                        change={(eventData: EventData<Value>) => this.change(eventData)}>
+                    </Tree>
+                </div>
                 selected id: {this.selectedId}
                 <hr />
                 checkbox:
-                <Tree data={this.data2}
-                    checkbox={true}
-                    toggle={(eventData: EventData<Value>) => this.toggle2(eventData)}
-                    change={(eventData: EventData<Value>) => this.change2(eventData)}>
-                </Tree>
+                <div className="checkbox">
+                    <Tree data={this.data2}
+                        checkbox={true}
+                        toggle={(eventData: EventData<Value>) => this.toggle2(eventData)}
+                        change={(eventData: EventData<Value>) => this.change2(eventData)}>
+                    </Tree>
+                </div>
                 <hr />
                 draggable:
-                <Tree data={this.data3}
-                    draggable={true}
-                    dropAllowed={this.dropAllowed}
-                    toggle={(eventData: EventData<Value>) => this.toggle3(eventData)}
-                    drop={(dropData: DropData<Value>) => this.drop3(dropData)}>
-                </Tree>
+                <div className="draggable">
+                    <Tree data={this.data3}
+                        draggable={true}
+                        dropAllowed={this.dropAllowed}
+                        toggle={(eventData: EventData<Value>) => this.toggle3(eventData)}
+                        drop={(dropData: DropData<Value>) => this.drop3(dropData)}>
+                    </Tree>
+                </div>
                 <hr />
                 no dots:
-                <Tree data={this.data4}
-                    nodots={true}
-                    toggle={(eventData: EventData<Value>) => this.toggle4(eventData)}>
-                </Tree>
+                <div className="no-dots">
+                    <Tree data={this.data4}
+                        nodots={true}
+                        toggle={(eventData: EventData<Value>) => this.toggle4(eventData)}>
+                    </Tree>
+                </div>
                 <hr />
                 large:
-                <Tree data={this.data5}
-                    size="large"
-                    toggle={(eventData: EventData<Value>) => this.toggle5(eventData)}>
-                </Tree>
+                <div className="large">
+                    <Tree data={this.data5}
+                        size="large"
+                        toggle={(eventData: EventData<Value>) => this.toggle5(eventData)}>
+                    </Tree>
+                </div>
                 <hr />
                 small:
-                <Tree data={this.data6}
-                    size="small"
-                    toggle={(eventData: EventData<Value>) => this.toggle6(eventData)}>
-                </Tree>
+                <div className="small">
+                    <Tree data={this.data6}
+                        size="small"
+                        toggle={(eventData: EventData<Value>) => this.toggle6(eventData)}>
+                    </Tree>
+                </div>
                 <hr />
                 dark theme:
-                <Tree data={this.data7}
-                    theme="dark"
-                    checkbox={true}
-                    draggable={true}
-                    toggle={(eventData: EventData<Value>) => this.toggle7(eventData)}
-                    change={(eventData: EventData<Value>) => this.change7(eventData)}
-                    drop={(dropData: DropData<Value>) => this.drop7(dropData)}>
-                </Tree>
+                <div className="dark-theme">
+                    <Tree data={this.data7}
+                        theme="dark"
+                        checkbox={true}
+                        draggable={true}
+                        toggle={(eventData: EventData<Value>) => this.toggle7(eventData)}
+                        change={(eventData: EventData<Value>) => this.change7(eventData)}
+                        drop={(dropData: DropData<Value>) => this.drop7(dropData)}>
+                    </Tree>
+                </div>
                 <hr />
                 contextmenu:
-                <Tree data={this.data8}
-                    toggle={(eventData: EventData<Value>) => this.toggle8(eventData)}>
-                </Tree>
+                <div className="contextmenu">
+                    <Tree data={this.data8}
+                        toggle={(eventData: EventData<Value>) => this.toggle8(eventData)}>
+                    </Tree>
+                </div>
                 <hr />
                 node id:
-                <Tree data={this.data9}
-                    preid="test_"
-                    toggle={(eventData: EventData<Value>) => this.toggle9(eventData)}>
-                </Tree>
+                <div className="node-id">
+                    <Tree data={this.data9}
+                        preid="test_"
+                        toggle={(eventData: EventData<Value>) => this.toggle9(eventData)}>
+                    </Tree>
+                </div>
             </div>
         );
     }

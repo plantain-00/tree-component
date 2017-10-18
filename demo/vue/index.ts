@@ -40,56 +40,74 @@ Vue.component("custom-node", CustomNode);
         <a href="https://github.com/plantain-00/tree-component/tree/master/demo/vue/index.ts" target="_blank">the source code of the demo</a>
         <br/>
         default:
-        <tree :data="data"
-            @toggle="toggle($event)"
-            @change="change($event)"></tree>
-        selected id: {{selectedId}}
+        <div class="default">
+            <tree :data="data"
+                @toggle="toggle($event)"
+                @change="change($event)"></tree>
+            selected id: {{selectedId}}
+        </div>
         <hr/>
         checkbox:
-        <tree :data="data2"
-            :checkbox="true"
-            @toggle="toggle2($event)"
-            @change="change2($event)"></tree>
+        <div class="checkbox">
+            <tree :data="data2"
+                :checkbox="true"
+                @toggle="toggle2($event)"
+                @change="change2($event)"></tree>
+        </div>
         <hr/>
         draggable:
-        <tree :data="data3"
-            :draggable="true"
-            :drop-allowed="dropAllowed"
-            @toggle="toggle3($event)"
-            @drop="drop3($event)"></tree>
+        <div class="draggable">
+            <tree :data="data3"
+                :draggable="true"
+                :drop-allowed="dropAllowed"
+                @toggle="toggle3($event)"
+                @drop="drop3($event)"></tree>
+        </div>
         <hr/>
         no dots:
-        <tree :data="data4"
-            :nodots="true"
-            @toggle="toggle4($event)"></tree>
+        <div class="no-dots">
+            <tree :data="data4"
+                :nodots="true"
+                @toggle="toggle4($event)"></tree>
+        </div>
         <hr/>
         large:
-        <tree :data="data5"
-            size="large"
-            @toggle="toggle5($event)"></tree>
+        <div class="large">
+            <tree :data="data5"
+                size="large"
+                @toggle="toggle5($event)"></tree>
+        </div>
         <hr/>
         small:
-        <tree :data="data6"
-            size="small"
-            @toggle="toggle6($event)"></tree>
+        <div class="small">
+            <tree :data="data6"
+                size="small"
+                @toggle="toggle6($event)"></tree>
+        </div>
         <hr/>
         dark theme:
-        <tree :data="data7"
-            theme="dark"
-            :checkbox="true"
-            :draggable="true"
-            @toggle="toggle7($event)"
-            @change="change7($event)"
-            @drop="drop7($event)"></tree>
+        <div class="dark-theme">
+            <tree :data="data7"
+                theme="dark"
+                :checkbox="true"
+                :draggable="true"
+                @toggle="toggle7($event)"
+                @change="change7($event)"
+                @drop="drop7($event)"></tree>
+        </div>
         <hr/>
         contextmenu:
-        <tree :data="data8"
-            @toggle="toggle8($event)"></tree>
+        <div class="contextmenu">
+            <tree :data="data8"
+                @toggle="toggle8($event)"></tree>
+        </div>
         <br/>
         node id:
+        <div class="node-id">
         <tree :data="data9"
             preid="test_"
             @toggle="toggle9($event)"></tree>
+        </div>
     </div>
     `,
 })

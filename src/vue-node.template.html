@@ -1,5 +1,5 @@
 <li role="treeitem" :class="nodeClassName" :id="id">
-    <i class="tree-icon tree-ocl" role="presentation" @click="ontoggle()"></i>
+    <i :class="oclClassName" role="presentation" @click="ontoggle()"></i>
     <a :class="anchorClassName" href="javascript:void(0)"
         :draggable="draggable"
         @click="onchange()"

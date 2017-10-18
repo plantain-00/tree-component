@@ -8,6 +8,25 @@ import * as puppeteer from "puppeteer";
     for (const type of ["vue", "react", "angular"]) {
         await page.goto(`http://localhost:8000/demo/${type}`);
         await page.screenshot({ path: `screenshots/${type}-initial.png`, fullPage: true });
+
+        await page.click(".default .tree-ocl-1");
+        await page.waitFor(500);
+        await page.screenshot({ path: `screenshots/${type}-open.png`, fullPage: true });
+
+        await page.click(".default .tree-ocl-0-1");
+        await page.screenshot({ path: `screenshots/${type}-close.png`, fullPage: true });
+
+        await page.click(".checkbox .tree-checkbox-0-1");
+        await page.screenshot({ path: `screenshots/${type}-select.png`, fullPage: true });
+
+        await page.click(".checkbox .tree-checkbox-0-0");
+        await page.screenshot({ path: `screenshots/${type}-deselect.png`, fullPage: true });
+
+        if (type !== "angular") {
+            await page.click(".contextmenu .tree-anchor-0-0", { button: "right" });
+            await page.waitFor(100);
+            await page.screenshot({ path: `screenshots/${type}-contextmenu.png`, fullPage: true });
+        }
     }
 
     browser.close();
