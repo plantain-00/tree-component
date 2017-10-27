@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Component from "vue-class-component";
-// tslint:disable-next-line:no-duplicate-imports
+// tslint:disable:no-duplicate-imports
 import "../../dist/vue";
 import { ContextMenuData, getNodeFromPath, EventData, DropData, TreeData } from "../../dist/vue";
 import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, setContextMenu, Value } from "../common";
