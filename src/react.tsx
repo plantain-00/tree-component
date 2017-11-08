@@ -5,7 +5,7 @@ export * from "./common";
 /**
  * @public
  */
-class Node<T> extends React.PureComponent<{
+class Node<T = any> extends React.PureComponent<{
     data: common.TreeData<T>;
     last: boolean;
     checkbox?: boolean;
@@ -15,8 +15,8 @@ class Node<T> extends React.PureComponent<{
     zindex?: number;
     preid?: string;
     parent: any;
-    toggle: (eventData?: common.EventData<T>) => void;
-    change: (eventData?: common.EventData<T>) => void;
+    toggle: (eventData: common.EventData<T>) => void;
+    change: (eventData: common.EventData<T>) => void;
 }, { hovered: boolean; contextmenuVisible: boolean; contextmenuStyle: React.CSSProperties }> {
     private hovered = false;
     private doubleClick = new common.DoubleClick();
@@ -180,7 +180,7 @@ class Node<T> extends React.PureComponent<{
 /**
  * @public
  */
-export class Tree<T> extends React.PureComponent<{
+export class Tree<T = any> extends React.PureComponent<{
     data: common.TreeData<T>[];
     checkbox?: boolean;
     draggable?: boolean;
@@ -190,8 +190,8 @@ export class Tree<T> extends React.PureComponent<{
     dropAllowed?: (dropData: common.DropData<T>) => boolean;
     zindex?: number;
     preid?: string;
-    toggle?: (eventData?: common.EventData<T>) => void;
-    change?: (eventData?: common.EventData<T>) => void;
+    toggle?: (eventData: common.EventData<T>) => void;
+    change?: (eventData: common.EventData<T>) => void;
     drop?: (dropData: common.DropData<T>) => void;
 }, { dragTarget: HTMLElement | null, dropTarget: HTMLElement | null }> {
     private dragTarget: HTMLElement | null = null;

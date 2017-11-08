@@ -75,6 +75,9 @@ the online demo: https://plantain-00.github.io/tree-component/demo/react/index.h
 ```ts
 import { TreeModule } from "tree-component/angular";
 
+// for angular AOT:
+// import { TreeModule } from "tree-component/aot/angular";
+
 @NgModule({
     imports: [BrowserModule, FormsModule, TreeModule],
     declarations: [MainComponent],
@@ -174,7 +177,13 @@ type ContextMenuData<T = any> = {
 
 #### changelogs
 
-##### v2
+```ts
+// v3 angular AOT:
+import { TreeModule } from "tree-component/angular";
+
+// v4 angular AOT:
+import { TreeModule } from "tree-component/aot/angular";
+```
 
 ```ts
 // v3

@@ -104,6 +104,9 @@ export class NodeComponent<T> {
             });
         }
     }
+    trackBy(request: common.TreeData, index: number) {
+        return index;
+    }
 }
 
 /**
@@ -201,6 +204,9 @@ export class TreeComponent<T> {
         common.ondrop(event.target as HTMLElement, this.dragTarget, this.data, dropData => {
             this.drop.emit(dropData);
         });
+    }
+    trackBy(request: common.TreeData, index: number) {
+        return index;
     }
     private canDrop(event: DragEvent) {
         return this.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path;

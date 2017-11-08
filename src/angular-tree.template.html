@@ -6,7 +6,7 @@
         (dragenter)="ondragenter($event)"
         (dragleave)="ondragleave($event)"
         (drop)="ondrop($event)">
-        <node *ngFor="let child of data; let i = index"
+        <node *ngFor="let child of data; let i = index; trackBy: trackBy"
             [data]="child"
             [last]="i === data.length - 1"
             [checkbox]="checkbox"
