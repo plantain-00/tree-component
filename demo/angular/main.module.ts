@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 
-import { TreeModule } from "../../dist/aot/angular";
+import { TreeModule } from "../../dist/angular";
 import { MainComponent } from "./main";
 
 @NgModule({
