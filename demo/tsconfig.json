@@ -7,7 +7,7 @@
         "declaration": false,
 
         "strict": true,
-        "noUnusedLocals": true,
+        // "noUnusedLocals": true,
         "noImplicitReturns": true,
 
         "skipLibCheck": true,
@@ -17,5 +17,10 @@
         "allowSyntheticDefaultImports": true,
         "emitDecoratorMetadata": true,
         "newLine": "LF"
-    }
+    },
+    "include": [
+        "angular/*",
+        "vue/*",
+        "react/*"
+    ]
 }

@@ -50,5 +50,14 @@ module.exports = [
     },
     plugins,
     resolve
+  },
+  {
+    entry: './demo/aot/index',
+    output: {
+      path: path.resolve(__dirname, 'aot'),
+      filename: 'index.bundle.js'
+    },
+    plugins,
+    resolve
   }
 ]

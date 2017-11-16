@@ -1,11 +1,6 @@
-import "core-js/es6";
-import "core-js/es7/reflect";
-import "zone.js/dist/zone";
+import { Component } from "@angular/core";
 
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
-import { enableProdMode, Component, NgModule } from "@angular/core";
-
-enableProdMode();
+import { EventData, DropData, DropPosition, TreeData } from "../../dist/common";
 
 import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, Value } from "../common";
 
@@ -13,7 +8,7 @@ import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelec
     selector: "app",
     template: `
     <div>
-        <a href="https://github.com/plantain-00/tree-component/tree/master/demo/angular/index.ts" target="_blank">the source code of the demo</a>
+        <a href="https://github.com/plantain-00/tree-component/tree/master/demo/aot/index.ts" target="_blank">the source code of the demo</a>
         <br/>
         default:
         <div class="default">
@@ -81,7 +76,7 @@ import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelec
     </div>
     `,
 })
-class MainComponent {
+export class MainComponent {
     data = data;
     selectedId: number | null = null;
     data2 = JSON.parse(JSON.stringify(data));
@@ -140,16 +135,3 @@ class MainComponent {
         toggle(eventData);
     }
 }
-
-import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
-import { TreeModule, EventData, DropData } from "../../dist/angular";
-
-@NgModule({
-    imports: [BrowserModule, FormsModule, TreeModule],
-    declarations: [MainComponent],
-    bootstrap: [MainComponent],
-})
-class MainModule { }
-
-platformBrowserDynamic().bootstrapModule(MainModule);

@@ -1,16 +1,12 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "outDir": "../dist/aot",
-        "rootDir": "."
+        "declaration": true
     },
     "angularCompilerOptions": {
         "strictMetadataEmit": true
     },
     "include": [
-        "angular-variables.ts",
-        "angular.ts",
-        "common.ts",
-        "locales/"
+        "aot/*.ts"
     ]
 }
