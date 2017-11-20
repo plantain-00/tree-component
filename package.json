@@ -1,8 +1,7 @@
 {
   "name": "tree-component",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "A reactjs, angular and vuejs tree component.",
-  "main": "index.js",
   "scripts": {
     "build": "clean-scripts build",
     "lint": "clean-scripts lint",
