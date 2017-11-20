@@ -52,7 +52,8 @@ module.exports = {
     ts: `tslint ${tsFiles} --exclude ${excludeTsFiles}`,
     js: `standard ${jsFiles}`,
     less: `stylelint ${lessFiles}`,
-    export: `no-unused-export ${tsFiles} ${lessFiles} --exclude ${excludeTsFiles}`
+    export: `no-unused-export ${tsFiles} ${lessFiles} --exclude ${excludeTsFiles}`,
+    commit: `commitlint --from=HEAD~1`
   },
   test: [
     'tsc -p spec',
