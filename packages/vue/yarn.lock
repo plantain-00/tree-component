@@ -2,10 +2,25 @@
 # yarn lockfile v1
 
 
-vue-class-component@6.1.0:
+"@types/node@*":
+  version "8.0.53"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.53.tgz#396b35af826fa66aad472c8cb7b8d5e277f4e6d8"
+
+tree-component@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/tree-component/-/tree-component-5.0.0.tgz#624b42ab906b4b88194d8dcb20cd32b21e1ee158"
+  dependencies:
+    "@types/node" "*"
+    tslib "1"
+
+tslib@1:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.8.0.tgz#dc604ebad64bcbf696d613da6c954aa0e7ea1eb6"
+
+vue-class-component@6:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-6.1.0.tgz#41a51a7991f2c0d51ff73f08436de0c2bfd934d6"
 
-vue@2.5.6:
-  version "2.5.6"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.6.tgz#73654fefa4b37f25dfc657b8b834b44c90822cd7"
+vue@2:
+  version "2.5.9"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.9.tgz#b2380cd040915dca69881dafd121d760952e65f7"
