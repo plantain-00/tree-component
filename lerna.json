@@ -5,6 +5,9 @@
   ],
   "version": "5.0.1",
   "npmClient": "yarn",
+  "npmClientArgs": [
+    "--pure-lockfile"
+  ],
   "command": {
     "publish": {
       "message": "feat: publish %s"
