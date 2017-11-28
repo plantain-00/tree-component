@@ -1,30 +1,34 @@
 const { Service, checkGitStatus, executeScriptAsync } = require('clean-scripts')
 const { watch } = require('watch-then-execute')
 
-const tsFiles = `"src/**/*.ts" "src/**/*.tsx" "spec/**/*.ts" "demo/**/*.ts" "demo/**/*.tsx" "screenshots/**/*.ts"`
-const lessFiles = `"src/**/*.less"`
-const jsFiles = `"*.config.js" "demo/*.config.js" "spec/**/*.config.js"`
-const excludeTsFiles = `"demo/**/*.d.ts"`
+const tsFiles = `"packages/@(core|vue|react|angular)/@(src|demo)/**/*.@(ts|tsx)" "spec/**/*.ts" "screenshots/**/*.ts"`
+const lessFiles = `"packages/core/src/**/*.less"`
+const jsFiles = `"*.config.js" "spec/**/*.config.js"`
+const excludeTsFiles = `"packages/@(core|vue|react|angular)/@(src|demo)/**/*.d.ts"`
 
-const vueTemplateCommand = `file2variable-cli src/angular-node.template.html src/angular-tree.template.html -o src/angular-variables.ts --html-minify --base src`
-const angularTemplateCommand = `file2variable-cli src/vue-node.template.html src/vue-tree.template.html -o src/vue-variables.ts --html-minify --base src`
+const vueTemplateCommand = `file2variable-cli packages/vue/src/*.template.html -o packages/vue/src/variables.ts --html-minify --base packages/vue/src/`
+const angularTemplateCommand = `file2variable-cli packages/angular/src/*.template.html -o packages/angular/src/variables.ts --html-minify --base packages/angular/src`
 const ngcSrcCommand = [
-  `tsc -p src`,
-  `ngc -p src/tsconfig.aot.json`
+  `ngc -p packages/core/src`,
+  `tsc -p packages/vue/src`,
+  `tsc -p packages/react/src`,
+  `ngc -p packages/angular/src`
 ]
 const tscDemoCommand = [
-  `tsc -p demo`,
-  `ngc -p demo/tsconfig.aot.json`
+  `ngc -p packages/core/demo`,
+  `tsc -p packages/vue/demo`,
+  `tsc -p packages/react/demo`,
+  `ngc -p packages/angular/demo`
 ]
-const webpackCommand = `webpack --display-modules --config demo/webpack.config.js`
-const image2base64Command = `image2base64-cli images/*.png images/*.gif --less src/variables.less --base images`
-const revStaticCommand = `rev-static --config demo/rev-static.config.js`
+const webpackCommand = `webpack`
+const revStaticCommand = `rev-static`
 const cssCommand = [
-  `lessc src/tree.less > src/tree.css`,
-  `postcss src/tree.css -o dist/tree.css`,
-  `cleancss -o dist/tree.min.css dist/tree.css`,
-  `cleancss -o demo/index.bundle.css dist/tree.min.css ./node_modules/github-fork-ribbon-css/gh-fork-ribbon.css`
+  `lessc packages/core/src/tree.less -sm=on > packages/core/src/tree.css`,
+  `postcss packages/core/src/tree.css -o packages/core/dist/tree.css`,
+  `cleancss packages/core/dist/tree.css -o packages/core/dist/tree.min.css`,
+  `cleancss packages/core/dist/tree.min.css ./node_modules/github-fork-ribbon-css/gh-fork-ribbon.css -o packages/core/demo/index.bundle.css`
 ]
+const image2base64Command = `image2base64-cli "packages/core/src/images/*.@(png|gif)" --less "packages/core/src/variables.less" --base "packages/core/src/images"`
 
 module.exports = {
   build: [
@@ -44,7 +48,7 @@ module.exports = {
         image2base64Command,
         cssCommand
       ],
-      clean: `rimraf demo/**/index.bundle-*.js demo/tree-icon-*.png demo/index.bundle-*.css`
+      clean: `rimraf "packages/@(core|vue|react|angular)/demo/**/@(*.bundle-*.js|*.bundle-*.css)"`
     },
     revStaticCommand
   ],
@@ -65,7 +69,6 @@ module.exports = {
     js: `standard --fix ${jsFiles}`,
     less: `stylelint --fix ${lessFiles}`
   },
-  release: `clean-release`,
   watch: {
     vue: `${vueTemplateCommand} --watch`,
     angular: `${angularTemplateCommand} --watch`,

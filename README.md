@@ -28,22 +28,18 @@ A reactjs, angular and vuejs tree component.
 + node id
 + custom node(vuejs and reactjs only)
 
-#### install
-
-`npm i tree-component`
-
 #### link css
 
 ```html
-<link rel="stylesheet" href="./node_modules/tree-component/tree.min.css" />
+<link rel="stylesheet" href="./node_modules/tree-component/dist/tree.min.css" />
 ```
 
-#### vuejs component demo
+#### vuejs component
 
-`npm i vue vue-class-component`
+`npm i tree-vue-component`
 
 ```ts
-import "tree-component/vue";
+import "tree-vue-component";
 ```
 
 ```html
@@ -53,12 +49,14 @@ import "tree-component/vue";
 </tree>
 ```
 
-the online demo: https://plantain-00.github.io/tree-component/demo/vue/index.html
+the online demo: https://plantain-00.github.io/tree-component/packages/vue/demo
 
-#### reactjs component demo
+#### reactjs component
+
+`npm i tree-react-component`
 
 ```ts
-import { Tree } from "tree-component/react";
+import { Tree } from "tree-react-component";
 ```
 
 ```html
@@ -68,15 +66,14 @@ import { Tree } from "tree-component/react";
 </Tree>
 ```
 
-the online demo: https://plantain-00.github.io/tree-component/demo/react/index.html
+the online demo: https://plantain-00.github.io/tree-component/packages/react/demo
 
-#### angular component demo
+#### angular component
+
+`npm i tree-angular-component`
 
 ```ts
-import { TreeModule } from "tree-component/angular";
-
-// for angular AOT:
-// import { TreeModule } from "tree-component/aot/angular";
+import { TreeModule } from "tree-angular-component";
 
 @NgModule({
     imports: [BrowserModule, FormsModule, TreeModule],
@@ -93,9 +90,9 @@ class MainModule { }
 </tree>
 ```
 
-the online demo: https://plantain-00.github.io/tree-component/demo/angular/index.html
+the online demo: https://plantain-00.github.io/tree-component/packages/vue/demo/jit
 
-the AOT online demo: https://plantain-00.github.io/tree-component/demo/aot/index.html
+the AOT online demo: https://plantain-00.github.io/tree-component/packages/vue/demo/aot
 
 #### properties and events of the component
 
@@ -178,6 +175,36 @@ type ContextMenuData<T = any> = {
 ```
 
 #### changelogs
+
+```bash
+# v4
+npm i tree-component
+
+# v5
+npm i tree-vue-component
+npm i tree-react-component
+npm i tree-angular-component
+```
+
+```ts
+// v4
+import "tree-component/vue";
+import { Tree } from "tree-component/react";
+import { TreeModule } from "tree-component/angular";
+
+// v5
+import "tree-vue-component";
+import { Tree } from "tree-react-component";
+import { TreeModule } from "tree-angular-component";
+```
+
+```html
+// v4
+<link rel="stylesheet" href="./node_modules/tree-component/tree.min.css" />
+
+// v5
+<link rel="stylesheet" href="./node_modules/tree-component/dist/tree.min.css" />
+```
 
 ```ts
 // v3 angular AOT:

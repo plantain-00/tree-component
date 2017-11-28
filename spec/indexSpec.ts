@@ -1,4 +1,4 @@
-import "../dist/common";
+import "../packages/core/dist";
 
 it("", () => {
     // expect(true).toEqual(true);

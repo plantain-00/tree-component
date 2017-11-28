@@ -1,0 +1,22 @@
+{
+  "name": "tree-vue-component",
+  "version": "5.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "description": "A vuejs tree component.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plantain-00/tree-component.git"
+  },
+  "author": "York Yao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/plantain-00/tree-component/issues"
+  },
+  "homepage": "https://github.com/plantain-00/tree-component#readme",
+  "dependencies": {
+    "tree-component": "^5.0.0",
+    "vue": "2.5.6",
+    "vue-class-component": "6.1.0"
+  }
+}
