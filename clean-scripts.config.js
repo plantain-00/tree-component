@@ -32,8 +32,6 @@ const image2base64Command = `image2base64-cli "packages/core/src/images/*.@(png|
 
 module.exports = {
   build: [
-    `rimraf dist`,
-    `mkdirp dist`,
     {
       js: [
         {
