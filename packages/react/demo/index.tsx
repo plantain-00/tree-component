@@ -34,7 +34,7 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
     render() {
         return (
             <div>
-                <a href="https://github.com/plantain-00/tree-component/tree/master/demo/react/index.tsx" target="_blank">the source code of the demo</a>
+                <a href="https://github.com/plantain-00/tree-component/tree/master/packages/react/demo" target="_blank">the source code of the demo</a>
                 <br />
                 default:
                 <div className="default">

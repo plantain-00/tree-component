@@ -8,7 +8,7 @@ import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelec
     selector: "app",
     template: `
     <div>
-        <a href="https://github.com/plantain-00/tree-component/tree/master/demo/aot/index.ts" target="_blank">the source code of the demo</a>
+        <a href="https://github.com/plantain-00/tree-component/tree/master/packages/angular/demo" target="_blank">the source code of the demo</a>
         <br/>
         default:
         <div class="default">

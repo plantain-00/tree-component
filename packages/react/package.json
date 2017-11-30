@@ -1,6 +1,6 @@
 {
   "name": "tree-react-component",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "A reactjs tree component.",
@@ -15,10 +15,12 @@
   },
   "homepage": "https://github.com/plantain-00/tree-component#readme",
   "dependencies": {
-    "@types/react": "16",
-    "@types/react-dom": "16",
     "react": "16",
     "react-dom": "16",
     "tree-component": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "16.0.25",
+    "@types/react-dom": "16.0.3"
   }
 }

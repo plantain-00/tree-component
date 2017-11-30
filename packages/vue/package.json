@@ -1,6 +1,6 @@
 {
   "name": "tree-vue-component",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "A vuejs tree component.",

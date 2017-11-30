@@ -37,7 +37,7 @@ Vue.component("custom-node", CustomNode);
 @Component({
     template: `
     <div>
-        <a href="https://github.com/plantain-00/tree-component/tree/master/demo/vue/index.ts" target="_blank">the source code of the demo</a>
+        <a href="https://github.com/plantain-00/tree-component/tree/master/packages/vue/demo" target="_blank">the source code of the demo</a>
         <br/>
         default:
         <div class="default">
