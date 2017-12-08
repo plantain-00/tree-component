@@ -10,11 +10,6 @@
     min-width: @height;
   }
 
-  .tree-anchor {
-    line-height: @height;
-    height: @height;
-  }
-
   .tree-icon {
     width: @height;
     height: @height;
@@ -101,6 +96,9 @@
   }
 
   .tree-anchor {
+    line-height: @height;
+    height: @height;
+
     > .tree-undetermined {
       background-position: -@correction -@correction;
 
@@ -337,9 +335,7 @@
         }
       }
     }
-  }
 
-  .tree-@{name} {
     .size(24px);
   }
 
@@ -501,9 +497,7 @@
   .tree-checked > .tree-icon {
     opacity: 1;
   }
-}
 
-.tree-dark {
   &.tree-rtl .tree-node {
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAACAQMAAAB49I5GAAAABlBMVEUAAACZmZl+9SADAAAAAXRSTlMAQObYZgAAAAxJREFUCNdjAAMOBgAAGAAJMwQHdQAAAABJRU5ErkJggg==");
   }

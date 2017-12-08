@@ -1,6 +1,6 @@
 {
   "name": "tree-react-component",
-  "version": "5.0.2",
+  "version": "5.0.4",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "A reactjs tree component.",
@@ -17,7 +17,7 @@
   "dependencies": {
     "react": "16",
     "react-dom": "16",
-    "tree-component": "^5.0.0"
+    "tree-component": "^5.0.4"
   },
   "devDependencies": {
     "@types/react": "16.0.25",

@@ -23,7 +23,7 @@ const tscDemoCommand = [
 const webpackCommand = `webpack`
 const revStaticCommand = `rev-static`
 const cssCommand = [
-  `lessc packages/core/src/tree.less -sm=on > packages/core/src/tree.css`,
+  `lessc packages/core/src/tree.less > packages/core/src/tree.css`,
   `postcss packages/core/src/tree.css -o packages/core/dist/tree.css`,
   `cleancss packages/core/dist/tree.css -o packages/core/dist/tree.min.css`,
   `cleancss packages/core/dist/tree.min.css ./node_modules/github-fork-ribbon-css/gh-fork-ribbon.css -o packages/core/demo/index.bundle.css`
