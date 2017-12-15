@@ -57,8 +57,5 @@
     "watch-then-execute": "1.1.1",
     "webpack": "3.10.0"
   },
-  "dependencies": {
-    "@types/node": "*",
-    "tslib": "1"
-  }
+  "dependencies": {}
 }
