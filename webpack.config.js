@@ -39,8 +39,7 @@ module.exports = [
       path: path.resolve(__dirname, 'packages/react/demo'),
       filename: 'index.bundle.js'
     },
-    plugins,
-    resolve
+    plugins
   },
   {
     entry: './packages/angular/demo/jit/index',
@@ -48,8 +47,7 @@ module.exports = [
       path: path.resolve(__dirname, 'packages/angular/demo/jit'),
       filename: 'index.bundle.js'
     },
-    plugins,
-    resolve
+    plugins
   },
   {
     entry: './packages/angular/demo/aot/index',
@@ -57,7 +55,6 @@ module.exports = [
       path: path.resolve(__dirname, 'packages/angular/demo/aot'),
       filename: 'index.bundle.js'
     },
-    plugins,
-    resolve
+    plugins
   }
 ]

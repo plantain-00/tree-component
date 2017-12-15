@@ -2,13 +2,14 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import * as common from "tree-component";
 export * from "tree-component";
-import { nodeTemplateHtml, treeTemplateHtml } from "./variables";
+import { nodeTemplateHtml } from "./node-variables";
+import { treeTemplateHtml } from "./tree-variables";
 
 @Component({
-    template: nodeTemplateHtml,
+    render: nodeTemplateHtml,
     props: ["data", "last", "checkbox", "path", "draggable", "root", "zindex", "preid"],
 })
-class Node<T> extends Vue {
+export class Node<T> extends Vue {
     data: common.TreeData<T>;
     last: boolean;
     checkbox?: boolean;
@@ -121,10 +122,10 @@ class Node<T> extends Vue {
 Vue.component("node", Node);
 
 @Component({
-    template: treeTemplateHtml,
+    render: treeTemplateHtml,
     props: ["data", "checkbox", "draggable", "nodots", "size", "theme", "dropAllowed", "zindex", "preid"],
 })
-class Tree<T> extends Vue {
+export class Tree<T> extends Vue {
     data: common.TreeData<T>[];
     checkbox?: boolean;
     draggable?: boolean;

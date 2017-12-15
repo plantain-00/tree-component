@@ -6,11 +6,12 @@ const lessFiles = `"packages/core/src/**/*.less"`
 const jsFiles = `"*.config.js" "spec/**/*.config.js"`
 const excludeTsFiles = `"packages/@(core|vue|react|angular)/@(src|demo)/**/*.d.ts"`
 
-const vueTemplateCommand = `file2variable-cli packages/vue/src/*.template.html -o packages/vue/src/variables.ts --html-minify --base packages/vue/src/`
+const vueTreeTemplateCommand = `file2variable-cli packages/vue/src/tree.template.html -o packages/vue/src/tree-variables.ts --html-minify --base packages/vue/src/ --vue --vue-type-name "Tree<any>" --vue-type-path "./index"`
+const vueNodeTemplateCommand = `file2variable-cli packages/vue/src/node.template.html -o packages/vue/src/node-variables.ts --html-minify --base packages/vue/src/ --vue --vue-type-name "Node<any>" --vue-type-path "./index"`
 const angularTemplateCommand = `file2variable-cli packages/angular/src/*.template.html -o packages/angular/src/variables.ts --html-minify --base packages/angular/src`
 const ngcSrcCommand = [
   `ngc -p packages/core/src`,
-  `tsc -p packages/vue/src`,
+  `cd ./packages/vue/ && npm run tsc`,
   `tsc -p packages/react/src`,
   `ngc -p packages/angular/src`
 ]
@@ -35,7 +36,10 @@ module.exports = {
     {
       js: [
         {
-          vue: vueTemplateCommand,
+          vue: [
+            vueNodeTemplateCommand,
+            vueTreeTemplateCommand
+          ],
           angular: angularTemplateCommand
         },
         ngcSrcCommand,
@@ -68,7 +72,10 @@ module.exports = {
     less: `stylelint --fix ${lessFiles}`
   },
   watch: {
-    vue: `${vueTemplateCommand} --watch`,
+    vue: {
+      vueNodeTemplateCommand: `${vueNodeTemplateCommand} --watch`,
+      vueTreeTemplateCommand: `${vueTreeTemplateCommand} --watch`
+    },
     angular: `${angularTemplateCommand} --watch`,
     src: `${ngcSrcCommand} --watch`,
     demo: `${tscDemoCommand} --watch`,
