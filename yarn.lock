@@ -1969,9 +1969,9 @@ file-type@6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/file-type/-/file-type-6.2.0.tgz#e50cd75d356ffed4e306dc4f5bcf52a79903a919"
 
-file2variable-cli@1.7.3:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/file2variable-cli/-/file2variable-cli-1.7.3.tgz#7651933b15ce283af2ccfd9b029c3f34f3997228"
+file2variable-cli@1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/file2variable-cli/-/file2variable-cli-1.8.0.tgz#bb1cf2b8cc323a5d5c2531ca85e6f4078feb741c"
   dependencies:
     camelcase "4.1.0"
     chokidar "1.7.0"

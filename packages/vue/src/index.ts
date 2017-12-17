@@ -2,11 +2,11 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import * as common from "tree-component";
 export * from "tree-component";
-import { nodeTemplateHtml } from "./node-variables";
-import { treeTemplateHtml } from "./tree-variables";
+import { nodeTemplateHtml, nodeTemplateHtmlStatic, treeTemplateHtml, treeTemplateHtmlStatic } from "./variables";
 
 @Component({
     render: nodeTemplateHtml,
+    staticRenderFns: nodeTemplateHtmlStatic,
     props: ["data", "last", "checkbox", "path", "draggable", "root", "zindex", "preid"],
 })
 export class Node<T> extends Vue {
@@ -123,6 +123,7 @@ Vue.component("node", Node);
 
 @Component({
     render: treeTemplateHtml,
+    staticRenderFns: treeTemplateHtmlStatic,
     props: ["data", "checkbox", "draggable", "nodots", "size", "theme", "dropAllowed", "zindex", "preid"],
 })
 export class Tree<T> extends Vue {
