@@ -1,6 +1,6 @@
 {
   "name": "tree-component",
-  "version": "5.0.4",
+  "version": "5.1.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "A reactjs, angular and vuejs tree component.",
@@ -14,7 +14,14 @@
     "url": "https://github.com/plantain-00/tree-component/issues"
   },
   "homepage": "https://github.com/plantain-00/tree-component#readme",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
+    "@types/node": "*",
+    "tslib": "1"
+  },
+  "peerDependencies": {
     "@types/node": "*",
     "tslib": "1"
   }

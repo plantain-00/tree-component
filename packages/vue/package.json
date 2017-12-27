@@ -1,6 +1,6 @@
 {
   "name": "tree-vue-component",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "A vuejs tree component.",
@@ -17,12 +17,20 @@
     "url": "https://github.com/plantain-00/tree-component/issues"
   },
   "homepage": "https://github.com/plantain-00/tree-component#readme",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
-    "tree-component": "^5.0.4",
+    "tree-component": "^5.1.1",
     "vue": "2",
     "vue-class-component": "6"
   },
   "devDependencies": {
     "typescript": "2.6.2"
+  },
+  "peerDependencies": {
+    "tree-component": "^5.1.1",
+    "vue": "2",
+    "vue-class-component": "6"
   }
 }
