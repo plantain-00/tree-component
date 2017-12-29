@@ -1,3 +1,5 @@
+# tree-component
+
 [![Dependency Status](https://david-dm.org/plantain-00/tree-component.svg)](https://david-dm.org/plantain-00/tree-component)
 [![devDependency Status](https://david-dm.org/plantain-00/tree-component/dev-status.svg)](https://david-dm.org/plantain-00/tree-component#info=devDependencies)
 [![Build Status: Linux](https://travis-ci.org/plantain-00/tree-component.svg?branch=master)](https://travis-ci.org/plantain-00/tree-component)
@@ -5,10 +7,9 @@
 [![npm version](https://badge.fury.io/js/tree-component.svg)](https://badge.fury.io/js/tree-component)
 [![Downloads](https://img.shields.io/npm/dm/tree-component.svg)](https://www.npmjs.com/package/tree-component)
 
-# tree-component
 A reactjs, angular and vuejs tree component.
 
-#### features
+## features
 
 + vuejs component
 + reactjs component
@@ -28,13 +29,13 @@ A reactjs, angular and vuejs tree component.
 + node id
 + custom node(vuejs and reactjs only)
 
-#### link css
+## link css
 
 ```html
 <link rel="stylesheet" href="./node_modules/tree-component/dist/tree.min.css" />
 ```
 
-#### vuejs component
+## vuejs component
 
 `npm i tree-vue-component`
 
@@ -49,9 +50,9 @@ import "tree-vue-component";
 </tree>
 ```
 
-the online demo: https://plantain-00.github.io/tree-component/packages/vue/demo
+the online demo: <https://plantain-00.github.io/tree-component/packages/vue/demo>
 
-#### reactjs component
+## reactjs component
 
 `npm i tree-react-component`
 
@@ -66,9 +67,9 @@ import { Tree } from "tree-react-component";
 </Tree>
 ```
 
-the online demo: https://plantain-00.github.io/tree-component/packages/react/demo
+the online demo: <https://plantain-00.github.io/tree-component/packages/react/demo>
 
-#### angular component
+## angular component
 
 `npm i tree-angular-component`
 
@@ -90,11 +91,11 @@ class MainModule { }
 </tree>
 ```
 
-the online demo: https://plantain-00.github.io/tree-component/packages/vue/demo/jit
+the online demo: <https://plantain-00.github.io/tree-component/packages/vue/demo/jit>
 
-the AOT online demo: https://plantain-00.github.io/tree-component/packages/vue/demo/aot
+the AOT online demo: <https://plantain-00.github.io/tree-component/packages/vue/demo/aot>
 
-#### properties and events of the component
+## properties and events of the component
 
 name | type | description
 --- | --- | ---
@@ -111,7 +112,7 @@ toggle | (eventData: [EventData](#event-data-structure)) => void | triggered whe
 change | (eventData: [EventData](#event-data-structure)) => void | triggered when selecting or deselecting a node
 drop | (dropData: [DropData](#drop-data-structure)) => void | triggered when drag a node, then drop it
 
-#### tree data structure
+## tree data structure
 
 ```ts
 type TreeData<T = any> = {
@@ -143,7 +144,7 @@ enum DropPosition {
 }
 ```
 
-#### event data structure
+## event data structure
 
 ```ts
 type EventData<T = any> = {
@@ -152,7 +153,7 @@ type EventData<T = any> = {
 };
 ```
 
-#### drop data structure
+## drop data structure
 
 ```ts
 type DropData<T = any> = {
@@ -163,7 +164,7 @@ type DropData<T = any> = {
 };
 ```
 
-#### contextmenu data structure
+## contextmenu data structure
 
 ```ts
 type ContextMenuData<T = any> = {
@@ -174,7 +175,7 @@ type ContextMenuData<T = any> = {
 };
 ```
 
-#### changelogs
+## changelogs
 
 ```bash
 # v4
@@ -226,7 +227,7 @@ import { TreeComponent, NodeComponent } from "tree-component/dist/angular";
 import { Tree } from "tree-component/dist/react";
 ```
 
-```
+```html
 // v2:
 <link rel="stylesheet" href="./node_modules/tree-component/tree.min.css" />
 
