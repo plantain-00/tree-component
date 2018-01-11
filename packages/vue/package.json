@@ -8,9 +8,6 @@
     "type": "git",
     "url": "git+https://github.com/plantain-00/tree-component.git"
   },
-  "scripts": {
-    "tsc": "tsc -p src"
-  },
   "author": "York Yao",
   "license": "MIT",
   "bugs": {
@@ -24,9 +21,6 @@
     "tree-component": "^5.1.1",
     "vue": "2",
     "vue-class-component": "6"
-  },
-  "devDependencies": {
-    "typescript": "2.6.2"
   },
   "peerDependencies": {
     "tree-component": "^5.1.1",
