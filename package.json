@@ -54,6 +54,7 @@
     "stylelint": "8.4.0",
     "stylelint-config-standard": "18.0.0",
     "tslint": "5.9.1",
+    "tslint-config-standard": "7.0.0",
     "typescript": "2.6.2",
     "watch-then-execute": "1.1.1",
     "webpack": "3.10.0"

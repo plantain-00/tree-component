@@ -1,12 +1,12 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core'
 
-import { EventData, DropData } from "../dist/";
+import { EventData, DropData } from '../dist/'
 
-import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, Value } from "tree-component/demo";
+import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, Value } from 'tree-component/demo'
 
 @Component({
-    selector: "app",
-    template: `
+  selector: 'app',
+  template: `
     <div>
         <a href="https://github.com/plantain-00/tree-component/tree/master/packages/angular/demo" target="_blank">the source code of the demo</a>
         <br/>
@@ -74,64 +74,64 @@ import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelec
                 (toggle)="ontoggle9($event)"></tree>
         </div>
     </div>
-    `,
+    `
 })
 export class MainComponent {
-    data = data as any;
-    selectedId: number | null = null;
-    data2 = JSON.parse(JSON.stringify(data));
-    data3 = JSON.parse(JSON.stringify(data));
-    data4 = JSON.parse(JSON.stringify(data));
-    data5 = JSON.parse(JSON.stringify(data));
-    data6 = JSON.parse(JSON.stringify(data));
-    data7 = JSON.parse(JSON.stringify(data));
-    data9 = JSON.parse(JSON.stringify(data));
-    dropAllowed = canMove;
-    ontoggle(eventData: EventData<Value>) {
-        toggle(eventData);
+  data = data as any
+  selectedId: number | null = null
+  data2 = JSON.parse(JSON.stringify(data))
+  data3 = JSON.parse(JSON.stringify(data))
+  data4 = JSON.parse(JSON.stringify(data))
+  data5 = JSON.parse(JSON.stringify(data))
+  data6 = JSON.parse(JSON.stringify(data))
+  data7 = JSON.parse(JSON.stringify(data))
+  data9 = JSON.parse(JSON.stringify(data))
+  dropAllowed = canMove
+  ontoggle (eventData: EventData<Value>) {
+    toggle(eventData)
+  }
+  onchange (eventData: EventData<Value>) {
+    this.selectedId = eventData.data.state.selected ? null : eventData.data.value!.id
+    if (!eventData.data.state.selected) {
+      for (const child of this.data) {
+        clearSelectionOfTree(child)
+      }
     }
-    onchange(eventData: EventData<Value>) {
-        this.selectedId = eventData.data.state.selected ? null : eventData.data.value!.id;
-        if (!eventData.data.state.selected) {
-            for (const child of this.data) {
-                clearSelectionOfTree(child);
-            }
-        }
-        eventData.data.state.selected = !eventData.data.state.selected;
-    }
-    ontoggle2(eventData: EventData<Value>) {
-        toggle(eventData);
-    }
-    onchange2(eventData: EventData<Value>) {
-        setSelectionOfTree(eventData.data, !eventData.data.state.selected);
-        setParentsSelection(this.data2, eventData.path);
-    }
-    ontoggle3(eventData: EventData<Value>) {
-        toggle(eventData);
-    }
-    drop3(dropData: DropData<Value>) {
-        move(dropData, this.data3);
-    }
-    ontoggle4(eventData: EventData<Value>) {
-        toggle(eventData);
-    }
-    ontoggle5(eventData: EventData<Value>) {
-        toggle(eventData);
-    }
-    ontoggle6(eventData: EventData<Value>) {
-        toggle(eventData);
-    }
-    ontoggle7(eventData: EventData<Value>) {
-        toggle(eventData);
-    }
-    onchange7(eventData: EventData<Value>) {
-        setSelectionOfTree(eventData.data, !eventData.data.state.selected);
-        setParentsSelection(this.data7, eventData.path);
-    }
-    drop7(dropData: DropData<Value>) {
-        move(dropData, this.data7);
-    }
-    ontoggle9(eventData: EventData<Value>) {
-        toggle(eventData);
-    }
+    eventData.data.state.selected = !eventData.data.state.selected
+  }
+  ontoggle2 (eventData: EventData<Value>) {
+    toggle(eventData)
+  }
+  onchange2 (eventData: EventData<Value>) {
+    setSelectionOfTree(eventData.data, !eventData.data.state.selected)
+    setParentsSelection(this.data2, eventData.path)
+  }
+  ontoggle3 (eventData: EventData<Value>) {
+    toggle(eventData)
+  }
+  drop3 (dropData: DropData<Value>) {
+    move(dropData, this.data3)
+  }
+  ontoggle4 (eventData: EventData<Value>) {
+    toggle(eventData)
+  }
+  ontoggle5 (eventData: EventData<Value>) {
+    toggle(eventData)
+  }
+  ontoggle6 (eventData: EventData<Value>) {
+    toggle(eventData)
+  }
+  ontoggle7 (eventData: EventData<Value>) {
+    toggle(eventData)
+  }
+  onchange7 (eventData: EventData<Value>) {
+    setSelectionOfTree(eventData.data, !eventData.data.state.selected)
+    setParentsSelection(this.data7, eventData.path)
+  }
+  drop7 (dropData: DropData<Value>) {
+    move(dropData, this.data7)
+  }
+  ontoggle9 (eventData: EventData<Value>) {
+    toggle(eventData)
+  }
 }

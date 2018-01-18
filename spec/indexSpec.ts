@@ -1,5 +1,5 @@
-import "../packages/core/dist";
+import '../packages/core/dist'
 
-it("", () => {
+it('', () => {
     // expect(true).toEqual(true);
-});
+})
