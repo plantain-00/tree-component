@@ -150,7 +150,6 @@ export function clearSelectionOfTree (tree: TreeData<Value>) {
 /**
  * @public
  */
-// tslint:disable-next-line:ban-types
 export function toggle (eventData: EventData<Value>, customComponent?: string | Function, next?: () => void) {
   if (!eventData.data.state.opened && eventData.data.children.length === 0) {
     eventData.data.state.loading = true
@@ -191,7 +190,6 @@ export function setSelectionOfTree (tree: TreeData<Value>, selected: boolean) {
 /**
  * @public
  */
-// tslint:disable-next-line:ban-types
 export function setContextMenu (tree: TreeData<Value>, component: string | Function) {
   tree.contextmenu = component
   if (tree.children) {
@@ -273,7 +271,6 @@ type Data = {
   icon?: string | false;
   state?: Partial<TreeNodeState>;
   children?: Data[];
-    // tslint:disable-next-line:ban-types
   component?: string | Function;
 }
 

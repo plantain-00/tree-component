@@ -7,9 +7,7 @@ export type TreeData<T = any> = {
   icon?: string | false;
   state: TreeNodeState;
   children: TreeData<T>[];
-    // tslint:disable-next-line:ban-types
   contextmenu?: string | Function;
-    // tslint:disable-next-line:ban-types
   component?: string | Function;
 }
 
