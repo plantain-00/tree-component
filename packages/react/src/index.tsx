@@ -32,25 +32,25 @@ class Node<T = any> extends React.PureComponent<{
     let childrenElement: JSX.Element | null
     if (this.props.data.children) {
       const nodesElement: JSX.Element[] = this.props.data.children.map((child, i) => (
-                <Node data={child}
-                    key={i}
-                    last={i === this.props.data.children.length - 1}
-                    checkbox={this.props.checkbox}
-                    path={this.geChildPath(i)}
-                    draggable={this.props.draggable}
-                    root={this.props.root}
-                    parent={this}
-                    zindex={this.props.zindex}
-                    preid={this.props.preid}
-                    toggle={(eventData: common.EventData<T>) => this.ontoggle(eventData)}
-                    change={(eventData: common.EventData<T>) => this.onchange(eventData)}>
-                </Node>
-            ))
+        <Node data={child}
+          key={i}
+          last={i === this.props.data.children.length - 1}
+          checkbox={this.props.checkbox}
+          path={this.geChildPath(i)}
+          draggable={this.props.draggable}
+          root={this.props.root}
+          parent={this}
+          zindex={this.props.zindex}
+          preid={this.props.preid}
+          toggle={(eventData: common.EventData<T>) => this.ontoggle(eventData)}
+          change={(eventData: common.EventData<T>) => this.onchange(eventData)}>
+        </Node>
+      ))
       childrenElement = (
-                <ul role='group' className='tree-children'>
-                    {nodesElement}
-                </ul>
-            )
+        <ul role='group' className='tree-children'>
+          {nodesElement}
+        </ul>
+      )
     } else {
       childrenElement = null
     }
@@ -60,25 +60,25 @@ class Node<T = any> extends React.PureComponent<{
     const contextmenu = this.props.data.contextmenu && this.contextmenuVisible ? React.createElement(this.props.data.contextmenu as React.ComponentClass<{ data: common.ContextMenuData<T> }>, { data: this.contextmenuData }) : null
     const text = this.props.data.component ? React.createElement(this.props.data.component as React.ComponentClass<{ data: common.TreeData<T> }>, { data: this.props.data }) : this.props.data.text
     return (
-            <li role='treeitem' className={this.nodeClassName} id={this.id}>
-                <i className={this.oclClassName} role='presentation' onClick={() => this.ontoggle()}></i>
-                <a className={this.anchorClassName}
-                    href='javascript:void(0)'
-                    draggable={this.props.draggable}
-                    onClick={() => this.onchange()}
-                    onDoubleClick={() => this.ontoggle()}
-                    onMouseEnter={() => this.hover(true)}
-                    onMouseLeave={() => this.hover(false)}
-                    onContextMenu={e => this.oncontextmenu(e)}
-                    data-path={this.pathString}>
-                    {checkboxElement}
-                    {iconElement}
-                    {text}
-                    {markerElement}
-                    <div style={this.contextmenuStyle}>{contextmenu}</div>
-                </a>
-                {childrenElement}
-            </li>
+      <li role='treeitem' className={this.nodeClassName} id={this.id}>
+        <i className={this.oclClassName} role='presentation' onClick={() => this.ontoggle()}></i>
+        <a className={this.anchorClassName}
+          href='javascript:void(0)'
+          draggable={this.props.draggable}
+          onClick={() => this.onchange()}
+          onDoubleClick={() => this.ontoggle()}
+          onMouseEnter={() => this.hover(true)}
+          onMouseLeave={() => this.hover(false)}
+          onContextMenu={e => this.oncontextmenu(e)}
+          data-path={this.pathString}>
+          {checkboxElement}
+          {iconElement}
+          {text}
+          {markerElement}
+          <div style={this.contextmenuStyle}>{contextmenu}</div>
+        </a>
+        {childrenElement}
+      </li>
     )
   }
 
@@ -199,32 +199,32 @@ export class Tree<T = any> extends React.PureComponent<{
 
   render () {
     const childrenElement = this.props.data.map((child, i) => (
-            <Node data={child}
-                key={i}
-                last={i === this.props.data.length - 1}
-                checkbox={this.props.checkbox}
-                path={[i]}
-                draggable={this.props.draggable}
-                root={this.props.data}
-                parent={this}
-                zindex={this.props.zindex}
-                preid={this.props.preid}
-                toggle={(data: common.EventData<T>) => this.ontoggle(data)}
-                change={(data: common.EventData<T>) => this.onchange(data)}></Node>
-        ))
+      <Node data={child}
+        key={i}
+        last={i === this.props.data.length - 1}
+        checkbox={this.props.checkbox}
+        path={[i]}
+        draggable={this.props.draggable}
+        root={this.props.data}
+        parent={this}
+        zindex={this.props.zindex}
+        preid={this.props.preid}
+        toggle={(data: common.EventData<T>) => this.ontoggle(data)}
+        change={(data: common.EventData<T>) => this.onchange(data)}></Node>
+    ))
     return (
-            <div className={this.rootClassName} role='tree'>
-                <ul className={this.containerClassName}
-                    role='group'
-                    onDragStart={eventData => this.ondragstart(eventData)}
-                    onDragEnd={eventData => this.ondragend(eventData)}
-                    onDragOver={eventData => this.ondragover(eventData)}
-                    onDragEnter={(eventData) => this.ondragenter(eventData)}
-                    onDragLeave={eventData => this.ondragleave(eventData)}
-                    onDrop={eventData => this.ondrop(eventData)}>
-                    {childrenElement}
-                </ul>
-            </div>
+      <div className={this.rootClassName} role='tree'>
+        <ul className={this.containerClassName}
+          role='group'
+          onDragStart={eventData => this.ondragstart(eventData)}
+          onDragEnd={eventData => this.ondragend(eventData)}
+          onDragOver={eventData => this.ondragover(eventData)}
+          onDragEnter={(eventData) => this.ondragenter(eventData)}
+          onDragLeave={eventData => this.ondragleave(eventData)}
+          onDrop={eventData => this.ondrop(eventData)}>
+          {childrenElement}
+        </ul>
+      </div>
     )
   }
 

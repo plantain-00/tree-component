@@ -29,7 +29,7 @@ import * as puppeteer from 'puppeteer'
     await page.click('.checkbox .tree-checkbox-0-0')
     await page.screenshot({ path: `screenshots/${type}-deselect.png` })
 
-    if (type !== 'angular') {
+    if (type !== 'angular' && type !== 'aot') {
       await page.click('.contextmenu .tree-anchor-0-0', { button: 'right' })
       await page.waitFor(100)
       await page.screenshot({ path: `screenshots/${type}-contextmenu.png` })
