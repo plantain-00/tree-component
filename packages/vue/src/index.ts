@@ -154,6 +154,11 @@ export class Tree<T> extends Vue {
     this.$emit('change', eventData)
   }
   ondragstart (event: DragEvent) {
+    // hide draggable node
+    const crt = event.target.cloneNode(true);
+    crt.style.backgroundColor = "red";
+    event.dataTransfer.setDragImage(crt, 0, 0);
+
     if (!this.draggable) {
       return
     }
