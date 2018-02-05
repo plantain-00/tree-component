@@ -10,12 +10,12 @@ import { nodeTemplateHtml, nodeTemplateHtmlStatic, treeTemplateHtml, treeTemplat
   props: ['data', 'last', 'checkbox', 'path', 'draggable', 'root', 'zindex', 'preid']
 })
 export class Node<T> extends Vue {
-  data: common.TreeData<T>
-  last: boolean
+  data!: common.TreeData<T>
+  last!: boolean
   checkbox?: boolean
-  path: number[]
+  path!: number[]
   draggable?: boolean
-  root: common.TreeData<T>[]
+  root!: common.TreeData<T>[]
   zindex?: number
   preid?: string
 
@@ -127,7 +127,7 @@ Vue.component('node', Node)
   props: ['data', 'checkbox', 'draggable', 'nodots', 'size', 'theme', 'dropAllowed', 'zindex', 'preid']
 })
 export class Tree<T> extends Vue {
-  data: common.TreeData<T>[]
+  data!: common.TreeData<T>[]
   checkbox?: boolean
   draggable?: boolean
   nodots?: boolean

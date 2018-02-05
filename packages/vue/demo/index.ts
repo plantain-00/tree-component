@@ -10,7 +10,7 @@ import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelec
   props: ['data']
 })
 class DeleteButton extends Vue {
-  data: ContextMenuData<Value>
+  data!: ContextMenuData<Value>
   click () {
     const parent = getNodeFromPath(this.data.root, this.data.path.slice(0, this.data.path.length - 1))
     const children = parent && parent.children ? parent.children : this.data.root
@@ -30,7 +30,7 @@ for (const tree of data8) {
   props: ['data']
 })
 class CustomNode extends Vue {
-  data: TreeData<Value>
+  data!: TreeData<Value>
 }
 Vue.component('custom-node', CustomNode)
 

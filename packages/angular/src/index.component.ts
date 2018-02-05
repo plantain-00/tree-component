@@ -12,13 +12,13 @@ import { treeTemplateHtml, nodeTemplateHtml } from './variables'
 })
 export class NodeComponent<T> {
   @Input()
-    data: common.TreeData<T>
+    data!: common.TreeData<T>
   @Input()
-    last: boolean
+    last!: boolean
   @Input()
     checkbox?: boolean
   @Input()
-    path: number[]
+    path!: number[]
   @Input()
     draggable?: boolean
   @Input()
@@ -117,7 +117,7 @@ export class NodeComponent<T> {
 })
 export class TreeComponent<T> {
   @Input()
-    data: common.TreeData<T>[]
+    data!: common.TreeData<T>[]
   @Input()
     checkbox?: boolean
   @Input()
