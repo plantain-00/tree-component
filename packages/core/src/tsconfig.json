@@ -1,9 +1,10 @@
 {
-    "extends": "../../tsconfig.json",
-    "angularCompilerOptions": {
-        "strictMetadataEmit": true
-    },
-    "compilerOptions": {
-        "outDir": "../dist"
-    }
+  "extends": "../../tsconfig.json",
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true
+  },
+  "compilerOptions": {
+    "outDir": "../dist",
+    "declaration": true
+  }
 }
