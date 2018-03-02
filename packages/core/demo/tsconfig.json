@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "angularCompilerOptions": {
-    "strictMetadataEmit": true
+    "strictMetadataEmit": true,
+    "fullTemplateTypeCheck" : true
   }
 }
