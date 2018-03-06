@@ -99,9 +99,9 @@ class MainModule { }
 </tree>
 ```
 
-the online demo: <https://plantain-00.github.io/tree-component/packages/vue/demo/jit>
+the online demo: <https://plantain-00.github.io/tree-component/packages/angular/demo/jit>
 
-the AOT online demo: <https://plantain-00.github.io/tree-component/packages/vue/demo/aot>
+the AOT online demo: <https://plantain-00.github.io/tree-component/packages/angular/demo/aot>
 
 ## properties and events of the component
 
