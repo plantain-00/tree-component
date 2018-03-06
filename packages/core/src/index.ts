@@ -163,7 +163,7 @@ export function getRootClassName (checkbox: boolean | undefined, size: string | 
 export function getIconClassName (icon: string | false | undefined) {
   const values = ['tree-icon', 'tree-themeicon']
   if (icon) {
-    values.push(icon, 'tree-themeicon-custom')
+    values.push('tree-themeicon-custom', icon)
   }
   return values.join(' ')
 }
