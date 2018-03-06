@@ -42,6 +42,7 @@ module.exports = {
           vue: [
             vueTemplateCommand,
             tscVueSrcCommand,
+            `rollup --config packages/vue/src/rollup.config.js`,
             tscVueDemoCommand,
             webpackVueCommand
           ],

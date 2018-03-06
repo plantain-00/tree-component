@@ -43,6 +43,14 @@ A reactjs, angular and vuejs tree component.
 import "tree-vue-component";
 ```
 
+or
+
+```html
+<script src="./node_modules/vue/dist/vue.min.js"></script>
+<script src="./node_modules/vue-class-component/dist/vue-class-component.min.js"></script>
+<script src="./node_modules/tree-vue-component/dist/tree-vue-component.min.js"></script>
+```
+
 ```html
 <tree :data="data"
     @toggle="toggle($event)"
