@@ -1,6 +1,6 @@
 {
   "name": "tree-vue-component",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "A vuejs tree component.",
@@ -18,12 +18,12 @@
     "dist"
   ],
   "dependencies": {
-    "tree-component": "^5.2.0",
+    "tree-component": "^5.2.1",
     "vue": "2",
     "vue-class-component": "6"
   },
   "peerDependencies": {
-    "tree-component": "^5.2.0",
+    "tree-component": "^5.2.1",
     "vue": "2",
     "vue-class-component": "6"
   }
