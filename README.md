@@ -68,6 +68,14 @@ the online demo: <https://plantain-00.github.io/tree-component/packages/vue/demo
 import { Tree } from "tree-react-component";
 ```
 
+or
+
+```html
+<script src="./node_modules/react/umd/react.production.min.js"></script>
+<script src="./node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="./node_modules/tree-react-component/dist/tree-react-component.min.js"></script>
+```
+
 ```html
 <Tree data={data}
     toggle={this.toggle}

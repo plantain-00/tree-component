@@ -48,6 +48,7 @@ module.exports = {
           ],
           react: [
             tscReactSrcCommand,
+            `rollup --config packages/react/src/rollup.config.js`,
             tscReactDemoCommand,
             webpackReactCommand
           ],
