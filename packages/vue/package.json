@@ -2,6 +2,9 @@
   "name": "tree-vue-component",
   "version": "5.2.1",
   "main": "dist/index.js",
+  "module": "dist/index.js",
+  "unpkg": "dist/tree-vue-component.min.js",
+  "jsdelivr": "dist/tree-vue-component.min.js",
   "types": "dist/index.d.ts",
   "description": "A vuejs tree component.",
   "repository": {
