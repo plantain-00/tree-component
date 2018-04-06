@@ -50,6 +50,6 @@ tslib@^1.7.1:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
 
-zone.js@0.8.21:
-  version "0.8.21"
-  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.21.tgz#8c0e8e361bd326ee1474e4f96e17d5ef99bec4b2"
+zone.js@0.8.25:
+  version "0.8.25"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.25.tgz#e20e5e85b881e2e66352612b5f238e8309e5badd"
