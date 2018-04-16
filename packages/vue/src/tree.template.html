@@ -1,0 +1,23 @@
+<div :class="rootClassName" role="tree">
+    <ul :class="containerClassName" role="group"
+        @dragstart="ondragstart($event)"
+        @dragend="ondragend($event)"
+        @dragover="ondragover($event)"
+        @dragenter="ondragenter($event)"
+        @dragleave="ondragleave($event)"
+        @drop="ondrop($event)">
+        <node v-for="(child, i) in data"
+            :key="i"
+            :data="child"
+            :last="i === data.length - 1"
+            :checkbox="checkbox"
+            :path="[i]"
+            :draggable="draggable"
+            :root="data"
+            :zindex="zindex"
+            :preid="preid"
+            @toggle="ontoggle($event)"
+            @change="onchange($event)">
+        </node>
+    </ul>
+</div>

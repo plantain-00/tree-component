@@ -1,0 +1,529 @@
+@import "./variables.less";
+
+.size (@height) {
+  @correction: (32px - @height) / 2;
+
+  .tree-node {
+    min-height: @height;
+    line-height: @height;
+    margin-left: @height;
+    min-width: @height;
+  }
+
+  .tree-icon {
+    width: @height;
+    height: @height;
+    line-height: @height;
+  }
+
+  .tree-icon:empty {
+    width: @height;
+    height: @height;
+    line-height: @height;
+  }
+
+  .tree-node,
+  .tree-icon {
+    background-position: -@correction -@correction;
+    background-repeat: repeat-y;
+  }
+
+  .tree-last {
+    background: transparent;
+  }
+
+  .tree-open > .tree-ocl {
+    background-position: -@correction -@correction;
+  }
+
+  .tree-closed > .tree-ocl {
+    background-position: -@correction -@correction;
+  }
+
+  .tree-leaf > .tree-ocl {
+    background-position: -@correction -@correction;
+  }
+
+  .tree-themeicon,
+  .tree-folder {
+    background-position: -@correction -@correction;
+  }
+
+  > .tree-no-dots {
+    .tree-node,
+    .tree-leaf > .tree-ocl {
+      background: transparent;
+    }
+
+    .tree-open > .tree-ocl {
+      background-position: -@correction -@correction;
+    }
+
+    .tree-closed > .tree-ocl {
+      background-position: -@correction -@correction;
+    }
+  }
+
+  .tree-disabled {
+    background: transparent;
+
+    &.tree-hovered {
+      background: transparent;
+    }
+
+    &.tree-clicked {
+      background: #efefef;
+    }
+  }
+
+  .tree-checkbox {
+    background-position: -@correction -@correction;
+
+    &:hover {
+      background-position: -@correction -@correction;
+    }
+  }
+
+  &.tree-checkbox-selection .tree-clicked,
+  .tree-checked {
+    > .tree-checkbox {
+      background-position: -@correction -@correction;
+
+      &:hover {
+        background-position: -@correction -@correction;
+      }
+    }
+  }
+
+  .tree-anchor {
+    line-height: @height;
+    height: @height;
+
+    > .tree-undetermined {
+      background-position: -@correction -@correction;
+
+      &:hover {
+        background-position: -@correction -@correction;
+      }
+    }
+  }
+
+  .tree-themeicon-custom {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-image: none;
+  }
+
+  .tree-file {
+    background-position: -@correction -@correction;
+  }
+
+  > .tree-container-ul > .tree-node {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .tree-marker-1 {
+    top: 0;
+  }
+
+  .tree-marker-2 {
+    top: @height / 2;
+  }
+
+  .tree-marker-3 {
+    top: @height;
+  }
+
+  .not-allowed {
+    color: red;
+  }
+
+  .allowed {
+    color: green;
+  }
+}
+
+.tree-default,
+.tree-default-large,
+.tree-default-small {
+  .tree-node,
+  .tree-icon {
+    background-image: url("@{default-node-png}");
+  }
+
+  .tree-open > .tree-ocl {
+    background-image: url("@{default-open-png}");
+  }
+
+  .tree-closed > .tree-ocl {
+    background-image: url("@{default-closed-png}");
+  }
+
+  .tree-leaf > .tree-ocl {
+    background-image: url("@{default-leaf-png}");
+  }
+
+  .tree-themeicon,
+  .tree-folder {
+    background-image: url("@{default-folder-png}");
+  }
+
+  > .tree-no-dots {
+    .tree-open > .tree-ocl {
+      background-image: url("@{default-open-no-dot-png}");
+    }
+
+    .tree-closed > .tree-ocl {
+      background-image: url("@{default-closed-no-dot-png}");
+    }
+  }
+
+  .tree-checkbox {
+    background-image: url("@{default-unchecked-png}");
+
+    &:hover {
+      background-image: url("@{default-unchecked-hover-png}");
+    }
+  }
+
+  &.tree-checkbox-selection .tree-clicked,
+  .tree-checked {
+    > .tree-checkbox {
+      background-image: url("@{default-checked-png}");
+
+      &:hover {
+        background-image: url("@{default-checked-hover-png}");
+      }
+    }
+  }
+
+  .tree-anchor {
+    > .tree-undetermined {
+      background-image: url("@{default-undetermined-png}");
+
+      &:hover {
+        background-image: url("@{default-undetermined-hover-png}");
+      }
+    }
+  }
+
+  .tree-file {
+    background-image: url("@{default-file-png}") !important;
+  }
+
+  > .tree-container-ul .tree-loading > .tree-ocl {
+    background: url("@{default-loading-gif}") center center no-repeat;
+  }
+}
+
+.tree-dark,
+.tree-dark-large,
+.tree-dark-small {
+  .tree-node,
+  .tree-icon {
+    background-image: url("@{dark-node-png}");
+  }
+
+  .tree-open > .tree-ocl {
+    background-image: url("@{dark-open-png}");
+  }
+
+  .tree-closed > .tree-ocl {
+    background-image: url("@{dark-closed-png}");
+  }
+
+  .tree-leaf > .tree-ocl {
+    background-image: url("@{dark-leaf-png}");
+  }
+
+  .tree-themeicon,
+  .tree-folder {
+    background-image: url("@{dark-folder-png}");
+  }
+
+  > .tree-no-dots {
+    .tree-open > .tree-ocl {
+      background-image: url("@{dark-open-no-dot-png}");
+    }
+
+    .tree-closed > .tree-ocl {
+      background-image: url("@{dark-closed-no-dot-png}");
+    }
+  }
+
+  .tree-checkbox {
+    background-image: url("@{dark-unchecked-png}");
+  }
+
+  &.tree-checkbox-selection .tree-clicked,
+  .tree-checked {
+    > .tree-checkbox {
+      background-image: url("@{dark-checked-png}");
+    }
+  }
+
+  .tree-anchor {
+    > .tree-undetermined {
+      background-image: url("@{dark-undetermined-png}");
+    }
+  }
+
+  .tree-file {
+    background-image: url("@{dark-file-png}");
+  }
+
+  > .tree-container-ul .tree-loading > .tree-ocl {
+    background: url("@{dark-loading-gif}") center center no-repeat;
+  }
+}
+
+.theme (@name, @hovered-bg-color, @hovered-shadow-color, @disabled-bg-color, @clicked-bg-color, @clicked-shadow-color, @search-result-color) {
+  .tree-@{name} {
+    .tree-node,
+    .tree-icon {
+      background-repeat: no-repeat;
+      background-color: transparent;
+    }
+
+    .tree-hovered {
+      background: @hovered-bg-color;
+      border-radius: 2px;
+      box-shadow: inset 0 0 1px @hovered-shadow-color;
+    }
+
+    .tree-clicked {
+      background: @clicked-bg-color;
+      border-radius: 2px;
+      box-shadow: inset 0 0 1px @clicked-shadow-color;
+    }
+
+    .tree-no-icons .tree-anchor > .tree-themeicon {
+      display: none;
+    }
+
+    .tree-disabled {
+      background: transparent;
+      color: #666;
+
+      &.tree-hovered {
+        background: transparent;
+        box-shadow: none;
+      }
+
+      &.tree-clicked {
+        background: @disabled-bg-color;
+      }
+    }
+
+    .tree-search {
+      font-style: italic;
+      color: @search-result-color;
+      font-weight: bold;
+    }
+
+    .tree-no-checkboxes .tree-checkbox {
+      display: none !important;
+    }
+
+    &.tree-checkbox-no-clicked {
+      .tree-clicked {
+        background: transparent;
+        box-shadow: none;
+
+        &.tree-hovered {
+          background: @hovered-bg-color;
+        }
+      }
+    }
+
+    .size(24px);
+  }
+
+  .tree-@{name}-small {
+    .size(18px);
+  }
+
+  .tree-@{name}-large {
+    .size(32px);
+  }
+
+  .tree-@{name},
+  .tree-@{name}-small,
+  .tree-@{name}-large {
+    .tree-disabled > .tree-icon,
+    .tree-checkbox-disabled {
+      opacity: 0.8;
+      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'tree-grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#tree-grayscale");
+      filter: gray;
+      -webkit-filter: grayscale(100%);
+    }
+  }
+}
+
+.theme(default, #e7f4f9, #ccc, #efefef, #beebff, #999, #8b0000);
+.theme(dark, #555, #555, #333, #5fa2db, #666, #fff);
+
+.tree-node,
+.tree-children,
+.tree-container-ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  list-style-image: none;
+}
+.tree-node { white-space: nowrap; }
+
+.tree-anchor {
+  display: inline-block;
+  color: black;
+  white-space: nowrap;
+  padding: 0 4px 0 1px;
+  margin: 0;
+  vertical-align: top;
+  user-select: none;
+}
+.tree-anchor:focus { outline: 0; }
+
+.tree-anchor,
+.tree-anchor:link,
+.tree-anchor:visited,
+.tree-anchor:hover,
+.tree-anchor:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.tree-icon {
+  display: inline-block;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  text-align: center;
+}
+
+.tree-icon:empty {
+  display: inline-block;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  text-align: center;
+}
+
+.tree-ocl {
+  cursor: pointer;
+}
+
+.tree-leaf > .tree-ocl {
+  cursor: default;
+}
+
+.tree .tree-open > .tree-children {
+  display: block;
+}
+
+.tree .tree-closed > .tree-children,
+.tree .tree-leaf > .tree-children {
+  display: none;
+}
+
+.tree-anchor > .tree-themeicon {
+  margin-right: 2px;
+}
+
+.tree-no-icons .tree-themeicon,
+.tree-anchor > .tree-themeicon-hidden {
+  display: none;
+}
+
+.tree-hidden,
+.tree-node.tree-hidden {
+  display: none;
+}
+
+.tree-relative {
+  position: relative;
+}
+
+.tree-marker-1,
+.tree-marker-2,
+.tree-marker-3 {
+  left: 0;
+  position: absolute;
+  margin: -5px 0 0 0;
+  padding: 0;
+  border-right: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+}
+
+.tree-dark {
+  background: #333;
+
+  .tree-anchor {
+    color: #999;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .tree-clicked,
+  .tree-checked {
+    color: white;
+  }
+
+  .tree-hovered {
+    color: white;
+  }
+
+  .tree-marker-1,
+  .tree-marker-2,
+  .tree-marker-3 {
+    border-left-color: #999;
+    background: transparent;
+  }
+
+  .tree-anchor > .tree-icon {
+    opacity: 0.75;
+  }
+
+  .tree-clicked > .tree-icon,
+  .tree-hovered > .tree-icon,
+  .tree-checked > .tree-icon {
+    opacity: 1;
+  }
+
+  &.tree-rtl .tree-node {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAACAQMAAAB49I5GAAAABlBMVEUAAACZmZl+9SADAAAAAXRSTlMAQObYZgAAAAxJREFUCNdjAAMOBgAAGAAJMwQHdQAAAABJRU5ErkJggg==");
+  }
+
+  &.tree-rtl .tree-last {
+    background: transparent;
+  }
+}
+
+.tree-dark-small {
+  &.tree-rtl .tree-node {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAACAQMAAABv1h6PAAAABlBMVEUAAACZmZl+9SADAAAAAXRSTlMAQObYZgAAAAxJREFUCNdjAAMHBgAAiABBI4gz9AAAAABJRU5ErkJggg==");
+  }
+
+  &.tree-rtl .tree-last {
+    background: transparent;
+  }
+}
+
+.tree-dark-large {
+  &.tree-rtl .tree-node {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAACAQMAAAAD0EyKAAAABlBMVEUAAACZmZl+9SADAAAAAXRSTlMAQObYZgAAAAxJREFUCNdjgIIGBgABCgCBvVLXcAAAAABJRU5ErkJggg==");
+  }
+
+  &.tree-rtl .tree-last {
+    background: transparent;
+  }
+}

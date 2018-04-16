@@ -1,0 +1,39 @@
+{
+  "name": "tree-angular-component",
+  "version": "5.3.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "description": "A angular tree component.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plantain-00/tree-component.git"
+  },
+  "author": "York Yao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/plantain-00/tree-component/issues"
+  },
+  "homepage": "https://github.com/plantain-00/tree-component#readme",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@angular/common": "5",
+    "@angular/core": "5",
+    "@angular/forms": "5",
+    "tree-component": "^5.3.1"
+  },
+  "devDependencies": {
+    "@angular/platform-browser": "5.2.9",
+    "@angular/platform-browser-dynamic": "5.2.9",
+    "core-js": "2.5.5",
+    "rxjs": "5.5.10",
+    "zone.js": "0.8.26"
+  },
+  "peerDependencies": {
+    "@angular/common": "5",
+    "@angular/core": "5",
+    "@angular/forms": "5",
+    "tree-component": "^5.3.1"
+  }
+}

@@ -1,0 +1,20 @@
+<div [class]="rootClassName" role="tree">
+    <ul [class]="containerClassName" role="group"
+        (dragstart)="ondragstart($event)"
+        (dragend)="ondragend($event)"
+        (dragover)="ondragover($event)"
+        (dragenter)="ondragenter($event)"
+        (dragleave)="ondragleave($event)"
+        (drop)="ondrop($event)">
+        <node *ngFor="let child of data; let i = index; trackBy: trackBy"
+            [data]="child"
+            [last]="i === data.length - 1"
+            [checkbox]="checkbox"
+            [path]="[i]"
+            [draggable]="draggable"
+            [preid]="preid"
+            (toggle)="ontoggle($event)"
+            (change)="onchange($event)">
+        </node>
+    </ul>
+</div>
