@@ -45,5 +45,5 @@ dist
 *.js
 *.css
 !*.config.js
-index.html
-**/*-*.png
+!**/*-*.js
+!**/*-*.css
