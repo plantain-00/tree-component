@@ -55,9 +55,9 @@ export class DoubleClick {
   private clicked = false
   private timer: null | NodeJS.Timer = null
 
-  constructor (private timeout = 300) { }
+  constructor(private timeout = 300) { }
 
-  public onclick (singleClick: () => void) {
+  public onclick(singleClick: () => void) {
     if (!this.clicked) {
       this.clicked = true
       singleClick()
@@ -77,7 +77,7 @@ export class DoubleClick {
 /**
  * @public
  */
-export function getContainerClassName (noDots: boolean | undefined) {
+export function getContainerClassName(noDots: boolean | undefined) {
   const values = ['tree-container-ul', 'tree-children']
   if (noDots) {
     values.push('tree-no-dots')
@@ -88,7 +88,7 @@ export function getContainerClassName (noDots: boolean | undefined) {
 /**
  * @public
  */
-export function getNodeClassName<T> (data: TreeData<T>, last: boolean) {
+export function getNodeClassName<T>(data: TreeData<T>, last: boolean) {
   const values = ['tree-node']
   if (data.state.openable || data.children.length > 0) {
     if (data.state.opened) {
@@ -111,7 +111,7 @@ export function getNodeClassName<T> (data: TreeData<T>, last: boolean) {
 /**
  * @public
  */
-export function getAnchorClassName<T> (data: TreeData<T>, hovered: boolean, path: number[]) {
+export function getAnchorClassName<T>(data: TreeData<T>, hovered: boolean, path: number[]) {
   const values = ['tree-anchor', 'tree-relative', `tree-anchor-${path.join('-')}`]
   if (data.state.selected) {
     values.push('tree-clicked')
@@ -131,11 +131,11 @@ export function getAnchorClassName<T> (data: TreeData<T>, hovered: boolean, path
 /**
  * @public
  */
-export function getCheckboxClassName<T> (data: TreeData<T>, path: number[]) {
+export function getCheckboxClassName<T>(data: TreeData<T>, path: number[]) {
   const values = ['tree-icon', 'tree-checkbox', `tree-checkbox-${path.join('-')}`]
   if (data.children
-        && data.children.some(child => child.state.selected)
-        && data.children.some(child => !child.state.selected)) {
+    && data.children.some(child => child.state.selected)
+    && data.children.some(child => !child.state.selected)) {
     values.push('tree-undetermined')
   }
   return values.join(' ')
@@ -144,7 +144,7 @@ export function getCheckboxClassName<T> (data: TreeData<T>, path: number[]) {
 /**
  * @public
  */
-export function getRootClassName (checkbox: boolean | undefined, size: string | undefined, theme: string = 'default') {
+export function getRootClassName(checkbox: boolean | undefined, size: string | undefined, theme: string = 'default') {
   const values = ['tree']
   if (size) {
     values.push(`tree-${theme}-${size}`)
@@ -160,7 +160,7 @@ export function getRootClassName (checkbox: boolean | undefined, size: string | 
 /**
  * @public
  */
-export function getIconClassName (icon: string | false | undefined) {
+export function getIconClassName(icon: string | false | undefined) {
   const values = ['tree-icon', 'tree-themeicon']
   if (icon) {
     values.push('tree-themeicon-custom', icon)
@@ -171,14 +171,14 @@ export function getIconClassName (icon: string | false | undefined) {
 /**
  * @public
  */
-export function getOclClassName (path: number[]) {
+export function getOclClassName(path: number[]) {
   return ['tree-icon', 'tree-ocl', `tree-ocl-${path.join('-')}`].join(' ')
 }
 
 /**
  * @public
  */
-export function getMarkerClassName<T> (data: TreeData<T>) {
+export function getMarkerClassName<T>(data: TreeData<T>) {
   const values = [`tree-marker-${data.state.dropPosition}`]
   if (data.state.dropAllowed) {
     values.push('allowed')
@@ -192,10 +192,10 @@ export function getMarkerClassName<T> (data: TreeData<T>) {
  * @public
  */
 export const enum DropPosition {
-    empty,
-    up,
-    inside,
-    down
+  empty,
+  up,
+  inside,
+  down
 }
 
 /**
@@ -211,7 +211,7 @@ export type DropData<T = any> = {
 /**
  * @public
  */
-export function getNodeFromPath<T> (rootData: TreeData<T>[], path: number[]) {
+export function getNodeFromPath<T>(rootData: TreeData<T>[], path: number[]) {
   let node: TreeData<T> | null = null
   for (const index of path) {
     node = node ? node.children[index] : rootData[index]
@@ -219,7 +219,7 @@ export function getNodeFromPath<T> (rootData: TreeData<T>[], path: number[]) {
   return node
 }
 
-function getDropPosition (pageY: number, offsetTop: number, offsetHeight: number) {
+function getDropPosition(pageY: number, offsetTop: number, offsetHeight: number) {
   const top = pageY - offsetTop
   if (top < offsetHeight / 3) {
     return DropPosition.up
@@ -230,7 +230,7 @@ function getDropPosition (pageY: number, offsetTop: number, offsetHeight: number
   }
 }
 
-function clearDropPositionOfTree<T> (tree: TreeData<T>) {
+function clearDropPositionOfTree<T>(tree: TreeData<T>) {
   if (tree.state.dropPosition) {
     tree.state.dropPosition = DropPosition.empty
   }
@@ -244,7 +244,7 @@ function clearDropPositionOfTree<T> (tree: TreeData<T>) {
 /**
  * @public
  */
-export function ondrag<T> (pageY: number, dragTarget: HTMLElement | null, dropTarget: HTMLElement | null, data: TreeData<T>[], dropAllowed?: (dropData: DropData<T>) => boolean, next?: () => void) {
+export function ondrag<T>(pageY: number, dragTarget: HTMLElement | null, dropTarget: HTMLElement | null, data: TreeData<T>[], dropAllowed?: (dropData: DropData<T>) => boolean, next?: () => void) {
   if (dropTarget) {
     const sourcePath = dragTarget!.dataset.path!.split(',').map(s => +s)
     const dropTargetPathString = dropTarget.dataset.path
@@ -273,7 +273,7 @@ export function ondrag<T> (pageY: number, dragTarget: HTMLElement | null, dropTa
 /**
  * @public
  */
-export function ondragleave<T> (target: HTMLElement, data: TreeData<T>[]) {
+export function ondragleave<T>(target: HTMLElement, data: TreeData<T>[]) {
   const pathString = target.dataset.path
   if (pathString) {
     const path = pathString.split(',').map(s => +s)
@@ -287,7 +287,7 @@ export function ondragleave<T> (target: HTMLElement, data: TreeData<T>[]) {
 /**
  * @public
  */
-export function ondrop<T> (target: HTMLElement, dragTarget: HTMLElement | null, data: TreeData<T>[], next: (dropData: DropData<T>) => void) {
+export function ondrop<T>(target: HTMLElement, dragTarget: HTMLElement | null, data: TreeData<T>[], next: (dropData: DropData<T>) => void) {
   const sourcePath = dragTarget!.dataset.path!.split(',').map(s => +s)
   const targetPathString = target.dataset.path
   if (targetPathString) {
@@ -312,7 +312,7 @@ export function ondrop<T> (target: HTMLElement, dragTarget: HTMLElement | null, 
 /**
  * @public
  */
-export function clearMarkerOfTree<T> (tree: TreeData<T>) {
+export function clearMarkerOfTree<T>(tree: TreeData<T>) {
   if (tree.state.dropPosition !== DropPosition.empty) {
     tree.state.dropPosition = DropPosition.empty
   }
@@ -326,6 +326,6 @@ export function clearMarkerOfTree<T> (tree: TreeData<T>) {
 /**
  * @public
  */
-export function getId (path: number[], preid?: string) {
+export function getId(path: number[], preid?: string) {
   return preid ? preid + path.join('-') : undefined
 }

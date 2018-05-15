@@ -87,10 +87,10 @@ export class MainComponent {
   data7 = JSON.parse(JSON.stringify(data))
   data9 = JSON.parse(JSON.stringify(data))
   dropAllowed = canMove
-  ontoggle (eventData: EventData<Value>) {
+  ontoggle(eventData: EventData<Value>) {
     toggle(eventData)
   }
-  onchange (eventData: EventData<Value>) {
+  onchange(eventData: EventData<Value>) {
     this.selectedId = eventData.data.state.selected ? null : eventData.data.value!.id
     if (!eventData.data.state.selected) {
       for (const child of this.data) {
@@ -99,39 +99,39 @@ export class MainComponent {
     }
     eventData.data.state.selected = !eventData.data.state.selected
   }
-  ontoggle2 (eventData: EventData<Value>) {
+  ontoggle2(eventData: EventData<Value>) {
     toggle(eventData)
   }
-  onchange2 (eventData: EventData<Value>) {
+  onchange2(eventData: EventData<Value>) {
     setSelectionOfTree(eventData.data, !eventData.data.state.selected)
     setParentsSelection(this.data2, eventData.path)
   }
-  ontoggle3 (eventData: EventData<Value>) {
+  ontoggle3(eventData: EventData<Value>) {
     toggle(eventData)
   }
-  drop3 (dropData: DropData<Value>) {
+  drop3(dropData: DropData<Value>) {
     move(dropData, this.data3)
   }
-  ontoggle4 (eventData: EventData<Value>) {
+  ontoggle4(eventData: EventData<Value>) {
     toggle(eventData)
   }
-  ontoggle5 (eventData: EventData<Value>) {
+  ontoggle5(eventData: EventData<Value>) {
     toggle(eventData)
   }
-  ontoggle6 (eventData: EventData<Value>) {
+  ontoggle6(eventData: EventData<Value>) {
     toggle(eventData)
   }
-  ontoggle7 (eventData: EventData<Value>) {
+  ontoggle7(eventData: EventData<Value>) {
     toggle(eventData)
   }
-  onchange7 (eventData: EventData<Value>) {
+  onchange7(eventData: EventData<Value>) {
     setSelectionOfTree(eventData.data, !eventData.data.state.selected)
     setParentsSelection(this.data7, eventData.path)
   }
-  drop7 (dropData: DropData<Value>) {
+  drop7(dropData: DropData<Value>) {
     move(dropData, this.data7)
   }
-  ontoggle9 (eventData: EventData<Value>) {
+  ontoggle9(eventData: EventData<Value>) {
     toggle(eventData)
   }
 }
