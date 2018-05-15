@@ -28,7 +28,7 @@ class Node<T = any> extends React.PureComponent<{
     zIndex: typeof this.props.zindex === 'number' ? this.props.zindex : 1
   }
 
-  render () {
+  render() {
     let childrenElement: JSX.Element | null
     if (this.props.data.children) {
       const nodesElement: JSX.Element[] = this.props.data.children.map((child, i) => (
@@ -82,45 +82,45 @@ class Node<T = any> extends React.PureComponent<{
     )
   }
 
-  private get nodeClassName () {
+  private get nodeClassName() {
     return common.getNodeClassName(this.props.data, this.props.last)
   }
 
-  private get anchorClassName () {
+  private get anchorClassName() {
     return common.getAnchorClassName(this.props.data, this.hovered, this.props.path)
   }
 
-  private get checkboxClassName () {
+  private get checkboxClassName() {
     return common.getCheckboxClassName(this.props.data, this.props.path)
   }
 
-  private get iconClassName () {
+  private get iconClassName() {
     return common.getIconClassName(this.props.data.icon)
   }
 
-  private get oclClassName () {
+  private get oclClassName() {
     return common.getOclClassName(this.props.path)
   }
 
-  private get pathString () {
+  private get pathString() {
     return this.props.path.toString()
   }
 
-  private get hasMarker () {
+  private get hasMarker() {
     return this.props.draggable && this.props.data.state.dropPosition !== common.DropPosition.empty
   }
 
-  private get markerClassName () {
+  private get markerClassName() {
     return common.getMarkerClassName(this.props.data)
   }
 
-  private get eventData (): common.EventData<T> {
+  private get eventData(): common.EventData<T> {
     return {
       data: this.props.data,
       path: this.props.path
     }
   }
-  private get contextmenuData (): common.ContextMenuData<T> {
+  private get contextmenuData(): common.ContextMenuData<T> {
     return {
       data: this.props.data,
       path: this.props.path,
@@ -128,15 +128,15 @@ class Node<T = any> extends React.PureComponent<{
       parent: this.props.parent
     }
   }
-  private get id () {
+  private get id() {
     return common.getId(this.props.path, this.props.preid)
   }
 
-  private geChildPath (index: number) {
+  private geChildPath(index: number) {
     return this.props.path.concat(index)
   }
 
-  private hover (hovered: boolean) {
+  private hover(hovered: boolean) {
     this.hovered = hovered
     this.setState({ hovered: this.hovered })
     if (!hovered) {
@@ -144,7 +144,7 @@ class Node<T = any> extends React.PureComponent<{
       this.setState({ contextmenuVisible: this.contextmenuVisible })
     }
   }
-  private ontoggle (eventData?: common.EventData<T>) {
+  private ontoggle(eventData?: common.EventData<T>) {
     if (eventData) {
       this.props.toggle(eventData)
     } else {
@@ -153,7 +153,7 @@ class Node<T = any> extends React.PureComponent<{
       }
     }
   }
-  private onchange (eventData?: common.EventData<T>) {
+  private onchange(eventData?: common.EventData<T>) {
     if (eventData) {
       this.props.change(eventData)
     } else {
@@ -167,7 +167,7 @@ class Node<T = any> extends React.PureComponent<{
     }
   }
 
-  private oncontextmenu (e: React.MouseEvent<HTMLAnchorElement>) {
+  private oncontextmenu(e: React.MouseEvent<HTMLAnchorElement>) {
     this.contextmenuVisible = true
     this.contextmenuStyle.left = e.nativeEvent.offsetX + 'px'
     this.contextmenuStyle.top = e.nativeEvent.offsetY + 'px'
@@ -197,7 +197,7 @@ export class Tree<T = any> extends React.PureComponent<{
   private dragTarget: HTMLElement | null = null
   private dropTarget: HTMLElement | null = null
 
-  render () {
+  render() {
     const childrenElement = this.props.data.map((child, i) => (
       <Node data={child}
         key={i}
@@ -228,27 +228,27 @@ export class Tree<T = any> extends React.PureComponent<{
     )
   }
 
-  private get rootClassName () {
+  private get rootClassName() {
     return common.getRootClassName(this.props.checkbox, this.props.size, this.props.theme)
   }
-  private get containerClassName () {
+  private get containerClassName() {
     return common.getContainerClassName(this.props.nodots)
   }
 
-  private canDrop (event: React.DragEvent<HTMLElement>) {
+  private canDrop(event: React.DragEvent<HTMLElement>) {
     return this.props.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path
   }
-  private ontoggle (eventData: common.EventData<T>) {
+  private ontoggle(eventData: common.EventData<T>) {
     if (this.props.toggle) {
       this.props.toggle(eventData)
     }
   }
-  private onchange (eventData: common.EventData<T>) {
+  private onchange(eventData: common.EventData<T>) {
     if (this.props.change) {
       this.props.change(eventData)
     }
   }
-  private ondragstart (event: React.DragEvent<HTMLElement>) {
+  private ondragstart(event: React.DragEvent<HTMLElement>) {
     if (!this.props.draggable) {
       return
     }
@@ -256,7 +256,7 @@ export class Tree<T = any> extends React.PureComponent<{
     this.dropTarget = event.target as HTMLElement
     this.setState({ dragTarget: this.dragTarget, dropTarget: this.dropTarget })
   }
-  private ondragend (event: React.DragEvent<HTMLElement>) {
+  private ondragend(event: React.DragEvent<HTMLElement>) {
     if (!this.props.draggable) {
       return
     }
@@ -266,14 +266,14 @@ export class Tree<T = any> extends React.PureComponent<{
     }
     this.setState({ dragTarget: this.dragTarget })
   }
-  private ondragover (event: React.DragEvent<HTMLElement>) {
+  private ondragover(event: React.DragEvent<HTMLElement>) {
     if (!this.canDrop(event)) {
       return
     }
     common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.props.data, this.props.dropAllowed, () => this.forceUpdate())
     event.preventDefault()
   }
-  private ondragenter (event: React.DragEvent<HTMLElement>) {
+  private ondragenter(event: React.DragEvent<HTMLElement>) {
     if (!this.canDrop(event)) {
       return
     }
@@ -281,7 +281,7 @@ export class Tree<T = any> extends React.PureComponent<{
     this.setState({ dropTarget: this.dropTarget })
     common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.props.data, this.props.dropAllowed, () => this.forceUpdate())
   }
-  private ondragleave (event: React.DragEvent<HTMLElement>) {
+  private ondragleave(event: React.DragEvent<HTMLElement>) {
     if (!this.canDrop(event)) {
       return
     }
@@ -291,7 +291,7 @@ export class Tree<T = any> extends React.PureComponent<{
     this.setState({ dropTarget: this.dropTarget })
     common.ondragleave(event.target as HTMLElement, this.props.data)
   }
-  private ondrop (event: React.DragEvent<HTMLElement>) {
+  private ondrop(event: React.DragEvent<HTMLElement>) {
     if (!this.canDrop(event)) {
       return
     }

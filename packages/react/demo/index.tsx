@@ -31,7 +31,7 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
   private data9 = JSON.parse(JSON.stringify(data))
   private dropAllowed = canMove
 
-  render () {
+  render() {
     return (
       <div>
         <a href='https://github.com/plantain-00/tree-component/tree/master/packages/react/demo' target='_blank'>the source code of the demo</a>
@@ -118,13 +118,13 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
     )
   }
 
-  private toggle (eventData: EventData<Value>) {
+  private toggle(eventData: EventData<Value>) {
     toggle(eventData, CustomNode, () => {
       this.setState({ data: this.data })
     })
   }
-  private change (eventData: EventData<Value>) {
-    this.selectedId = eventData.data.state!.selected ? null : eventData.data.value!.id
+  private change(eventData: EventData<Value>) {
+    this.selectedId = eventData.data.state.selected ? null : eventData.data.value!.id
     this.setState({ selectedId: this.selectedId })
     if (!eventData.data.state.selected) {
       for (const child of this.data) {
@@ -134,58 +134,58 @@ class Main extends React.Component<{}, { data: TreeData<Value>[], selectedId: nu
     eventData.data.state.selected = !eventData.data.state.selected
     this.setState({ data: this.data })
   }
-  private toggle2 (eventData: EventData<Value>) {
+  private toggle2(eventData: EventData<Value>) {
     toggle(eventData, CustomNode, () => {
       this.setState({ data: this.data2 })
     })
   }
-  private change2 (eventData: EventData<Value>) {
+  private change2(eventData: EventData<Value>) {
     setSelectionOfTree(eventData.data, !eventData.data.state.selected)
     setParentsSelection(this.data2, eventData.path)
     this.setState({ data: this.data2 })
   }
-  private toggle3 (eventData: EventData<Value>) {
+  private toggle3(eventData: EventData<Value>) {
     toggle(eventData, CustomNode, () => {
       this.setState({ data: this.data3 })
     })
   }
-  private drop3 (dropData: DropData<Value>) {
+  private drop3(dropData: DropData<Value>) {
     move(dropData, this.data3)
   }
-  private toggle4 (eventData: EventData<Value>) {
+  private toggle4(eventData: EventData<Value>) {
     toggle(eventData, CustomNode, () => {
       this.setState({ data: this.data4 })
     })
   }
-  private toggle5 (eventData: EventData<Value>) {
+  private toggle5(eventData: EventData<Value>) {
     toggle(eventData, CustomNode, () => {
       this.setState({ data: this.data5 })
     })
   }
-  private toggle6 (eventData: EventData<Value>) {
+  private toggle6(eventData: EventData<Value>) {
     toggle(eventData, CustomNode, () => {
       this.setState({ data: this.data6 })
     })
   }
-  private toggle7 (eventData: EventData<Value>) {
+  private toggle7(eventData: EventData<Value>) {
     toggle(eventData, CustomNode, () => {
       this.setState({ data: this.data7 })
     })
   }
-  private change7 (eventData: EventData<Value>) {
+  private change7(eventData: EventData<Value>) {
     setSelectionOfTree(eventData.data, !eventData.data.state.selected)
     setParentsSelection(this.data7, eventData.path)
     this.setState({ data: this.data7 })
   }
-  private drop7 (dropData: DropData<Value>) {
+  private drop7(dropData: DropData<Value>) {
     move(dropData, this.data7)
   }
-  private toggle8 (eventData: EventData<Value>) {
+  private toggle8(eventData: EventData<Value>) {
     toggle(eventData, CustomNode, () => {
       this.setState({ data: this.data8 })
     })
   }
-  private toggle9 (eventData: EventData<Value>) {
+  private toggle9(eventData: EventData<Value>) {
     toggle(eventData, CustomNode, () => {
       this.setState({ data: this.data9 })
     })

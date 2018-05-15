@@ -85,7 +85,7 @@ const rawExtraData: Data[] = [
   }
 ]
 
-function standardize (treeData: Data) {
+function standardize(treeData: Data) {
   if (treeData.state === undefined) {
     treeData.state = {}
   }
@@ -136,7 +136,7 @@ export const data = rawData as TreeData<Value>[]
 /**
  * @public
  */
-export function clearSelectionOfTree (tree: TreeData<Value>) {
+export function clearSelectionOfTree(tree: TreeData<Value>) {
   if (tree.state.selected) {
     tree.state.selected = false
   }
@@ -150,7 +150,7 @@ export function clearSelectionOfTree (tree: TreeData<Value>) {
 /**
  * @public
  */
-export function toggle (eventData: EventData<Value>, customComponent?: string | Function, next?: () => void) {
+export function toggle(eventData: EventData<Value>, customComponent?: string | Function, next?: () => void) {
   if (!eventData.data.state.opened && eventData.data.children.length === 0) {
     eventData.data.state.loading = true
     setTimeout(() => {
@@ -176,7 +176,7 @@ export function toggle (eventData: EventData<Value>, customComponent?: string | 
 /**
  * @public
  */
-export function setSelectionOfTree (tree: TreeData<Value>, selected: boolean) {
+export function setSelectionOfTree(tree: TreeData<Value>, selected: boolean) {
   if (tree.state.selected !== selected) {
     tree.state.selected = selected
   }
@@ -190,7 +190,7 @@ export function setSelectionOfTree (tree: TreeData<Value>, selected: boolean) {
 /**
  * @public
  */
-export function setContextMenu (tree: TreeData<Value>, component: string | Function) {
+export function setContextMenu(tree: TreeData<Value>, component: string | Function) {
   tree.contextmenu = component
   if (tree.children) {
     for (const child of tree.children) {
@@ -202,7 +202,7 @@ export function setContextMenu (tree: TreeData<Value>, component: string | Funct
 /**
  * @public
  */
-export function setParentsSelection (tree: TreeData<Value>[], path: number[]) {
+export function setParentsSelection(tree: TreeData<Value>[], path: number[]) {
   const parents: TreeData<Value>[] = []
   const parentPath = path.slice(0, path.length - 1)
   for (const index of parentPath) {
@@ -220,7 +220,7 @@ export function setParentsSelection (tree: TreeData<Value>[], path: number[]) {
 /**
  * @public
  */
-export function canMove (dropData: DropData<Value>) {
+export function canMove(dropData: DropData<Value>) {
   if (dropData.targetPath.length < dropData.sourcePath.length) {
     return true
   }
@@ -235,7 +235,8 @@ export function canMove (dropData: DropData<Value>) {
 /**
  * @public
  */
-export function move (dropData: DropData<Value>, treeData: TreeData<Value>[]) {
+// tslint:disable-next-line:cognitive-complexity
+export function move(dropData: DropData<Value>, treeData: TreeData<Value>[]) {
   if (!canMove(dropData)) {
     return
   }

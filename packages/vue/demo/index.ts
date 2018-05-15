@@ -11,7 +11,7 @@ import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelec
 })
 class DeleteButton extends Vue {
   data!: ContextMenuData<Value>
-  click () {
+  click() {
     const parent = getNodeFromPath(this.data.root, this.data.path.slice(0, this.data.path.length - 1))
     const children = parent && parent.children ? parent.children : this.data.root
     const index = this.data.path[this.data.path.length - 1]
@@ -32,6 +32,7 @@ for (const tree of data8) {
 class CustomNode extends Vue {
   data!: TreeData<Value>
 }
+// tslint:disable-next-line:no-duplicate-string
 Vue.component('custom-node', CustomNode)
 
 @Component({
@@ -124,10 +125,10 @@ class App extends Vue {
   data9 = JSON.parse(JSON.stringify(data))
   dropAllowed = canMove
 
-  toggle (eventData: EventData<Value>) {
+  toggle(eventData: EventData<Value>) {
     toggle(eventData, 'custom-node')
   }
-  change (eventData: EventData<Value>) {
+  change(eventData: EventData<Value>) {
     this.selectedId = eventData.data.state.selected ? null : eventData.data.value!.id
     if (!eventData.data.state.selected) {
       for (const child of this.data) {
@@ -136,42 +137,42 @@ class App extends Vue {
     }
     eventData.data.state.selected = !eventData.data.state.selected
   }
-  toggle2 (eventData: EventData<Value>) {
+  toggle2(eventData: EventData<Value>) {
     toggle(eventData, 'custom-node')
   }
-  change2 (eventData: EventData<Value>) {
+  change2(eventData: EventData<Value>) {
     setSelectionOfTree(eventData.data, !eventData.data.state.selected)
     setParentsSelection(this.data2, eventData.path)
   }
-  toggle3 (eventData: EventData<Value>) {
+  toggle3(eventData: EventData<Value>) {
     toggle(eventData, 'custom-node')
   }
-  drop3 (dropData: DropData<Value>) {
+  drop3(dropData: DropData<Value>) {
     move(dropData, this.data3)
   }
-  toggle4 (eventData: EventData<Value>) {
+  toggle4(eventData: EventData<Value>) {
     toggle(eventData, 'custom-node')
   }
-  toggle5 (eventData: EventData<Value>) {
+  toggle5(eventData: EventData<Value>) {
     toggle(eventData, 'custom-node')
   }
-  toggle6 (eventData: EventData<Value>) {
+  toggle6(eventData: EventData<Value>) {
     toggle(eventData, 'custom-node')
   }
-  toggle7 (eventData: EventData<Value>) {
+  toggle7(eventData: EventData<Value>) {
     toggle(eventData, 'custom-node')
   }
-  change7 (eventData: EventData<Value>) {
+  change7(eventData: EventData<Value>) {
     setSelectionOfTree(eventData.data, !eventData.data.state.selected)
     setParentsSelection(this.data7, eventData.path)
   }
-  drop7 (dropData: DropData<Value>) {
+  drop7(dropData: DropData<Value>) {
     move(dropData, this.data7)
   }
-  toggle8 (eventData: EventData<Value>) {
+  toggle8(eventData: EventData<Value>) {
     toggle(eventData, 'custom-node')
   }
-  toggle9 (eventData: EventData<Value>) {
+  toggle9(eventData: EventData<Value>) {
     toggle(eventData, 'custom-node')
   }
 }

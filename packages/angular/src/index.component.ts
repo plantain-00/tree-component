@@ -12,76 +12,76 @@ import { treeTemplateHtml, nodeTemplateHtml } from './variables'
 })
 export class NodeComponent<T> {
   @Input()
-    data!: common.TreeData<T>
+  data!: common.TreeData<T>
   @Input()
-    last!: boolean
+  last!: boolean
   @Input()
-    checkbox?: boolean
+  checkbox?: boolean
   @Input()
-    path!: number[]
+  path!: number[]
   @Input()
-    draggable?: boolean
+  draggable?: boolean
   @Input()
-    preid?: string
+  preid?: string
 
   @Output()
-    toggle = new EventEmitter<common.EventData<T>>()
+  toggle = new EventEmitter<common.EventData<T>>()
   @Output()
-    change = new EventEmitter<common.EventData<T>>()
+  change = new EventEmitter<common.EventData<T>>()
 
   private hovered = false
   private doubleClick = new common.DoubleClick()
 
-  get nodeClassName () {
+  get nodeClassName() {
     return common.getNodeClassName(this.data, this.last)
   }
 
-  get anchorClassName () {
+  get anchorClassName() {
     return common.getAnchorClassName(this.data, this.hovered, this.path)
   }
 
-  get checkboxClassName () {
+  get checkboxClassName() {
     return common.getCheckboxClassName(this.data, this.path)
   }
 
-  get iconClassName () {
+  get iconClassName() {
     return common.getIconClassName(this.data.icon)
   }
 
-  get oclClassName () {
+  get oclClassName() {
     return common.getOclClassName(this.path)
   }
 
-  get pathString () {
+  get pathString() {
     return this.path.toString()
   }
 
-  get hasMarker () {
+  get hasMarker() {
     return this.draggable && this.data.state.dropPosition !== common.DropPosition.empty
   }
 
-  get markerClassName () {
+  get markerClassName() {
     return common.getMarkerClassName(this.data)
   }
 
-  private get eventData (): common.EventData<T> {
+  private get eventData(): common.EventData<T> {
     return {
       data: this.data,
       path: this.path
     }
   }
-  get id () {
+  get id() {
     return common.getId(this.path, this.preid)
   }
 
-  geChildPath (index: number) {
+  geChildPath(index: number) {
     return this.path.concat(index)
   }
 
-  hover (hovered: boolean) {
+  hover(hovered: boolean) {
     this.hovered = hovered
   }
-  ontoggle (eventData?: common.EventData<T>) {
+  ontoggle(eventData?: common.EventData<T>) {
     if (eventData) {
       this.toggle.emit(eventData)
     } else {
@@ -90,7 +90,7 @@ export class NodeComponent<T> {
       }
     }
   }
-  onchange (eventData?: common.EventData<T>) {
+  onchange(eventData?: common.EventData<T>) {
     if (eventData) {
       this.change.emit(eventData)
     } else {
@@ -103,7 +103,7 @@ export class NodeComponent<T> {
       })
     }
   }
-  trackBy (request: common.TreeData, index: number) {
+  trackBy(request: common.TreeData, index: number) {
     return index
   }
 }
@@ -117,53 +117,53 @@ export class NodeComponent<T> {
 })
 export class TreeComponent<T> {
   @Input()
-    data!: common.TreeData<T>[]
+  data!: common.TreeData<T>[]
   @Input()
-    checkbox?: boolean
+  checkbox?: boolean
   @Input()
-    draggable?: boolean
+  draggable?: boolean
   @Input()
-    nodots?: boolean
+  nodots?: boolean
   @Input()
-    size?: string
+  size?: string
   @Input()
-    theme?: string
+  theme?: string
   @Input()
-    dropAllowed?: (dropData: common.DropData<T>) => boolean
+  dropAllowed?: (dropData: common.DropData<T>) => boolean
   @Input()
-    preid?: string
+  preid?: string
 
   @Output()
-    toggle = new EventEmitter<common.EventData<T>>()
+  toggle = new EventEmitter<common.EventData<T>>()
   @Output()
-    change = new EventEmitter<common.EventData<T>>()
+  change = new EventEmitter<common.EventData<T>>()
   @Output()
-    drop = new EventEmitter<common.DropData<T>>()
+  drop = new EventEmitter<common.DropData<T>>()
 
   private dragTarget: HTMLElement | null = null
   private dropTarget: HTMLElement | null = null
 
-  get rootClassName () {
+  get rootClassName() {
     return common.getRootClassName(this.checkbox, this.size, this.theme)
   }
-  get containerClassName () {
+  get containerClassName() {
     return common.getContainerClassName(this.nodots)
   }
 
-  ontoggle (eventData: common.EventData<T>) {
+  ontoggle(eventData: common.EventData<T>) {
     this.toggle.emit(eventData)
   }
-  onchange (eventData: common.EventData<T>) {
+  onchange(eventData: common.EventData<T>) {
     this.change.emit(eventData)
   }
-  ondragstart (event: DragEvent) {
+  ondragstart(event: DragEvent) {
     if (!this.draggable) {
       return
     }
     this.dragTarget = event.target as HTMLElement
     this.dropTarget = event.target as HTMLElement
   }
-  ondragend (event: DragEvent) {
+  ondragend(event: DragEvent) {
     if (!this.draggable) {
       return
     }
@@ -172,21 +172,21 @@ export class TreeComponent<T> {
       common.clearMarkerOfTree(tree)
     }
   }
-  ondragover (event: DragEvent) {
+  ondragover(event: DragEvent) {
     if (!this.canDrop(event)) {
       return
     }
     common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed)
     event.preventDefault()
   }
-  ondragenter (event: DragEvent) {
+  ondragenter(event: DragEvent) {
     if (!this.canDrop(event)) {
       return
     }
     this.dropTarget = event.target as HTMLElement
     common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed)
   }
-  ondragleave (event: DragEvent) {
+  ondragleave(event: DragEvent) {
     if (!this.canDrop(event)) {
       return
     }
@@ -195,7 +195,7 @@ export class TreeComponent<T> {
     }
     common.ondragleave(event.target as HTMLElement, this.data)
   }
-  ondrop (event: DragEvent) {
+  ondrop(event: DragEvent) {
     event.stopPropagation()
     if (!this.canDrop(event)) {
       return
@@ -204,10 +204,10 @@ export class TreeComponent<T> {
       this.drop.emit(dropData)
     })
   }
-  trackBy (request: common.TreeData, index: number) {
+  trackBy(request: common.TreeData, index: number) {
     return index
   }
-  private canDrop (event: DragEvent) {
+  private canDrop(event: DragEvent) {
     return this.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path
   }
 }
