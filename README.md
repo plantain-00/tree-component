@@ -37,6 +37,8 @@ A reactjs, angular and vuejs tree component.
 
 ## vuejs component
 
+[![gzip size](https://img.badgesize.io/https://unpkg.com/tree-vue-component?compression=gzip)](https://unpkg.com/tree-vue-component)
+
 `npm i tree-vue-component`
 
 ```ts
@@ -61,6 +63,8 @@ or
 the online demo: <https://plantain-00.github.io/tree-component/packages/vue/demo>
 
 ## reactjs component
+
+[![gzip size](https://img.badgesize.io/https://unpkg.com/tree-react-component?compression=gzip)](https://unpkg.com/tree-react-component)
 
 `npm i tree-react-component`
 
