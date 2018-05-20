@@ -2,26 +2,26 @@
 # yarn lockfile v1
 
 
-"@angular/compiler-cli@6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-6.0.2.tgz#439b2b7241063ef9b86cf2e11b64620a377b695d"
+"@angular/compiler-cli@5.2.10":
+  version "5.2.10"
+  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-5.2.10.tgz#7e9dead0730dc20f7658e110a558b557b60e7be2"
   dependencies:
     chokidar "^1.4.2"
     minimist "^1.2.0"
     reflect-metadata "^0.1.2"
     tsickle "^0.27.2"
 
-"@angular/compiler@6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-6.0.2.tgz#b9d29b7e032c767179967540f1ed7f8777a615a1"
+"@angular/compiler@5.2.10":
+  version "5.2.10"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-5.2.10.tgz#1cd9914436f0707957823531c4418ce5b7e6a130"
   dependencies:
-    tslib "^1.9.0"
+    tslib "^1.7.1"
 
-"@angular/core@6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-6.0.2.tgz#d183730d73182a4590a5d71083db45655f210e69"
+"@angular/core@5.2.10":
+  version "5.2.10"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-5.2.10.tgz#a6eba06cae7267efbd2666e3fa5e42b84c2261de"
   dependencies:
-    tslib "^1.9.0"
+    tslib "^1.7.1"
 
 "@commitlint/cli@6.2.0":
   version "6.2.0"
@@ -8283,7 +8283,7 @@ tsickle@^0.27.2:
     source-map "^0.6.0"
     source-map-support "^0.5.0"
 
-tslib@1.9.1, tslib@^1.0.0, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@1.9.1, tslib@^1.0.0, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.1.tgz#a5d1f0532a49221c87755cfcc89ca37197242ba7"
 
