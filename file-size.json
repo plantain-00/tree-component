@@ -5,8 +5,8 @@
   "coreDemoTreeIconPng": "636 B 647 B",
   "reactDemoIndexBundleJs": "123 kB 37.5 kB",
   "vueDemoIndexBundleJs": "116 kB 38.8 kB",
-  "packagesAngularDemoAotIndexHtml": "871 B 570 B",
-  "packagesAngularDemoJitIndexHtml": "871 B 565 B",
+  "packagesAngularDemoAotIndexHtml": "871 B 569 B",
+  "packagesAngularDemoJitIndexHtml": "871 B 568 B",
   "packagesReactDemoIndexHtml": "880 B 575 B",
   "packagesVueDemoIndexHtml": "880 B 576 B"
 }
