@@ -5,7 +5,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap -- --frozen-lockfile",
     "build": "clean-scripts build",
-    "dev": "export NODE_ENV=development && clean-scripts build",
+    "dev": "cross-env NODE_ENV=development clean-scripts build",
     "lint": "clean-scripts lint",
     "test": "clean-scripts test",
     "fix": "clean-scripts fix",
@@ -33,6 +33,7 @@
     "autoprefixer": "8.6.3",
     "clean-css-cli": "4.1.11",
     "clean-scripts": "1.9.2",
+    "cross-env": "5.2.0",
     "file2variable-cli": "1.8.5",
     "github-fork-ribbon-css": "0.2.1",
     "http-server": "0.11.1",
