@@ -30,7 +30,7 @@
     "@commitlint/config-conventional": "7.0.1",
     "@types/jasmine": "2.8.8",
     "@types/puppeteer": "1.5.0",
-    "autoprefixer": "8.6.4",
+    "autoprefixer": "8.6.5",
     "clean-css-cli": "4.1.11",
     "clean-scripts": "1.9.2",
     "cross-env": "5.2.0",
@@ -45,7 +45,7 @@
     "karma-jasmine": "1.1.2",
     "karma-webpack": "3.0.0",
     "lerna": "2.11.0",
-    "less": "3.0.4",
+    "less": "3.5.3",
     "markdownlint-cli": "0.10.0",
     "no-unused-export": "1.5.1",
     "postcss-cli": "5.0.1",
@@ -64,7 +64,7 @@
     "tslint-sonarts": "1.7.0",
     "typescript": "2.9.2",
     "watch-then-execute": "1.1.1",
-    "webpack": "4.14.0",
+    "webpack": "4.15.1",
     "webpack-cli": "3.0.8"
   },
   "dependencies": {}
