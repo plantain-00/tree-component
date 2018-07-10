@@ -162,6 +162,14 @@ enum DropPosition {
     inside,
     down,
 }
+// For javascript users, the enum type can not imported from the package,
+// it is just number(0,1,2,3 in order), so you can use this instead:
+const DropPosition = {
+    empty: 0,
+    up: 1,
+    inside: 2,
+    down: 3
+}
 ```
 
 ## event data structure
