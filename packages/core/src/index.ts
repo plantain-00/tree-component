@@ -224,7 +224,7 @@ function getGlobalOffset(dropTarget: HTMLElement) {
   let currentElem = dropTarget
   while (currentElem) {
     offset += currentElem.offsetTop
-    currentElem = currentElem.offsetParent
+    currentElem = currentElem.offsetParent as HTMLElement
   }
   return offset
 }
