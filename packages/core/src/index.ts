@@ -219,6 +219,16 @@ export function getNodeFromPath<T>(rootData: TreeData<T>[], path: number[]) {
   return node
 }
 
+function getGlobalOffset(dropTarget: HTMLElement) {
+  let offset = 0
+  let currentElem = dropTarget
+  while (currentElem) {
+    offset += currentElem.offsetTop
+    currentElem = currentElem.offsetParent as HTMLElement
+  }
+  return offset
+}
+
 function getDropPosition(pageY: number, offsetTop: number, offsetHeight: number) {
   const top = pageY - offsetTop
   if (top < offsetHeight / 3) {
@@ -252,7 +262,8 @@ export function ondrag<T>(pageY: number, dragTarget: HTMLElement | null, dropTar
       const targetPath = dropTargetPathString.split(',').map(s => +s)
       const targetData = getNodeFromPath(data, targetPath)!
       const sourceData = getNodeFromPath(data, sourcePath)!
-      const position = getDropPosition(pageY, dropTarget.offsetTop, dropTarget.offsetHeight)
+      const offsetTop = getGlobalOffset(dropTarget)
+      const position = getDropPosition(pageY, offsetTop, dropTarget.offsetHeight)
       if (targetData.state.dropPosition !== position) {
         targetData.state.dropPosition = position
         const dropData: DropData<T> = {
