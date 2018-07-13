@@ -180,28 +180,60 @@ export class Tree<T> extends Vue {
     if (!this.canDrop(event)) {
       return
     }
-    this.dropTarget = event.target as HTMLElement
+    this.dropTarget = this.getAnchor(event.target as HTMLElement)
     common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed)
   }
   ondragleave(event: DragEvent) {
     if (!this.canDrop(event)) {
       return
     }
-    if (event.target === this.dropTarget) {
+    const target = this.getAnchor(event.target as HTMLElement)
+    const containsTarget = this.containsNode(this.dropTarget as HTMLElement, event.target as HTMLElement)
+    if (!containsTarget && target === this.dropTarget) {
       this.dropTarget = null
     }
-    common.ondragleave(event.target as HTMLElement, this.data)
+    common.ondragleave(target as HTMLElement, this.data)
   }
   ondrop(event: DragEvent) {
     if (!this.canDrop(event)) {
       return
     }
-    common.ondrop(event.target as HTMLElement, this.dragTarget, this.data, dropData => {
+    common.ondrop(this.getAnchor(event.target as HTMLElement), this.dragTarget, this.data, dropData => {
       this.$emit('drop', dropData)
     })
   }
   private canDrop(event: DragEvent) {
-    return this.draggable && event.target && (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path
+    if (!this.draggable || !event.target) {
+      return false
+    }
+    const hasPath = (event.target as HTMLElement).dataset && (event.target as HTMLElement).dataset.path
+    if (!hasPath && (event.target as HTMLElement).classList && !(event.target as HTMLElement).classList.contains('tree-node')) {
+      const target = this.getAnchor(event.target as HTMLElement)
+      return target.dataset && target.dataset.path
+    }
+    return hasPath
+  }
+  private containsNode(parentNode: HTMLElement, node: HTMLElement) {
+    for (let i = 0; i < parentNode.children.length; i++) {
+      const child = parentNode.children[i] as HTMLElement
+      if (child === node) {
+        return true
+      }
+      if (child.children) {
+        return this.containsNode(child, node)
+      }
+    }
+    return false
+  }
+  private getAnchor(target: HTMLElement) {
+    let anchor = target as HTMLElement
+    while (anchor && anchor.classList && !anchor.classList.contains('tree-anchor')) {
+      anchor = anchor.parentElement as HTMLElement
+    }
+    if (anchor && anchor.classList && anchor.classList.contains('tree-anchor')) {
+      return anchor
+    }
+    return target
   }
 }
 
