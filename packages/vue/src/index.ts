@@ -213,7 +213,7 @@ export class Tree<T> extends Vue {
     }
     return hasPath
   }
-  private containsNode(parentNode: HTMLElement, node: HTMLElement) {
+  private containsNode(parentNode: HTMLElement, node: HTMLElement): boolean {
     for (let i = 0; i < parentNode.children.length; i++) {
       const child = parentNode.children[i] as HTMLElement
       if (child === node) {
@@ -226,7 +226,7 @@ export class Tree<T> extends Vue {
     return false
   }
   private getAnchor(target: HTMLElement) {
-    let anchor = target as HTMLElement
+    let anchor = target
     while (anchor && anchor.classList && !anchor.classList.contains('tree-anchor')) {
       anchor = anchor.parentElement as HTMLElement
     }
