@@ -24,10 +24,10 @@
     "tree-component": "^5.4.0"
   },
   "devDependencies": {
-    "@angular/platform-browser": "6.1.4",
-    "@angular/platform-browser-dynamic": "6.1.4",
+    "@angular/platform-browser": "6.1.6",
+    "@angular/platform-browser-dynamic": "6.1.6",
     "core-js": "2.5.7",
-    "rxjs": "6.2.2",
+    "rxjs": "6.3.1",
     "zone.js": "0.8.26"
   },
   "peerDependencies": {
