@@ -1,8 +1,15 @@
 {
-  "lerna": "2.5.1",
   "packages": [
     "packages/*"
   ],
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "**/*.md",
+        "**/demo/**"
+      ]
+    }
+  },
   "version": "5.4.0",
   "npmClient": "yarn"
 }
