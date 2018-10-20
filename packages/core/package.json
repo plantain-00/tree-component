@@ -1,6 +1,6 @@
 {
   "name": "tree-component",
-  "version": "5.4.0",
+  "version": "5.5.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "A reactjs, angular and vuejs tree component.",

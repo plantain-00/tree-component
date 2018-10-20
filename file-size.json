@@ -1,12 +1,12 @@
 {
-  "angularDemoAotIndexBundleJs": "515 kB 131 kB",
-  "angularDemoJitIndexBundleJs": "968 kB 239 kB",
+  "angularDemoAotIndexBundleJs": "997 kB 246 kB",
+  "angularDemoJitIndexBundleJs": "998 kB 248 kB",
   "coreDemoIndexBundleCss": "39.1 kB 9.19 kB",
   "coreDemoTreeIconPng": "636 B 647 B",
   "reactDemoIndexBundleJs": "126 kB 38.2 kB",
-  "vueDemoIndexBundleJs": "117 kB 38.9 kB",
-  "packagesAngularDemoAotIndexHtml": "871 B 568 B",
-  "packagesAngularDemoJitIndexHtml": "871 B 569 B",
+  "vueDemoIndexBundleJs": "117 kB 39 kB",
+  "packagesAngularDemoAotIndexHtml": "871 B 567 B",
+  "packagesAngularDemoJitIndexHtml": "871 B 566 B",
   "packagesReactDemoIndexHtml": "880 B 578 B",
-  "packagesVueDemoIndexHtml": "880 B 576 B"
+  "packagesVueDemoIndexHtml": "880 B 574 B"
 }
