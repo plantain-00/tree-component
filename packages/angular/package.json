@@ -29,11 +29,5 @@
     "core-js": "2.5.7",
     "rxjs": "6.3.3",
     "zone.js": "0.8.26"
-  },
-  "peerDependencies": {
-    "@angular/common": "5",
-    "@angular/core": "5",
-    "@angular/forms": "5",
-    "tree-component": "^5.3.1"
   }
 }
