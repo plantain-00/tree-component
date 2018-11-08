@@ -1,6 +1,6 @@
 {
   "name": "tree-angular-component",
-  "version": "5.5.0",
+  "version": "5.5.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "A angular tree component.",
@@ -21,7 +21,7 @@
     "@angular/common": "7",
     "@angular/core": "7",
     "@angular/forms": "7",
-    "tree-component": "^5.5.0"
+    "tree-component": "^5.5.1"
   },
   "devDependencies": {
     "@angular/platform-browser": "7.0.2",
@@ -29,11 +29,5 @@
     "core-js": "2.5.7",
     "rxjs": "6.3.3",
     "zone.js": "0.8.26"
-  },
-  "peerDependencies": {
-    "@angular/common": "5",
-    "@angular/core": "5",
-    "@angular/forms": "5",
-    "tree-component": "^5.3.1"
   }
 }

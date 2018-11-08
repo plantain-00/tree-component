@@ -1,6 +1,6 @@
 {
   "name": "tree-react-component",
-  "version": "5.5.0",
+  "version": "5.5.1",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "unpkg": "dist/tree-react-component.min.js",
@@ -23,15 +23,10 @@
   "dependencies": {
     "react": "16",
     "react-dom": "16",
-    "tree-component": "^5.5.0"
+    "tree-component": "^5.5.1"
   },
   "devDependencies": {
     "@types/react": "16.4.18",
     "@types/react-dom": "16.0.9"
-  },
-  "peerDependencies": {
-    "react": "16",
-    "react-dom": "16",
-    "tree-component": "^5.3.1"
   }
 }
