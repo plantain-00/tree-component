@@ -21,6 +21,9 @@
   "bugs": {
     "url": "https://github.com/plantain-00/tree-component/issues"
   },
+  "typeCoverage": {
+    "atLeast": 93
+  },
   "homepage": "https://github.com/plantain-00/tree-component#readme",
   "devDependencies": {
     "@angular/compiler": "7.0.3",
