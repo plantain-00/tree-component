@@ -4,13 +4,13 @@ import commonjs from 'rollup-plugin-commonjs'
 
 export default {
   input: 'packages/vue/dist/index.js',
-  name: 'Tree',
   plugins: [
     resolve({ browser: true }),
     uglify(),
     commonjs()
   ],
   output: {
+    name: 'Tree',
     file: 'packages/vue/dist/tree-vue-component.min.js',
     format: 'umd'
   },
