@@ -77,7 +77,7 @@ export class DoubleClick {
 /**
  * @public
  */
-export function getContainerClassName(noDots: boolean | undefined) {
+export function getContainerClassName(noDots: boolean | undefined = undefined) {
   const values = ['tree-container-ul', 'tree-children']
   if (noDots) {
     values.push('tree-no-dots')
@@ -144,7 +144,7 @@ export function getCheckboxClassName<T>(data: TreeData<T>, path: number[]) {
 /**
  * @public
  */
-export function getRootClassName(checkbox: boolean | undefined, size: string | undefined, theme: string = 'default') {
+export function getRootClassName(checkbox: boolean | undefined = undefined, size: string | undefined, theme: string = 'default') {
   const values = ['tree']
   if (size) {
     values.push(`tree-${theme}-${size}`)
