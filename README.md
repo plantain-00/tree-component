@@ -157,7 +157,7 @@ type TreeNodeState = {
     dropAllowed: boolean; // whether the drop action is allowed
 };
 
-enum DropPosition {
+const enum DropPosition {
     empty,
     up,
     inside,

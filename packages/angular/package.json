@@ -24,9 +24,9 @@
     "tree-component": "^5.5.1"
   },
   "devDependencies": {
-    "@angular/platform-browser": "7.2.3",
-    "@angular/platform-browser-dynamic": "7.2.3",
-    "core-js": "2.6.3",
+    "@angular/platform-browser": "7.2.4",
+    "@angular/platform-browser-dynamic": "7.2.4",
+    "core-js": "2.6.4",
     "rxjs": "6.4.0",
     "zone.js": "0.8.29"
   }
