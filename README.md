@@ -29,6 +29,7 @@ A reactjs, angular and vuejs tree component.
 + contextmenu(vuejs and reactjs only)
 + node id
 + custom node(vuejs and reactjs only)
++ drag and drop between different tree
 
 ## link css
 
@@ -132,6 +133,8 @@ preid | string? | the node id prefix, eg: if `preid = "test_"`, then a node's id
 toggle | (eventData: [EventData](#event-data-structure)) => void | triggered when opening or closing a node
 change | (eventData: [EventData](#event-data-structure)) => void | triggered when selecting or deselecting a node
 drop | (dropData: [DropData](#drop-data-structure)) => void | triggered when drag a node, then drop it
+dragTarget | HTMLElement or null | drag target, used when drag and drop between different tree
+changeDragTarget | (dragTarget: HTMLElement or null) => void | triggered when drag target changed
 
 ## tree data structure
 

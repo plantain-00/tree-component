@@ -8,8 +8,8 @@
         @mouseleave="hover(false)"
         @contextmenu="oncontextmenu($event)"
         :data-path="pathString">
-        <i v-if="checkbox" :class="checkboxClassName" role="presentation"></i>
-        <i v-if="data.icon !== false" :class="iconClassName" role="presentation"></i>
+        <i v-if="checkbox" :class="checkboxClassName" role="presentation" style="margin-left: -5px; margin-right: -1px;"></i>
+        <i v-if="data.icon !== false" :class="iconClassName" role="presentation" style="margin-left: -5px; margin-right: -4px;"></i>
         <component v-if="data.component" :is="data.component" :data="data"></component>
         <template v-else>{{data.text}}</template>
         <span v-if="hasMarker" :class="markerClassName">&#160;</span>

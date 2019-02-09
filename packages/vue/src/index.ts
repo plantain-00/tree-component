@@ -124,7 +124,7 @@ Vue.component('node', Node)
 @Component({
   render: treeTemplateHtml,
   staticRenderFns: treeTemplateHtmlStatic,
-  props: ['data', 'checkbox', 'draggable', 'nodots', 'size', 'theme', 'dropAllowed', 'zindex', 'preid']
+  props: ['data', 'checkbox', 'draggable', 'nodots', 'size', 'theme', 'dropAllowed', 'dragTarget', 'zindex', 'preid']
 })
 export class Tree<T> extends Vue {
   data!: common.TreeData<T>[]
@@ -136,8 +136,9 @@ export class Tree<T> extends Vue {
   dropAllowed?: (dropData: common.DropData<T>) => boolean
   zindex?: number
   preid?: string
+  dragTarget?: HTMLElement | null
 
-  private dragTarget: HTMLElement | null = null
+  private localDragTarget: HTMLElement | null = null
   private dropTarget: HTMLElement | null = null
 
   get rootClassName() {
@@ -157,23 +158,25 @@ export class Tree<T> extends Vue {
     if (!this.draggable) {
       return
     }
-    this.dragTarget = event.target as HTMLElement
+    this.localDragTarget = event.target as HTMLElement
     this.dropTarget = event.target as HTMLElement
+    this.$emit('change-drag-target', event.target as HTMLElement)
   }
   ondragend(event: DragEvent) {
     if (!this.draggable) {
       return
     }
-    this.dragTarget = null
+    this.localDragTarget = null
     for (const tree of this.data) {
       common.clearMarkerOfTree(tree)
     }
+    this.$emit('change-drag-target', null)
   }
   ondragover(event: DragEvent) {
     if (!this.canDrop(event)) {
       return
     }
-    common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed)
+    common.ondrag(event.pageY, this.dragTarget || this.localDragTarget, this.dropTarget, this.data, this.dropAllowed)
     event.preventDefault()
   }
   ondragenter(event: DragEvent) {
@@ -181,7 +184,7 @@ export class Tree<T> extends Vue {
       return
     }
     this.dropTarget = this.getAnchor(event.target as HTMLElement)
-    common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed)
+    common.ondrag(event.pageY, this.dragTarget || this.localDragTarget, this.dropTarget, this.data, this.dropAllowed)
   }
   ondragleave(event: DragEvent) {
     if (!this.canDrop(event)) {
@@ -198,7 +201,7 @@ export class Tree<T> extends Vue {
     if (!this.canDrop(event)) {
       return
     }
-    common.ondrop(this.getAnchor(event.target as HTMLElement), this.dragTarget, this.data, dropData => {
+    common.ondrop(this.getAnchor(event.target as HTMLElement), this.dragTarget || this.localDragTarget, this.data, dropData => {
       this.$emit('drop', dropData)
     })
   }

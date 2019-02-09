@@ -169,9 +169,7 @@ class Node<T = any> extends React.PureComponent<{
 
   private oncontextmenu(e: React.MouseEvent<HTMLAnchorElement>) {
     this.contextmenuVisible = true
-    this.contextmenuStyle.left = e.nativeEvent.offsetX + 'px'
-    this.contextmenuStyle.top = e.nativeEvent.offsetY + 'px'
-    this.setState({ contextmenuVisible: this.contextmenuVisible, contextmenuStyle: this.contextmenuStyle })
+    this.setState({ contextmenuVisible: this.contextmenuVisible })
     e.preventDefault()
     return false
   }
@@ -193,6 +191,8 @@ export class Tree<T = any> extends React.PureComponent<{
   toggle?: (eventData: common.EventData<T>) => void;
   change?: (eventData: common.EventData<T>) => void;
   drop?: (dropData: common.DropData<T>) => void;
+  dragTarget?: HTMLElement | null,
+  changeDragTarget?: (dragTarget: HTMLElement | null) => void
 }, { dragTarget: HTMLElement | null, dropTarget: HTMLElement | null }> {
   private dragTarget: HTMLElement | null = null
   private dropTarget: HTMLElement | null = null
@@ -255,6 +255,9 @@ export class Tree<T = any> extends React.PureComponent<{
     this.dragTarget = event.target as HTMLElement
     this.dropTarget = event.target as HTMLElement
     this.setState({ dragTarget: this.dragTarget, dropTarget: this.dropTarget })
+    if (this.props.changeDragTarget) {
+      this.props.changeDragTarget(event.target as HTMLElement)
+    }
   }
   private ondragend(event: React.DragEvent<HTMLElement>) {
     if (!this.props.draggable) {
@@ -265,12 +268,15 @@ export class Tree<T = any> extends React.PureComponent<{
       common.clearMarkerOfTree(tree)
     }
     this.setState({ dragTarget: this.dragTarget })
+    if (this.props.changeDragTarget) {
+      this.props.changeDragTarget(null)
+    }
   }
   private ondragover(event: React.DragEvent<HTMLElement>) {
     if (!this.canDrop(event)) {
       return
     }
-    common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.props.data, this.props.dropAllowed, () => this.forceUpdate())
+    common.ondrag(event.pageY, this.props.dragTarget || this.dragTarget, this.dropTarget, this.props.data, this.props.dropAllowed, () => this.forceUpdate())
     event.preventDefault()
   }
   private ondragenter(event: React.DragEvent<HTMLElement>) {
@@ -279,7 +285,7 @@ export class Tree<T = any> extends React.PureComponent<{
     }
     this.dropTarget = event.target as HTMLElement
     this.setState({ dropTarget: this.dropTarget })
-    common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.props.data, this.props.dropAllowed, () => this.forceUpdate())
+    common.ondrag(event.pageY, this.props.dragTarget || this.dragTarget, this.dropTarget, this.props.data, this.props.dropAllowed, () => this.forceUpdate())
   }
   private ondragleave(event: React.DragEvent<HTMLElement>) {
     if (!this.canDrop(event)) {
@@ -295,7 +301,7 @@ export class Tree<T = any> extends React.PureComponent<{
     if (!this.canDrop(event)) {
       return
     }
-    common.ondrop(event.target as HTMLElement, this.dragTarget, this.props.data, dropData => {
+    common.ondrop(event.target as HTMLElement, this.props.dragTarget || this.dragTarget, this.props.data, dropData => {
       if (this.props.drop) {
         this.props.drop(dropData)
       }

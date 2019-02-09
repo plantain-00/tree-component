@@ -254,9 +254,9 @@ function clearDropPositionOfTree<T>(tree: TreeData<T>) {
 /**
  * @public
  */
-export function ondrag<T>(pageY: number, dragTarget: HTMLElement | null, dropTarget: HTMLElement | null, data: TreeData<T>[], dropAllowed?: (dropData: DropData<T>) => boolean, next?: () => void) {
-  if (dropTarget) {
-    const sourcePath = dragTarget!.dataset.path!.split(',').map(s => +s)
+export function ondrag<T>(pageY: number, dragTarget: HTMLElement | null | undefined, dropTarget: HTMLElement | null, data: TreeData<T>[], dropAllowed?: (dropData: DropData<T>) => boolean, next?: () => void) {
+  if (dropTarget && dragTarget) {
+    const sourcePath = dragTarget.dataset.path!.split(',').map(s => +s)
     const dropTargetPathString = dropTarget.dataset.path
     if (dropTargetPathString) {
       const targetPath = dropTargetPathString.split(',').map(s => +s)
@@ -298,21 +298,23 @@ export function ondragleave<T>(target: HTMLElement, data: TreeData<T>[]) {
 /**
  * @public
  */
-export function ondrop<T>(target: HTMLElement, dragTarget: HTMLElement | null, data: TreeData<T>[], next: (dropData: DropData<T>) => void) {
-  const sourcePath = dragTarget!.dataset.path!.split(',').map(s => +s)
-  const targetPathString = target.dataset.path
-  if (targetPathString) {
-    const targetPath = targetPathString.split(',').map(s => +s)
-    const targetData = getNodeFromPath(data, targetPath)!
-    const sourceData = getNodeFromPath(data, sourcePath)!
-    if (targetData.state.dropPosition !== DropPosition.empty) {
-      const dropData: DropData<T> = {
-        sourcePath,
-        targetPath,
-        sourceData,
-        targetData
+export function ondrop<T>(target: HTMLElement, dragTarget: HTMLElement | null | undefined, data: TreeData<T>[], next: (dropData: DropData<T>) => void) {
+  if (dragTarget) {
+    const sourcePath = dragTarget.dataset.path!.split(',').map(s => +s)
+    const targetPathString = target.dataset.path
+    if (targetPathString) {
+      const targetPath = targetPathString.split(',').map(s => +s)
+      const targetData = getNodeFromPath(data, targetPath)!
+      const sourceData = getNodeFromPath(data, sourcePath)!
+      if (targetData.state.dropPosition !== DropPosition.empty) {
+        const dropData: DropData<T> = {
+          sourcePath,
+          targetPath,
+          sourceData,
+          targetData
+        }
+        next(dropData)
       }
-      next(dropData)
     }
   }
   for (const node of data) {
