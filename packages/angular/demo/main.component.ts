@@ -31,8 +31,21 @@ import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelec
             <tree [data]="data3"
                 [draggable]="true"
                 [dropAllowed]="dropAllowed"
+                [dragTarget]="dragTarget"
                 (toggle)="ontoggle3($event)"
-                (drop)="drop3($event)"></tree>
+                (drop)="drop3($event)"
+                (changeDragTarget)="changeDragTarget($event)"></tree>
+        </div>
+        <hr/>
+        draggable 2:
+        <div class="draggable">
+            <tree [data]="data10"
+                [draggable]="true"
+                [dropAllowed]="dropAllowed"
+                [dragTarget]="dragTarget"
+                (toggle)="ontoggle10($event)"
+                (drop)="drop10($event)"
+                (changeDragTarget)="changeDragTarget($event)"></tree>
         </div>
         <hr/>
         no dots:
@@ -86,7 +99,13 @@ export class MainComponent {
   data6 = JSON.parse(JSON.stringify(data))
   data7 = JSON.parse(JSON.stringify(data))
   data9 = JSON.parse(JSON.stringify(data))
+  data10 = JSON.parse(JSON.stringify(data))
   dropAllowed = canMove
+  dragTarget: HTMLElement | null = null
+
+  changeDragTarget(dragTarget: HTMLElement | null) {
+    this.dragTarget = dragTarget
+  }
   ontoggle(eventData: EventData<Value>) {
     toggle(eventData)
   }
@@ -133,5 +152,11 @@ export class MainComponent {
   }
   ontoggle9(eventData: EventData<Value>) {
     toggle(eventData)
+  }
+  ontoggle10(eventData: EventData<Value>) {
+    toggle(eventData)
+  }
+  drop10(dropData: DropData<Value>) {
+    move(dropData, this.data10)
   }
 }

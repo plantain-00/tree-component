@@ -132,6 +132,8 @@ export class TreeComponent<T> {
   dropAllowed?: (dropData: common.DropData<T>) => boolean
   @Input()
   preid?: string
+  @Input()
+  dragTarget?: HTMLElement | null
 
   @Output()
   toggle = new EventEmitter<common.EventData<T>>()
@@ -139,8 +141,10 @@ export class TreeComponent<T> {
   change = new EventEmitter<common.EventData<T>>()
   @Output()
   drop = new EventEmitter<common.DropData<T>>()
+  @Output()
+  changeDragTarget = new EventEmitter<HTMLElement | null>()
 
-  private dragTarget: HTMLElement | null = null
+  private localDragTarget: HTMLElement | null = null
   private dropTarget: HTMLElement | null = null
 
   get rootClassName() {
@@ -160,23 +164,25 @@ export class TreeComponent<T> {
     if (!this.draggable) {
       return
     }
-    this.dragTarget = event.target as HTMLElement
+    this.localDragTarget = event.target as HTMLElement
     this.dropTarget = event.target as HTMLElement
+    this.changeDragTarget.emit(event.target as HTMLElement)
   }
   ondragend(event: DragEvent) {
     if (!this.draggable) {
       return
     }
-    this.dragTarget = null
+    this.localDragTarget = null
     for (const tree of this.data) {
       common.clearMarkerOfTree(tree)
     }
+    this.changeDragTarget.emit(null)
   }
   ondragover(event: DragEvent) {
     if (!this.canDrop(event)) {
       return
     }
-    common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed)
+    common.ondrag(event.pageY, this.dragTarget || this.localDragTarget, this.dropTarget, this.data, this.dropAllowed)
     event.preventDefault()
   }
   ondragenter(event: DragEvent) {
@@ -184,7 +190,7 @@ export class TreeComponent<T> {
       return
     }
     this.dropTarget = event.target as HTMLElement
-    common.ondrag(event.pageY, this.dragTarget, this.dropTarget, this.data, this.dropAllowed)
+    common.ondrag(event.pageY, this.dragTarget || this.localDragTarget, this.dropTarget, this.data, this.dropAllowed)
   }
   ondragleave(event: DragEvent) {
     if (!this.canDrop(event)) {
@@ -200,7 +206,7 @@ export class TreeComponent<T> {
     if (!this.canDrop(event)) {
       return
     }
-    common.ondrop(event.target as HTMLElement, this.dragTarget, this.data, dropData => {
+    common.ondrop(event.target as HTMLElement, this.dragTarget || this.localDragTarget, this.data, dropData => {
       this.drop.emit(dropData)
     })
   }

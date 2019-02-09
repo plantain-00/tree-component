@@ -61,8 +61,21 @@ Vue.component('custom-node', CustomNode)
             <tree :data="data3"
                 :draggable="true"
                 :drop-allowed="dropAllowed"
+                :drag-target="dragTarget"
                 @toggle="toggle3($event)"
-                @drop="drop3($event)"></tree>
+                @drop="drop3($event)"
+                @change-drag-target="changeDragTarget"></tree>
+        </div>
+        <hr/>
+        draggable 2:
+        <div class="draggable">
+            <tree :data="data10"
+                :draggable="true"
+                :drop-allowed="dropAllowed"
+                :drag-target="dragTarget"
+                @toggle="toggle10($event)"
+                @drop="drop10($event)"
+                @change-drag-target="changeDragTarget"></tree>
         </div>
         <hr/>
         no dots:
@@ -123,8 +136,13 @@ class App extends Vue {
   data7 = JSON.parse(JSON.stringify(data))
   data8 = data8
   data9 = JSON.parse(JSON.stringify(data))
+  data10 = JSON.parse(JSON.stringify(data))
   dropAllowed = canMove
+  dragTarget: HTMLElement | null = null
 
+  changeDragTarget(dragTarget: HTMLElement | null) {
+    this.dragTarget = dragTarget
+  }
   toggle(eventData: EventData<Value>) {
     toggle(eventData, 'custom-node')
   }
@@ -174,6 +192,12 @@ class App extends Vue {
   }
   toggle9(eventData: EventData<Value>) {
     toggle(eventData, 'custom-node')
+  }
+  toggle10(eventData: EventData<Value>) {
+    toggle(eventData, 'custom-node')
+  }
+  drop10(dropData: DropData<Value>) {
+    move(dropData, this.data10)
   }
 }
 
