@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { Tree, ContextMenuData, getNodeFromPath, EventData, DropData, TreeData } from '../dist/'
+import { Tree, ContextMenuData, getNodeFromPath, EventData, DropData, TreeData, DragTargetData } from '../dist/'
 import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, setContextMenu, Value } from 'tree-component/demo/'
 
 const DeleteButton: React.StatelessComponent<{ data: ContextMenuData<Value> }> = props => <button onClick={e => {
@@ -31,7 +31,7 @@ class Main extends React.Component<{}, {
   data9: TreeData<Value>[],
   data10: TreeData<Value>[],
   dropAllowed: (dropData: DropData<Value>) => boolean,
-  dragTarget?: HTMLElement | null
+  dragTarget?: DragTargetData | null
 }> {
   constructor(props: any) {
     super(props)

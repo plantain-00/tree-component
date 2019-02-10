@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 
-import { EventData, DropData } from '../dist/'
+import { EventData, DropData, DragTargetData } from '../dist/'
 
 import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, Value } from 'tree-component/demo'
 
@@ -101,9 +101,9 @@ export class MainComponent {
   data9 = JSON.parse(JSON.stringify(data))
   data10 = JSON.parse(JSON.stringify(data))
   dropAllowed = canMove
-  dragTarget: HTMLElement | null = null
+  dragTarget: DragTargetData | null = null
 
-  changeDragTarget(dragTarget: HTMLElement | null) {
+  changeDragTarget(dragTarget: DragTargetData | null) {
     this.dragTarget = dragTarget
   }
   ontoggle(eventData: EventData<Value>) {
