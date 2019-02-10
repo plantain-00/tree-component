@@ -43,6 +43,14 @@ export type ContextMenuData<T = any> = {
   parent?: any;
 }
 
+/**
+ * @public
+ */
+export type DragTargetData<T = any> = {
+  root: TreeData<T>[];
+  target: HTMLElement;
+} | null
+
 import { __extends, __decorate, __assign } from 'tslib'
 (window as any).__extends = __extends;
 (window as any).__decorate = __decorate;
@@ -254,14 +262,14 @@ function clearDropPositionOfTree<T>(tree: TreeData<T>) {
 /**
  * @public
  */
-export function ondrag<T>(pageY: number, dragTarget: HTMLElement | null | undefined, dropTarget: HTMLElement | null, data: TreeData<T>[], dropAllowed?: (dropData: DropData<T>) => boolean, next?: () => void) {
+export function ondrag<T>(pageY: number, dragTarget: HTMLElement | null | undefined, dropTarget: HTMLElement | null, dragTargetRoot: TreeData<T>[], dropTargetRoot: TreeData<T>[], dropAllowed?: (dropData: DropData<T>) => boolean, next?: () => void) {
   if (dropTarget && dragTarget) {
     const sourcePath = dragTarget.dataset.path!.split(',').map(s => +s)
     const dropTargetPathString = dropTarget.dataset.path
     if (dropTargetPathString) {
       const targetPath = dropTargetPathString.split(',').map(s => +s)
-      const targetData = getNodeFromPath(data, targetPath)!
-      const sourceData = getNodeFromPath(data, sourcePath)!
+      const targetData = getNodeFromPath(dropTargetRoot, targetPath)!
+      const sourceData = getNodeFromPath(dragTargetRoot, sourcePath)!
       const offsetTop = getGlobalOffset(dropTarget)
       const position = getDropPosition(pageY, offsetTop, dropTarget.offsetHeight)
       if (targetData.state.dropPosition !== position) {
@@ -298,14 +306,14 @@ export function ondragleave<T>(target: HTMLElement, data: TreeData<T>[]) {
 /**
  * @public
  */
-export function ondrop<T>(target: HTMLElement, dragTarget: HTMLElement | null | undefined, data: TreeData<T>[], next: (dropData: DropData<T>) => void) {
+export function ondrop<T>(target: HTMLElement, dragTarget: HTMLElement | null | undefined, dragTargetRoot: TreeData<T>[], dropTargetRoot: TreeData<T>[], next: (dropData: DropData<T>) => void) {
   if (dragTarget) {
     const sourcePath = dragTarget.dataset.path!.split(',').map(s => +s)
     const targetPathString = target.dataset.path
     if (targetPathString) {
       const targetPath = targetPathString.split(',').map(s => +s)
-      const targetData = getNodeFromPath(data, targetPath)!
-      const sourceData = getNodeFromPath(data, sourcePath)!
+      const targetData = getNodeFromPath(dropTargetRoot, targetPath)!
+      const sourceData = getNodeFromPath(dragTargetRoot, sourcePath)!
       if (targetData.state.dropPosition !== DropPosition.empty) {
         const dropData: DropData<T> = {
           sourcePath,
@@ -317,7 +325,7 @@ export function ondrop<T>(target: HTMLElement, dragTarget: HTMLElement | null | 
       }
     }
   }
-  for (const node of data) {
+  for (const node of dropTargetRoot) {
     clearDropPositionOfTree(node)
   }
 }

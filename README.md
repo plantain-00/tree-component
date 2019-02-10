@@ -133,8 +133,8 @@ preid | string? | the node id prefix, eg: if `preid = "test_"`, then a node's id
 toggle | (eventData: [EventData](#event-data-structure)) => void | triggered when opening or closing a node
 change | (eventData: [EventData](#event-data-structure)) => void | triggered when selecting or deselecting a node
 drop | (dropData: [DropData](#drop-data-structure)) => void | triggered when drag a node, then drop it
-dragTarget | HTMLElement or null | drag target, used when drag and drop between different tree
-changeDragTarget | (dragTarget: HTMLElement or null) => void | triggered when drag target changed
+dragTarget | [DragTargetData](#drag-target-data-structure) | drag target, used when drag and drop between different tree
+changeDragTarget | (dragTarget: [DragTargetData](#drag-target-data-structure)) => void | triggered when drag target changed
 
 ## tree data structure
 
@@ -205,6 +205,15 @@ type ContextMenuData<T = any> = {
     root: TreeData<T>[];
     parent?: any;
 };
+```
+
+## drag target data structure
+
+```ts
+type DragTargetData<T = any> = {
+  root: TreeData<T>[];
+  target: HTMLElement;
+} | null
 ```
 
 ## changelogs
