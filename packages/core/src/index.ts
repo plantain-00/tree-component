@@ -212,6 +212,7 @@ export const enum DropPosition {
 export type DropData<T = any> = {
   sourceData: TreeData<T>;
   sourcePath: number[];
+  sourceRoot: TreeData<T>[];
   targetData: TreeData<T>;
   targetPath: number[];
 }
@@ -278,7 +279,8 @@ export function ondrag<T>(pageY: number, dragTarget: HTMLElement | null | undefi
           sourcePath,
           targetPath,
           sourceData,
-          targetData
+          targetData,
+          sourceRoot: dragTargetRoot
         }
         targetData.state.dropAllowed = dropAllowed ? dropAllowed(dropData) : true
         if (next) {
@@ -319,7 +321,8 @@ export function ondrop<T>(target: HTMLElement, dragTarget: HTMLElement | null | 
           sourcePath,
           targetPath,
           sourceData,
-          targetData
+          targetData,
+          sourceRoot: dragTargetRoot
         }
         next(dropData)
       }

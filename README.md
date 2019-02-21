@@ -191,6 +191,7 @@ type EventData<T = any> = {
 type DropData<T = any> = {
     sourceData: TreeData<T>;
     sourcePath: number[];
+    sourceRoot: TreeData<T>[];
     targetData: TreeData<T>;
     targetPath: number[];
 };
