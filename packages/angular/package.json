@@ -28,6 +28,6 @@
     "@angular/platform-browser-dynamic": "7.2.14",
     "core-js": "3.0.1",
     "rxjs": "6.5.1",
-    "zone.js": "0.9.0"
+    "zone.js": "0.9.1"
   }
 }
