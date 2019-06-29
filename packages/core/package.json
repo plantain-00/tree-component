@@ -18,7 +18,6 @@
     "dist"
   ],
   "dependencies": {
-    "@types/node": "*",
     "tslib": "1"
   }
 }

@@ -16,7 +16,7 @@
   dependencies:
     tslib "^1.9.0"
 
-"@angular/forms@8":
+"@angular/forms@8.0.3":
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-8.0.3.tgz#21282ba5616ee1641c2cbec9d34afd1c3482e44d"
   integrity sha512-22s82QDRQ72K4vMYuNh3NAN+da9uanwoydnfKlp2rb9dZAb2QVX9NN6gSoMrkSSr2O9KTP6pWiw6A3/MW8sGRA==
@@ -49,7 +49,7 @@ rxjs@6.5.2:
   dependencies:
     tslib "^1.9.0"
 
-tslib@^1.9.0:
+tslib@1, tslib@^1.9.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
