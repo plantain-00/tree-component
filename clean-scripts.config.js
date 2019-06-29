@@ -77,7 +77,7 @@ module.exports = {
     ts: `tslint ${tsFiles} --exclude ${excludeTsFiles}`,
     js: `standard ${jsFiles}`,
     less: `stylelint ${lessFiles}`,
-    export: `no-unused-export ${tsFiles} ${lessFiles} --exclude ${excludeTsFiles}`,
+    export: `no-unused-export "packages/@(core|vue|react|angular)/src/**/*.@(ts|tsx)" ${lessFiles} --strict --need-module tslib --exclude ${excludeTsFiles}`,
     commit: `commitlint --from=HEAD~1`,
     markdown: `markdownlint README.md`,
     typeCoverage: 'lerna exec -- type-coverage -p src --strict'

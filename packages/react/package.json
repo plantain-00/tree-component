@@ -22,11 +22,11 @@
   ],
   "dependencies": {
     "react": "16",
-    "react-dom": "16",
     "tree-component": "^5.7.0"
   },
   "devDependencies": {
     "@types/react": "16.8.22",
-    "@types/react-dom": "16.8.4"
+    "@types/react-dom": "16.8.4",
+    "react-dom": "16.8.6"
   }
 }
