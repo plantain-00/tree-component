@@ -3,6 +3,7 @@
  * It is not mean to be edited by hand
  */
 // tslint:disable
+/* eslint-disable */
 import { Node, Tree } from "./index"
 
 // @ts-ignore
@@ -13,4 +14,5 @@ export var nodeTemplateHtmlStatic = [  ]
 export function treeTemplateHtml(this: Tree<any>) {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.rootClassName,attrs:{"role":"tree"}},[_c('ul',{class:_vm.containerClassName,attrs:{"role":"group"},on:{"dragstart":function($event){return _vm.ondragstart($event)},"dragend":function($event){return _vm.ondragend($event)},"dragover":function($event){return _vm.ondragover($event)},"dragenter":function($event){return _vm.ondragenter($event)},"dragleave":function($event){return _vm.ondragleave($event)},"drop":function($event){return _vm.ondrop($event)}}},_vm._l((_vm.data),function(child,i){return _c('node',{key:i,attrs:{"data":child,"last":i === _vm.data.length - 1,"checkbox":_vm.checkbox,"path":[i],"draggable":_vm.draggable,"root":_vm.data,"zindex":_vm.zindex,"preid":_vm.preid},on:{"toggle":function($event){return _vm.ontoggle($event)},"change":function($event){return _vm.onchange($event)}}})}),1)])}
 // @ts-ignore
 export var treeTemplateHtmlStatic = [  ]
+/* eslint-enable */
 // tslint:enable
