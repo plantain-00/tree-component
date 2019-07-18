@@ -26,9 +26,9 @@
   },
   "homepage": "https://github.com/plantain-00/tree-component#readme",
   "devDependencies": {
-    "@angular/compiler": "8.1.1",
-    "@angular/compiler-cli": "8.1.1",
-    "@angular/core": "8.1.1",
+    "@angular/compiler": "8.1.2",
+    "@angular/compiler-cli": "8.1.2",
+    "@angular/core": "8.1.2",
     "@commitlint/cli": "8.0.0",
     "@commitlint/config-conventional": "8.0.0",
     "@types/jasmine": "3.3.13",
@@ -60,17 +60,21 @@
     "rollup-plugin-commonjs": "10.0.1",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-uglify": "6.0.2",
-    "standard": "13.0.2",
     "stylelint": "10.1.0",
     "stylelint-config-standard": "18.3.0",
-    "tslint": "5.18.0",
-    "tslint-config-standard": "8.0.1",
-    "tslint-sonarts": "1.9.0",
     "type-coverage": "2.0.4",
     "typescript": "3.4.5",
     "watch-then-execute": "1.1.1",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint-config-prettier": "6.0.0",
+    "eslint-plugin-plantain": "0.1.2",
+    "eslint": "5.16.0",
     "webpack": "4.35.3",
     "webpack-cli": "3.3.5"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {}
 }

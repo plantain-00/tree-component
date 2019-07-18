@@ -1,7 +1,7 @@
 /**
  * @public
  */
-export type TreeData<T = any> = {
+export interface TreeData<T = any> {
   text?: string;
   value?: T;
   icon?: string | false;
@@ -14,7 +14,7 @@ export type TreeData<T = any> = {
 /**
  * @public
  */
-export type TreeNodeState = {
+export interface TreeNodeState {
   opened: boolean;
   selected: boolean;
   disabled: boolean;
@@ -28,7 +28,7 @@ export type TreeNodeState = {
 /**
  * @public
  */
-export type EventData<T = any> = {
+export interface EventData<T = any> {
   data: TreeData<T>;
   path: number[];
 }
@@ -36,7 +36,7 @@ export type EventData<T = any> = {
 /**
  * @public
  */
-export type ContextMenuData<T = any> = {
+export interface ContextMenuData<T = any> {
   data: TreeData<T>;
   path: number[];
   root: TreeData<T>[];
@@ -209,7 +209,7 @@ export const enum DropPosition {
 /**
  * @public
  */
-export type DropData<T = any> = {
+export interface DropData<T = any> {
   sourceData: TreeData<T>;
   sourcePath: number[];
   sourceRoot: TreeData<T>[];
