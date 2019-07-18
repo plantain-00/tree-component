@@ -235,7 +235,6 @@ export function canMove(dropData: DropData<Value>) {
 /**
  * @public
  */
-// tslint:disable-next-line:cognitive-complexity
 export function move(dropData: DropData<Value>, treeData: TreeData<Value>[]) {
   if (!canMove(dropData)) {
     return
@@ -266,7 +265,7 @@ export function move(dropData: DropData<Value>, treeData: TreeData<Value>[]) {
   sourceChildren.splice(sourceIndex, 1)
 }
 
-type Data = {
+interface Data {
   text?: string;
   value?: Value;
   icon?: string | false;
@@ -278,6 +277,6 @@ type Data = {
 /**
  * @public
  */
-export type Value = {
+export interface Value {
   id: number;
 }

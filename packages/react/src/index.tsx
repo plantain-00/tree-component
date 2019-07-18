@@ -319,7 +319,6 @@ export class Tree<T = any> extends React.PureComponent<{
         }
       })
     } else {
-      // tslint:disable-next-line:no-identical-functions
       common.ondrop(event.target as HTMLElement, this.dragTarget, this.props.data, this.props.data, dropData => {
         if (this.props.drop) {
           this.props.drop(dropData)

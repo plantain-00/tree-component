@@ -74,8 +74,7 @@ module.exports = {
     revStaticCommand
   ],
   lint: {
-    ts: `tslint ${tsFiles} --exclude ${excludeTsFiles}`,
-    js: `standard ${jsFiles}`,
+    ts: `eslint --ext .js,.ts ${tsFiles} ${jsFiles}`,
     less: `stylelint ${lessFiles}`,
     export: `no-unused-export "packages/@(core|vue|react|angular)/src/**/*.@(ts|tsx)" ${lessFiles} --strict --need-module tslib --exclude ${excludeTsFiles}`,
     commit: `commitlint --from=HEAD~1`,
@@ -87,8 +86,7 @@ module.exports = {
     'karma start spec/karma.config.js'
   ],
   fix: {
-    ts: `tslint --fix ${tsFiles} --exclude ${excludeTsFiles}`,
-    js: `standard --fix ${jsFiles}`,
+    ts: `eslint --ext .js,.ts ${tsFiles} ${jsFiles} --fix`,
     less: `stylelint --fix ${lessFiles}`
   },
   watch: {
