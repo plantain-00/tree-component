@@ -152,7 +152,7 @@ export function getCheckboxClassName<T>(data: TreeData<T>, path: number[]) {
 /**
  * @public
  */
-export function getRootClassName(checkbox: boolean | undefined = undefined, size: string | undefined, theme: string = 'default') {
+export function getRootClassName(checkbox: boolean | undefined = undefined, size: string | undefined, theme = 'default') {
   const values = ['tree']
   if (size) {
     values.push(`tree-${theme}-${size}`)
