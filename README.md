@@ -30,6 +30,7 @@ A reactjs, angular and vuejs tree component.
 + node id
 + custom node(vuejs and reactjs only)
 + drag and drop between different tree
++ composition model(reactjs children and vuejs slot)
 
 ## link css
 

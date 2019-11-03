@@ -30,7 +30,7 @@ export class Node<T> extends Vue {
   private doubleClick = new common.DoubleClick()
 
   get nodeClassName() {
-    return common.getNodeClassName(this.data, this.last)
+    return common.getNodeClassName(this.data, this.last, !!this.$slots.default)
   }
 
   get anchorClassName() {
@@ -92,7 +92,7 @@ export class Node<T> extends Vue {
     if (eventData) {
       this.$emit('toggle', eventData)
     } else {
-      if (this.data.state.openable || this.data.children.length > 0) {
+      if (this.data.state.openable || this.data.children.length > 0 || this.$slots.default) {
         this.$emit('toggle', this.eventData)
       }
     }

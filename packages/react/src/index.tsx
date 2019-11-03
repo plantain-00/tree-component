@@ -85,7 +85,7 @@ export class Node<T = any> extends React.PureComponent<{
   }
 
   private get nodeClassName() {
-    return common.getNodeClassName(this.props.data, this.props.last)
+    return common.getNodeClassName(this.props.data, this.props.last, !!this.props.children)
   }
 
   private get anchorClassName() {
@@ -150,7 +150,7 @@ export class Node<T = any> extends React.PureComponent<{
     if (eventData) {
       this.props.toggle(eventData)
     } else {
-      if (this.props.data.state.openable || this.props.data.children.length > 0) {
+      if (this.props.data.state.openable || this.props.data.children.length > 0 || this.props.children) {
         this.props.toggle(this.eventData)
       }
     }
