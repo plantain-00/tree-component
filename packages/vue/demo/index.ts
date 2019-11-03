@@ -120,6 +120,21 @@ Vue.component('custom-node', CustomNode)
             preid="test_"
             @toggle="toggle9($event)"></tree>
         </div>
+        <br/>
+        slot:
+        <div class="slot">
+        <tree :data="data11">
+          <node
+            v-for="(child, i) in data11"
+            :key="i"
+            :data="child"
+            :last="i === data11.length - 1"
+            :path="[i]"
+            :root="data11"
+          >
+          </node>
+        </tree>
+        </div>
     </div>
     `
 })
@@ -135,6 +150,7 @@ class App extends Vue {
   data8 = data8
   data9 = JSON.parse(JSON.stringify(data))
   data10 = JSON.parse(JSON.stringify(data))
+  data11 = JSON.parse(JSON.stringify(data))
   dropAllowed = canMove
   dragTarget: DragTargetData | null = null
 

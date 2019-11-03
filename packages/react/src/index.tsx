@@ -5,7 +5,7 @@ export * from 'tree-component'
 /**
  * @public
  */
-class Node<T = any> extends React.PureComponent<{
+export class Node<T = any> extends React.PureComponent<{
   data: common.TreeData<T>;
   last: boolean;
   checkbox?: boolean;
@@ -29,8 +29,10 @@ class Node<T = any> extends React.PureComponent<{
   }
 
   render() {
-    let childrenElement: JSX.Element | null
-    if (this.props.data.children) {
+    let childrenElement: JSX.Element | React.ReactNode | null
+    if (this.props.children) {
+      childrenElement = this.props.children
+    } else if (this.props.data.children) {
       const nodesElement: JSX.Element[] = this.props.data.children.map((child, i) => (
         <Node data={child}
           key={i}
@@ -198,7 +200,7 @@ export class Tree<T = any> extends React.PureComponent<{
   private dropTarget: HTMLElement | null = null
 
   render() {
-    const childrenElement = this.props.data.map((child, i) => (
+    const childrenElement = this.props.children || this.props.data.map((child, i) => (
       <Node data={child}
         key={i}
         last={i === this.props.data.length - 1}
