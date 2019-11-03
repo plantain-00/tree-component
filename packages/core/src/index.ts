@@ -96,9 +96,9 @@ export function getContainerClassName(noDots: boolean | undefined = undefined) {
 /**
  * @public
  */
-export function getNodeClassName<T>(data: TreeData<T>, last: boolean) {
+export function getNodeClassName<T>(data: TreeData<T>, last: boolean, hasChildren = false) {
   const values = ['tree-node']
-  if (data.state.openable || data.children.length > 0) {
+  if (data.state.openable || data.children.length > 0 || hasChildren) {
     if (data.state.opened) {
       values.push('tree-open')
     } else {
