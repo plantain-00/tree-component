@@ -6,6 +6,7 @@
         @dragenter="ondragenter($event)"
         @dragleave="ondragleave($event)"
         @drop="ondrop($event)">
+      <slot>
         <node v-for="(child, i) in data"
             :key="i"
             :data="child"
@@ -19,5 +20,6 @@
             @toggle="ontoggle($event)"
             @change="onchange($event)">
         </node>
+      </slot>
     </ul>
 </div>

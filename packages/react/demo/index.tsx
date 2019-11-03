@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { Tree, ContextMenuData, getNodeFromPath, EventData, DropData, TreeData, DragTargetData } from '../dist/'
+import { Tree, Node, ContextMenuData, getNodeFromPath, EventData, DropData, TreeData, DragTargetData } from '../dist/'
 import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelection, move, canMove, setContextMenu, Value } from 'tree-component/demo/'
 
 const DeleteButton: React.StatelessComponent<{ data: ContextMenuData<Value> }> = props => <button onClick={e => {
@@ -30,6 +30,7 @@ class Main extends React.Component<{}, {
   data8: TreeData<Value>[],
   data9: TreeData<Value>[],
   data10: TreeData<Value>[],
+  data11: TreeData<Value>[],
   dropAllowed: (dropData: DropData<Value>) => boolean,
   dragTarget?: DragTargetData | null
 }> {
@@ -47,6 +48,7 @@ class Main extends React.Component<{}, {
       data8: data8,
       data9: JSON.parse(JSON.stringify(data)),
       data10: JSON.parse(JSON.stringify(data)),
+      data11: JSON.parse(JSON.stringify(data)),
       dropAllowed: canMove
     }
   }
@@ -57,7 +59,7 @@ class Main extends React.Component<{}, {
         <a href='https://github.com/plantain-00/tree-component/tree/master/packages/react/demo' target='_blank'>the source code of the demo</a>
         <br />
         default:
-                <div className='default'>
+          <div className='default'>
           <Tree data={this.state.data}
             toggle={(eventData: EventData<Value>) => this.toggle(eventData)}
             change={(eventData: EventData<Value>) => this.change(eventData)}>
@@ -66,7 +68,7 @@ class Main extends React.Component<{}, {
         selected id: {this.state.selectedId}
         <hr />
         checkbox:
-                <div className='checkbox'>
+          <div className='checkbox'>
           <Tree data={this.state.data2}
             checkbox={true}
             toggle={(eventData: EventData<Value>) => this.toggle2(eventData)}
@@ -75,7 +77,7 @@ class Main extends React.Component<{}, {
         </div>
         <hr />
         draggable:
-                <div className='draggable'>
+          <div className='draggable'>
           <Tree data={this.state.data3}
             draggable={true}
             dropAllowed={this.state.dropAllowed}
@@ -87,7 +89,7 @@ class Main extends React.Component<{}, {
         </div>
         <hr />
         draggable 2:
-                <div className='draggable'>
+          <div className='draggable'>
           <Tree data={this.state.data10}
             draggable={true}
             dropAllowed={this.state.dropAllowed}
@@ -99,7 +101,7 @@ class Main extends React.Component<{}, {
         </div>
         <hr />
         no dots:
-                <div className='no-dots'>
+          <div className='no-dots'>
           <Tree data={this.state.data4}
             nodots={true}
             toggle={(eventData: EventData<Value>) => this.toggle4(eventData)}>
@@ -107,7 +109,7 @@ class Main extends React.Component<{}, {
         </div>
         <hr />
         large:
-                <div className='large'>
+          <div className='large'>
           <Tree data={this.state.data5}
             size='large'
             toggle={(eventData: EventData<Value>) => this.toggle5(eventData)}>
@@ -115,7 +117,7 @@ class Main extends React.Component<{}, {
         </div>
         <hr />
         small:
-                <div className='small'>
+          <div className='small'>
           <Tree data={this.state.data6}
             size='small'
             toggle={(eventData: EventData<Value>) => this.toggle6(eventData)}>
@@ -123,7 +125,7 @@ class Main extends React.Component<{}, {
         </div>
         <hr />
         dark theme:
-                <div className='dark-theme'>
+          <div className='dark-theme'>
           <Tree data={this.state.data7}
             theme='dark'
             checkbox={true}
@@ -135,17 +137,33 @@ class Main extends React.Component<{}, {
         </div>
         <hr />
         contextmenu:
-                <div className='contextmenu'>
+          <div className='contextmenu'>
           <Tree data={this.state.data8}
             toggle={(eventData: EventData<Value>) => this.toggle8(eventData)}>
           </Tree>
         </div>
         <hr />
         node id:
-                <div className='node-id'>
+          <div className='node-id'>
           <Tree data={this.state.data9}
             preid='test_'
             toggle={(eventData: EventData<Value>) => this.toggle9(eventData)}>
+          </Tree>
+        </div>
+        <hr />
+        children:
+          <div className='children'>
+          <Tree data={this.state.data11}>
+            {this.state.data11.map((child, i) => (
+              <Node data={child}
+                key={i}
+                last={i === this.state.data11.length - 1}
+                path={[i]}
+                root={this.state.data11}
+                parent={this}
+                toggle={(data) => {}}
+                change={(data) => {}}></Node>
+            ))}
           </Tree>
         </div>
       </div>

@@ -18,6 +18,7 @@
         </div>
     </a>
     <ul v-if="data.children" role="group" class="tree-children">
+      <slot>
         <node v-for="(child, i) in data.children"
             :key="i"
             :data="child"
@@ -31,5 +32,6 @@
             @toggle="ontoggle($event)"
             @change="onchange($event)">
         </node>
+      </slot>
     </ul>
 </li>
