@@ -1,6 +1,6 @@
 {
   "name": "tree-angular-component",
-  "version": "5.8.0",
+  "version": "5.8.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "A angular tree component.",
@@ -20,7 +20,7 @@
   "dependencies": {
     "@angular/common": "8",
     "@angular/core": "8",
-    "tree-component": "^5.8.0"
+    "tree-component": "^5.8.1"
   },
   "devDependencies": {
     "@angular/forms": "8.1.2",
