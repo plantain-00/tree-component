@@ -1,4 +1,14 @@
-<li role="treeitem" :class="nodeClassName" :id="id">
+<li
+    role="treeitem"
+    :class="nodeClassName"
+    :id="id"
+    @dragstart="ondragstart($event)"
+    @dragend="ondragend($event)"
+    @dragover="ondragover($event)"
+    @dragenter="ondragenter($event)"
+    @dragleave="ondragleave($event)"
+    @drop="ondrop($event)"
+  >
     <i :class="oclClassName" role="presentation" @click="ontoggle()"></i>
     <a :class="anchorClassName" href="javascript:void(0)"
         :draggable="draggable"

@@ -224,6 +224,9 @@ export function getNodeFromPath<T>(rootData: TreeData<T>[], path: number[]) {
   let node: TreeData<T> | null = null
   for (const index of path) {
     node = node ? node.children[index] : rootData[index]
+    if (!node) {
+      return null
+    }
   }
   return node
 }
@@ -269,8 +272,11 @@ export function ondrag<T>(pageY: number, dragTarget: HTMLElement | null | undefi
     const dropTargetPathString = dropTarget.dataset.path
     if (dropTargetPathString) {
       const targetPath = dropTargetPathString.split(',').map(s => +s)
-      const targetData = getNodeFromPath(dropTargetRoot, targetPath)!
-      const sourceData = getNodeFromPath(dragTargetRoot, sourcePath)!
+      const targetData = getNodeFromPath(dropTargetRoot, targetPath)
+      const sourceData = getNodeFromPath(dragTargetRoot, sourcePath)
+      if (!targetData || !sourceData) {
+        return
+      }
       const offsetTop = getGlobalOffset(dropTarget)
       const position = getDropPosition(pageY, offsetTop, dropTarget.offsetHeight)
       if (targetData.state.dropPosition !== position) {
@@ -299,7 +305,7 @@ export function ondragleave<T>(target: HTMLElement, data: TreeData<T>[]) {
   if (pathString) {
     const path = pathString.split(',').map(s => +s)
     const node = getNodeFromPath(data, path)
-    if (node!.state.dropPosition !== DropPosition.empty) {
+    if (node && node.state.dropPosition !== DropPosition.empty) {
       node!.state.dropPosition = DropPosition.empty
     }
   }
@@ -314,8 +320,11 @@ export function ondrop<T>(target: HTMLElement, dragTarget: HTMLElement | null | 
     const targetPathString = target.dataset.path
     if (targetPathString) {
       const targetPath = targetPathString.split(',').map(s => +s)
-      const targetData = getNodeFromPath(dropTargetRoot, targetPath)!
-      const sourceData = getNodeFromPath(dragTargetRoot, sourcePath)!
+      const targetData = getNodeFromPath(dropTargetRoot, targetPath)
+      const sourceData = getNodeFromPath(dragTargetRoot, sourcePath)
+      if (!targetData || !sourceData) {
+        return
+      }
       if (targetData.state.dropPosition !== DropPosition.empty) {
         const dropData: DropData<T> = {
           sourcePath,

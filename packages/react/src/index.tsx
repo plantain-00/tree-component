@@ -17,6 +17,12 @@ export class Node<T = any> extends React.PureComponent<{
   parent: any;
   toggle: (eventData: common.EventData<T>) => void;
   change: (eventData: common.EventData<T>) => void;
+  onDragStart?: (eventData: React.DragEvent<HTMLElement>) => void;
+  onDragEnd?: (eventData: React.DragEvent<HTMLElement>) => void;
+  onDragOver?: (eventData: React.DragEvent<HTMLElement>) => void;
+  onDragEnter?: (eventData: React.DragEvent<HTMLElement>) => void;
+  onDragLeave?: (eventData: React.DragEvent<HTMLElement>) => void;
+  onDrop?: (eventData: React.DragEvent<HTMLElement>) => void;
 }, { hovered: boolean; contextmenuVisible: boolean; contextmenuStyle: React.CSSProperties }> {
   private hovered = false
   private doubleClick = new common.DoubleClick()
@@ -62,7 +68,41 @@ export class Node<T = any> extends React.PureComponent<{
     const contextmenu = this.props.data.contextmenu && this.contextmenuVisible ? React.createElement(this.props.data.contextmenu as React.ComponentClass<{ data: common.ContextMenuData<T> }>, { data: this.contextmenuData }) : null
     const text = this.props.data.component ? React.createElement(this.props.data.component as React.ComponentClass<{ data: common.TreeData<T> }>, { data: this.props.data }) : this.props.data.text
     return (
-      <li role='treeitem' className={this.nodeClassName} id={this.id}>
+      <li
+        role='treeitem'
+        className={this.nodeClassName}
+        id={this.id}
+        onDragStart={eventData => {
+          if (this.props.onDragStart) {
+            this.props.onDragStart(eventData)
+          }
+        }}
+        onDragEnd={eventData => {
+          if (this.props.onDragEnd) {
+            this.props.onDragEnd(eventData)
+          }
+        }}
+        onDragOver={eventData => {
+          if (this.props.onDragOver) {
+            this.props.onDragOver(eventData)
+          }
+        }}
+        onDragEnter={(eventData) => {
+          if (this.props.onDragEnter) {
+            this.props.onDragEnter(eventData)
+          }
+        }}
+        onDragLeave={eventData => {
+          if (this.props.onDragLeave) {
+            this.props.onDragLeave(eventData)
+          }
+        }}
+        onDrop={eventData => {
+          if (this.props.onDrop) {
+            this.props.onDrop(eventData)
+          }
+        }}
+      >
         <i className={this.oclClassName} role='presentation' onClick={() => this.ontoggle()}></i>
         <a className={this.anchorClassName}
           href='javascript:void(0)'
