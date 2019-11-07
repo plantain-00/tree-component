@@ -117,6 +117,24 @@ export class Node<T> extends Vue {
     e.preventDefault()
     return false
   }
+  ondragstart(event: DragEvent) {
+    this.$emit('dragstart', event)
+  }
+  ondragend(event: DragEvent) {
+    this.$emit('dragend', event)
+  }
+  ondragover(event: DragEvent) {
+    this.$emit('dragover', event)
+  }
+  ondragenter(event: DragEvent) {
+    this.$emit('dragenter', event)
+  }
+  ondragleave(event: DragEvent) {
+    this.$emit('dragleave', event)
+  }
+  ondrop(event: DragEvent) {
+    this.$emit('drop', event)
+  }
 }
 
 Vue.component('node', Node)
