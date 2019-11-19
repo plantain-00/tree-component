@@ -1,6 +1,6 @@
 {
   "name": "tree-react-component",
-  "version": "5.8.2",
+  "version": "5.8.3",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "unpkg": "dist/tree-react-component.min.js",
@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "react": "16",
-    "tree-component": "^5.8.2"
+    "tree-component": "^5.8.3"
   },
   "devDependencies": {
     "@types/react": "16.8.23",
