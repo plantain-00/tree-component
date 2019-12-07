@@ -161,8 +161,12 @@ class Main extends React.Component<{}, {
                 path={[i]}
                 root={this.state.data11}
                 parent={this}
-                toggle={(data) => {}}
-                change={(data) => {}}></Node>
+                toggle={(data) => {
+                  // do nothing
+                }}
+                change={(data) => {
+                  // do nothing
+                }}></Node>
             ))}
           </Tree>
         </div>
