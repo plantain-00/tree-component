@@ -23,11 +23,11 @@
     "tree-component": "^5.8.3"
   },
   "devDependencies": {
-    "@angular/forms": "8.1.2",
-    "@angular/platform-browser": "8.1.2",
-    "@angular/platform-browser-dynamic": "8.1.2",
-    "core-js": "3.4.7",
-    "rxjs": "6.5.2",
-    "zone.js": "0.9.1"
+    "@angular/forms": "8.2.14",
+    "@angular/platform-browser": "8.2.14",
+    "@angular/platform-browser-dynamic": "8.2.14",
+    "core-js": "3.5.0",
+    "rxjs": "6.5.3",
+    "zone.js": "0.10.2"
   }
 }
