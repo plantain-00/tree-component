@@ -25,7 +25,7 @@
     "tree-component": "^5.8.3"
   },
   "devDependencies": {
-    "@types/react": "16.9.16",
+    "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
     "react-dom": "16.12.0"
   }
