@@ -3,7 +3,7 @@
   "version": "5.8.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "description": "A reactjs, angular and vuejs tree component.",
+  "description": "A reactjs and vuejs tree component.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plantain-00/tree-component.git"
