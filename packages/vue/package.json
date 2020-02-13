@@ -1,7 +1,7 @@
 {
   "name": "tree-vue-component",
   "version": "5.8.3",
-  "main": "dist/index.js",
+  "main": "dist/tree-vue-component.min.js",
   "module": "dist/index.js",
   "unpkg": "dist/tree-vue-component.min.js",
   "jsdelivr": "dist/tree-vue-component.min.js",
