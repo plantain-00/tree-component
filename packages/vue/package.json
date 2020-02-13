@@ -1,7 +1,7 @@
 {
   "name": "tree-vue-component",
-  "version": "5.8.3",
-  "main": "dist/index.js",
+  "version": "5.9.0",
+  "main": "dist/tree-vue-component.min.js",
   "module": "dist/index.js",
   "unpkg": "dist/tree-vue-component.min.js",
   "jsdelivr": "dist/tree-vue-component.min.js",
@@ -21,7 +21,7 @@
     "dist"
   ],
   "dependencies": {
-    "tree-component": "^5.8.3",
+    "tree-component": "^5.9.0",
     "vue": "2",
     "vue-class-component": "7"
   }
