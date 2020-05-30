@@ -18,7 +18,7 @@ for (const tree of data8) {
 
 const CustomNode: React.StatelessComponent<{ data: TreeData<Value> }> = props => <span><span style={{ color: 'red' }}>{props.data.value!.id}</span>{props.data.text}</span >
 
-class Main extends React.Component<{}, {
+class Main extends React.Component<unknown, {
   data: TreeData<Value>[],
   selectedId: number | null,
   data2: TreeData<Value>[],

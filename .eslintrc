@@ -18,6 +18,7 @@
     "@typescript-eslint/explicit-member-accessibility": "off",
     "@typescript-eslint/no-parameter-properties": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/ban-types": "off",
     "no-case-declarations": "off",
     "no-console": "off",
     "plantain/promise-not-await": "error"
