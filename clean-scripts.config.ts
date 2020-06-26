@@ -3,7 +3,6 @@ import { watch } from 'watch-then-execute'
 
 const tsFiles = `"packages/@(core|vue|react)/@(src|demo)/**/*.@(ts|tsx)"`
 const lessFiles = `"packages/core/src/**/*.less"`
-const jsFiles = `"*.config.js"`
 const excludeTsFiles = `"packages/@(core|vue|react)/@(src|demo)/**/*.@(d|config).ts"`
 
 const vueTemplateCommand = `file2variable-cli --config packages/vue/src/file2variable.config.ts`
@@ -53,17 +52,16 @@ export default {
     revStaticCommand
   ],
   lint: {
-    ts: `eslint --ext .js,.ts ${tsFiles} ${jsFiles}`,
+    ts: `eslint --ext .js,.ts ${tsFiles}`,
     less: `stylelint ${lessFiles}`,
     export: `no-unused-export "packages/@(core|vue|react)/src/**/*.@(ts|tsx)" ${lessFiles} --strict --need-module tslib --exclude ${excludeTsFiles}`,
-    commit: `commitlint --from=HEAD~1`,
     markdown: `markdownlint README.md`,
     typeCoverage: 'lerna exec -- type-coverage -p src --strict'
   },
   test: [
   ],
   fix: {
-    ts: `eslint --ext .js,.ts ${tsFiles} ${jsFiles} --fix`,
+    ts: `eslint --ext .js,.ts ${tsFiles} --fix`,
     less: `stylelint --fix ${lessFiles}`
   },
   watch: {
