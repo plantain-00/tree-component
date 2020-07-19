@@ -56,7 +56,11 @@ export default {
     less: `stylelint ${lessFiles}`,
     export: `no-unused-export "packages/@(core|vue|react)/src/**/*.@(ts|tsx)" ${lessFiles} --strict --need-module tslib --exclude ${excludeTsFiles}`,
     markdown: `markdownlint README.md`,
-    typeCoverage: 'lerna exec -- type-coverage -p src --strict'
+    typeCoverage: {
+      core: 'cd packages/core && type-coverage -p src --strict',
+      vue: 'cd packages/vue && type-coverage -p src --strict',
+      react: 'cd packages/react && type-coverage -p src --strict'
+    }
   },
   test: [
   ],
