@@ -3,7 +3,6 @@
   "private": true,
   "description": "A reactjs and vuejs tree component.",
   "scripts": {
-    "bootstrap": "lerna bootstrap -- --frozen-lockfile",
     "build": "clean-scripts build",
     "dev": "cross-env NODE_ENV=development clean-scripts build",
     "lint": "clean-scripts lint",
@@ -42,7 +41,6 @@
     "github-fork-ribbon-css": "0.2.3",
     "http-server": "0.12.3",
     "image2base64-cli": "2.4.1",
-    "lerna": "3.22.1",
     "less": "3.12.2",
     "markdownlint-cli": "0.23.2",
     "no-unused-export": "1.11.1",
