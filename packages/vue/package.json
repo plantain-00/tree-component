@@ -17,12 +17,12 @@
     "url": "https://github.com/plantain-00/tree-component/issues"
   },
   "homepage": "https://github.com/plantain-00/tree-component#readme",
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "tree-component": "^5.9.0",
     "vue": "2",
     "vue-class-component": "7"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
