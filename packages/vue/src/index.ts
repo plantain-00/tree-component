@@ -20,11 +20,13 @@ export class Node<T> extends Vue {
   preid?: string
 
   contextmenuVisible = false
-  contextmenuStyle = {
-    'position': 'absolute',
-    'left': '0px',
-    'top': '0px',
-    'z-index': typeof this.zindex === 'number' ? this.zindex : 1
+  get contextmenuStyle() {
+    return {
+      'position': 'absolute',
+      'left': '0px',
+      'top': '0px',
+      'z-index': typeof this.zindex === 'number' ? this.zindex : 1
+    }
   }
   private hovered = false
   private doubleClick = new common.DoubleClick()
