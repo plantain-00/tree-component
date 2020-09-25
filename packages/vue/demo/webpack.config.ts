@@ -15,7 +15,7 @@ export default {
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm-bundler.js'
     }
   }
 } as webpack.Configuration

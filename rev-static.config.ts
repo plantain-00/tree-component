@@ -1,4 +1,6 @@
-module.exports = {
+import { ConfigData } from 'rev-static'
+
+const config: ConfigData = {
   inputFiles: [
     'packages/@(vue|react)/demo/**/*.bundle.js',
     'packages/@(vue|react)/demo/**/*.ejs.html',
@@ -6,7 +8,6 @@ module.exports = {
     'packages/core/demo/tree-icon.png'
   ],
   outputFiles: file => file.replace('.ejs', ''),
-  json: false,
   ejsOptions: {
     rmWhitespace: true
   },
@@ -15,3 +16,5 @@ module.exports = {
   base: 'packages',
   fileSize: 'file-size.json'
 }
+
+export default config

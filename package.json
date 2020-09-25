@@ -39,7 +39,7 @@
     "eslint": "7.8.1",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-plantain": "1.1.0",
-    "file2variable-cli": "1.12.1",
+    "file2variable-cli": "1.13.2",
     "github-fork-ribbon-css": "0.2.3",
     "http-server": "0.12.3",
     "image2base64-cli": "2.4.1",

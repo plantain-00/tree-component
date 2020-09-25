@@ -45,7 +45,10 @@ A reactjs and vuejs tree component.
 `npm i tree-vue-component`
 
 ```ts
-import "tree-vue-component";
+import { Node, Tree } from "tree-vue-component";
+
+app.component('node', Node)
+app.component('tree', Tree)
 ```
 
 or
@@ -193,6 +196,19 @@ type DragTargetData<T = any> = {
 ```
 
 ## changelogs
+
+```ts
+# v5
+// vue 2
+import 'tree-vue-component'
+
+# v6
+// vue 3
+import { Node, Tree } from "tree-vue-component"
+
+app.component('node', Node)
+app.component('tree', Tree)
+```
 
 ```bash
 # v4

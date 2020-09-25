@@ -1,6 +1,6 @@
 {
   "name": "tree-vue-component",
-  "version": "5.9.0",
+  "version": "6.0.0",
   "main": "dist/tree-vue-component.min.js",
   "module": "dist/index.js",
   "unpkg": "dist/tree-vue-component.min.js",
@@ -18,9 +18,8 @@
   },
   "homepage": "https://github.com/plantain-00/tree-component#readme",
   "dependencies": {
-    "tree-component": "^5.9.0",
-    "vue": "2",
-    "vue-class-component": "7"
+    "tree-component": "^6.0.0",
+    "vue": "3"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
