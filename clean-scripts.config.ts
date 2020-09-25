@@ -58,7 +58,7 @@ export default {
     markdown: `markdownlint README.md`,
     typeCoverage: {
       core: 'cd packages/core && type-coverage -p src --strict',
-      vue: 'cd packages/vue && type-coverage -p src --strict',
+      vue: 'cd packages/vue && type-coverage -p src --strict --ignore-files "src/variables.ts"',
       react: 'cd packages/react && type-coverage -p src --strict'
     }
   },
