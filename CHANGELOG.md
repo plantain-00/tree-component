@@ -1,5 +1,10 @@
 # Change Log
 
+## [6.0.1](https://github.com/plantain-00/tree-component/compare/v6.0.0...v6.0.1) (2020-10-07)
+  
+* fix: vue3 slot ([40a9d53](https://github.com/plantain-00/tree-component/commit/40a9d539048f7019cad389037056fec7fffb0eca))
+* chore: update dependencies ([b69545b](https://github.com/plantain-00/tree-component/commit/b69545b2e97fed62f97d1aa0a1eb9b978dc00df8))
+
 ## [6.0.0](https://github.com/plantain-00/tree-component/compare/v5.9.0...v6.0.0) (2020-09-25)
   
 * feat: support vue3 ([efa8a61](https://github.com/plantain-00/tree-component/commit/efa8a6114d615aedf8c8216c6d6264aac9442a2a))
