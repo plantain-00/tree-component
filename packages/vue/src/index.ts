@@ -49,7 +49,8 @@ export const Node = defineComponent({
       }
     },
     nodeClassName(): string {
-      return common.getNodeClassName(this.data, this.last, !!this.$slots.default)
+      const hasChildren = typeof this.$slots.default === 'function' ? this.$slots.default().length > 0 : !!this.$slots.default
+      return common.getNodeClassName(this.data, this.last, hasChildren)
     },
     anchorClassName(): string {
       return common.getAnchorClassName(this.data, this.hovered, this.path)
