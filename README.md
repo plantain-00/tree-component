@@ -55,7 +55,6 @@ or
 
 ```html
 <script src="./node_modules/vue/dist/vue.min.js"></script>
-<script src="./node_modules/vue-class-component/dist/vue-class-component.min.js"></script>
 <script src="./node_modules/tree-vue-component/dist/tree-vue-component.min.js"></script>
 ```
 
