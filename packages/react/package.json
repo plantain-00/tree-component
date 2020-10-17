@@ -22,9 +22,9 @@
     "tree-component": "^6.0.0"
   },
   "devDependencies": {
-    "@types/react": "16.9.51",
+    "@types/react": "16.9.53",
     "@types/react-dom": "16.9.8",
-    "react-dom": "16.13.1"
+    "react-dom": "16.14.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
