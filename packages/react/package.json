@@ -18,13 +18,13 @@
   },
   "homepage": "https://github.com/plantain-00/tree-component#readme",
   "dependencies": {
-    "react": "16",
+    "react": "17",
     "tree-component": "^6.0.0"
   },
   "devDependencies": {
     "@types/react": "16.9.53",
     "@types/react-dom": "16.9.8",
-    "react-dom": "16.14.0"
+    "react-dom": "17.0.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
