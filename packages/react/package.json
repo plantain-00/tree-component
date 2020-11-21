@@ -22,8 +22,8 @@
     "tree-component": "^6.0.0"
   },
   "devDependencies": {
-    "@types/react": "16.9.56",
-    "@types/react-dom": "16.9.9",
+    "@types/react": "17.0.0",
+    "@types/react-dom": "17.0.0",
     "react-dom": "17.0.1"
   },
   "publishConfig": {
