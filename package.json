@@ -45,7 +45,7 @@
     "github-fork-ribbon-css": "0.2.3",
     "http-server": "0.12.3",
     "image2base64-cli": "2.4.1",
-    "less": "4.0.0",
+    "less": "3.12.2",
     "markdownlint-cli": "0.26.0",
     "no-unused-export": "1.14.0",
     "postcss": "8.2.1",
