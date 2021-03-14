@@ -12,6 +12,11 @@ export default {
       { test: /\.tsx?$/, loader: 'ts-loader' }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      __VUE_PROD_DEVTOOLS__: false,
+    }),
+  ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
     alias: {
