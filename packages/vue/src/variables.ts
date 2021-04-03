@@ -98,7 +98,7 @@ export function nodeTemplateHtml(_ctx, _cache) {
                 onChange: _cache[8] || (_cache[8] = $event => (_ctx.onchange($event)))
               }, null, 8 /* PROPS */, ["data", "last", "checkbox", "path", "draggable", "root", "zindex", "preid"]))
             }), 128 /* KEYED_FRAGMENT */))
-          ], {}, true)
+          ])
         ]))
       : _createCommentVNode("v-if", true)
   ], 42 /* CLASS, PROPS, HYDRATE_EVENTS */, ["id"]))
@@ -136,7 +136,7 @@ export function treeTemplateHtml(_ctx, _cache) {
             onChange: _cache[2] || (_cache[2] = $event => (_ctx.onchange($event)))
           }, null, 8 /* PROPS */, ["data", "last", "checkbox", "path", "draggable", "root", "zindex", "preid"]))
         }), 128 /* KEYED_FRAGMENT */))
-      ], {}, true)
+      ])
     ], 34 /* CLASS, HYDRATE_EVENTS */)
   ], 2 /* CLASS */))
 }
