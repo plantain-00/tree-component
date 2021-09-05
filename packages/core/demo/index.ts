@@ -157,7 +157,7 @@ export function toggle(eventData: EventData<Value>, customComponent?: string | F
       const newExtraData: TreeData[] = JSON.parse(JSON.stringify(rawExtraData))
       eventData.data.children = newExtraData
       if (customComponent) {
-        newExtraData[5].component = customComponent
+        newExtraData[5]!.component = customComponent
       }
       eventData.data.state.loading = false
       eventData.data.state.opened = !eventData.data.state.opened
@@ -207,9 +207,9 @@ export function setParentsSelection(tree: TreeData<Value>[], path: number[]) {
   const parentPath = path.slice(0, path.length - 1)
   for (const index of parentPath) {
     if (parents.length === 0) {
-      parents.unshift(tree[index])
+      parents.unshift(tree[index]!)
     } else {
-      parents.unshift(parents[0].children[index])
+      parents.unshift(parents[0]!.children[index]!)
     }
   }
   for (const parent of parents) {
@@ -242,7 +242,7 @@ export function move(dropData: DropData<Value>, treeData: TreeData<Value>[]) {
 
   const sourceParent = getNodeFromPath(treeData, dropData.sourcePath.slice(0, dropData.sourcePath.length - 1))
   const sourceChildren = sourceParent && sourceParent.children ? sourceParent.children : treeData
-  let sourceIndex = dropData.sourcePath[dropData.sourcePath.length - 1]
+  let sourceIndex = dropData.sourcePath[dropData.sourcePath.length - 1]!
 
   if (dropData.targetData.state.dropPosition === DropPosition.inside) {
     if (dropData.targetData.children) {
@@ -252,7 +252,7 @@ export function move(dropData: DropData<Value>, treeData: TreeData<Value>[]) {
     }
     dropData.targetData.state.opened = true
   } else {
-    const startIndex = dropData.targetPath[dropData.targetPath.length - 1] + (dropData.targetData.state.dropPosition === DropPosition.up ? 0 : 1)
+    const startIndex = dropData.targetPath[dropData.targetPath.length - 1]! + (dropData.targetData.state.dropPosition === DropPosition.up ? 0 : 1)
     const targetParent = getNodeFromPath(treeData, dropData.targetPath.slice(0, dropData.targetPath.length - 1))
     const targetChildren = targetParent && targetParent.children ? targetParent.children : treeData
     targetChildren.splice(startIndex, 0, dropData.sourceData)
