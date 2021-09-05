@@ -13,7 +13,7 @@ const DeleteButton = defineComponent({
     click() {
       const parent = getNodeFromPath(this.data.root, this.data.path.slice(0, this.data.path.length - 1))
       const children = parent && parent.children ? parent.children : this.data.root
-      const index = this.data.path[this.data.path.length - 1]
+      const index = this.data.path[this.data.path.length - 1]!
       children.splice(index, 1)
     }
   },

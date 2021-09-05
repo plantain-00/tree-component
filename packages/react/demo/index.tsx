@@ -6,7 +6,7 @@ import { data, clearSelectionOfTree, toggle, setSelectionOfTree, setParentsSelec
 const DeleteButton: React.StatelessComponent<{ data: ContextMenuData<Value> }> = props => <button onClick={e => {
   const parent = getNodeFromPath(props.data.root, props.data.path.slice(0, props.data.path.length - 1))
   const children = parent && parent.children ? parent.children : props.data.root
-  const index = props.data.path[props.data.path.length - 1]
+  const index = props.data.path[props.data.path.length - 1]!
   children.splice(index, 1);
   (props.data.parent as React.PureComponent<any, any>).forceUpdate()
 }}>delete</button>

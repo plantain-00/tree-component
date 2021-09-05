@@ -221,7 +221,7 @@ export interface DropData<T = any> {
  * @public
  */
 export function getNodeFromPath<T>(rootData: TreeData<T>[], path: number[]) {
-  let node: TreeData<T> | null = null
+  let node: TreeData<T> | undefined
   for (const index of path) {
     node = node ? node.children[index] : rootData[index]
     if (!node) {
