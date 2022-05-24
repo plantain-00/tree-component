@@ -164,6 +164,7 @@ export const Tree = defineComponent({
     preid: String,
     dragTarget: Object as PropType<common.DragTargetData<unknown> | null>,
   },
+  emits: ['drop', 'toggle', 'change', 'change-drag-target'],
   data: () => {
     return {
       localDragTarget: null as HTMLElement | null,
