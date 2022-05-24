@@ -1,4 +1,4 @@
-import { uglify } from 'rollup-plugin-uglify'
+import { terser } from 'rollup-plugin-terser'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 
@@ -6,7 +6,7 @@ export default {
   input: 'packages/react/dist/index.js',
   plugins: [
     resolve({ browser: true }),
-    uglify(),
+    terser(),
     commonjs()
   ],
   output: {
