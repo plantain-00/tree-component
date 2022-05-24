@@ -1,6 +1,6 @@
 {
   "name": "tree-react-component",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "main": "dist/tree-react-component.min.js",
   "module": "dist/index.js",
   "unpkg": "dist/tree-react-component.min.js",
@@ -19,7 +19,7 @@
   "homepage": "https://github.com/plantain-00/tree-component#readme",
   "dependencies": {
     "react": "17",
-    "tree-component": "^6.0.0"
+    "tree-component": "^6.0.2"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
