@@ -267,6 +267,9 @@ function clearDropPositionOfTree<T>(tree: TreeData<T>) {
  * @public
  */
 export function ondrag<T>(pageY: number, dragTarget: HTMLElement | null | undefined, dropTarget: HTMLElement | null, dragTargetRoot: TreeData<T>[], dropTargetRoot: TreeData<T>[], dropAllowed?: (dropData: DropData<T>) => boolean, next?: () => void) {
+  while (dragTarget && !dragTarget.classList.contains('tree-anchor')) {
+    dragTarget = dragTarget.parentElement
+  }
   if (dropTarget && dragTarget) {
     const sourcePath = dragTarget.dataset.path!.split(',').map(s => +s)
     const dropTargetPathString = dropTarget.dataset.path
@@ -315,6 +318,9 @@ export function ondragleave<T>(target: HTMLElement, data: TreeData<T>[]) {
  * @public
  */
 export function ondrop<T>(target: HTMLElement, dragTarget: HTMLElement | null | undefined, dragTargetRoot: TreeData<T>[], dropTargetRoot: TreeData<T>[], next: (dropData: DropData<T>) => void) {
+  while (dragTarget && !dragTarget.classList.contains('tree-anchor')) {
+    dragTarget = dragTarget.parentElement
+  }
   if (dragTarget) {
     const sourcePath = dragTarget.dataset.path!.split(',').map(s => +s)
     const targetPathString = target.dataset.path
